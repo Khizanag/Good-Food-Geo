@@ -12,33 +12,35 @@ struct StaticPage: View {
     let subSections: [SubSectionView<AnyView>.Model]
 
     var body: some View {
-        ScrollView {
-            ZStack {
-                LinearGradient.background
-                    .ignoresSafeArea()
+        ZStack {
+            LinearGradient.background
+                .edgesIgnoringSafeArea([.top])
 
+            VStack {
                 VStack {
+                    HeaderView(name: "Giga", surname: "Khizanishvili") // TODO: change with real info
+
+                    SectionView(title: section.title, description: section.description)
+                }
+                .padding(.horizontal, 32)
+
+                ZStack {
+                    Color.white
+                        .cornerRadius(44, corners: [.topLeft, .topRight])
+                        .ignoresSafeArea()
+
                     VStack {
-                        Header(name: "Giga", surname: "Khizanishvili") // TODO: change with real info
-
-                        SectionView(title: section.title, description: section.description)
-                    }
-                    .padding(.horizontal)
-
-                    ZStack {
-                        Color.white
-                            .cornerRadius(44, corners: [.topLeft, .topRight])
-                            .ignoresSafeArea()
-
-                        VStack {
-                            ForEach(subSections) { model in
-                                SubSectionView(model: model)
-                            }
+                        ForEach(subSections) { model in
+                            SubSectionView(model: model)
                         }
-                        .padding(.horizontal)
+
+                        Spacer()
                     }
+                    .padding(.top, 32)
+                    .padding(.horizontal, 32)
                 }
             }
+            .edgesIgnoringSafeArea([])
         }
     }
 }

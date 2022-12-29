@@ -10,7 +10,7 @@ import SwiftUI
 enum Company {
     static let bog = CompanyModel(
         name: "Bank of Georgia",
-        icon: .bog,
+        icon: DesignSystem.Image.bogLogo(),
         colors: [
             Color(hex: 0xFC671A)
         ]
@@ -18,7 +18,7 @@ enum Company {
 
     static let tbc = CompanyModel(
         name: "TBC Bank",
-        icon: .tbc,
+        icon: DesignSystem.Image.tbcLogo(),
         colors: [
             Color(hex: 0x00AEEF)
         ]
@@ -26,7 +26,7 @@ enum Company {
 
     static let liberty = CompanyModel(
         name: "Liberty Bank",
-        icon: .liberty,
+        icon: DesignSystem.Image.libertyLogo(),
         colors: [
             Color(hex: 0x000000), Color(hex: 0xFF0000)
         ]
@@ -34,7 +34,7 @@ enum Company {
 
     static let facebook = CompanyModel(
         name: "Facebook",
-        icon: .facebookLogo,
+        icon: DesignSystem.Image.facebookLogo(),
         colors: [
             Color(hex: 0x4285F4)
         ]
@@ -42,7 +42,7 @@ enum Company {
 
     static let google = CompanyModel(
         name: Localization.google(),
-        icon: .googleLogo,
+        icon: DesignSystem.Image.googleLogo(),
         colors: [
             Color(hex: 0xEA4335),
             Color(hex: 0xFBBC05),
@@ -55,6 +55,6 @@ enum Company {
 // MARK: - Model
 struct CompanyModel {
     let name: String
-    let icon: DesignSystem.Image
+    let icon: Image
     let colors: [Color]
 }

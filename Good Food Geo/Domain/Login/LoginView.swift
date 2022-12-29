@@ -13,7 +13,7 @@ struct LoginView: View {
 
     var body: some View {
         VStack(spacing: 24) {
-            Header()
+            HeaderView()
 
             VStack(alignment: .leading, spacing: 6) {
                 Text(Localization.loginTitle())

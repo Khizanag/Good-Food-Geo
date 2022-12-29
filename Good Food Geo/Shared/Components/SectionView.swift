@@ -22,7 +22,6 @@ struct SectionView: View {
                 .frame(height: 4)
 
             Text(description)
-                .lineLimit(100)
                 .font(.callout)
                 .foregroundColor(.white)
         }

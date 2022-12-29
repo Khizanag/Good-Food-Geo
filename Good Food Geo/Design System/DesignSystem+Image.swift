@@ -11,6 +11,8 @@ import SwiftUI
 extension DesignSystem {
     enum Image: String {
         case appIcon
+        case appIconPrimary
+        case bogLogo
         case book
         case creditCard = "creditcard"
         case email = "envelope"
@@ -19,6 +21,7 @@ extension DesignSystem {
         case fingerprint = "touchid"
         case googleLogo
         case house
+        case libertyLogo
         case location = "location.circle"
         case lock
         case lockOpened = "lock.open"
@@ -26,9 +29,7 @@ extension DesignSystem {
         case person
         case phone
         case qr = "qrcode.viewfinder"
-        case bog
-        case liberty
-        case tbc
+        case tbcLogo
     }
 }
 

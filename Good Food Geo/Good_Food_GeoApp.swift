@@ -14,13 +14,10 @@ struct Good_Food_GeoApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                LoginView()
+                ContentView()
+//                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+//                LoginView()
             }
-//            ContentView()
-//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-
-//            LaunchScreen()
-//            SignUpView()
         }
     }
 }

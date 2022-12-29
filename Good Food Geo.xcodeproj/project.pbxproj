@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FB93931B295D918D00D491CE /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93931A295D918D00D491CE /* Header.swift */; };
+		FB93931B295D918D00D491CE /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93931A295D918D00D491CE /* HeaderView.swift */; };
 		FB93931D295D968000D491CE /* SubSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93931C295D968000D491CE /* SubSectionView.swift */; };
 		FB939321295D9A6400D491CE /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB939320295D9A6400D491CE /* SectionView.swift */; };
 		FB939323295D9FCB00D491CE /* StaticPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB939322295D9FCB00D491CE /* StaticPage.swift */; };
@@ -15,6 +15,7 @@
 		FB939328295DBFBC00D491CE /* PasswordResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB939327295DBFBC00D491CE /* PasswordResetView.swift */; };
 		FB93932B295DC5BA00D491CE /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93932A295DC5BA00D491CE /* SecondaryButton.swift */; };
 		FB93932E295DD50900D491CE /* PrimaryTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93932D295DD50900D491CE /* PrimaryTextField.swift */; };
+		FB939330295DEAFC00D491CE /* BankButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93932F295DEAFC00D491CE /* BankButton.swift */; };
 		FBF9401E29559BE900A8EF10 /* Good_Food_GeoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF9401D29559BE900A8EF10 /* Good_Food_GeoApp.swift */; };
 		FBF9402029559BE900A8EF10 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF9401F29559BE900A8EF10 /* ContentView.swift */; };
 		FBF9402229559BEB00A8EF10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBF9402129559BEB00A8EF10 /* Assets.xcassets */; };
@@ -68,7 +69,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		FB93931A295D918D00D491CE /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		FB93931A295D918D00D491CE /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		FB93931C295D968000D491CE /* SubSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubSectionView.swift; sourceTree = "<group>"; };
 		FB939320295D9A6400D491CE /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		FB939322295D9FCB00D491CE /* StaticPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticPage.swift; sourceTree = "<group>"; };
@@ -76,6 +77,7 @@
 		FB939327295DBFBC00D491CE /* PasswordResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetView.swift; sourceTree = "<group>"; };
 		FB93932A295DC5BA00D491CE /* SecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
 		FB93932D295DD50900D491CE /* PrimaryTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryTextField.swift; sourceTree = "<group>"; };
+		FB93932F295DEAFC00D491CE /* BankButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankButton.swift; sourceTree = "<group>"; };
 		FBF9401A29559BE900A8EF10 /* Good Food Geo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Good Food Geo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF9401D29559BE900A8EF10 /* Good_Food_GeoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Good_Food_GeoApp.swift; sourceTree = "<group>"; };
 		FBF9401F29559BE900A8EF10 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				FBF940782955AD0F00A8EF10 /* DonationView.swift */,
+				FB93932F295DEAFC00D491CE /* BankButton.swift */,
 			);
 			path = Donation;
 			sourceTree = "<group>";
@@ -306,7 +309,7 @@
 			children = (
 				FB93932C295DC7BF00D491CE /* Buttons */,
 				FBF940832955BAF900A8EF10 /* HorizontalDivider.swift */,
-				FB93931A295D918D00D491CE /* Header.swift */,
+				FB93931A295D918D00D491CE /* HeaderView.swift */,
 				FB93931C295D968000D491CE /* SubSectionView.swift */,
 				FB939320295D9A6400D491CE /* SectionView.swift */,
 				FB939322295D9FCB00D491CE /* StaticPage.swift */,
@@ -506,12 +509,13 @@
 				FBF9405729559DAF00A8EF10 /* HomeView.swift in Sources */,
 				FBF9409B29560C3C00A8EF10 /* Gradient+Extension.swift in Sources */,
 				FBF940612955A73500A8EF10 /* Localization.swift in Sources */,
+				FB939330295DEAFC00D491CE /* BankButton.swift in Sources */,
 				FBF9407B2955AD1800A8EF10 /* ExpertView.swift in Sources */,
 				FBF940732955ACE300A8EF10 /* AboutUsView.swift in Sources */,
 				FB939323295D9FCB00D491CE /* StaticPage.swift in Sources */,
 				FB93931D295D968000D491CE /* SubSectionView.swift in Sources */,
 				FBF940812955B3A800A8EF10 /* FormItemView.swift in Sources */,
-				FB93931B295D918D00D491CE /* Header.swift in Sources */,
+				FB93931B295D918D00D491CE /* HeaderView.swift in Sources */,
 				FB93932B295DC5BA00D491CE /* SecondaryButton.swift in Sources */,
 				FBF94097295608ED00A8EF10 /* PrimaryButton.swift in Sources */,
 				FB939328295DBFBC00D491CE /* PasswordResetView.swift in Sources */,

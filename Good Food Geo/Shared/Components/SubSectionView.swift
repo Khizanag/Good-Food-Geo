@@ -18,16 +18,18 @@ struct SubSectionView<Content>: View where Content: View {
     let model: Model
 
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(model.title)
-                .font(.title2)
-                .bold()
+        VStack(alignment: .leading, spacing: 12) {
+            VStack(alignment: .leading, spacing: 4){
+                Text(model.title)
+                    .font(.title3)
+                    .bold()
 
-            LinearGradient(gradient: .divider, startPoint: .leading, endPoint: .trailing)
-                .frame(height: 4)
+                LinearGradient(gradient: .divider, startPoint: .leading, endPoint: .trailing)
+                    .frame(height: 4)
+            }
 
             model.content()
         }
-        .padding(.vertical)
+        .padding(.bottom)
     }
 }

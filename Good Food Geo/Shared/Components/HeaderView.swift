@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Header: View {
+struct HeaderView: View {
     let name: String?
     let surname: String?
 
@@ -28,7 +28,7 @@ struct Header: View {
             if let name, let surname {
                 Text("\(Localization.hi()), \(name) \(surname)")
                     .foregroundColor(.white)
-                    .font(.title3)
+                    .font(.callout)
             }
         }
         .padding(.vertical)

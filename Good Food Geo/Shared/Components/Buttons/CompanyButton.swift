@@ -11,12 +11,14 @@ struct CompanyButton: View {
     let company: CompanyModel
     let action: () -> Void
     let title: String?
+    let foregroundColor: Color?
 
     // MARK: - Init
-    init(company: CompanyModel, action: @escaping () -> Void, title: String? = nil) {
+    init(company: CompanyModel, action: @escaping () -> Void, title: String? = nil, foregroundColor: Color? = nil) {
         self.company = company
         self.action = action
         self.title = title
+        self.foregroundColor = foregroundColor
     }
 
     // MARK: - Body
@@ -24,7 +26,7 @@ struct CompanyButton: View {
         Button(action: action, label: {
             ZStack {
                 HStack {
-                    company.icon()
+                    company.icon
                         .resizable()
                         .frame(width: 32, height: 32)
 
@@ -34,7 +36,7 @@ struct CompanyButton: View {
                 Text(title ?? company.name)
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: .infinity)
-                    .foregroundColor(.blue)
+                    .foregroundColor(foregroundColor ?? .black) // FIXME: LOL
             }
             .padding(.horizontal)
         })

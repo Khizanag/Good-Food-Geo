@@ -16,9 +16,21 @@ struct AboutUsView: View {
         StaticPage(
             section: .init(title: Localization.aboutUs(), description: Localization.aboutUsDescription()),
             subSections: [
+                SubSectionView.Model(title: Localization.aboutUsSectionTitle(), content: {
+                    AnyView(
+                        VStack(alignment: .leading) {
+                            Text(Localization.aboutUsSectionDescription())
+                                .font(.body)
+
+                            CompanyButton(company: Company.facebook, action: {
+                                goToFacebookPage()
+                            })
+                        }
+                    )
+                }),
                 SubSectionView.Model(title: Localization.contactUs(), content: {
                     AnyView(
-                        VStack {
+                        VStack(alignment: .leading) {
                             Text("\(Localization.email()): \(email.uppercased())")
 
                             HStack {
@@ -27,17 +39,7 @@ struct AboutUsView: View {
                             }
                         }
                     )
-                }),
-//                SubSection.Model(title: Localization.aboutUsSectionTitle(), content: {
-//                    VStack {
-//                        Text(Localization.aboutUsSectionDescription())
-//                            .font(.body)
-//
-//                        //                        FacebookButton {
-//                        //                            goToFacebookPage()
-//                        //                        }
-//                    }
-//                })
+                })
             ]
         )
     }
