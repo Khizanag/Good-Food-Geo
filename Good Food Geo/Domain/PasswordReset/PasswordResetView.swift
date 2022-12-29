@@ -18,15 +18,7 @@ struct PasswordResetView: View {
             Text(Localization.enterEmailAddress())
                 .multilineTextAlignment(.center)
 
-            TextField(text: $email) {
-                Text(Localization.passwordResetEmailPlaceholder())
-            }
-            .padding(.leading)
-            .frame(height: 50)
-            .background {
-                RoundedRectangle(cornerRadius: 15)
-                    .stroke(DesignSystem.Color.primary())
-            }
+            PrimaryTextField(text: $email, placeholder: Localization.passwordResetEmailPlaceholder())
 
 //            HStack {
 //                NavigationLink(destination: {

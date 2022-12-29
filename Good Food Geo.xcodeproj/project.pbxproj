@@ -14,6 +14,7 @@
 		FB939325295DA4A200D491CE /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB939324295DA4A200D491CE /* Company.swift */; };
 		FB939328295DBFBC00D491CE /* PasswordResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB939327295DBFBC00D491CE /* PasswordResetView.swift */; };
 		FB93932B295DC5BA00D491CE /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93932A295DC5BA00D491CE /* SecondaryButton.swift */; };
+		FB93932E295DD50900D491CE /* PrimaryTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93932D295DD50900D491CE /* PrimaryTextField.swift */; };
 		FBF9401E29559BE900A8EF10 /* Good_Food_GeoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF9401D29559BE900A8EF10 /* Good_Food_GeoApp.swift */; };
 		FBF9402029559BE900A8EF10 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF9401F29559BE900A8EF10 /* ContentView.swift */; };
 		FBF9402229559BEB00A8EF10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBF9402129559BEB00A8EF10 /* Assets.xcassets */; };
@@ -74,6 +75,7 @@
 		FB939324295DA4A200D491CE /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
 		FB939327295DBFBC00D491CE /* PasswordResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetView.swift; sourceTree = "<group>"; };
 		FB93932A295DC5BA00D491CE /* SecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
+		FB93932D295DD50900D491CE /* PrimaryTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryTextField.swift; sourceTree = "<group>"; };
 		FBF9401A29559BE900A8EF10 /* Good Food Geo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Good Food Geo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF9401D29559BE900A8EF10 /* Good_Food_GeoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Good_Food_GeoApp.swift; sourceTree = "<group>"; };
 		FBF9401F29559BE900A8EF10 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 				FB93931C295D968000D491CE /* SubSectionView.swift */,
 				FB939320295D9A6400D491CE /* SectionView.swift */,
 				FB939322295D9FCB00D491CE /* StaticPage.swift */,
+				FB93932D295DD50900D491CE /* PrimaryTextField.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB93932E295DD50900D491CE /* PrimaryTextField.swift in Sources */,
 				FBF9405F29559F4100A8EF10 /* DesignSystem+Image.swift in Sources */,
 				FBF9408F2955EE9F00A8EF10 /* Color+Extension.swift in Sources */,
 				FBF940642955A7D100A8EF10 /* Language.swift in Sources */,
