@@ -1,0 +1,67 @@
+/* 
+  Localization.strings
+  Good Food Geo
+
+  Created by Giga Khizanishvili on 23.12.22.
+  
+*/
+
+// MARK: - Shared
+"fullName" = "Full name";
+"email" = "Email ID";
+"password" = "Password";
+"confirmPassword" = "Confirm password";
+"idNumber" = "ID Number";
+"phoneNumber" = "Phone number";
+"comment" = "Comment";
+"location" = "Location";
+"facebook" = "Facebook";
+"google" = "Google";
+"hi" = "Hi";
+"or" = "or";
+"send" = "send";
+
+// MARK: - Login
+"login" = "Login";
+"loginTitle" = "Login and Scan Your Product";
+"loginSubtitle" = "By continuing, you accept our Terms of Use and Privacy Statement";
+"loginWithSocialNetworksTitle" = "Or, Login with..";
+"areYouNotRegistered" = "New to Good Food Geo?";
+
+// MARK: - Registration
+"register" = "Register";
+"resend" = "Resend";
+"codePlaceholder" = "Code*";
+"getVerificationCode" = "Get verification code";
+"verificationCodeInstruction" = "The activation code will be sent vie SMS";
+"agreeNotifications" = "Yes, I agree to receive text messages and phone calls";
+"signUp" = "Sign Up";
+
+// MARK: - PasswordReset
+"passwordResetTitle" = "Forgot Password";
+"enterEmailAddress" = "Enter Email Address";
+"passwordResetEmailPlaceholder" = "example@gmail.com";
+"passwordResetBackTo" = "Back to";
+"passwordResetNoAccount" = "Don’t have an account?";
+
+// MARK: - Home
+"home" = "Home";
+
+// MARK: - About Us
+"aboutUs" = "About Us";
+"aboutUsDescription" = "The Good Food Geo app allows users to monitor food labeling, identify issues, get expert advice, and get helpful information. The Georgian Training and Development Institute is responsible for the application.";
+"aboutUsSectionTitle" = "TDIG";
+"aboutUsSectionDescription" = "Training and Development Institute of Georgia (TDIG) will constantly share useful materials with you.";
+"contactUs" = "Contact Us";
+
+// MARK: - Scanning
+"scanning" = "Scanning";
+"preScanFormTitle" = "Before the scan, you need to fill those fields.";
+"acceptTerms" = "You accept our terns of Use and Privacy Statement";
+"scanProduct" = "Scan Your Product";
+
+// MARK: - Donation
+"donation" = "Donation";
+
+// MARK: - Expert
+"expert" = "Expert";

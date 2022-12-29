@@ -1,0 +1,67 @@
+/* 
+  Localization.strings
+  Good Food Geo
+
+  Created by Giga Khizanishvili on 23.12.22.
+  
+*/
+
+// MARK: - Shared
+"fullName" = "სრული სახელი";
+"email" = "ელ.ფოსტა";
+"password" = "პაროლი";
+"confirmPassword" = "დაადასტურე პაროლი";
+"idNumber" = "ID ნომერი";
+"phoneNumber" = "ტელეფონის ნომერი";
+"comment" = "კომენტარი";
+"location" = "ლოკაცია";
+"facebook" = "Facebook";
+"google" = "Google";
+"hi" = "გამარჯობა";
+"or" = "ან";
+"send" = "გაგზავნა";
+
+// MARK: - Login
+"login" = "შესვლა";
+"loginTitle" = "შედით და დაასკანირეთ თქვენი პროდუქტი";
+"loginSubtitle" = "სისტემაში შესვლით თქვენ ეთანხმებით მოხმარების პირობებს";
+"loginWithSocialNetworksTitle" = "ან, შედით..";
+"areYouNotRegistered" = "ახალი ხარ Good Food Geo-ში?";
+
+// MARK: - Registration
+"register" = "რეგისტრაცია";
+"resend" = "თავიდან გაგზავნა";
+"codePlaceholder" = "კოდი*";
+"getVerificationCode" = "ვერიფიკაციის კოდის მიღება";
+"verificationCodeInstruction" = "აქტივაციის კოდი გაიგზავნება შეტყობინების საშუალებით";
+"agreeNotifications" = "დიახ, თანახმა ვარ მივიღო ტექსტური შეტყობინებები და სატელეფონო ზარები";
+"signUp" = "რეგისტრაცია";
+
+// MARK: - PasswordReset
+"passwordResetTitle" = "დაგავიწყდა პაროლი";
+"enterEmailAddress" = "Შეიყვანე ელ. ფოსტის მისამართი";
+"passwordResetEmailPlaceholder" = "მაგალითი@gmail.com";
+"passwordResetBackTo" = "დაბრუნება";
+"passwordResetNoAccount" = "არ გაქვთ ექაუნთი?";
+
+// MARK: - Home
+"home" = "მთავარი";
+
+// MARK: - About Us
+"aboutUs" = "ჩვენ შესახებ";
+"aboutUsDescription" = "აპლიკაცია Good Food Geo მომხმარებლებს  სურსათის ეტიკეტირების მონიტორინგის, პრობლემების დაფიქსირების, ექსპერტის კონსულტაციისა და სასარგებლო ინფორმაციის მიღების  შესაძლებლობას აძლევს. აპლიკაციაზე პასუხისმგებელია საქართველოს ტრენინგებისა და განვითარების ინსტიტუტი (TDIG)";
+"aboutUsSectionTitle" = "TDIG";
+"aboutUsSectionDescription" = "საქართველოს ტრენინგებისა და განვითარების ინსტიტუტი (TDIG) აპლიკაციაში მუდმივად გაგიზიარებთ სასარგებლო მასალებს.";
+"contactUs" = "კონტაქტი";
+
+// MARK: - Scanning
+"scanning" = "დასკანერება";
+"preScanFormTitle" = "სკანირების დაწყებამდე თქვენ უნდა შეავსოთ ეს ველები.";
+"acceptTerms" = "თქვენ ეთანხმებით მოხმარების პირობებს.";
+"scanProduct" = "პროდუქტის სკანირება";
+
+// MARK: - Donation
+"donation" = "დონაცია";
+
+// MARK: - Expert
+"expert" = "ექსპერტი";
