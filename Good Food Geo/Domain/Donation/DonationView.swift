@@ -14,6 +14,8 @@ struct DonationView: View {
         (Company.liberty, "GE54TB7337945064300021")
     ]
 
+    @State private var isSharePresented = false
+
     var body: some View {
         StaticPage(
             section: .init(title: "დონაციის შესახებ", description: "ნებისმიერ მსურველს აქვს შესაძლებლობა გააკეთოს ფინანსური შემოწირულობა და დააფინანსოს აპლიკაციის მუშაობა მომხმარებელთა საკეთილდღეოდ."),
@@ -23,8 +25,11 @@ struct DonationView: View {
                         VStack {
                             ForEach(banks, id: \.0.name) { bank, iban in
                                 BankButton(company: bank, iban: iban) {
-                                    print("print from donation")
+                                    isSharePresented = true
                                 }
+                                .sheet(isPresented: $isSharePresented, content: {
+                                    ActivityViewController(activityItems: [iban])
+                                })
                             }
                         }
                     )
