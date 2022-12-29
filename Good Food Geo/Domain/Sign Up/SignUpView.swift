@@ -96,20 +96,7 @@ struct SignUpView: View {
 
     private var verificationCodeTextField: some View {
         ZStack {
-            TextField(text: $verificationCode) {
-                HStack {
-                    Text(Localization.codePlaceholder())
-
-                    Spacer()
-                }
-            }
-            .font(.callout)
-            .padding(.leading)
-            .frame(height: 44)
-            .background {
-                RoundedRectangle(cornerRadius: 15)
-                    .stroke(DesignSystem.Color.primary())
-            }
+            PrimaryTextField(text: $verificationCode, placeholder: Localization.codePlaceholder())
 
             if isVerificationCodeSent {
                 HStack {
