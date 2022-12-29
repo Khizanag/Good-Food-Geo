@@ -10,6 +10,8 @@ import SwiftUI
 struct PasswordResetView: View {
     @State private var email = ""
 
+    @State private var alertData = AlertData()
+
     var body: some View {
         VStack {
 
@@ -41,18 +43,39 @@ struct PasswordResetView: View {
                 .foregroundColor(.secondary)
                 .font(.footnote)
 
-            SecondaryButton(action: {
 
+            NavigationLink(destination: {
+                SignUpView()
             }, label: {
                 Text(Localization.signUp())
                     .font(.callout)
+                    .foregroundColor(.black)
+                    .frame(height: 50)
+                    .frame(maxWidth: .infinity)
+                    .background(
+                        RoundedRectangle(cornerRadius: 15)
+                            .stroke(DesignSystem.Color.primary())
+                    )
             })
+
 
             Spacer()
         }
         .padding()
         .navigationTitle(Localization.passwordResetTitle())
         .navigationBarTitleDisplayMode(.inline)
+        .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
+            Button("Got It", role: .cancel) { }
+        })
+    }
+
+    // MARK: - Show Message
+    private func showMessage(_ message: String, description: String? = nil) {
+        alertData.title = message
+        if let description {
+            alertData.subtitle = description
+        }
+        alertData.isPresented = true
     }
 }
 

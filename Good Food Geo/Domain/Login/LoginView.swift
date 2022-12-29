@@ -11,6 +11,9 @@ struct LoginView: View {
     @State private var email = ""
     @State private var password = ""
 
+    @State private var alertData = AlertData()
+
+    // MARK: - Body
     var body: some View {
         VStack(spacing: 24) {
             HeaderView()
@@ -85,11 +88,16 @@ struct LoginView: View {
         .padding([.horizontal, .bottom], 32)
         .navigationTitle("ავტორიზაცია")
         .navigationBarTitleDisplayMode(.inline)
+        .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
+            Button("Got It", role: .cancel) { }
+        })
     }
 
     // MARK: - Functions
     private func login(email: String, password: String) {
-        print("Login: email = \(email), password = \(password)")
+        if email.isEmpty || password.isEmpty {
+            showMessage("Email or password should not be empty")
+        }
     }
 
     private func loginWithFacebook() {
@@ -98,6 +106,14 @@ struct LoginView: View {
 
     private func loginWithGoogle() {
         print("loginWithGoogle")
+    }
+
+    private func showMessage(_ message: String, description: String? = nil) {
+        alertData.title = message
+        if let description {
+            alertData.subtitle = description
+        }
+        alertData.isPresented = true
     }
 }
 

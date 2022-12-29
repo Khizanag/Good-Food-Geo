@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DonationView: View {
+    // MARK: - Properties
     private let banks: [(CompanyModel, String)] = [
         (Company.bog, "GE54TB7337945064300021"),
         (Company.tbc, "GE54TB7337945064300021"),
@@ -16,6 +17,7 @@ struct DonationView: View {
 
     @State private var isSharePresented = false
 
+    // MARK: - Body
     var body: some View {
         StaticPage(
             section: .init(title: "დონაციის შესახებ", description: "ნებისმიერ მსურველს აქვს შესაძლებლობა გააკეთოს ფინანსური შემოწირულობა და დააფინანსოს აპლიკაციის მუშაობა მომხმარებელთა საკეთილდღეოდ."),
@@ -38,6 +40,7 @@ struct DonationView: View {
     }
 }
 
+// MARK: - Previews
 struct DonationView_Previews: PreviewProvider {
     static var previews: some View {
         DonationView()

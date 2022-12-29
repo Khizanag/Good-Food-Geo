@@ -17,6 +17,7 @@
 		FB93932E295DD50900D491CE /* PrimaryTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93932D295DD50900D491CE /* PrimaryTextField.swift */; };
 		FB939330295DEAFC00D491CE /* BankButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93932F295DEAFC00D491CE /* BankButton.swift */; };
 		FB939332295DF0B900D491CE /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB939331295DF0B900D491CE /* ActivityViewController.swift */; };
+		FB939334295DF58300D491CE /* AlertData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB939333295DF58300D491CE /* AlertData.swift */; };
 		FBF9401E29559BE900A8EF10 /* Good_Food_GeoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF9401D29559BE900A8EF10 /* Good_Food_GeoApp.swift */; };
 		FBF9402029559BE900A8EF10 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF9401F29559BE900A8EF10 /* ContentView.swift */; };
 		FBF9402229559BEB00A8EF10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBF9402129559BEB00A8EF10 /* Assets.xcassets */; };
@@ -80,6 +81,7 @@
 		FB93932D295DD50900D491CE /* PrimaryTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryTextField.swift; sourceTree = "<group>"; };
 		FB93932F295DEAFC00D491CE /* BankButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankButton.swift; sourceTree = "<group>"; };
 		FB939331295DF0B900D491CE /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
+		FB939333295DF58300D491CE /* AlertData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertData.swift; sourceTree = "<group>"; };
 		FBF9401A29559BE900A8EF10 /* Good Food Geo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Good Food Geo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF9401D29559BE900A8EF10 /* Good_Food_GeoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Good_Food_GeoApp.swift; sourceTree = "<group>"; };
 		FBF9401F29559BE900A8EF10 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 				FBF9408B2955E20A00A8EF10 /* Extensions */,
 				FBF940822955BAD500A8EF10 /* Components */,
 				FB939324295DA4A200D491CE /* Company.swift */,
+				FB939333295DF58300D491CE /* AlertData.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB939334295DF58300D491CE /* AlertData.swift in Sources */,
 				FB93932E295DD50900D491CE /* PrimaryTextField.swift in Sources */,
 				FBF9405F29559F4100A8EF10 /* DesignSystem+Image.swift in Sources */,
 				FBF9408F2955EE9F00A8EF10 /* Color+Extension.swift in Sources */,

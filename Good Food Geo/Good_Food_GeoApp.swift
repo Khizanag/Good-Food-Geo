@@ -14,9 +14,9 @@ struct Good_Food_GeoApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                ContentView()
+//                ContentView()
 //                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
-//                LoginView()
+                LoginView()
             }
         }
     }

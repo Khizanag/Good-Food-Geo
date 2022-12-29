@@ -9,9 +9,12 @@ import SwiftUI
 
 struct AboutUsView: View {
     private let phoneNumber = "+995598935050"
-    private let facebookPageUrl = "https://www.facebook.com/TDIG.ge"
+    private let facebookPageUrl = "https://www.fcebook.com/TDIG.ge"
     private let email = "tdig.org@gmail.com"
 
+    @State private var alertData = AlertData()
+
+    // MARK: - Body
     var body: some View {
         StaticPage(
             section: .init(title: Localization.aboutUs(), description: Localization.aboutUsDescription()),
@@ -42,6 +45,9 @@ struct AboutUsView: View {
                 })
             ]
         )
+        .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
+            Button("Okay", role: .cancel) { }
+        })
     }
 
     // MARK: - Functions
@@ -53,8 +59,12 @@ struct AboutUsView: View {
         UIApplication.shared.open(url)
     }
 
-    private func showMessage(_ message: String) {
-        print(message)
+    private func showMessage(_ message: String, description: String? = nil) {
+        alertData.title = message
+        if let description {
+            alertData.subtitle = description
+        }
+        alertData.isPresented = true
     }
 }
 
