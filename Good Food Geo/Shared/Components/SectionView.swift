@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Section: View {
+struct SectionView: View {
     let title: String
     let description: String
 
@@ -30,7 +30,7 @@ struct Section: View {
     }
 }
 
-extension Section {
+extension SectionView {
     struct Model {
         let title: String
         let description: String

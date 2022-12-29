@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct StaticPage: View {
-    let section: Section.Model
-    let subSections: [SubSection<AnyView>.Model]
+    let section: SectionView.Model
+    let subSections: [SubSectionView<AnyView>.Model]
 
     var body: some View {
         ScrollView {
@@ -21,7 +21,7 @@ struct StaticPage: View {
                     VStack {
                         Header(name: "Giga", surname: "Khizanishvili") // TODO: change with real info
 
-                        Section(title: section.title, description: section.description)
+                        SectionView(title: section.title, description: section.description)
                     }
                     .padding(.horizontal)
 
@@ -32,7 +32,7 @@ struct StaticPage: View {
 
                         VStack {
                             ForEach(subSections) { model in
-                                SubSection(model: model)
+                                SubSectionView(model: model)
                             }
                         }
                         .padding(.horizontal)

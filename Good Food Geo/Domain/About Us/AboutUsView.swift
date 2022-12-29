@@ -16,7 +16,7 @@ struct AboutUsView: View {
         StaticPage(
             section: .init(title: Localization.aboutUs(), description: Localization.aboutUsDescription()),
             subSections: [
-                SubSection.Model(title: Localization.contactUs(), content: {
+                SubSectionView.Model(title: Localization.contactUs(), content: {
                     AnyView(
                         VStack {
                             Text("\(Localization.email()): \(email.uppercased())")

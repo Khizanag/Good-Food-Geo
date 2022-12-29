@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SubSection<Content>: View where Content: View {
+struct SubSectionView<Content>: View where Content: View {
     struct Model: Identifiable {
         let title: String
         @ViewBuilder var content: () -> Content

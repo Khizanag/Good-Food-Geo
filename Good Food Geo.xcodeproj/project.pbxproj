@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		FB93931B295D918D00D491CE /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93931A295D918D00D491CE /* Header.swift */; };
-		FB93931D295D968000D491CE /* SubSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93931C295D968000D491CE /* SubSection.swift */; };
-		FB939321295D9A6400D491CE /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB939320295D9A6400D491CE /* Section.swift */; };
+		FB93931D295D968000D491CE /* SubSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93931C295D968000D491CE /* SubSectionView.swift */; };
+		FB939321295D9A6400D491CE /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB939320295D9A6400D491CE /* SectionView.swift */; };
 		FB939323295D9FCB00D491CE /* StaticPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB939322295D9FCB00D491CE /* StaticPage.swift */; };
 		FB939325295DA4A200D491CE /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB939324295DA4A200D491CE /* Company.swift */; };
 		FB939328295DBFBC00D491CE /* PasswordResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB939327295DBFBC00D491CE /* PasswordResetView.swift */; };
@@ -68,8 +68,8 @@
 
 /* Begin PBXFileReference section */
 		FB93931A295D918D00D491CE /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
-		FB93931C295D968000D491CE /* SubSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubSection.swift; sourceTree = "<group>"; };
-		FB939320295D9A6400D491CE /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		FB93931C295D968000D491CE /* SubSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubSectionView.swift; sourceTree = "<group>"; };
+		FB939320295D9A6400D491CE /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		FB939322295D9FCB00D491CE /* StaticPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticPage.swift; sourceTree = "<group>"; };
 		FB939324295DA4A200D491CE /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
 		FB939327295DBFBC00D491CE /* PasswordResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetView.swift; sourceTree = "<group>"; };
@@ -305,8 +305,8 @@
 				FB93932C295DC7BF00D491CE /* Buttons */,
 				FBF940832955BAF900A8EF10 /* HorizontalDivider.swift */,
 				FB93931A295D918D00D491CE /* Header.swift */,
-				FB93931C295D968000D491CE /* SubSection.swift */,
-				FB939320295D9A6400D491CE /* Section.swift */,
+				FB93931C295D968000D491CE /* SubSectionView.swift */,
+				FB939320295D9A6400D491CE /* SectionView.swift */,
 				FB939322295D9FCB00D491CE /* StaticPage.swift */,
 			);
 			path = Components;
@@ -497,7 +497,7 @@
 				FBF9402729559BEB00A8EF10 /* Persistence.swift in Sources */,
 				FBF9402029559BE900A8EF10 /* ContentView.swift in Sources */,
 				FBF940772955AD0400A8EF10 /* ScanView.swift in Sources */,
-				FB939321295D9A6400D491CE /* Section.swift in Sources */,
+				FB939321295D9A6400D491CE /* SectionView.swift in Sources */,
 				FBF940922955EF0600A8EF10 /* LoginView.swift in Sources */,
 				FBF9405729559DAF00A8EF10 /* HomeView.swift in Sources */,
 				FBF9409B29560C3C00A8EF10 /* Gradient+Extension.swift in Sources */,
@@ -505,7 +505,7 @@
 				FBF9407B2955AD1800A8EF10 /* ExpertView.swift in Sources */,
 				FBF940732955ACE300A8EF10 /* AboutUsView.swift in Sources */,
 				FB939323295D9FCB00D491CE /* StaticPage.swift in Sources */,
-				FB93931D295D968000D491CE /* SubSection.swift in Sources */,
+				FB93931D295D968000D491CE /* SubSectionView.swift in Sources */,
 				FBF940812955B3A800A8EF10 /* FormItemView.swift in Sources */,
 				FB93931B295D918D00D491CE /* Header.swift in Sources */,
 				FB93932B295DC5BA00D491CE /* SecondaryButton.swift in Sources */,
