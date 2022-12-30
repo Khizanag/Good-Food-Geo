@@ -15,9 +15,8 @@ struct HomeView: View {
             ForEach(posts) { post in
                 PostView(post: post)
             }
+            .listRowSeparator(.hidden)
         }
-        .listRowSeparator(.hidden)
-        .listSectionSeparator(.hidden)
         .listStyle(.plain)
     }
 }
