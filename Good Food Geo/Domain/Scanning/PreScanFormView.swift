@@ -22,54 +22,56 @@ struct PreScanFormView: View {
     @State private var alertData = AlertData()
 
     var body: some View {
-        ScrollView {
-            VStack {
-                Text(Localization.preScanFormTitle().uppercased())
-                    .font(.subheadline)
-                    .multilineTextAlignment(.center)
-                    .padding()
-
-                FormItemView(model: FormItemModel(icon: DesignSystem.Image.person(), placeholder: Localization.fullName()), text: $fullName)
-                FormItemView(model: FormItemModel(icon: DesignSystem.Image.fingerprint(), placeholder: Localization.idNumber(), keyboardType: .numberPad), text: $idNumber)
-                FormItemView(model: FormItemModel(icon: DesignSystem.Image.pencil(), placeholder: Localization.comment()), text: $comment)
-                FormItemView(model: FormItemModel(icon: DesignSystem.Image.location(), placeholder: Localization.location()), text: $location)
-
-                Toggle(isOn: $userAgreesTerms) {
-                    Text(Localization.acceptTerms())
-                        .font(.caption)
-                        .frame(maxWidth: .infinity)
-                        .foregroundColor(DesignSystem.Color.secondaryText())
-                        .multilineTextAlignment(.trailing)
-                }
-                .tint(DesignSystem.Color.primary())
+        VStack {
+            Spacer()
+            
+            Text(Localization.preScanFormTitle().uppercased())
+                .font(.subheadline)
+                .multilineTextAlignment(.center)
                 .padding()
 
-                Button(action: {
-                    guard allFieldsAreFilled else {
-                        showMessage("All fields should be empty to navigate to scanning")
-                        return
-                    }
+            FormItemView(model: FormItemModel(icon: DesignSystem.Image.person(), placeholder: Localization.fullName()), text: $fullName)
+            FormItemView(model: FormItemModel(icon: DesignSystem.Image.fingerprint(), placeholder: Localization.idNumber(), keyboardType: .numberPad), text: $idNumber)
+            FormItemView(model: FormItemModel(icon: DesignSystem.Image.pencil(), placeholder: Localization.comment()), text: $comment)
+            FormItemView(model: FormItemModel(icon: DesignSystem.Image.location(), placeholder: Localization.location()), text: $location)
 
-                    guard userAgreesTerms else {
-                        showMessage("You should accept our terns of Use and Privacy Statement to navigate to scanning")
-                        return
-                    }
-
-                    // TODO: Navigate to the Camera
-                }, label: {
-                    DesignSystem.Image.qr()
-                        .imageScale(.large)
-
-                    Text(Localization.scanProduct())
-                })
-                .padding()
-                .frame(maxWidth: .infinity)
-                .foregroundColor(DesignSystem.Color.buttonTitle())
-                .background(DesignSystem.Color.buttonImportant())
-                .cornerRadius(12)
+            Toggle(isOn: $userAgreesTerms) {
+                Text(Localization.acceptTerms())
+                    .font(.caption)
+                    .frame(maxWidth: .infinity)
+                    .foregroundColor(DesignSystem.Color.secondaryText())
+                    .multilineTextAlignment(.trailing)
             }
-            .padding(32)
+            .tint(DesignSystem.Color.primary())
+            .padding()
+
+            Button(action: {
+                guard allFieldsAreFilled else {
+                    showMessage("All fields should be empty to navigate to scanning")
+                    return
+                }
+
+                guard userAgreesTerms else {
+                    showMessage("You should accept our terns of Use and Privacy Statement to navigate to scanning")
+                    return
+                }
+
+                // TODO: Navigate to the Camera
+            }, label: {
+                DesignSystem.Image.qr()
+                    .imageScale(.large)
+
+                Text(Localization.scanProduct())
+            })
+            .padding()
+            .frame(maxWidth: .infinity)
+            .foregroundColor(DesignSystem.Color.buttonTitle())
+            .background(DesignSystem.Color.buttonImportant())
+            .cornerRadius(15)
+
+            Spacer()
         }
+        .padding(32)
         .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
             Button(Localization.gotIt(), role: .cancel) { }
         })
