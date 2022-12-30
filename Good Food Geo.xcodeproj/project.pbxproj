@@ -18,6 +18,10 @@
 		FB939330295DEAFC00D491CE /* BankButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93932F295DEAFC00D491CE /* BankButton.swift */; };
 		FB939332295DF0B900D491CE /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB939331295DF0B900D491CE /* ActivityViewController.swift */; };
 		FB939334295DF58300D491CE /* AlertData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB939333295DF58300D491CE /* AlertData.swift */; };
+		FB939337295EBE4500D491CE /* TabBarBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB939336295EBE4500D491CE /* TabBarBackgroundView.swift */; };
+		FB939339295EBE7A00D491CE /* TabBarMainItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB939338295EBE7A00D491CE /* TabBarMainItemView.swift */; };
+		FB93933B295EBEEB00D491CE /* TestTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93933A295EBEEB00D491CE /* TestTabBarView.swift */; };
+		FB93933D295ED0D200D491CE /* TabBarShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93933C295ED0D200D491CE /* TabBarShape.swift */; };
 		FBF9401E29559BE900A8EF10 /* Good_Food_GeoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF9401D29559BE900A8EF10 /* Good_Food_GeoApp.swift */; };
 		FBF9402029559BE900A8EF10 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF9401F29559BE900A8EF10 /* ContentView.swift */; };
 		FBF9402229559BEB00A8EF10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBF9402129559BEB00A8EF10 /* Assets.xcassets */; };
@@ -82,6 +86,10 @@
 		FB93932F295DEAFC00D491CE /* BankButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankButton.swift; sourceTree = "<group>"; };
 		FB939331295DF0B900D491CE /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		FB939333295DF58300D491CE /* AlertData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertData.swift; sourceTree = "<group>"; };
+		FB939336295EBE4500D491CE /* TabBarBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarBackgroundView.swift; sourceTree = "<group>"; };
+		FB939338295EBE7A00D491CE /* TabBarMainItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarMainItemView.swift; sourceTree = "<group>"; };
+		FB93933A295EBEEB00D491CE /* TestTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTabBarView.swift; sourceTree = "<group>"; };
+		FB93933C295ED0D200D491CE /* TabBarShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarShape.swift; sourceTree = "<group>"; };
 		FBF9401A29559BE900A8EF10 /* Good Food Geo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Good Food Geo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF9401D29559BE900A8EF10 /* Good_Food_GeoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Good_Food_GeoApp.swift; sourceTree = "<group>"; };
 		FBF9401F29559BE900A8EF10 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -165,6 +173,16 @@
 			path = Buttons;
 			sourceTree = "<group>";
 		};
+		FB939335295EBE1900D491CE /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				FB939336295EBE4500D491CE /* TabBarBackgroundView.swift */,
+				FB939338295EBE7A00D491CE /* TabBarMainItemView.swift */,
+				FB93933C295ED0D200D491CE /* TabBarShape.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
 		FBF9401129559BE900A8EF10 = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +211,7 @@
 				FBF9405B29559F0900A8EF10 /* Domain */,
 				FBF9405A29559EFF00A8EF10 /* Design System */,
 				FBF9401D29559BE900A8EF10 /* Good_Food_GeoApp.swift */,
+				FB93933A295EBEEB00D491CE /* TestTabBarView.swift */,
 				FBF9401F29559BE900A8EF10 /* ContentView.swift */,
 				FBF9402129559BEB00A8EF10 /* Assets.xcassets */,
 				FBF9402629559BEB00A8EF10 /* Persistence.swift */,
@@ -311,6 +330,7 @@
 		FBF940822955BAD500A8EF10 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				FB939335295EBE1900D491CE /* TabBar */,
 				FB93932C295DC7BF00D491CE /* Buttons */,
 				FBF940832955BAF900A8EF10 /* HorizontalDivider.swift */,
 				FB93931A295D918D00D491CE /* HeaderView.swift */,
@@ -528,12 +548,16 @@
 				FB939328295DBFBC00D491CE /* PasswordResetView.swift in Sources */,
 				FBF9409F29560DF300A8EF10 /* CompanyButton.swift in Sources */,
 				FBF9405D29559F2B00A8EF10 /* DesignSystem.swift in Sources */,
+				FB93933B295EBEEB00D491CE /* TestTabBarView.swift in Sources */,
+				FB93933D295ED0D200D491CE /* TabBarShape.swift in Sources */,
 				FBF9409929560B6100A8EF10 /* LinearGradient+Extension.swift in Sources */,
 				FB939332295DF0B900D491CE /* ActivityViewController.swift in Sources */,
 				FBF940842955BAF900A8EF10 /* HorizontalDivider.swift in Sources */,
 				FBF940862955BB9000A8EF10 /* DesignSystem+Color.swift in Sources */,
+				FB939339295EBE7A00D491CE /* TabBarMainItemView.swift in Sources */,
 				FBF940792955AD0F00A8EF10 /* DonationView.swift in Sources */,
 				FBF9405929559DBC00A8EF10 /* PostView.swift in Sources */,
+				FB939337295EBE4500D491CE /* TabBarBackgroundView.swift in Sources */,
 				FB939325295DA4A200D491CE /* Company.swift in Sources */,
 				FBF9401E29559BE900A8EF10 /* Good_Food_GeoApp.swift in Sources */,
 				FBF9408D2955E21700A8EF10 /* View+Extensions.swift in Sources */,

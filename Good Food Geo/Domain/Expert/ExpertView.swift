@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ExpertView: View {
     var body: some View {
-        StaticPage(section: <#T##SectionView.Model#>, subSections: <#T##[SubSectionView<AnyView>.Model]#>)
+        Text("Expert")
     }
 }
 

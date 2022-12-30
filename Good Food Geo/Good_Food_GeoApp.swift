@@ -16,7 +16,8 @@ struct Good_Food_GeoApp: App {
             NavigationStack {
 //                ContentView()
 //                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                LoginView()
+//                LoginView()
+                TestTabBarView()
             }
         }
     }

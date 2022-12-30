@@ -17,7 +17,6 @@ struct SignUpView: View {
 
     @State private var verificationCode = ""
 
-    //    @State private var = false
     @State private var isVerificationCodeSent = false
 
     var body: some View {

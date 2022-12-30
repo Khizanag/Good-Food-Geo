@@ -11,7 +11,7 @@ import CoreData
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
-    @State private var selection: TabItem = .aboutUs
+    @State private var selection: HomeTabBarItem = .aboutUs
 
     var body: some View {
         TabView(selection: $selection) {
@@ -20,34 +20,34 @@ struct ContentView: View {
                     DesignSystem.Image.house()
                     Text(Localization.home())
                 }
-                .tag(TabItem.home)
+                .tag(HomeTabBarItem.home)
 
             AboutUsView()
                 .tabItem {
                     DesignSystem.Image.book()
                     Text(Localization.aboutUs())
                 }
-                .tag(TabItem.aboutUs)
+                .tag(HomeTabBarItem.aboutUs)
 
             ScanView()
                 .tabItem {
                     DesignSystem.Image.qr()
                 }
-                .tag(TabItem.scanning)
+                .tag(HomeTabBarItem.scanning)
 
             DonationView()
                 .tabItem {
                     DesignSystem.Image.creditCard()
                     Text(Localization.donation())
                 }
-                .tag(TabItem.donation)
+                .tag(HomeTabBarItem.donation)
 
             ExpertView()
                 .tabItem {
                     DesignSystem.Image.person()
                     Text(Localization.expert())
                 }
-                .tag(TabItem.expert)
+                .tag(HomeTabBarItem.expert)
         }
     }
 
@@ -60,7 +60,7 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-enum TabItem {
+enum HomeTabBarItem {
     case home
     case aboutUs
     case scanning
