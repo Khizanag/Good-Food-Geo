@@ -41,6 +41,7 @@ struct ExpertView: View {
 
                         Spacer()
                     }
+                    .padding(.vertical)
                 }
                 .padding(.horizontal, 32)
 
