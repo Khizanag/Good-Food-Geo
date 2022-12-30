@@ -50,7 +50,7 @@ struct LoginView: View {
                         NavigationLink(destination: {
                             PasswordResetView()
                         }, label: {
-                            Text("Forgot?")
+                            Text("Forgot?")  // TODO: Localize
                                 .foregroundColor(DesignSystem.Color.primary())
                                 .font(.footnote)
                                 .padding(.trailing)
@@ -87,7 +87,7 @@ struct LoginView: View {
             .padding(.vertical)
         }
         .padding([.horizontal, .bottom], 32)
-        .navigationTitle("ავტორიზაცია")
+        .navigationTitle("ავტორიზაცია")  // TODO: Localize
         .navigationBarTitleDisplayMode(.inline)
         .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
             Button("Got It", role: .cancel) { }
@@ -97,12 +97,12 @@ struct LoginView: View {
     // MARK: - Functions
     private func login(email: String, password: String) {
         if email.isEmpty || password.isEmpty {
-            showMessage("Email or password should not be empty")
+            showMessage("Email or password should not be empty")  // TODO: Localize
         }
     }
 
     private func loginWithFacebook() {
-        print("loginWithFacebook")
+        print("loginWithFacebook") 
     }
 
     private func loginWithGoogle() {

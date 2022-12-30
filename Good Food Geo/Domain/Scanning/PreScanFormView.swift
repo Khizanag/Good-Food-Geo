@@ -39,7 +39,7 @@ struct PreScanFormView: View {
                 .padding()
 
                 Button(action: {
-                    print("Scan product scanning")
+                    print("Start product scanning")
                 }, label: {
                     DesignSystem.Image.qr()
                         .imageScale(.large)

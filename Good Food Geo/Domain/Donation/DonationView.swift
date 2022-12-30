@@ -20,7 +20,7 @@ struct DonationView: View {
     // MARK: - Body
     var body: some View {
         StaticPage(
-            section: .init(title: "დონაციის შესახებ", description: "ნებისმიერ მსურველს აქვს შესაძლებლობა გააკეთოს ფინანსური შემოწირულობა და დააფინანსოს აპლიკაციის მუშაობა მომხმარებელთა საკეთილდღეოდ."),
+            section: .init(title: "დონაციის შესახებ", description: "ნებისმიერ მსურველს აქვს შესაძლებლობა გააკეთოს ფინანსური შემოწირულობა და დააფინანსოს აპლიკაციის მუშაობა მომხმარებელთა საკეთილდღეოდ."),  // TODO: Localize
             subSections: [
                 .init(title: "საბანკო ანგარიშის ნომერი", content: {
                     AnyView(

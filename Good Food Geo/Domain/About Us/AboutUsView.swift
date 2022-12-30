@@ -53,7 +53,7 @@ struct AboutUsView: View {
     // MARK: - Functions
     private func goToFacebookPage() {
         guard let url = URL(string: facebookPageUrl) else {
-            showMessage("Facebook page link is no longer valid.")
+            showMessage("Facebook page link is no longer valid.")  // TODO: Localize
             return
         }
         UIApplication.shared.open(url)

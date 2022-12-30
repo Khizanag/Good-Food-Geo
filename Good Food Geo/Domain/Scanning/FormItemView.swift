@@ -53,7 +53,7 @@ struct FormItemModel: Identifiable {
         self.keyboardType = keyboardType
     }
 
-    static let example = FormItemModel(icon: DesignSystem.Image.book(), placeholder: "placehlder")
+    static let example = FormItemModel(icon: DesignSystem.Image.book(), placeholder: "placeholder")
 }
 
 struct FormItemView_Previews: PreviewProvider {

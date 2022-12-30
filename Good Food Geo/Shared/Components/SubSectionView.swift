@@ -8,11 +8,9 @@
 import SwiftUI
 
 struct SubSectionView<Content>: View where Content: View {
-    struct Model: Identifiable {
+    struct Model {
         let title: String
         @ViewBuilder var content: () -> Content
-
-        var id: String { title }
     }
 
     let model: Model

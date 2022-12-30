@@ -14,9 +14,9 @@ struct Expert {
     let phoneNumber: String
 
     static let example = Expert(
-        fullName: "Full Name",
-        about: "About him/her",
-        serviceInfo: "ინფორმაცია სერვისზე",
+        fullName: "Full Name",  // TODO: Localize
+        about: "About him/her",  // TODO: Localize
+        serviceInfo: "ინფორმაცია სერვისზე", // TODO: Localize
         phoneNumber: "+995123456789"
     )
 }

@@ -24,19 +24,7 @@ struct LaunchScreen: View {
                 endPoint: .topTrailing
             )
             .ignoresSafeArea()
-
-//            navigate(to: ContentView(), when: $shouldNavigateToApp)
-//                .onReceive(timer) { input in
-//                    shouldNavigateToApp = true
-//                    print("navigateeeeee")
-//                }
         }
-//        .onAppear {
-//            withAnimation(Animation.spring().delay(2)) {
-//                shouldNavigateToApp = true
-//                print("onappera")
-//            }
-//        }
     }
 }
 

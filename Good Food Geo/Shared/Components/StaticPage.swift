@@ -30,7 +30,7 @@ struct StaticPage: View {
                         .ignoresSafeArea()
 
                     VStack {
-                        ForEach(subSections) { model in
+                        ForEach(subSections, id: \.title) { model in
                             SubSectionView(model: model)
                         }
 
@@ -40,7 +40,6 @@ struct StaticPage: View {
                     .padding(.horizontal, 32)
                 }
             }
-            .edgesIgnoringSafeArea([]) // FIXME: remove
         }
     }
 }
