@@ -12,17 +12,16 @@ struct PostView: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            ZStack {
-                post.image
-                    .resizable()
-                    .frame(maxWidth: .infinity)
-                    .scaledToFit()
-                    .cornerRadius(8)
-
-                RoundedRectangle(cornerRadius: 8)
-                    .stroke(DesignSystem.Color.primary(), lineWidth: 3)
-                    .opacity(0.5)
-            }
+            post.image
+                .resizable()
+                .frame(maxWidth: .infinity)
+                .scaledToFit()
+                .cornerRadius(8)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(DesignSystem.Color.primary(), lineWidth: 3)
+                        .opacity(0.5)
+                )
 
             Text(post.description)
                 .multilineTextAlignment(.leading)
