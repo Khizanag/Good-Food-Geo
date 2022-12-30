@@ -17,7 +17,8 @@ struct Good_Food_GeoApp: App {
 //                ContentView()
 //                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
 //                LoginView()
-                TestTabBarView()
+//                TestTabBarView()
+                LaunchScreen(viewModel: LaunchScreenViewModel())
             }
         }
     }

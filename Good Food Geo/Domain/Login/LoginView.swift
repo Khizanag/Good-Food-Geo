@@ -88,6 +88,7 @@ struct LoginView: View {
         }
         .padding([.horizontal, .bottom], 32)
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
         .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
             Button(Localization.gotIt(), role: .cancel) { }
         })

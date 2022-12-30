@@ -26,6 +26,7 @@
 		FB939342295F087B00D491CE /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB939341295F087B00D491CE /* RoundedCorner.swift */; };
 		FB939344295F177A00D491CE /* VSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB939343295F177A00D491CE /* VSpacing.swift */; };
 		FB939347295F181000D491CE /* HSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB939346295F181000D491CE /* HSpacing.swift */; };
+		FB94BA77295F3B6B00944E37 /* LaunchScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB94BA76295F3B6B00944E37 /* LaunchScreenViewModel.swift */; };
 		FBF9401E29559BE900A8EF10 /* Good_Food_GeoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF9401D29559BE900A8EF10 /* Good_Food_GeoApp.swift */; };
 		FBF9402029559BE900A8EF10 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF9401F29559BE900A8EF10 /* ContentView.swift */; };
 		FBF9402229559BEB00A8EF10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBF9402129559BEB00A8EF10 /* Assets.xcassets */; };
@@ -98,6 +99,7 @@
 		FB939341295F087B00D491CE /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		FB939343295F177A00D491CE /* VSpacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VSpacing.swift; sourceTree = "<group>"; };
 		FB939346295F181000D491CE /* HSpacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSpacing.swift; sourceTree = "<group>"; };
+		FB94BA76295F3B6B00944E37 /* LaunchScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewModel.swift; sourceTree = "<group>"; };
 		FBF9401A29559BE900A8EF10 /* Good Food Geo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Good Food Geo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF9401D29559BE900A8EF10 /* Good_Food_GeoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Good_Food_GeoApp.swift; sourceTree = "<group>"; };
 		FBF9401F29559BE900A8EF10 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -375,6 +377,7 @@
 			isa = PBXGroup;
 			children = (
 				FBF940882955DB0900A8EF10 /* LaunchScreen.swift */,
+				FB94BA76295F3B6B00944E37 /* LaunchScreenViewModel.swift */,
 			);
 			path = LaunchScreen;
 			sourceTree = "<group>";
@@ -563,6 +566,7 @@
 				FBF940772955AD0400A8EF10 /* ScanView.swift in Sources */,
 				FB939321295D9A6400D491CE /* SectionView.swift in Sources */,
 				FBF940922955EF0600A8EF10 /* LoginView.swift in Sources */,
+				FB94BA77295F3B6B00944E37 /* LaunchScreenViewModel.swift in Sources */,
 				FBF9405729559DAF00A8EF10 /* HomeView.swift in Sources */,
 				FBF9409B29560C3C00A8EF10 /* Gradient+Extension.swift in Sources */,
 				FBF940612955A73500A8EF10 /* Localization.swift in Sources */,

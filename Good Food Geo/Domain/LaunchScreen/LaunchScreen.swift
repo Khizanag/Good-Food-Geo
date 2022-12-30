@@ -8,13 +8,9 @@
 import SwiftUI
 
 struct LaunchScreen: View {
-    @State private var shouldNavigateToApp = false {
-        didSet {
-            print("changed to \(shouldNavigateToApp)")
-        }
-    }
+    @ObservedObject var viewModel: LaunchScreenViewModel
 
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    var paths: [String] = []
 
     var body: some View {
         ZStack {
@@ -24,12 +20,20 @@ struct LaunchScreen: View {
                 endPoint: .topTrailing
             )
             .ignoresSafeArea()
+
+            DesignSystem.Image.launchScreenIcon()
+                .offset(y: -32)
         }
+        .onAppear {
+            viewModel.viewDidAppear()
+        }
+
+        NavigationLink(destination: LoginView(), isActive: $viewModel.shouldDismissAndNavigate, label: { EmptyView() })
     }
 }
 
 struct LaunchScreen_Previews: PreviewProvider {
     static var previews: some View {
-        LaunchScreen()
+        LaunchScreen(viewModel: LaunchScreenViewModel())
     }
 }

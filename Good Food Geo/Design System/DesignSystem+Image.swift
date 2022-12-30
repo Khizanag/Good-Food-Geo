@@ -21,6 +21,7 @@ extension DesignSystem {
         case fingerprint = "touchid"
         case googleLogo
         case house
+        case launchScreenIcon
         case libertyLogo
         case location = "location.circle"
         case lock
