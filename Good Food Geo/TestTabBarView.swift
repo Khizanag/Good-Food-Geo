@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeTabBarConstant {
     static private var hasBottomSwipeIndicator : Bool {
-        UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.safeAreaInsets.top ?? 0 > 20
+        UIApplication.shared.windows.filter { $0.isKeyWindow }.first?.safeAreaInsets.top ?? 0 > 20
     }
 
     static var height : CGFloat{
@@ -46,7 +46,7 @@ struct TestTabBarView: View {
             case .donation:
                 DonationView()
             case .expert:
-                ExpertView()
+                ExpertView(expert: .example)
             }
 
             VStack {

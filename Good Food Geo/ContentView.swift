@@ -42,7 +42,7 @@ struct ContentView: View {
                 }
                 .tag(HomeTabBarItem.donation)
 
-            ExpertView()
+            ExpertView(expert: .example)
                 .tabItem {
                     DesignSystem.Image.person()
                     Text(Localization.expert())

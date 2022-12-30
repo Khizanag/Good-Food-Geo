@@ -22,6 +22,7 @@
 		FB939339295EBE7A00D491CE /* TabBarMainItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB939338295EBE7A00D491CE /* TabBarMainItemView.swift */; };
 		FB93933B295EBEEB00D491CE /* TestTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93933A295EBEEB00D491CE /* TestTabBarView.swift */; };
 		FB93933D295ED0D200D491CE /* TabBarShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93933C295ED0D200D491CE /* TabBarShape.swift */; };
+		FB93933F295EFD0100D491CE /* Expert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93933E295EFD0100D491CE /* Expert.swift */; };
 		FBF9401E29559BE900A8EF10 /* Good_Food_GeoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF9401D29559BE900A8EF10 /* Good_Food_GeoApp.swift */; };
 		FBF9402029559BE900A8EF10 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF9401F29559BE900A8EF10 /* ContentView.swift */; };
 		FBF9402229559BEB00A8EF10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBF9402129559BEB00A8EF10 /* Assets.xcassets */; };
@@ -90,6 +91,7 @@
 		FB939338295EBE7A00D491CE /* TabBarMainItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarMainItemView.swift; sourceTree = "<group>"; };
 		FB93933A295EBEEB00D491CE /* TestTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTabBarView.swift; sourceTree = "<group>"; };
 		FB93933C295ED0D200D491CE /* TabBarShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarShape.swift; sourceTree = "<group>"; };
+		FB93933E295EFD0100D491CE /* Expert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expert.swift; sourceTree = "<group>"; };
 		FBF9401A29559BE900A8EF10 /* Good Food Geo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Good Food Geo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF9401D29559BE900A8EF10 /* Good_Food_GeoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Good_Food_GeoApp.swift; sourceTree = "<group>"; };
 		FBF9401F29559BE900A8EF10 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 			isa = PBXGroup;
 			children = (
 				FBF9407A2955AD1800A8EF10 /* ExpertView.swift */,
+				FB93933E295EFD0100D491CE /* Expert.swift */,
 			);
 			path = Expert;
 			sourceTree = "<group>";
@@ -561,6 +564,7 @@
 				FB939325295DA4A200D491CE /* Company.swift in Sources */,
 				FBF9401E29559BE900A8EF10 /* Good_Food_GeoApp.swift in Sources */,
 				FBF9408D2955E21700A8EF10 /* View+Extensions.swift in Sources */,
+				FB93933F295EFD0100D491CE /* Expert.swift in Sources */,
 				FBF940892955DB0900A8EF10 /* LaunchScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

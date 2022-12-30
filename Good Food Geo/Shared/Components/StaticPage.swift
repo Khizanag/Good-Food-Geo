@@ -40,7 +40,7 @@ struct StaticPage: View {
                     .padding(.horizontal, 32)
                 }
             }
-            .edgesIgnoringSafeArea([])
+            .edgesIgnoringSafeArea([]) // FIXME: remove
         }
     }
 }
