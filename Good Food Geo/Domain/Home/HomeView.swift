@@ -11,18 +11,14 @@ struct HomeView: View {
     let posts = [Post](repeating: .example, count: 10)
 
     var body: some View {
-        ScrollView {
-            ZStack {
-                Color.white
-
-                VStack {
-                    ForEach(posts) { post in
-                        PostView(post: post)
-                    }
-                    .padding([.horizontal, .bottom])
-                }
+        List {
+            ForEach(posts) { post in
+                PostView(post: post)
             }
         }
+        .listRowSeparator(.hidden)
+        .listSectionSeparator(.hidden)
+        .listStyle(.plain)
     }
 }
 

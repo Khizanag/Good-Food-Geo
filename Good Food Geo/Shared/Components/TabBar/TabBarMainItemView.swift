@@ -23,6 +23,6 @@ struct TabBarMainItemView : View {
         .background(Color(hex: 0xE10000))
         .clipShape(Circle())
         .shadow(color: .black.opacity(0.5), radius: 3, x: 0, y: 2)
-        .position(x: UIScreen.main.bounds.width/2, y: 10)
+        .position(x: UIScreen.main.bounds.width/2, y: 15)
     }
 }

@@ -35,7 +35,7 @@ struct TestTabBarView: View {
 
     // MARK: - Body
     var body: some View {
-        VStack {
+        ZStack {
             switch selectedTabBarItem {
             case .home:
                 HomeView()
@@ -49,26 +49,30 @@ struct TestTabBarView: View {
                 ExpertView()
             }
 
-            ZStack {
-                TabBarBackgroundView()
-                    .ignoresSafeArea()
-                    .ignoresSafeArea(.all)
+            VStack {
+                Spacer()
 
-                TabBarMainItemView(icon: DesignSystem.Image.qr()) {
-                    selectedTabBarItem = .scanning
-                }
+                ZStack {
+                    TabBarBackgroundView()
 
-                HStack {
-                    makeTabBarItem(with: tabBarItems[0])
-                    makeTabBarItem(with: tabBarItems[1])
-                    Spacer()
-                    makeTabBarItem(with: tabBarItems[2])
-                    makeTabBarItem(with: tabBarItems[3])
+                    TabBarMainItemView(icon: DesignSystem.Image.qr()) {
+                        selectedTabBarItem = .scanning
+                    }
+
+                    HStack {
+                        makeTabBarItem(with: tabBarItems[0])
+                        makeTabBarItem(with: tabBarItems[1])
+                        Spacer()
+                        makeTabBarItem(with: tabBarItems[2])
+                        makeTabBarItem(with: tabBarItems[3])
+                    }
+                    .padding(.horizontal)
+                    .padding(.bottom)
                 }
-                .padding()
+                .frame(height: HomeTabBarConstant.height)
             }
-            .frame(height:  HomeTabBarConstant.height)
         }
+        .edgesIgnoringSafeArea([.bottom])
     }
 
     private func makeTabBarItem(with model: HomeTabBarItemModel) -> some View {
@@ -81,12 +85,13 @@ struct TestTabBarView: View {
             }, label: {
                 VStack(spacing: 4) {
                     model.icon
-                        .accentColor(selectedTabBarItem == model.type ? activeColor : inactiveColor)
+                        .foregroundColor(selectedTabBarItem == model.type ? activeColor : inactiveColor)
 
                     Text(model.title)
                         .font(.caption)
-                        .accentColor(selectedTabBarItem == model.type ? activeColor : inactiveColor)
+                        .foregroundColor(selectedTabBarItem == model.type ? activeColor : inactiveColor)
                 }
+                .padding(2)
             })
         }
     }
