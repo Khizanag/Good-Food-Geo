@@ -13,7 +13,13 @@ struct PreScanFormView: View {
     @State private var comment = ""
     @State private var location = ""
 
+    private var textFields: [String] {
+        [fullName, idNumber, comment, location]
+    }
+
     @State private var userAgreesTerms = false
+
+    @State private var alertData = AlertData()
 
     var body: some View {
         ScrollView {
@@ -39,7 +45,17 @@ struct PreScanFormView: View {
                 .padding()
 
                 Button(action: {
-                    print("Start product scanning")
+                    guard allFieldsAreFilled else {
+                        showMessage("All fields should be empty to navigate to scanning")
+                        return
+                    }
+
+                    guard userAgreesTerms else {
+                        showMessage("You should accept our terns of Use and Privacy Statement to navigate to scanning")
+                        return
+                    }
+
+                    // TODO: Navigate to the Camera
                 }, label: {
                     DesignSystem.Image.qr()
                         .imageScale(.large)
@@ -54,6 +70,22 @@ struct PreScanFormView: View {
             }
             .padding(32)
         }
+        .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
+            Button(Localization.gotIt(), role: .cancel) { }
+        })
+    }
+
+    private var allFieldsAreFilled: Bool {
+        textFields.allSatisfy { !$0.isEmpty }
+    }
+
+    // MARK: - Show Message
+    private func showMessage(_ message: String, description: String? = nil) {
+        alertData.title = message
+        if let description {
+            alertData.subtitle = description
+        }
+        alertData.isPresented = true
     }
 }
 

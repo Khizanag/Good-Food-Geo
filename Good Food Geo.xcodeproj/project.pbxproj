@@ -24,6 +24,8 @@
 		FB93933D295ED0D200D491CE /* TabBarShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93933C295ED0D200D491CE /* TabBarShape.swift */; };
 		FB93933F295EFD0100D491CE /* Expert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93933E295EFD0100D491CE /* Expert.swift */; };
 		FB939342295F087B00D491CE /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB939341295F087B00D491CE /* RoundedCorner.swift */; };
+		FB939344295F177A00D491CE /* VSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB939343295F177A00D491CE /* VSpacing.swift */; };
+		FB939347295F181000D491CE /* HSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB939346295F181000D491CE /* HSpacing.swift */; };
 		FBF9401E29559BE900A8EF10 /* Good_Food_GeoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF9401D29559BE900A8EF10 /* Good_Food_GeoApp.swift */; };
 		FBF9402029559BE900A8EF10 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF9401F29559BE900A8EF10 /* ContentView.swift */; };
 		FBF9402229559BEB00A8EF10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBF9402129559BEB00A8EF10 /* Assets.xcassets */; };
@@ -94,6 +96,8 @@
 		FB93933C295ED0D200D491CE /* TabBarShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarShape.swift; sourceTree = "<group>"; };
 		FB93933E295EFD0100D491CE /* Expert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expert.swift; sourceTree = "<group>"; };
 		FB939341295F087B00D491CE /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
+		FB939343295F177A00D491CE /* VSpacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VSpacing.swift; sourceTree = "<group>"; };
+		FB939346295F181000D491CE /* HSpacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSpacing.swift; sourceTree = "<group>"; };
 		FBF9401A29559BE900A8EF10 /* Good Food Geo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Good Food Geo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF9401D29559BE900A8EF10 /* Good_Food_GeoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Good_Food_GeoApp.swift; sourceTree = "<group>"; };
 		FBF9401F29559BE900A8EF10 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -193,6 +197,15 @@
 				FB939341295F087B00D491CE /* RoundedCorner.swift */,
 			);
 			path = Shapes;
+			sourceTree = "<group>";
+		};
+		FB939345295F180000D491CE /* Spacing */ = {
+			isa = PBXGroup;
+			children = (
+				FB939343295F177A00D491CE /* VSpacing.swift */,
+				FB939346295F181000D491CE /* HSpacing.swift */,
+			);
+			path = Spacing;
 			sourceTree = "<group>";
 		};
 		FBF9401129559BE900A8EF10 = {
@@ -343,6 +356,7 @@
 		FBF940822955BAD500A8EF10 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				FB939345295F180000D491CE /* Spacing */,
 				FB939340295F086D00D491CE /* Shapes */,
 				FB939335295EBE1900D491CE /* TabBar */,
 				FB93932C295DC7BF00D491CE /* Buttons */,
@@ -536,6 +550,7 @@
 			files = (
 				FB939334295DF58300D491CE /* AlertData.swift in Sources */,
 				FB93932E295DD50900D491CE /* PrimaryTextField.swift in Sources */,
+				FB939344295F177A00D491CE /* VSpacing.swift in Sources */,
 				FBF9405F29559F4100A8EF10 /* DesignSystem+Image.swift in Sources */,
 				FBF9408F2955EE9F00A8EF10 /* Color+Extension.swift in Sources */,
 				FBF940642955A7D100A8EF10 /* Language.swift in Sources */,
@@ -543,6 +558,7 @@
 				FBF9407D2955B23F00A8EF10 /* PreScanFormView.swift in Sources */,
 				FBF94095295600A600A8EF10 /* SignUpView.swift in Sources */,
 				FBF9402729559BEB00A8EF10 /* Persistence.swift in Sources */,
+				FB939347295F181000D491CE /* HSpacing.swift in Sources */,
 				FBF9402029559BE900A8EF10 /* ContentView.swift in Sources */,
 				FBF940772955AD0400A8EF10 /* ScanView.swift in Sources */,
 				FB939321295D9A6400D491CE /* SectionView.swift in Sources */,
