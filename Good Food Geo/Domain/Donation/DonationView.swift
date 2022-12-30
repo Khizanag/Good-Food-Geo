@@ -20,17 +20,17 @@ struct DonationView: View {
     // MARK: - Body
     var body: some View {
         StaticPage(
-            section: .init(title: "დონაციის შესახებ", description: "ნებისმიერ მსურველს აქვს შესაძლებლობა გააკეთოს ფინანსური შემოწირულობა და დააფინანსოს აპლიკაციის მუშაობა მომხმარებელთა საკეთილდღეოდ."),  // TODO: Localize
+            section: .init(title: Localization.aboutDonationSectionTitle(), description: Localization.aboutDonationSectionDescription()),
             subSections: [
-                .init(title: "საბანკო ანგარიშის ნომერი", content: {
+                .init(title: Localization.donationBankAccountNumber(), content: {
                     AnyView(
                         VStack {
-                            ForEach(banks, id: \.0.name) { bank, iban in
-                                BankButton(company: bank, iban: iban) {
+                            ForEach(banks, id: \.0.name) { bank, accountNumber in
+                                BankButton(company: bank, accountNumber: accountNumber) {
                                     isSharePresented = true
                                 }
                                 .sheet(isPresented: $isSharePresented, content: {
-                                    ActivityViewController(activityItems: [iban])
+                                    ActivityViewController(activityItems: [accountNumber])
                                 })
                             }
                         }

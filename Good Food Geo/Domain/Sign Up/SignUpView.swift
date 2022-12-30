@@ -27,7 +27,7 @@ struct SignUpView: View {
                     CompanyButton(company: Company.google, action: signUpWithGoogle)
                 }
 
-                Text("Or, register with Email")  // TODO: Localize
+                Text(Localization.signUpSubtitle())
                     .font(.footnote)
                     .foregroundColor(DesignSystem.Color.primaryText())
 
@@ -57,7 +57,7 @@ struct SignUpView: View {
             }
             .padding(32)
         }
-        .navigationTitle("Sign Up With..")  // TODO: Localize
+        .navigationTitle(Localization.signUpTitle())
     }
 
     private var form: some View {
@@ -149,7 +149,7 @@ struct SignUpView: View {
 
     private var verificationSection: some View {
         VStack(alignment: .leading) {
-            Text("The activation code will be sent via SMS")  // TODO: Localize
+            Text(Localization.signUpSmsCodeInfo())
                 .font(.footnote)
                 .foregroundColor(.secondary)
                 .padding(.leading)

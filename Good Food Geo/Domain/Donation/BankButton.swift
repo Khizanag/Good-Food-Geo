@@ -9,14 +9,14 @@ import SwiftUI
 
 struct BankButton: View {
     let company: CompanyModel
-    let iban: String
+    let accountNumber: String
     let action: () -> Void
 
     var body: some View {
         CompanyButton(
             company: company,
             action: action,
-            title: iban,
+            title: accountNumber,
             foregroundColor: .black
         )
         .font(.footnote)
@@ -25,6 +25,6 @@ struct BankButton: View {
 
 struct BankButton_Previews: PreviewProvider {
     static var previews: some View {
-        BankButton(company: Company.liberty, iban: "", action: { })
+        BankButton(company: Company.liberty, accountNumber: "", action: { })
     }
 }

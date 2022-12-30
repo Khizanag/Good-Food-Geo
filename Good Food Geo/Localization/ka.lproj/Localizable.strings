@@ -20,6 +20,7 @@
 "hi" = "გამარჯობა";
 "or" = "ან";
 "send" = "გაგზავნა";
+"gotIt" = "გასაგებია";
 
 // MARK: - Login
 "login" = "შესვლა";
@@ -27,15 +28,20 @@
 "loginSubtitle" = "სისტემაში შესვლით თქვენ ეთანხმებით მოხმარების პირობებს";
 "loginWithSocialNetworksTitle" = "ან, შედით..";
 "areYouNotRegistered" = "ახალი ხარ Good Food Geo-ში?";
+"forgotButtonTitle" = "დაგავიწყდა?";
+"loginInputIsEmptyErrorMessage" = "მაილის ან პაროლის ველი ცარიელია";
 
 // MARK: - Registration
+"signUp" = "რეგისტრაცია";
+"signUpTitle" = "დარეგისტრირდი";
+"signUpSubtitle" = "ან, დარეგისტრირდი ელ.ფოსტით";
 "register" = "რეგისტრაცია";
 "resend" = "თავიდან გაგზავნა";
 "codePlaceholder" = "კოდი*";
 "getVerificationCode" = "ვერიფიკაციის კოდის მიღება";
 "verificationCodeInstruction" = "აქტივაციის კოდი გაიგზავნება შეტყობინების საშუალებით";
 "agreeNotifications" = "დიახ, თანახმა ვარ მივიღო ტექსტური შეტყობინებები და სატელეფონო ზარები";
-"signUp" = "რეგისტრაცია";
+"signUpSmsCodeInfo" = "აქტივაციის კოდი გაიგზავნება შეტყობინების საშუალებით";
 
 // MARK: - PasswordReset
 "passwordResetTitle" = "დაგავიწყდა პაროლი";
@@ -53,6 +59,7 @@
 "aboutUsSectionTitle" = "TDIG";
 "aboutUsSectionDescription" = "საქართველოს ტრენინგებისა და განვითარების ინსტიტუტი (TDIG) აპლიკაციაში მუდმივად გაგიზიარებთ სასარგებლო მასალებს.";
 "contactUs" = "კონტაქტი";
+"facebookUrlIsInvalid" = "Facebook-ის მისამართი აღარაა ხელმისაწვდომი";
 
 // MARK: - Scanning
 "scanning" = "დასკანერება";
@@ -62,6 +69,11 @@
 
 // MARK: - Donation
 "donation" = "დონაცია";
+"aboutDonationSectionTitle" = "დონაციის შესახებ";
+"aboutDonationSectionDescription" = "ნებისმიერ მსურველს აქვს შესაძლებლობა გააკეთოს ფინანსური შემოწირულობა და დააფინანსოს აპლიკაციის მუშაობა მომხმარებელთა საკეთილდღეოდ.";
+"donationBankAccountNumber" = "ბანკის ანგარიშის ნომერი";
 
 // MARK: - Expert
 "expert" = "ექსპერტი";
+"expertAboutServiceSectionTitle" = "სერვისის შესახებ";
+"callExpertSectionTitle" = "დაურეკე ექსპერტს";

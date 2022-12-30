@@ -57,7 +57,7 @@ struct PasswordResetView: View {
         .navigationTitle(Localization.passwordResetTitle())
         .navigationBarTitleDisplayMode(.inline)
         .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
-            Button("Got It", role: .cancel) { }  // TODO: Localize
+            Button(Localization.gotIt(), role: .cancel) { }
         })
     }
 

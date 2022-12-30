@@ -22,6 +22,7 @@ enum Localization: String {
     case hi
     case or
     case send
+    case gotIt
 
     // MARK: - Login
     case login
@@ -29,15 +30,20 @@ enum Localization: String {
     case loginSubtitle
     case loginWithSocialNetworksTitle
     case areYouNotRegistered
+    case forgotButtonTitle
+    case loginInputIsEmptyErrorMessage
 
     // MARK: - Registration
+    case signUp
+    case signUpTitle
+    case signUpSubtitle
     case register
     case resend
     case codePlaceholder
     case getVerificationCode
     case verificationCodeInstruction
     case agreeNotifications
-    case signUp
+    case signUpSmsCodeInfo
 
     // MARK: - Password Reset
     case passwordResetTitle
@@ -55,6 +61,7 @@ enum Localization: String {
     case aboutUsSectionTitle
     case aboutUsSectionDescription
     case contactUs
+    case facebookUrlIsInvalid
 
     // MARK: - Scanning
     case scanning
@@ -64,9 +71,14 @@ enum Localization: String {
 
     // MARK: - Donation
     case donation
+    case aboutDonationSectionTitle
+    case aboutDonationSectionDescription
+    case donationBankAccountNumber
 
     // MARK: - Expert
     case expert
+    case expertAboutServiceSectionTitle
+    case callExpertSectionTitle
 }
 
 extension Localization {

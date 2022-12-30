@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AboutUsView: View {
+    // MARK: - Properties
     private let phoneNumber = "+995598935050"
     private let facebookPageUrl = "https://www.fcebook.com/TDIG.ge"
     private let email = "tdig.org@gmail.com"
@@ -46,14 +47,14 @@ struct AboutUsView: View {
             ]
         )
         .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
-            Button("Okay", role: .cancel) { }
+            Button(Localization.gotIt(), role: .cancel) { }
         })
     }
 
     // MARK: - Functions
     private func goToFacebookPage() {
         guard let url = URL(string: facebookPageUrl) else {
-            showMessage("Facebook page link is no longer valid.")  // TODO: Localize
+            showMessage(Localization.facebookUrlIsInvalid())
             return
         }
         UIApplication.shared.open(url)
@@ -68,6 +69,7 @@ struct AboutUsView: View {
     }
 }
 
+// MARK: - Previews
 struct AboutUsView_Previews: PreviewProvider {
     static var previews: some View {
         AboutUsView()

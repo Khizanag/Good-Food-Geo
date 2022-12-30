@@ -20,6 +20,7 @@
 "hi" = "Hi";
 "or" = "or";
 "send" = "send";
+"gotIt" = "Got It";
 
 // MARK: - Login
 "login" = "Login";
@@ -27,15 +28,20 @@
 "loginSubtitle" = "By continuing, you accept our Terms of Use and Privacy Statement";
 "loginWithSocialNetworksTitle" = "Or, Login with..";
 "areYouNotRegistered" = "New to Good Food Geo?";
+"forgotButtonTitle" = "Forgot?";
+"loginInputIsEmptyErrorMessage" = "Email or password should not be empty";
 
 // MARK: - Registration
+"signUp" = "Sign Up";
+"signUpTitle" = "Sign Up With..";
+"signUpSubtitle" = "Or, register with Email";
 "register" = "Register";
 "resend" = "Resend";
 "codePlaceholder" = "Code*";
 "getVerificationCode" = "Get verification code";
 "verificationCodeInstruction" = "The activation code will be sent vie SMS";
 "agreeNotifications" = "Yes, I agree to receive text messages and phone calls";
-"signUp" = "Sign Up";
+"signUpSmsCodeInfo" = "The activation code will be sent via SMS";
 
 // MARK: - PasswordReset
 "passwordResetTitle" = "Forgot Password";
@@ -53,6 +59,7 @@
 "aboutUsSectionTitle" = "TDIG";
 "aboutUsSectionDescription" = "Training and Development Institute of Georgia (TDIG) will constantly share useful materials with you.";
 "contactUs" = "Contact Us";
+"facebookUrlIsInvalid" = "Facebook page link is no longer valid";
 
 // MARK: - Scanning
 "scanning" = "Scanning";
@@ -62,6 +69,11 @@
 
 // MARK: - Donation
 "donation" = "Donation";
+"aboutDonationSectionTitle" = "About Donation";
+"aboutDonationSectionDescription" = "Anyone can make a financial donation and fund the application's operation to benefit users.";
+"donationBankAccountNumber" = "Bank account number";
 
 // MARK: - Expert
 "expert" = "Expert";
+"expertAboutServiceSectionTitle" = "About Service";
+"callExpertSectionTitle" = "Call to Expert";

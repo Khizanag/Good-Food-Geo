@@ -19,7 +19,7 @@ struct ExpertView: View {
                 VStack {
                     HeaderView(name: "Giga", surname: "Khizanishvili") // TODO: change with real info
 
-                    HStack(spacing: 8) { // TODO: Localize
+                    HStack(spacing: 8) {
                         ZStack {
                             Circle()
                                 .fill(Color(hex: 0xE9E9E9))
@@ -50,7 +50,7 @@ struct ExpertView: View {
                         .ignoresSafeArea()
 
                     VStack {
-                        SubSectionView(model: .init(title: "სერვისის შესახებ", content: {  // TODO: Localize
+                        SubSectionView(model: .init(title: Localization.expertAboutServiceSectionTitle(), content: {
                             Text(expert.serviceInfo)
                                 .foregroundColor(.secondary)
                         }))
@@ -58,7 +58,7 @@ struct ExpertView: View {
                         Spacer()
 
                         HStack {
-                            SubSectionView(model: .init(title: "დაურეკე ექსპერტს", content: { }))  // TODO: Localize
+                            SubSectionView(model: .init(title: Localization.callExpertSectionTitle(), content: { }))
 
                             if let url = URL(string: "tel://\(expert.phoneNumber)") {
                                 Spacer()
