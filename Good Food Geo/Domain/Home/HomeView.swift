@@ -16,7 +16,9 @@ struct HomeView: View {
                 PostView(post: post)
             }
             .listRowSeparator(.hidden)
+
             VSpacing(HomeTabBarConstant.height)
+                .listRowSeparator(.hidden)
         }
         .listStyle(.plain)
     }
