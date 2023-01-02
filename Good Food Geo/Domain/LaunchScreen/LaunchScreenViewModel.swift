@@ -15,7 +15,7 @@ class LaunchScreenViewModel: ObservableObject {
 
     func viewDidAppear() {
         let timer = Timer
-            .publish(every: 3, on: .main, in: .common)
+            .publish(every: 1, on: .main, in: .common) // TODO: change to 3
             .autoconnect()
 
         timer

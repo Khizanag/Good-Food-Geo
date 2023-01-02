@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct LoginView: View {
+    let authenticationRepository: AuthenticationRepository = DefaultAuthenticationRepository()
+
     @State private var email = ""
     @State private var password = ""
 
-    @State private var alertData = AlertData()
+    @State var alertData = AlertData()
 
     // MARK: - Body
     var body: some View {
@@ -79,7 +81,7 @@ struct LoginView: View {
                     .font(.footnote)
 
                 NavigationLink(destination: {
-                    SignUpView()
+                    RegistrationView()
                 }, label: {
                     Text(Localization.register())
                 })
@@ -92,12 +94,24 @@ struct LoginView: View {
         .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
             Button(Localization.gotIt(), role: .cancel) { }
         })
+        .onAppear {
+            Task {
+//                login(email: "admin@tdig.ge", password: "admin") // TODO: Remove
+            }
+        }
     }
 
     // MARK: - Functions
     private func login(email: String, password: String) {
         if email.isEmpty || password.isEmpty {
             showMessage(Localization.loginInputIsEmptyErrorMessage())
+            return
+        }
+
+        Task {
+            guard let response = await authenticationRepository.login(email: email, password: password) else { return }
+            showMessage("\(response.message)", description: "With SessionID: \(response.token.access)")
+            // TODO: use loadingButton
         }
     }
 
@@ -109,6 +123,7 @@ struct LoginView: View {
         print("loginWithGoogle")
     }
 
+    // MARK: - Message Displayer
     private func showMessage(_ message: String, description: String? = nil) {
         alertData.title = message
         if let description {

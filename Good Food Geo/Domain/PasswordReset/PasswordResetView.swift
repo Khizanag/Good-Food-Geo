@@ -37,7 +37,7 @@ struct PasswordResetView: View {
 
 
             NavigationLink(destination: {
-                SignUpView()
+                RegistrationView()
             }, label: {
                 Text(Localization.signUp())
                     .font(.callout)

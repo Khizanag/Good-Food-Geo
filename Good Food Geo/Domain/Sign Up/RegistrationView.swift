@@ -1,5 +1,5 @@
 //
-//  SignUpView.swift
+//  RegistrationView.swift
 //  Good Food Geo
 //
 //  Created by Giga Khizanishvili on 23.12.22.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct SignUpView: View {
+struct RegistrationView: View {
     @State private var fullName = ""
-    @State private var emailId = ""
+    @State private var email = ""
     @State private var password = ""
     @State private var confirmPassword = ""
     @State private var phoneNumber = ""
@@ -19,12 +19,16 @@ struct SignUpView: View {
 
     @State private var isVerificationCodeSent = false
 
+    private let authenticationRepository: AuthenticationRepository = DefaultAuthenticationRepository()
+
+    @State var alertData = AlertData()
+
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
                 VStack(spacing: 12) {
-                    CompanyButton(company: Company.facebook, action: signUpWithFacebook)
-                    CompanyButton(company: Company.google, action: signUpWithGoogle)
+                    CompanyButton(company: Company.facebook, action: registerWithFacebook)
+                    CompanyButton(company: Company.google, action: registerWithGoogle)
                 }
 
                 Text(Localization.signUpSubtitle())
@@ -40,8 +44,6 @@ struct SignUpView: View {
                         .foregroundColor(DesignSystem.Color.secondaryText())
                         .multilineTextAlignment(.trailing)
                 }
-                .tint(DesignSystem.Color.primary())
-                .padding()
 
                 if verificationSegmentShouldBeShown {
                     if isVerificationCodeSent {
@@ -58,6 +60,9 @@ struct SignUpView: View {
             .padding(32)
         }
         .navigationTitle(Localization.signUpTitle())
+        .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
+            Button(Localization.gotIt(), role: .cancel) { }
+        })
     }
 
     private var form: some View {
@@ -71,7 +76,7 @@ struct SignUpView: View {
                 icon: DesignSystem.Image.email(),
                 placeholder: Localization.email(),
                 keyboardType: .emailAddress
-            ), text: $emailId)
+            ), text: $email)
 
             FormItemView(model: FormItemModel(
                 icon: DesignSystem.Image.lock(),
@@ -119,7 +124,9 @@ struct SignUpView: View {
 
     private var registrationButton: some View {
         PrimaryButton(action: {
-            signUp()
+            Task {
+                await register()
+            }
         }, label: {
             Text(Localization.signUp())
                 .foregroundColor(DesignSystem.Color.buttonTitle())
@@ -137,7 +144,7 @@ struct SignUpView: View {
 
     private var registrationInputIsValid: Bool {
         !fullName.isEmpty
-        && !emailId.isEmpty
+        && !email.isEmpty
         && !password.isEmpty
         && confirmPassword == password
         && !phoneNumber.isEmpty
@@ -163,21 +170,40 @@ struct SignUpView: View {
         isVerificationCodeSent = true
     }
 
-    private func signUp() {
+    private func register() async {
+        guard let registrationEntity = await authenticationRepository.register(
+            email: email,
+            name: fullName,
+            password: password,
+            phoneNumber: phoneNumber
+        ) else {
+            showMessage("Registration was unsuccessful with given information.")
+            return
+        }
+
+        showMessage(registrationEntity.message)
+    }
+
+    private func registerWithFacebook() {
 
     }
 
-    private func signUpWithFacebook() {
+    private func registerWithGoogle() {
 
     }
 
-    private func signUpWithGoogle() {
-
+    // MARK: - Message Displayer
+    private func showMessage(_ message: String, description: String? = nil) {
+        alertData.title = message
+        if let description {
+            alertData.subtitle = description
+        }
+        alertData.isPresented = true
     }
 }
 
 struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpView()
+        RegistrationView()
     }
 }
