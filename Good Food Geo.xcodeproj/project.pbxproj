@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		FB0FAF85296349A3008175A2 /* MessageDisplayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAF84296349A3008175A2 /* MessageDisplayer.swift */; };
+		FB0FAF87296413B0008175A2 /* UserInfoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAF86296413B0008175A2 /* UserInfoEntity.swift */; };
+		FB0FAF8A2964178F008175A2 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = FB0FAF892964178F008175A2 /* KeychainAccess */; };
+		FB0FAF8C296417A4008175A2 /* KeychainStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAF8B296417A3008175A2 /* KeychainStorage.swift */; };
 		FB93931B295D918D00D491CE /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93931A295D918D00D491CE /* HeaderView.swift */; };
 		FB93931D295D968000D491CE /* SubSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93931C295D968000D491CE /* SubSectionView.swift */; };
 		FB939321295D9A6400D491CE /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB939320295D9A6400D491CE /* SectionView.swift */; };
@@ -32,7 +35,7 @@
 		FB94BA7D295F465E00944E37 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB94BA7C295F465E00944E37 /* LoginResponse.swift */; };
 		FB94BA7F295F468F00944E37 /* RegistrationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB94BA7E295F468F00944E37 /* RegistrationResponse.swift */; };
 		FB94BA81295F51CC00944E37 /* URLRequest+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB94BA80295F51CC00944E37 /* URLRequest+Extension.swift */; };
-		FB94BA84295F844700944E37 /* AuthenticationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB94BA83295F844700944E37 /* AuthenticationRepository.swift */; };
+		FB94BA84295F844700944E37 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB94BA83295F844700944E37 /* Repository.swift */; };
 		FBF9401E29559BE900A8EF10 /* Good_Food_GeoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF9401D29559BE900A8EF10 /* Good_Food_GeoApp.swift */; };
 		FBF9402029559BE900A8EF10 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF9401F29559BE900A8EF10 /* ContentView.swift */; };
 		FBF9402229559BEB00A8EF10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBF9402129559BEB00A8EF10 /* Assets.xcassets */; };
@@ -87,6 +90,8 @@
 
 /* Begin PBXFileReference section */
 		FB0FAF84296349A3008175A2 /* MessageDisplayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDisplayer.swift; sourceTree = "<group>"; };
+		FB0FAF86296413B0008175A2 /* UserInfoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoEntity.swift; sourceTree = "<group>"; };
+		FB0FAF8B296417A3008175A2 /* KeychainStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStorage.swift; sourceTree = "<group>"; };
 		FB93931A295D918D00D491CE /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		FB93931C295D968000D491CE /* SubSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubSectionView.swift; sourceTree = "<group>"; };
 		FB939320295D9A6400D491CE /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
@@ -111,7 +116,7 @@
 		FB94BA7C295F465E00944E37 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		FB94BA7E295F468F00944E37 /* RegistrationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationResponse.swift; sourceTree = "<group>"; };
 		FB94BA80295F51CC00944E37 /* URLRequest+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Extension.swift"; sourceTree = "<group>"; };
-		FB94BA83295F844700944E37 /* AuthenticationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRepository.swift; sourceTree = "<group>"; };
+		FB94BA83295F844700944E37 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		FBF9401A29559BE900A8EF10 /* Good Food Geo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Good Food Geo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF9401D29559BE900A8EF10 /* Good_Food_GeoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Good_Food_GeoApp.swift; sourceTree = "<group>"; };
 		FBF9401F29559BE900A8EF10 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -157,6 +162,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB0FAF8A2964178F008175A2 /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +189,14 @@
 				FB0FAF84296349A3008175A2 /* MessageDisplayer.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		FB0FAF8D29641866008175A2 /* Property Wrappers */ = {
+			isa = PBXGroup;
+			children = (
+				FB0FAF8B296417A3008175A2 /* KeychainStorage.swift */,
+			);
+			path = "Property Wrappers";
 			sourceTree = "<group>";
 		};
 		FB939326295DBFA100D491CE /* PasswordReset */ = {
@@ -243,6 +257,7 @@
 			children = (
 				FB94BA7C295F465E00944E37 /* LoginResponse.swift */,
 				FB94BA7E295F468F00944E37 /* RegistrationResponse.swift */,
+				FB0FAF86296413B0008175A2 /* UserInfoEntity.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -250,7 +265,7 @@
 		FB94BA82295F842E00944E37 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				FB94BA83295F844700944E37 /* AuthenticationRepository.swift */,
+				FB94BA83295F844700944E37 /* Repository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -433,6 +448,7 @@
 		FBF9408A2955E20100A8EF10 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				FB0FAF8D29641866008175A2 /* Property Wrappers */,
 				FB0FAF8329634992008175A2 /* Protocols */,
 				FBF9408B2955E20A00A8EF10 /* Extensions */,
 				FBF940822955BAD500A8EF10 /* Components */,
@@ -486,6 +502,9 @@
 			dependencies = (
 			);
 			name = "Good Food Geo";
+			packageProductDependencies = (
+				FB0FAF892964178F008175A2 /* KeychainAccess */,
+			);
 			productName = "Good Food Geo";
 			productReference = FBF9401A29559BE900A8EF10 /* Good Food Geo.app */;
 			productType = "com.apple.product-type.application";
@@ -558,6 +577,9 @@
 				ka,
 			);
 			mainGroup = FBF9401129559BE900A8EF10;
+			packageReferences = (
+				FB0FAF882964178F008175A2 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+			);
 			productRefGroup = FBF9401B29559BE900A8EF10 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -647,11 +669,13 @@
 				FBF940792955AD0F00A8EF10 /* DonationView.swift in Sources */,
 				FB94BA81295F51CC00944E37 /* URLRequest+Extension.swift in Sources */,
 				FBF9405929559DBC00A8EF10 /* PostView.swift in Sources */,
-				FB94BA84295F844700944E37 /* AuthenticationRepository.swift in Sources */,
+				FB94BA84295F844700944E37 /* Repository.swift in Sources */,
 				FB939337295EBE4500D491CE /* TabBarBackgroundView.swift in Sources */,
 				FB939325295DA4A200D491CE /* Company.swift in Sources */,
+				FB0FAF87296413B0008175A2 /* UserInfoEntity.swift in Sources */,
 				FBF9401E29559BE900A8EF10 /* Good_Food_GeoApp.swift in Sources */,
 				FBF9408D2955E21700A8EF10 /* View+Extensions.swift in Sources */,
+				FB0FAF8C296417A4008175A2 /* KeychainStorage.swift in Sources */,
 				FB93933F295EFD0100D491CE /* Expert.swift in Sources */,
 				FBF940892955DB0900A8EF10 /* LaunchScreen.swift in Sources */,
 			);
@@ -992,6 +1016,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FB0FAF882964178F008175A2 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FB0FAF892964178F008175A2 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FB0FAF882964178F008175A2 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		FBF9402829559BEB00A8EF10 /* Good_Food_Geo.xcdatamodeld */ = {

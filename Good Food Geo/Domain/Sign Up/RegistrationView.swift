@@ -19,10 +19,11 @@ struct RegistrationView: View {
 
     @State private var isVerificationCodeSent = false
 
-    private let authenticationRepository: AuthenticationRepository = DefaultAuthenticationRepository()
+    private let authenticationRepository: Repository = DefaultRepository()
 
     @State var alertData = AlertData()
 
+    // MARK: - Body
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
@@ -65,6 +66,7 @@ struct RegistrationView: View {
         })
     }
 
+    // MARK: - Components
     private var form: some View {
         VStack(spacing: 8) {
             FormItemView(model: FormItemModel(
@@ -168,6 +170,7 @@ struct RegistrationView: View {
     // MARK: - Functions
     private func sendVerificationCode() {
         isVerificationCodeSent = true
+
     }
 
     private func register() async {

@@ -14,9 +14,11 @@ protocol Repository {
     func authenticateViaGoogle(token: String) async
     func authenticateViaFacebook(token: String) async
     func verifyRegistration(email: String, code: String) async
+
+    func getUserInformation(email: String, password: String) async -> UserInfoEntity?
 }
 
-struct DefaultAuthenticationRepository: Repository {
+struct DefaultRepository: Repository {
     private let networkLayer: NetworkLayer = DefaultNetworkLayer()
 
     func login(email: String, password: String) async -> LoginResponse? {
@@ -58,16 +60,18 @@ struct DefaultAuthenticationRepository: Repository {
     }
 
     func verifyRegistration(email: String, code: String) async {
-//        guard let url = EndPoint.verifyRegistration.fullUrl else { return nil }
-//
-//        var request = URLRequest(url: url)
-//        request.setMethod(.get)
-//        request.setContentType(.applicationJson)
-//        request.setBody([
-//            "email": email,
-//            "password": password
-//        ])
-//
-//        return await networkLayer.execute(LoginResponse.self, using: request)
+
+    }
+
+    func getUserInformation(email: String, password: String) async -> UserInfoEntity? {
+        var request = URLRequest(url: EndPoint.userInformation.fullUrl)
+        request.setMethod(.post)
+        request.setContentType(.applicationJson)
+        request.setBody([
+            "email": email,
+            "password": password
+        ])
+
+        return await networkLayer.execute(UserInfoEntity.self, using: request)
     }
 }

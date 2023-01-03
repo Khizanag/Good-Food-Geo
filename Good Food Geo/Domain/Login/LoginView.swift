@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import KeyC
 
 struct LoginView: View {
-    let authenticationRepository: AuthenticationRepository = DefaultAuthenticationRepository()
+    let repository: Repository = DefaultRepository()
 
     @State private var email = ""
     @State private var password = ""
@@ -97,6 +98,8 @@ struct LoginView: View {
         .onAppear {
             Task {
 //                login(email: "admin@tdig.ge", password: "admin") // TODO: Remove
+                let entity = await repository.getUserInformation(email: "admin@tdig.ge", password: "admin")
+                print(entity)
             }
         }
     }
@@ -109,7 +112,7 @@ struct LoginView: View {
         }
 
         Task {
-            guard let response = await authenticationRepository.login(email: email, password: password) else { return }
+            guard let response = await repository.login(email: email, password: password) else { return }
             showMessage("\(response.message)", description: "With SessionID: \(response.token.access)")
             // TODO: use loadingButton
         }
