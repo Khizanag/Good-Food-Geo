@@ -1,0 +1,46 @@
+//
+//  RegistrationViewModel.swift
+//  Good Food Geo
+//
+//  Created by Giga Khizanishvili on 04.01.23.
+//
+
+import SwiftUI
+
+final class RegistrationViewModel: ObservableObject {
+    private let repository: Repository = DefaultRepository()
+
+    @Published var isVerificationCodeSent = false
+
+    private var registeredEmail = ""
+
+    // MARK: - Init
+    init() {
+
+    }
+
+    func register(email: String, fullName: String, password: String, phoneNumber: String) {
+        Task {
+            guard let entity = await repository.register(
+                email: email,
+                name: fullName,
+                password: password,
+                phoneNumber: phoneNumber
+            ) else { return }
+
+            registeredEmail = entity.email
+        }
+    }
+
+    func sendVerificationCode() {
+        isVerificationCodeSent = true
+        print("Verification code sent!")
+    }
+
+    func verifyRegistration(using code: String) {
+        Task {
+            await repository.verifyRegistration(email: registeredEmail, code: code)
+        }
+    }
+}
+

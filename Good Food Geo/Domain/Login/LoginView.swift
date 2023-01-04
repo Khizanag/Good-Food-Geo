@@ -74,8 +74,8 @@ struct LoginView: View {
                 .foregroundColor(DesignSystem.Color.primaryText())
 
             VStack(spacing: 12) {
-                CompanyButton(company: Company.facebook, action: loginWithFacebook)
-                CompanyButton(company: Company.google, action: loginWithGoogle)
+                CompanyButton(company: Company.facebook, action: viewModel.loginUsingFacebook)
+                CompanyButton(company: Company.google, action: viewModel.loginUsingGoogle)
             }
 
             HStack {
@@ -83,7 +83,7 @@ struct LoginView: View {
                     .font(.footnote)
 
                 NavigationLink(destination: {
-                    RegistrationView()
+                    RegistrationView(viewModel: RegistrationViewModel())
                 }, label: {
                     Text(Localization.register())
                 })
@@ -108,17 +108,6 @@ struct LoginView: View {
         .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
             Button(Localization.gotIt(), role: .cancel) { }
         })
-    }
-
-    // MARK: - Functions
-
-
-    private func loginWithFacebook() {
-        print("loginWithFacebook") 
-    }
-
-    private func loginWithGoogle() {
-        print("loginWithGoogle")
     }
 
     // MARK: - Message Displayer

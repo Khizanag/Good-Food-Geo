@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct RegistrationView: View {
+    @ObservedObject var viewModel: RegistrationViewModel
+
     @State private var fullName = ""
     @State private var email = ""
     @State private var password = ""
@@ -16,10 +18,6 @@ struct RegistrationView: View {
     @State private var userAgreesTerms = false
 
     @State private var verificationCode = ""
-
-    @State private var isVerificationCodeSent = false
-
-    private let authenticationRepository: Repository = DefaultRepository()
 
     @State var alertData = AlertData()
 
@@ -47,7 +45,7 @@ struct RegistrationView: View {
                 }
 
                 if verificationSegmentShouldBeShown {
-                    if isVerificationCodeSent {
+                    if viewModel.isVerificationCodeSent {
                         verificationSection
 
                         if !verificationCode.isEmpty {
@@ -104,12 +102,12 @@ struct RegistrationView: View {
         ZStack {
             PrimaryTextField(text: $verificationCode, placeholder: Localization.codePlaceholder())
 
-            if isVerificationCodeSent {
+            if viewModel.isVerificationCodeSent {
                 HStack {
                     Spacer()
 
                     Button(action: {
-                        sendVerificationCode()
+                        viewModel.sendVerificationCode()
                     }, label: {
                         Text(Localization.resend())
                             .font(.caption2)
@@ -126,9 +124,7 @@ struct RegistrationView: View {
 
     private var registrationButton: some View {
         PrimaryButton(action: {
-            Task {
-                await register()
-            }
+            viewModel.register(email: email, fullName: fullName, password: password, phoneNumber: phoneNumber)
         }, label: {
             Text(Localization.signUp())
                 .foregroundColor(DesignSystem.Color.buttonTitle())
@@ -137,7 +133,7 @@ struct RegistrationView: View {
 
     private var getVerificationCodeButton: some View {
         PrimaryButton(action: {
-            sendVerificationCode()
+            viewModel.sendVerificationCode()
         }, label: {
             Text(Localization.getVerificationCode())
                 .foregroundColor(DesignSystem.Color.buttonTitle())
@@ -168,25 +164,6 @@ struct RegistrationView: View {
     }
 
     // MARK: - Functions
-    private func sendVerificationCode() {
-        isVerificationCodeSent = true
-
-    }
-
-    private func register() async {
-        guard let registrationEntity = await authenticationRepository.register(
-            email: email,
-            name: fullName,
-            password: password,
-            phoneNumber: phoneNumber
-        ) else {
-            showMessage("Registration was unsuccessful with given information.")
-            return
-        }
-
-        showMessage(registrationEntity.message)
-    }
-
     private func registerWithFacebook() {
 
     }
@@ -205,8 +182,9 @@ struct RegistrationView: View {
     }
 }
 
-struct SignUpView_Previews: PreviewProvider {
+// MARK: - Previews
+struct RegistrationView_Previews: PreviewProvider {
     static var previews: some View {
-        RegistrationView()
+        RegistrationView(viewModel: RegistrationViewModel())
     }
 }

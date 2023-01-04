@@ -17,10 +17,10 @@ final class DefaultNetworkLayer: NetworkLayer {
     func execute<T>(_ type: T.Type, using request: URLRequest) async -> T? where T: Decodable {
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
-            print(data, String(data: data, encoding: .utf8) ?? "*unknown encoding*")
-            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-                return nil
-            }
+
+            debugPrint(data, String(data: data, encoding: .utf8) ?? "*unknown encoding*")
+
+            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else { return nil }
 
             let decoder = JSONDecoder()
             let responseObject = try decoder.decode(type, from: data)
@@ -41,7 +41,7 @@ enum NetworkConstant {
 enum EndPoint {
     case registration           // -
     case login                  // +
-    case userInformation        // -
+    case userInformation        // +
     case resetLink              // -
     case googleAuthentication   // -
     case facebookAuthentication // -

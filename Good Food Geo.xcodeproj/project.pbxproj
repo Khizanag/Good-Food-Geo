@@ -22,6 +22,7 @@
 		FB0FAFA629659E64008175A2 /* AppStorageKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAFA529659E64008175A2 /* AppStorageKey.swift */; };
 		FB0FAFA829659F56008175A2 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAFA729659F56008175A2 /* LoginViewModel.swift */; };
 		FB0FAFAA2965CB28008175A2 /* UserInformationStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAFA92965CB27008175A2 /* UserInformationStorage.swift */; };
+		FB0FAFAC2965D2D8008175A2 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAFAB2965D2D7008175A2 /* RegistrationViewModel.swift */; };
 		FB93931B295D918D00D491CE /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93931A295D918D00D491CE /* HeaderView.swift */; };
 		FB93931D295D968000D491CE /* SubSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93931C295D968000D491CE /* SubSectionView.swift */; };
 		FB939321295D9A6400D491CE /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB939320295D9A6400D491CE /* SectionView.swift */; };
@@ -113,6 +114,7 @@
 		FB0FAFA529659E64008175A2 /* AppStorageKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageKey.swift; sourceTree = "<group>"; };
 		FB0FAFA729659F56008175A2 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		FB0FAFA92965CB27008175A2 /* UserInformationStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationStorage.swift; sourceTree = "<group>"; };
+		FB0FAFAB2965D2D7008175A2 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		FB93931A295D918D00D491CE /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		FB93931C295D968000D491CE /* SubSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubSectionView.swift; sourceTree = "<group>"; };
 		FB939320295D9A6400D491CE /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
@@ -536,6 +538,7 @@
 			isa = PBXGroup;
 			children = (
 				FBF94094295600A600A8EF10 /* RegistrationView.swift */,
+				FB0FAFAB2965D2D7008175A2 /* RegistrationViewModel.swift */,
 			);
 			path = "Sign Up";
 			sourceTree = "<group>";
@@ -678,6 +681,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB939334295DF58300D491CE /* AlertData.swift in Sources */,
+				FB0FAFAC2965D2D8008175A2 /* RegistrationViewModel.swift in Sources */,
 				FB93932E295DD50900D491CE /* PrimaryTextField.swift in Sources */,
 				FB939344295F177A00D491CE /* VSpacing.swift in Sources */,
 				FBF9405F29559F4100A8EF10 /* DesignSystem+Image.swift in Sources */,

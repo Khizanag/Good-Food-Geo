@@ -36,4 +36,12 @@ final class LoginViewModel: ObservableObject {
             shouldNavigateInto = true
         }
     }
+
+    func loginUsingFacebook() {
+        print("loginUsingFacebook")
+    }
+
+    func loginUsingGoogle() {
+        print("loginUsingGoogle")
+    }
 }
