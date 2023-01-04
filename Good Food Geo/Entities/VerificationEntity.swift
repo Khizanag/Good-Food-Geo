@@ -8,5 +8,11 @@
 import Foundation
 
 struct VerificationEntity: Decodable {
-    
+    let message: String
+    let token: AuthenticationToken
+
+    enum CodingKeys: String, CodingKey {
+        case message = "msg"
+        case token
+    }
 }

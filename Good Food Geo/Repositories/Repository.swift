@@ -57,8 +57,8 @@ struct DefaultRepository: Repository {
     }
 
     func verifyRegistration(email: String, code: String) async -> VerificationEntity? {
-        var request = URLRequest(url: EndPoint.resetLink.fullUrl)
-        request.setMethod(.post) // FIXME: or post
+        var request = URLRequest(url: EndPoint.verifyRegistration.fullUrl)
+        request.setMethod(.post)
         request.setContentType(.applicationJson)
         request.setBody([
             "email": email,
