@@ -13,6 +13,7 @@ final class HomeViewModel: ObservableObject {
     private let postsRepository: PostsRepository = DefaultPostsRepository()
 
     @Published var posts: [Post] = []
+    @Published var isLoading: Bool = false
 
     // MARK: - Init
     init() {
@@ -22,7 +23,9 @@ final class HomeViewModel: ObservableObject {
     // MARK: - Private
     private func fetchPosts() {
         Task {
+            isLoading = true
             posts = await postsRepository.getPosts()
+            isLoading = false
         }
     }
 }

@@ -20,7 +20,7 @@ struct PostView: View {
                         .scaledToFit()
                 },
                 placeholder: {
-                    VStack(alignment: .center) {
+                    VStack {
                         ProgressView()
                             .padding()
                     }
