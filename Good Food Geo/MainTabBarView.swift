@@ -47,17 +47,27 @@ struct MainTabBarView: View {
     // MARK: - Body
     var body: some View {
         ZStack {
-            switch selectedTabBarItem {
-            case .home:
+
+            TabView(selection: $selectedTabBarItem) {
                 HomeView(viewModel: HomeViewModel())
-            case .aboutUs:
+                    .navigationBarBackButtonHidden(true)
+                    .tag(MainTabBarItem.home)
+
                 AboutUsView()
-            case .scanning:
+                    .navigationBarBackButtonHidden(true)
+                    .tag(MainTabBarItem.aboutUs)
+
                 ScanView()
-            case .donation:
+                    .navigationBarBackButtonHidden(true)
+                    .tag(MainTabBarItem.scanning)
+
                 DonationView()
-            case .expert:
+                    .navigationBarBackButtonHidden(true)
+                    .tag(MainTabBarItem.donation)
+
                 ExpertView(expert: .example)
+                    .navigationBarBackButtonHidden(true)
+                    .tag(MainTabBarItem.expert)
             }
 
             VStack {
@@ -83,6 +93,7 @@ struct MainTabBarView: View {
                 .frame(height: MainTabBarConstant.height)
             }
         }
+        //        .navigationBarBackButtonHidden(true)
         .edgesIgnoringSafeArea([.bottom])
     }
 

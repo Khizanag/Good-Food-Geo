@@ -10,12 +10,11 @@ import Foundation
 protocol Repository {
     func login(email: String, password: String) async -> LoginResponse?
     func register(email: String, name: String, password: String, phoneNumber: String) async -> RegistrationResponse?
-    func refreshToken(_ token: String) async
     func authenticateViaGoogle(token: String) async
     func authenticateViaFacebook(token: String) async
     func verifyRegistration(email: String, code: String) async
 
-    func getUserInformation(email: String, password: String) async -> UserInfoEntity?
+    func getUserInformation(using token: String) async -> UserInformationEntity?
 }
 
 struct DefaultRepository: Repository {
@@ -47,31 +46,32 @@ struct DefaultRepository: Repository {
         return await networkLayer.execute(RegistrationResponse.self, using: request)
     }
 
-    func refreshToken(_ token: String) async {
-        // TODO
-    }
-
     func authenticateViaGoogle(token: String) async {
-        // TODO
+        // TODO: imp -
     }
 
     func authenticateViaFacebook(token: String) async {
-        // TODO
+        // TODO: imp -
     }
 
     func verifyRegistration(email: String, code: String) async {
-
+        // TODO: imp -
     }
 
-    func getUserInformation(email: String, password: String) async -> UserInfoEntity? {
+    func getUserInformation(using token: String) async -> UserInformationEntity? {
+        let tokenType = "Bearer"
+
         var request = URLRequest(url: EndPoint.userInformation.fullUrl)
         request.setMethod(.post)
         request.setContentType(.applicationJson)
-        request.setBody([
-            "email": email,
-            "password": password
-        ])
+        request.setValue("\(tokenType) \(token)", forHTTPHeaderField: "Authorization")
 
-        return await networkLayer.execute(UserInfoEntity.self, using: request)
+        guard let dto = await networkLayer.execute(UserInformationDTO.self, using: request) else { return nil }
+
+        return UserInformationEntity(
+            email: dto.email,
+            fullName: dto.name,
+            phoneNumber: dto.phoneNumber
+        )
     }
 }

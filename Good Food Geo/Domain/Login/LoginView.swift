@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct LoginView: View {
+    @ObservedObject var viewModel: LoginViewModel
+
     private let repository: Repository = DefaultRepository()
-    private let loginUseCase: LoginUseCase = DefaultLoginUseCase()
 
-    @State private var email = ""
-    @State private var password = ""
-
-    @State private var shouldNavigateToHome = DefaultAuthenticationTokenStorage.shared.read() != nil
+    @State private var email = "admin@tdig.ge"
+    @State private var password = "admin"
 
     @State var alertData = AlertData()
 
@@ -65,11 +64,9 @@ struct LoginView: View {
             }
 
             PrimaryButton(action: {
-                login(email: email, password: password)
+                viewModel.login(email: email, password: password)
             }, label: {
                 Text(Localization.login())
-
-                NavigationLink(destination: MainTabBarView(), isActive: $shouldNavigateToHome, label: { EmptyView() })
             })
 
             Text(Localization.loginWithSocialNetworksTitle())
@@ -94,38 +91,27 @@ struct LoginView: View {
             .padding(.vertical)
         }
         .padding([.horizontal, .bottom], 32)
-        .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
+        .navigationDestination(isPresented: $viewModel.shouldNavigateInto) {
+            MainTabBarView()
+        }
+        .overlay {
+            Color.clear
+                .overlay {
+                    if viewModel.isLoading {
+                        ProgressView()
+                            .scaleEffect(2)
+                    }
+                }
+        }
+        .allowsHitTesting(!viewModel.isLoading)
         .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
             Button(Localization.gotIt(), role: .cancel) { }
         })
-        .onAppear {
-            Task {
-//                login(email: "admin@tdig.ge", password: "admin") // TODO: Remove
-//                let entity = await repository.getUserInformation(email: "admin@tdig.ge", password: "admin")
-//                print(entity)
-
-            }
-        }
     }
 
     // MARK: - Functions
-    private func login(email: String, password: String) {
-        if email.isEmpty || password.isEmpty {
-            showMessage(Localization.loginInputIsEmptyErrorMessage())
-            return
-        }
 
-        print("email: '\(email)'")
-        print("password: '\(password)'")
-
-        Task {
-//            guard let response = await repository.login(email: email, password: password) else { return }
-            guard await loginUseCase.execute(email: email, password: password) else { return }
-//            showMessage("\(response.message)", description: "With SessionID: \(response.token.access)")
-            shouldNavigateToHome = true
-        }
-    }
 
     private func loginWithFacebook() {
         print("loginWithFacebook") 
@@ -147,6 +133,6 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        LoginView(viewModel: LoginViewModel())
     }
 }

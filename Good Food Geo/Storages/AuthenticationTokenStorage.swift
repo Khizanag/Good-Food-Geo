@@ -8,24 +8,24 @@
 import SwiftUI // @State
 
 protocol AuthenticationTokenStorage {
-    func read() -> AuthenticationToken?
-    func write(_ token: AuthenticationToken)
+    func read() -> String?
+    func write(_ token: String)
     func delete()
 }
 
 struct DefaultAuthenticationTokenStorage: AuthenticationTokenStorage {
-//    @KeychainStorage("khizanag.Good-Food-Geo.authenticationToken")
-    @State private var value: AuthenticationToken?
+    private static let key: String = "khizanag.Good-Food-Geo.authenticationToken"
+    @AppStorage(key) private var value: String?
 
     static let shared = DefaultAuthenticationTokenStorage()
 
     private init() { }
 
-    func read() -> AuthenticationToken? {
+    func read() -> String? {
         value
     }
 
-    func write(_ token: AuthenticationToken) {
+    func write(_ token: String) {
         value = token
         print("tokens new value is written")
     }

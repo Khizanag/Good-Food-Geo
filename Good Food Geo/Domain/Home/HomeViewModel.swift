@@ -20,6 +20,10 @@ final class HomeViewModel: ObservableObject {
         fetchPosts()
     }
 
+    func refresh() {
+        fetchPosts()
+    }
+
     // MARK: - Private
     private func fetchPosts() {
         Task {

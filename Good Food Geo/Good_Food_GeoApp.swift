@@ -14,8 +14,8 @@ struct Good_Food_GeoApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                MainTabBarView()
-//                LaunchScreen(viewModel: LaunchScreenViewModel())
+                LaunchScreen(viewModel: LaunchScreenViewModel())
+//                MainTabBarView()
             }
         }
     }

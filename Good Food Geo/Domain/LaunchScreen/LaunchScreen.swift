@@ -28,7 +28,7 @@ struct LaunchScreen: View {
             viewModel.viewDidAppear()
         }
 
-        NavigationLink(destination: LoginView(), isActive: $viewModel.shouldDismissAndNavigate, label: { EmptyView() })
+        NavigationLink(destination: LoginView(viewModel: LoginViewModel()), isActive: $viewModel.shouldDismissAndNavigate, label: { EmptyView() })
     }
 }
 
