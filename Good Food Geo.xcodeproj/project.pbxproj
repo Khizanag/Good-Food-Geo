@@ -246,6 +246,7 @@
 		FB0FAFA22965981D008175A2 /* DTOs */ = {
 			isa = PBXGroup;
 			children = (
+				FB0FAF9A2965657E008175A2 /* PostsDTO.swift */,
 				FB0FAFA32965982A008175A2 /* UserInformationDTO.swift */,
 			);
 			path = DTOs;
@@ -368,8 +369,6 @@
 				FBF9402B29559BEB00A8EF10 /* Info.plist */,
 				FBF9402829559BEB00A8EF10 /* Good_Food_Geo.xcdatamodeld */,
 				FBF9402329559BEB00A8EF10 /* Preview Content */,
-				FB0FAF9A2965657E008175A2 /* PostsDTO.swift */,
-				FB0FAFA529659E64008175A2 /* AppStorageKey.swift */,
 			);
 			path = "Good Food Geo";
 			sourceTree = "<group>";
@@ -460,7 +459,7 @@
 			isa = PBXGroup;
 			children = (
 				FB939326295DBFA100D491CE /* PasswordReset */,
-				FBF940932956009400A8EF10 /* Sign Up */,
+				FBF940932956009400A8EF10 /* Registration */,
 				FBF940902955EEFA00A8EF10 /* Login */,
 				FBF940872955DAFA00A8EF10 /* LaunchScreen */,
 				FBF9405129559CDB00A8EF10 /* Expert */,
@@ -512,6 +511,7 @@
 		FBF9408A2955E20100A8EF10 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				FB0FAFA529659E64008175A2 /* AppStorageKey.swift */,
 				FB0FAF8D29641866008175A2 /* Property Wrappers */,
 				FB0FAF8329634992008175A2 /* Protocols */,
 				FBF9408B2955E20A00A8EF10 /* Extensions */,
@@ -543,13 +543,13 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		FBF940932956009400A8EF10 /* Sign Up */ = {
+		FBF940932956009400A8EF10 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
 				FBF94094295600A600A8EF10 /* RegistrationView.swift */,
 				FB0FAFAB2965D2D7008175A2 /* RegistrationViewModel.swift */,
 			);
-			path = "Sign Up";
+			path = Registration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

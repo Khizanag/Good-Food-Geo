@@ -8,7 +8,7 @@
 import Foundation
 
 struct AlertData {
-    var isPresented = false
     var title = ""
     var subtitle = ""
+    var isPresented = false
 }

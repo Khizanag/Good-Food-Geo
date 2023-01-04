@@ -27,9 +27,10 @@ struct LaunchScreen: View {
         .onAppear {
             viewModel.viewDidAppear()
         }
-
-        NavigationLink(destination: LoginView(viewModel: LoginViewModel()), isActive: $viewModel.shouldDismissAndNavigate, label: { EmptyView() })
-    }
+        .navigationDestination(isPresented: $viewModel.shouldDismissAndNavigate) {
+            LoginView(viewModel: LoginViewModel())
+        }
+   }
 }
 
 struct LaunchScreen_Previews: PreviewProvider {
