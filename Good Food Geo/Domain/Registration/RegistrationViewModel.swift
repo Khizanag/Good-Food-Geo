@@ -33,7 +33,7 @@ final class RegistrationViewModel: ObservableObject {
 
             registeredEmail = entity.email
 
-            sendVerificationCode()
+            isVerificationCodeSent = true
         }
     }
 
@@ -45,13 +45,11 @@ final class RegistrationViewModel: ObservableObject {
 
     }
 
-    func sendVerificationCode() {
-        isVerificationCodeSent = true
-    }
-
     func verifyRegistration(using code: String) {
         Task {
             await repository.verifyRegistration(email: registeredEmail, code: code)
+            // TODO: save token here
+            // TODO: navigate to the app
         }
     }
 }

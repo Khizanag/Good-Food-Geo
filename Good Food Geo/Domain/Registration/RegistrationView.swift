@@ -136,28 +136,8 @@ struct RegistrationView: View {
     }
 
     private var verificationCodeTextField: some View {
-        ZStack {
-            PrimaryTextField(text: $verificationCode, placeholder: Localization.codePlaceholder())
-                .textContentType(.oneTimeCode)
-
-            if viewModel.isVerificationCodeSent {
-                HStack {
-                    Spacer()
-
-                    Button(action: {
-                        viewModel.sendVerificationCode()
-                    }, label: {
-                        Text(Localization.resend())
-                            .font(.caption2)
-                            .padding(4)
-                            .foregroundColor(.white)
-                            .background(DesignSystem.Color.primary())
-                            .cornerRadius(4)
-                            .padding(.trailing)
-                    })
-                }
-            }
-        }
+        PrimaryTextField(text: $verificationCode, placeholder: Localization.codePlaceholder())
+            .textContentType(.oneTimeCode)
     }
 
     // MARK: - Message Displayer
