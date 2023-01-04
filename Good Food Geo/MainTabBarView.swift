@@ -44,12 +44,14 @@ struct MainTabBarView: View {
         .init(type: .expert, title: Localization.expert(), icon: DesignSystem.Image.person())
     ]
 
+    private let homeViewModel = HomeViewModel()
+
     // MARK: - Body
     var body: some View {
         ZStack {
 
             TabView(selection: $selectedTabBarItem) {
-                HomeView(viewModel: HomeViewModel())
+                HomeView(viewModel: homeViewModel)
                     .tag(MainTabBarItem.home)
 
                 AboutUsView()

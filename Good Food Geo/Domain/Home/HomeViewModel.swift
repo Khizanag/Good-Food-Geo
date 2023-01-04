@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-@MainActor
+//@MainActor
 final class HomeViewModel: ObservableObject {
     private let postsRepository: PostsRepository = DefaultPostsRepository()
 

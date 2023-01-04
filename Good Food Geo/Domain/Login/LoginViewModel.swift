@@ -19,7 +19,7 @@ final class LoginViewModel: ObservableObject {
         let isSessionActive = UserDefaults.standard.value(forKey: AppStorageKey.authenticationToken()) != nil
         self.isLoading = isSessionActive // is session is active wait and then navigate to app
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.1) { [weak self] in
             self?.shouldNavigateInto = isSessionActive
         }
     }
@@ -31,7 +31,7 @@ final class LoginViewModel: ObservableObject {
         }
 
 
-        Task { 
+        Task {
             guard await loginUseCase.execute(email: email, password: password) else { return }
             shouldNavigateInto = true
         }
