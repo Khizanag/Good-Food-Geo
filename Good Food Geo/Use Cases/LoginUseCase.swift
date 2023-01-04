@@ -12,17 +12,19 @@ protocol LoginUseCase {
 }
 
 struct DefaultLoginUseCase: LoginUseCase {
-//    @AppStorage(AppStorageKey.authenticationToken()) var authenticationToken: String?
-
     private let repository: Repository = DefaultRepository()
+    private let userInformationStorage: UserInformationStorage = DefaultUserInformationStorage.shared
 
     func execute(email: String, password: String) async -> Bool {
         guard let entity = await repository.login(email: email, password: password) else { return false }
 
-//        authenticationToken = entity.token.access
-        UserDefaults.standard.setValue(entity.token.access, forKey: AppStorageKey.authenticationToken())
+        let token = entity.token.access
 
-        print("authenticationToken updated to \(UserDefaults.standard.value(forKey: AppStorageKey.authenticationToken()) ?? "")")
+        UserDefaults.standard.setValue(token, forKey: AppStorageKey.authenticationToken())
+
+        guard let userInformationEntity = await repository.getUserInformation(using: token) else { return false }
+
+        userInformationStorage.write(userInformationEntity)
 
         return true
     }

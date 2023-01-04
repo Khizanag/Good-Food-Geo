@@ -32,6 +32,14 @@ struct HomeView: View {
             }
             .listRowSeparator(.hidden)
 
+            Button(action: {
+                UserDefaults.standard.set(nil, forKey: AppStorageKey.authenticationToken())
+                print("did delete")
+                print(UserDefaults.standard.value(forKey: AppStorageKey.authenticationToken()))
+            }, label: {
+                Text("Log out")
+            })
+
             VSpacing(MainTabBarConstant.height)
                 .listRowSeparator(.hidden)
         }

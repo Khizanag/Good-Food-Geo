@@ -11,6 +11,8 @@ struct StaticPage: View {
     let section: SectionView.Model
     let subSections: [SubSectionView<AnyView>.Model]
 
+    private let userInformationStorage: UserInformationStorage = DefaultUserInformationStorage.shared
+
     var body: some View {
         ZStack {
             LinearGradient.background
@@ -18,7 +20,7 @@ struct StaticPage: View {
 
             VStack {
                 VStack {
-                    HeaderView(name: "Giga", surname: "Khizanishvili") // TODO: change with real info
+                    HeaderView(fullName: userInformationStorage.read()?.fullName)
 
                     SectionView(title: section.title, description: section.description)
                 }

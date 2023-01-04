@@ -62,7 +62,7 @@ struct DefaultRepository: Repository {
         let tokenType = "Bearer"
 
         var request = URLRequest(url: EndPoint.userInformation.fullUrl)
-        request.setMethod(.post)
+        request.setMethod(.get)
         request.setContentType(.applicationJson)
         request.setValue("\(tokenType) \(token)", forHTTPHeaderField: "Authorization")
 

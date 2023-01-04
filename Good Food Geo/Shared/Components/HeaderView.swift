@@ -8,12 +8,10 @@
 import SwiftUI
 
 struct HeaderView: View {
-    let name: String?
-    let surname: String?
+    let fullName: String?
 
-    init(name: String? = nil, surname: String? = nil) {
-        self.name = name
-        self.surname = surname
+    init(fullName: String? = nil) {
+        self.fullName = fullName
     }
 
     var body: some View {
@@ -25,8 +23,8 @@ struct HeaderView: View {
 
             Spacer()
 
-            if let name, let surname {
-                Text("\(Localization.hi()), \(name) \(surname)")
+            if let fullName {
+                Text("\(Localization.hi()), \(fullName)")
                     .foregroundColor(.white)
                     .font(.callout)
             }

@@ -11,6 +11,7 @@ enum AppStorageKey: String {
     static let baseKey = "khizanag.Good-Food-Geo."
 
     case authenticationToken
+    case userInformation
 }
 
 extension AppStorageKey {

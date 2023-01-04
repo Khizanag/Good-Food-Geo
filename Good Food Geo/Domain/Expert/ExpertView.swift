@@ -10,6 +10,8 @@ import SwiftUI
 struct ExpertView: View {
     let expert: Expert
 
+    private let userInformationStorage: UserInformationStorage = DefaultUserInformationStorage.shared
+
     var body: some View {
         ZStack {
             LinearGradient.background
@@ -17,7 +19,7 @@ struct ExpertView: View {
 
             VStack {
                 VStack {
-                    HeaderView(name: "Giga", surname: "Khizanishvili") // TODO: change with real info
+                    HeaderView(fullName: userInformationStorage.read()?.fullName)
 
                     HStack(spacing: 8) {
                         ZStack {
