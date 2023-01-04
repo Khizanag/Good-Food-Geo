@@ -26,8 +26,8 @@ struct RegistrationView: View {
         ScrollView {
             VStack(spacing: 16) {
                 VStack(spacing: 12) {
-                    CompanyButton(company: Company.facebook, action: registerWithFacebook)
-                    CompanyButton(company: Company.google, action: registerWithGoogle)
+                    CompanyButton(company: Company.facebook, action: viewModel.registerUsingFacebook)
+                    CompanyButton(company: Company.google, action: viewModel.registerUsingGoogle)
                 }
 
                 Text(Localization.signUpSubtitle())
@@ -44,16 +44,10 @@ struct RegistrationView: View {
                         .multilineTextAlignment(.trailing)
                 }
 
-                if verificationSegmentShouldBeShown {
-                    if viewModel.isVerificationCodeSent {
-                        verificationSection
-
-                        if !verificationCode.isEmpty {
-                            registrationButton
-                        }
-                    } else {
-                        getVerificationCodeButton
-                    }
+                if viewModel.isVerificationCodeSent {
+                    verificationSection
+                } else {
+                    registerAndGetVerificationCodeButton
                 }
             }
             .padding(32)
@@ -98,9 +92,53 @@ struct RegistrationView: View {
         }
     }
 
+    private var registerAndGetVerificationCodeButton: some View {
+        PrimaryButton(action: {
+            viewModel.register(email: email, fullName: fullName, password: password, phoneNumber: phoneNumber)
+        }, label: {
+            Text("Register and Get Verification Code")
+        })
+    }
+
+    private var verifyRegistrationButton: some View {
+        PrimaryButton(action: {
+            viewModel.verifyRegistration(using: verificationCode)
+        }, label: {
+            Color.clear
+                .overlay {
+                    Text("Verify Registration")
+                }
+        })
+    }
+
+    private var getVerificationCodeButton: some View {
+        PrimaryButton(action: {
+            viewModel.sendVerificationCode()
+        }, label: {
+            Text(Localization.getVerificationCode())
+                .foregroundColor(DesignSystem.Color.buttonTitle())
+        })
+    }
+
+    private var verificationSection: some View {
+        VStack(alignment: .leading) {
+            Text(Localization.signUpSmsCodeInfo())
+                .font(.footnote)
+                .foregroundColor(.secondary)
+                .padding(.leading)
+
+            verificationCodeTextField
+
+            if !verificationCode.isEmpty {
+                verifyRegistrationButton
+            }
+        }
+    }
+
     private var verificationCodeTextField: some View {
         ZStack {
             PrimaryTextField(text: $verificationCode, placeholder: Localization.codePlaceholder())
+                .textContentType(.oneTimeCode)
 
             if viewModel.isVerificationCodeSent {
                 HStack {
@@ -120,56 +158,6 @@ struct RegistrationView: View {
                 }
             }
         }
-    }
-
-    private var registrationButton: some View {
-        PrimaryButton(action: {
-            viewModel.register(email: email, fullName: fullName, password: password, phoneNumber: phoneNumber)
-        }, label: {
-            Text(Localization.signUp())
-                .foregroundColor(DesignSystem.Color.buttonTitle())
-        })
-    }
-
-    private var getVerificationCodeButton: some View {
-        PrimaryButton(action: {
-            viewModel.sendVerificationCode()
-        }, label: {
-            Text(Localization.getVerificationCode())
-                .foregroundColor(DesignSystem.Color.buttonTitle())
-        })
-    }
-
-    private var registrationInputIsValid: Bool {
-        !fullName.isEmpty
-        && !email.isEmpty
-        && !password.isEmpty
-        && confirmPassword == password
-        && !phoneNumber.isEmpty
-    }
-
-    private var verificationSegmentShouldBeShown: Bool {
-        registrationInputIsValid && userAgreesTerms
-    }
-
-    private var verificationSection: some View {
-        VStack(alignment: .leading) {
-            Text(Localization.signUpSmsCodeInfo())
-                .font(.footnote)
-                .foregroundColor(.secondary)
-                .padding(.leading)
-
-            verificationCodeTextField
-        }
-    }
-
-    // MARK: - Functions
-    private func registerWithFacebook() {
-
-    }
-
-    private func registerWithGoogle() {
-
     }
 
     // MARK: - Message Displayer

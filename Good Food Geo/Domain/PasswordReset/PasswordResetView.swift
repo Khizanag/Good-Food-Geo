@@ -71,7 +71,6 @@ struct PasswordResetView: View {
         .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
             Button(Localization.gotIt(), role: .cancel) { }
         })
-
     }
 
     // MARK: - Show Message

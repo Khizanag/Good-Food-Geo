@@ -20,7 +20,8 @@ final class DefaultNetworkLayer: NetworkLayer {
 
             debugPrint(data, String(data: data, encoding: .utf8) ?? "*unknown encoding*")
 
-            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else { return nil }
+            guard let httpResponse = response as? HTTPURLResponse,
+                  (200...299).contains(httpResponse.statusCode) else { return nil }
 
             let decoder = JSONDecoder()
             let responseObject = try decoder.decode(type, from: data)
@@ -42,7 +43,7 @@ enum EndPoint {
     case registration           // -
     case login                  // +
     case userInformation        // +
-    case resetLink              // -
+    case resetLink              // +
     case googleAuthentication   // -
     case facebookAuthentication // -
     case verifyRegistration     // -

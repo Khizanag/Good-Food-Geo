@@ -25,6 +25,7 @@
 		FB0FAFAC2965D2D8008175A2 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAFAB2965D2D7008175A2 /* RegistrationViewModel.swift */; };
 		FB0FAFAE2965DD6E008175A2 /* PasswordResetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAFAD2965DD6E008175A2 /* PasswordResetViewModel.swift */; };
 		FB0FAFB02965DE68008175A2 /* PasswordResetEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAFAF2965DE68008175A2 /* PasswordResetEntity.swift */; };
+		FB0FAFB22965E322008175A2 /* VerificationEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAFB12965E322008175A2 /* VerificationEntity.swift */; };
 		FB93931B295D918D00D491CE /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93931A295D918D00D491CE /* HeaderView.swift */; };
 		FB93931D295D968000D491CE /* SubSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93931C295D968000D491CE /* SubSectionView.swift */; };
 		FB939321295D9A6400D491CE /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB939320295D9A6400D491CE /* SectionView.swift */; };
@@ -119,6 +120,7 @@
 		FB0FAFAB2965D2D7008175A2 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		FB0FAFAD2965DD6E008175A2 /* PasswordResetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewModel.swift; sourceTree = "<group>"; };
 		FB0FAFAF2965DE68008175A2 /* PasswordResetEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetEntity.swift; sourceTree = "<group>"; };
+		FB0FAFB12965E322008175A2 /* VerificationEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationEntity.swift; sourceTree = "<group>"; };
 		FB93931A295D918D00D491CE /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		FB93931C295D968000D491CE /* SubSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubSectionView.swift; sourceTree = "<group>"; };
 		FB939320295D9A6400D491CE /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 				FB0FAF98296564F9008175A2 /* PostsEntity.swift */,
 				FB0FAFA029659802008175A2 /* UserInformationEntity.swift */,
 				FB0FAFAF2965DE68008175A2 /* PasswordResetEntity.swift */,
+				FB0FAFB12965E322008175A2 /* VerificationEntity.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -725,6 +728,7 @@
 				FB93931B295D918D00D491CE /* HeaderView.swift in Sources */,
 				FB0FAFAA2965CB28008175A2 /* UserInformationStorage.swift in Sources */,
 				FB93932B295DC5BA00D491CE /* SecondaryButton.swift in Sources */,
+				FB0FAFB22965E322008175A2 /* VerificationEntity.swift in Sources */,
 				FB0FAFB02965DE68008175A2 /* PasswordResetEntity.swift in Sources */,
 				FBF94097295608ED00A8EF10 /* PrimaryButton.swift in Sources */,
 				FB939328295DBFBC00D491CE /* PasswordResetView.swift in Sources */,

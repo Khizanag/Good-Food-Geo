@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@MainActor
 final class RegistrationViewModel: ObservableObject {
     private let repository: Repository = DefaultRepository()
 
@@ -26,15 +27,26 @@ final class RegistrationViewModel: ObservableObject {
                 name: fullName,
                 password: password,
                 phoneNumber: phoneNumber
-            ) else { return }
+            ) else {
+                return
+            }
 
             registeredEmail = entity.email
+
+            sendVerificationCode()
         }
+    }
+
+    func registerUsingFacebook() {
+
+    }
+
+    func registerUsingGoogle() {
+
     }
 
     func sendVerificationCode() {
         isVerificationCodeSent = true
-        print("Verification code sent!")
     }
 
     func verifyRegistration(using code: String) {

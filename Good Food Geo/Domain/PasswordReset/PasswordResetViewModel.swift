@@ -17,6 +17,7 @@ final class PasswordResetViewModel: ObservableObject {
 
     var eventPublisher = PassthroughSubject<Event, Never>()
 
+    @MainActor
     func resetPassword(for email: String) {
         Task {
             guard let entity = await repository.resetPassword(email: email) else { return }

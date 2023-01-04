@@ -12,7 +12,7 @@ protocol Repository {
     func register(email: String, name: String, password: String, phoneNumber: String) async -> RegistrationResponse?
     func authenticateViaGoogle(token: String) async
     func authenticateViaFacebook(token: String) async
-    func verifyRegistration(email: String, code: String) async
+    func verifyRegistration(email: String, code: String) async -> VerificationEntity?
 
     func resetPassword(email: String) async -> PasswordResetEntity?
 
@@ -56,8 +56,16 @@ struct DefaultRepository: Repository {
         // TODO: imp -
     }
 
-    func verifyRegistration(email: String, code: String) async {
-        // TODO: imp -
+    func verifyRegistration(email: String, code: String) async -> VerificationEntity? {
+        var request = URLRequest(url: EndPoint.resetLink.fullUrl)
+        request.setMethod(.post) // FIXME: or post
+        request.setContentType(.applicationJson)
+        request.setBody([
+            "email": email,
+            "confirmation_code": code
+        ])
+
+        return await networkLayer.execute(VerificationEntity.self, using: request)
     }
 
     func resetPassword(email: String) async -> PasswordResetEntity? {
