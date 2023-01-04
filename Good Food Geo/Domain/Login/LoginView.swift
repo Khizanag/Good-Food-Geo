@@ -69,7 +69,7 @@ struct LoginView: View {
             }, label: {
                 Text(Localization.login())
 
-                NavigationLink(destination: TestTabBarView(), isActive: $shouldNavigateToHome, label: { EmptyView() })
+                NavigationLink(destination: MainTabBarView(), isActive: $shouldNavigateToHome, label: { EmptyView() })
             })
 
             Text(Localization.loginWithSocialNetworksTitle())

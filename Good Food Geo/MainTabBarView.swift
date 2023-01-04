@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct HomeTabBarConstant {
+// MARK: - HomeTabBarConstant
+struct MainTabBarConstant {
     static private var hasBottomSwipeIndicator : Bool {
         UIApplication.shared.windows.filter { $0.isKeyWindow }.first?.safeAreaInsets.top ?? 0 > 20
     }
@@ -17,16 +18,26 @@ struct HomeTabBarConstant {
     }
 }
 
-struct TestTabBarView: View {
-    @State private var selectedTabBarItem: HomeTabBarItem = .home
+// MARK: - HomeTabBarItem
+enum MainTabBarItem {
+    case home
+    case aboutUs
+    case scanning
+    case donation
+    case expert
+}
 
-    private struct HomeTabBarItemModel {
-        let type: HomeTabBarItem
+// MARK: - MainTabBarView
+struct MainTabBarView: View {
+    @State private var selectedTabBarItem: MainTabBarItem = .home
+
+    private struct MainTabBarItemModel {
+        let type: MainTabBarItem
         let title: String
         let icon: Image
     }
 
-    private let tabBarItems: [HomeTabBarItemModel] = [
+    private let tabBarItems: [MainTabBarItemModel] = [
         .init(type: .home, title: Localization.home(), icon: DesignSystem.Image.house()),
         .init(type: .aboutUs, title: Localization.aboutUs(), icon: DesignSystem.Image.book()),
         .init(type: .donation, title: Localization.donation(), icon: DesignSystem.Image.creditCard()),
@@ -69,13 +80,13 @@ struct TestTabBarView: View {
                     .padding(.horizontal)
                     .padding(.bottom)
                 }
-                .frame(height: HomeTabBarConstant.height)
+                .frame(height: MainTabBarConstant.height)
             }
         }
         .edgesIgnoringSafeArea([.bottom])
     }
 
-    private func makeTabBarItem(with model: HomeTabBarItemModel) -> some View {
+    private func makeTabBarItem(with model: MainTabBarItemModel) -> some View {
         let activeColor: Color = .black
         let inactiveColor: Color = .white
 
@@ -97,8 +108,9 @@ struct TestTabBarView: View {
     }
 }
 
+// MARK: - Previews
 struct TestTabBarView_Previews: PreviewProvider {
     static var previews: some View {
-        TestTabBarView()
+        MainTabBarView()
     }
 }

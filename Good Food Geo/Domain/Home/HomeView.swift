@@ -31,7 +31,7 @@ struct HomeView: View {
             }
             .listRowSeparator(.hidden)
 
-            VSpacing(HomeTabBarConstant.height)
+            VSpacing(MainTabBarConstant.height)
                 .listRowSeparator(.hidden)
         }
         .listStyle(.plain)

@@ -14,9 +14,7 @@ struct Good_Food_GeoApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-//                ContentView()
-//                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                TestTabBarView()
+                MainTabBarView()
 //                LaunchScreen(viewModel: LaunchScreenViewModel())
             }
         }

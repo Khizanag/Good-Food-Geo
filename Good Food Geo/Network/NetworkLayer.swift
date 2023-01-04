@@ -36,14 +36,14 @@ enum NetworkConstant {
 }
 
 enum EndPoint {
-    case registration
-    case login
-    case userInformation
-    case resetLink
-    case googleAuthentication
-    case facebookAuthentication
-    case verifyRegistration
-    case feed
+    case registration           // -
+    case login                  // +
+    case userInformation        // -
+    case resetLink              // -
+    case googleAuthentication   // -
+    case facebookAuthentication // -
+    case verifyRegistration     // -
+    case feed                   // +
 }
 
 extension EndPoint {

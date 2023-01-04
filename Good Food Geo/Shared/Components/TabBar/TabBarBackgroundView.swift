@@ -17,6 +17,6 @@ struct TabBarBackgroundView : View {
                     endPoint: .bottom
                 )
             )
-            .frame(height: HomeTabBarConstant.height)
+            .frame(height: MainTabBarConstant.height)
     }
 }
