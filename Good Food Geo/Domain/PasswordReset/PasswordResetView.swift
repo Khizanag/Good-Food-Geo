@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct PasswordResetView: View {
-    @State private var email = ""
+    @ObservedObject var viewModel: PasswordResetViewModel
 
+    @State private var email = ""
+    @FocusState private var isFieldFocused
     @State private var alertData = AlertData()
 
     var body: some View {
@@ -21,9 +23,10 @@ struct PasswordResetView: View {
                 .multilineTextAlignment(.center)
 
             PrimaryTextField(text: $email, placeholder: Localization.passwordResetEmailPlaceholder())
+                .focused($isFieldFocused)
 
             PrimaryButton(action: {
-
+                viewModel.resetPassword(for: email)
             }, label: {
                 Text(Localization.send())
             })
@@ -56,9 +59,19 @@ struct PasswordResetView: View {
         .padding()
         .navigationTitle(Localization.passwordResetTitle())
         .navigationBarTitleDisplayMode(.inline)
+        .onReceive(viewModel.eventPublisher) { event in
+            switch event {
+            case .cleanUpEmailField:
+                isFieldFocused = false
+                email = ""
+            case .showMessage(let message):
+                showMessage(message)
+            }
+        }
         .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
             Button(Localization.gotIt(), role: .cancel) { }
         })
+
     }
 
     // MARK: - Show Message
@@ -73,6 +86,6 @@ struct PasswordResetView: View {
 
 struct PasswordResetView_Previews: PreviewProvider {
     static var previews: some View {
-        PasswordResetView()
+        PasswordResetView(viewModel: PasswordResetViewModel())
     }
 }

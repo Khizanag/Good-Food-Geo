@@ -14,6 +14,8 @@ protocol Repository {
     func authenticateViaFacebook(token: String) async
     func verifyRegistration(email: String, code: String) async
 
+    func resetPassword(email: String) async -> PasswordResetEntity?
+
     func getUserInformation(using token: String) async -> UserInformationEntity?
 }
 
@@ -56,6 +58,17 @@ struct DefaultRepository: Repository {
 
     func verifyRegistration(email: String, code: String) async {
         // TODO: imp -
+    }
+
+    func resetPassword(email: String) async -> PasswordResetEntity? {
+        var request = URLRequest(url: EndPoint.resetLink.fullUrl)
+        request.setMethod(.post)
+        request.setContentType(.applicationJson)
+        request.setBody([
+            "email": email
+        ])
+
+        return await networkLayer.execute(PasswordResetEntity.self, using: request)
     }
 
     func getUserInformation(using token: String) async -> UserInformationEntity? {

@@ -52,7 +52,7 @@ struct LoginView: View {
                         Spacer()
 
                         NavigationLink(destination: {
-                            PasswordResetView()
+                            PasswordResetView(viewModel: PasswordResetViewModel())
                         }, label: {
                             Text(Localization.forgotButtonTitle())
                                 .foregroundColor(DesignSystem.Color.primary())
