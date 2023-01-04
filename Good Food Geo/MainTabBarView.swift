@@ -50,25 +50,21 @@ struct MainTabBarView: View {
 
             TabView(selection: $selectedTabBarItem) {
                 HomeView(viewModel: HomeViewModel())
-                    .navigationBarBackButtonHidden(true)
                     .tag(MainTabBarItem.home)
 
                 AboutUsView()
-                    .navigationBarBackButtonHidden(true)
                     .tag(MainTabBarItem.aboutUs)
 
                 ScanView()
-                    .navigationBarBackButtonHidden(true)
                     .tag(MainTabBarItem.scanning)
 
                 DonationView()
-                    .navigationBarBackButtonHidden(true)
                     .tag(MainTabBarItem.donation)
 
                 ExpertView(expert: .example)
-                    .navigationBarBackButtonHidden(true)
                     .tag(MainTabBarItem.expert)
             }
+            .navigationBarBackButtonHidden(true)
 
             VStack {
                 Spacer()
@@ -93,7 +89,6 @@ struct MainTabBarView: View {
                 .frame(height: MainTabBarConstant.height)
             }
         }
-        //        .navigationBarBackButtonHidden(true)
         .edgesIgnoringSafeArea([.bottom])
     }
 
