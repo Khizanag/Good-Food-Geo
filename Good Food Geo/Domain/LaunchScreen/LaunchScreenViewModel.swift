@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class LaunchScreenViewModel: ObservableObject {
+final class LaunchScreenViewModel: ObservableObject {
     @Published var shouldDismissAndNavigate = false
 
     private var subscriptions = Set<AnyCancellable>()

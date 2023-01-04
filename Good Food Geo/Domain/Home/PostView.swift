@@ -12,30 +12,33 @@ struct PostView: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            post.image
-                .resizable()
-                .frame(maxWidth: .infinity)
-                .scaledToFit()
-                .cornerRadius(8)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(DesignSystem.Color.primary(), lineWidth: 3)
-                        .opacity(0.5)
-                )
+            AsyncImage(
+                url: URL(string: post.imageUrl),
+                content:  { image in
+                    image
+                        .resizable()
+                        .scaledToFit()
+                },
+                placeholder: {
+                    VStack(alignment: .center) {
+                        ProgressView()
+                            .padding()
+                    }
+                }
+            )
+            .frame(maxWidth: .infinity)
+            .cornerRadius(8)
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(DesignSystem.Color.primary(), lineWidth: 3)
+                    .opacity(0.5)
+            )
 
             Text(post.description)
                 .multilineTextAlignment(.leading)
                 .foregroundColor(DesignSystem.Color.primaryText())
         }
     }
-}
-
-struct Post: Identifiable {
-    let id: UUID
-    let description: String
-    let image: Image
-
-    static let example = Post(id: UUID(), description: "Title of the post in main", image: DesignSystem.Image.example())
 }
 
 struct PostView_Previews: PreviewProvider {

@@ -17,7 +17,7 @@ final class DefaultNetworkLayer: NetworkLayer {
     func execute<T>(_ type: T.Type, using request: URLRequest) async -> T? where T: Decodable {
         do {
             let (data, _) = try await URLSession.shared.data(for: request)
-            //  print(data, String(data: data, encoding: .utf8) ?? "*unknown encoding*")
+            print(data, String(data: data, encoding: .utf8) ?? "*unknown encoding*")
             let decoder = JSONDecoder()
             // decoder.keyDecodingStrategy = .convertFromSnakeCase // FIXME: handle keyDecodingStrategy change
             let responseObject = try decoder.decode(type, from: data)
@@ -39,10 +39,7 @@ enum EndPoint {
     case registration
     case login
     case userInformation
-    case changeUserPassword
-    case refreshInvalidToken
     case resetLink
-    case resetPassword
     case googleAuthentication
     case facebookAuthentication
     case verifyRegistration
@@ -58,14 +55,8 @@ extension EndPoint {
             return "login"
         case .userInformation:
             return "profile"
-        case .changeUserPassword:
-            return "change-password"
-        case .refreshInvalidToken:
-            return "token-refresh"
         case .resetLink:
             return "reset-link"
-        case .resetPassword: // https://web-production-eff5.up.railway.app/reset-password/1/<token>
-            return "reset-password"
         case .googleAuthentication:
             return "google"
         case .facebookAuthentication:

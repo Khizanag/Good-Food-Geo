@@ -6,13 +6,8 @@
 //
 
 struct LoginResponse: Decodable {
-    let token: Token
+    let token: AuthenticationToken
     let message: String
-
-    struct Token: Decodable {
-        let refresh: String
-        let access: String
-    }
 
     enum CodingKeys: String, CodingKey {
         case token

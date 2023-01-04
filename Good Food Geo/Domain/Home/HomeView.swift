@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct HomeView: View {
-    let posts = [Post](repeating: .example, count: 10)
+    @ObservedObject var viewModel: HomeViewModel
 
     var body: some View {
         List {
-            ForEach(posts) { post in
+            ForEach(viewModel.posts) { post in
                 PostView(post: post)
             }
             .listRowSeparator(.hidden)
@@ -24,8 +24,8 @@ struct HomeView: View {
     }
 }
 
-struct PostsView_Previews: PreviewProvider {
+struct Home_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView(viewModel: HomeViewModel())
     }
 }

@@ -34,7 +34,7 @@ struct DefaultRepository: Repository {
     }
 
     func register(email: String, name: String, password: String, phoneNumber: String) async -> RegistrationResponse? {
-        var request = URLRequest(url: EndPoint.login.fullUrl)
+        var request = URLRequest(url: EndPoint.registration.fullUrl)
         request.setMethod(.post)
         request.setContentType(.applicationJson)
         request.setBody([

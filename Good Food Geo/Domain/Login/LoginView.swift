@@ -6,13 +6,15 @@
 //
 
 import SwiftUI
-import KeyC
 
 struct LoginView: View {
-    let repository: Repository = DefaultRepository()
+    private let repository: Repository = DefaultRepository()
+    private let loginUseCase: LoginUseCase = DefaultLoginUseCase()
 
     @State private var email = ""
     @State private var password = ""
+
+    @State private var shouldNavigateToHome = DefaultAuthenticationTokenStorage.shared.read() != nil
 
     @State var alertData = AlertData()
 
@@ -66,6 +68,8 @@ struct LoginView: View {
                 login(email: email, password: password)
             }, label: {
                 Text(Localization.login())
+
+                NavigationLink(destination: TestTabBarView(), isActive: $shouldNavigateToHome, label: { EmptyView() })
             })
 
             Text(Localization.loginWithSocialNetworksTitle())
@@ -98,8 +102,9 @@ struct LoginView: View {
         .onAppear {
             Task {
 //                login(email: "admin@tdig.ge", password: "admin") // TODO: Remove
-                let entity = await repository.getUserInformation(email: "admin@tdig.ge", password: "admin")
-                print(entity)
+//                let entity = await repository.getUserInformation(email: "admin@tdig.ge", password: "admin")
+//                print(entity)
+
             }
         }
     }
@@ -111,10 +116,14 @@ struct LoginView: View {
             return
         }
 
+        print("email: '\(email)'")
+        print("password: '\(password)'")
+
         Task {
-            guard let response = await repository.login(email: email, password: password) else { return }
-            showMessage("\(response.message)", description: "With SessionID: \(response.token.access)")
-            // TODO: use loadingButton
+//            guard let response = await repository.login(email: email, password: password) else { return }
+            guard await loginUseCase.execute(email: email, password: password) else { return }
+//            showMessage("\(response.message)", description: "With SessionID: \(response.token.access)")
+            shouldNavigateToHome = true
         }
     }
 

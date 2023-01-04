@@ -38,7 +38,7 @@ struct TestTabBarView: View {
         ZStack {
             switch selectedTabBarItem {
             case .home:
-                HomeView()
+                HomeView(viewModel: HomeViewModel())
             case .aboutUs:
                 AboutUsView()
             case .scanning:
