@@ -104,19 +104,7 @@ struct RegistrationView: View {
         PrimaryButton(action: {
             viewModel.verifyRegistration(using: verificationCode)
         }, label: {
-            Color.clear
-                .overlay {
-                    Text("Verify Registration")
-                }
-        })
-    }
-
-    private var getVerificationCodeButton: some View {
-        PrimaryButton(action: {
-            viewModel.sendVerificationCode()
-        }, label: {
-            Text(Localization.getVerificationCode())
-                .foregroundColor(DesignSystem.Color.buttonTitle())
+            Text("Verify Registration")
         })
     }
 
