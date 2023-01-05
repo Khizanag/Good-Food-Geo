@@ -40,9 +40,11 @@ struct PreScanFormView: View {
                 .cornerRadius(15)
                 .sheet(isPresented: $isImagePickerPresented) {
                     ImagePickerView(selectedImage: $selectedImage, sourceType: sourceType)
+                        .ignoresSafeArea()
                 }
                 .sheet(isPresented: $isPhotoPickerPresented) {
                     PhotoPickerView(selectedImage: $selectedImage)
+                        .ignoresSafeArea()
                 }
                 .confirmationDialog("How to open photo?", isPresented: $isConfirmationDialogPresented) {
                     Button("Camera") {
