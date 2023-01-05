@@ -95,8 +95,7 @@ struct MainTabBarView: View {
     }
 
     private func makeTabBarItem(with model: MainTabBarItemModel) -> some View {
-        let activeColor: Color = .black
-        let inactiveColor: Color = .white
+        let color: Color = selectedTabBarItem == model.type ? .black : .white
 
         return HStack {
             Button(action: {
@@ -104,11 +103,11 @@ struct MainTabBarView: View {
             }, label: {
                 VStack(spacing: 4) {
                     model.icon
-                        .foregroundColor(selectedTabBarItem == model.type ? activeColor : inactiveColor)
+                        .foregroundColor(color)
 
                     Text(model.title)
                         .font(.caption)
-                        .foregroundColor(selectedTabBarItem == model.type ? activeColor : inactiveColor)
+                        .foregroundColor(color)
                 }
                 .padding(2)
             })
