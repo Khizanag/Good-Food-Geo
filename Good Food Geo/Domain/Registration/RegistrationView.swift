@@ -53,12 +53,7 @@ struct RegistrationView: View {
             .padding(32)
         }
         .navigationTitle(Localization.signUpTitle())
-        .onReceive(viewModel.eventPublisher) { event in
-            switch event {
-            case .showMessage(let message):
-                showMessage(message)
-            }
-        }
+        .onReceive(viewModel.errorPublisher, perform: showError)
         .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
             Button(Localization.gotIt(), role: .cancel) { }
         })
@@ -145,6 +140,10 @@ struct RegistrationView: View {
     }
 
     // MARK: - Message Displayer
+    private func showError(_ error: AppError) {
+        showMessage(error.description)
+    }
+
     private func showMessage(_ message: String, description: String? = nil) {
         alertData.title = message
         if let description {

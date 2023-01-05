@@ -8,21 +8,22 @@
 import Foundation
 
 protocol Repository {
-    func login(email: String, password: String) async -> LoginResponse?
-    func register(with params: RegistrationParams) async -> RegistrationResponse?
+    func login(email: String, password: String) async -> Result<LoginResponse, AppError>
+    func register(with params: RegistrationParams) async -> Result<RegistrationResponse, AppError>
     func authenticateViaGoogle(token: String) async
     func authenticateViaFacebook(token: String) async
-    func verifyRegistration(email: String, code: String) async -> VerificationEntity?
+    func verifyRegistration(email: String, code: String) async -> Result<VerificationEntity, AppError>
 
-    func resetPassword(email: String) async -> PasswordResetEntity?
+    func resetPassword(email: String) async -> Result<PasswordResetEntity, AppError>
 
-    func getUserInformation(using token: String) async -> UserInformationEntity?
+    func getUserInformation() async -> Result<UserInformationEntity, AppError>
 }
 
 struct DefaultRepository: Repository {
     private let networkLayer: NetworkLayer = DefaultNetworkLayer()
+    private let authenticationTokenStorage: AuthenticationTokenStorage = DefaultAuthenticationTokenStorage.shared
 
-    func login(email: String, password: String) async -> LoginResponse? {
+    func login(email: String, password: String) async -> Result<LoginResponse, AppError> {
         var request = URLRequest(url: EndPoint.login.fullUrl)
         request.setMethod(.post)
         request.setContentType(.applicationJson)
@@ -34,7 +35,7 @@ struct DefaultRepository: Repository {
         return await networkLayer.execute(LoginResponse.self, using: request)
     }
 
-    func register(with params: RegistrationParams) async -> RegistrationResponse? {
+    func register(with params: RegistrationParams) async -> Result<RegistrationResponse, AppError> {
         var request = URLRequest(url: EndPoint.registration.fullUrl)
         request.setMethod(.post)
         request.setContentType(.applicationJson)
@@ -56,7 +57,7 @@ struct DefaultRepository: Repository {
         // TODO: imp -
     }
 
-    func verifyRegistration(email: String, code: String) async -> VerificationEntity? {
+    func verifyRegistration(email: String, code: String) async -> Result<VerificationEntity, AppError> {
         var request = URLRequest(url: EndPoint.verifyRegistration.fullUrl)
         request.setMethod(.post)
         request.setContentType(.applicationJson)
@@ -68,7 +69,7 @@ struct DefaultRepository: Repository {
         return await networkLayer.execute(VerificationEntity.self, using: request)
     }
 
-    func resetPassword(email: String) async -> PasswordResetEntity? {
+    func resetPassword(email: String) async -> Result<PasswordResetEntity, AppError> {
         var request = URLRequest(url: EndPoint.resetLink.fullUrl)
         request.setMethod(.post)
         request.setContentType(.applicationJson)
@@ -79,7 +80,11 @@ struct DefaultRepository: Repository {
         return await networkLayer.execute(PasswordResetEntity.self, using: request)
     }
 
-    func getUserInformation(using token: String) async -> UserInformationEntity? {
+    func getUserInformation() async -> Result<UserInformationEntity, AppError> {
+        guard let token = authenticationTokenStorage.read() else {
+            return .failure(.sessionNotFound)
+        }
+
         let tokenType = "Bearer"
 
         var request = URLRequest(url: EndPoint.userInformation.fullUrl)
@@ -87,12 +92,19 @@ struct DefaultRepository: Repository {
         request.setContentType(.applicationJson)
         request.setValue("\(tokenType) \(token)", forHTTPHeaderField: "Authorization")
 
-        guard let dto = await networkLayer.execute(UserInformationDTO.self, using: request) else { return nil }
+        let result = await networkLayer.execute(UserInformationDTO.self, using: request)
 
-        return UserInformationEntity(
-            email: dto.email,
-            fullName: dto.name,
-            phoneNumber: dto.phoneNumber
-        )
+        switch result {
+        case .success(let dto):
+            return .success(
+                UserInformationEntity(
+                    email: dto.email,
+                    fullName: dto.name,
+                    phoneNumber: dto.phoneNumber
+                )
+            )
+        case .failure(let error):
+            return .failure(error)
+        }
     }
 }

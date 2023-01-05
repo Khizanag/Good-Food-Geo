@@ -7,7 +7,7 @@
 
 import Combine
 
-final class PasswordResetViewModel: ObservableObject {
+final class PasswordResetViewModel: DefaultViewModel {
     private let repository: Repository = DefaultRepository()
 
     enum Event {
@@ -20,9 +20,15 @@ final class PasswordResetViewModel: ObservableObject {
     @MainActor
     func resetPassword(for email: String) {
         Task {
-            guard let entity = await repository.resetPassword(email: email) else { return }
-            eventPublisher.send(.showMessage(entity.message))
-            eventPublisher.send(.cleanUpEmailField)
+            let result = await repository.resetPassword(email: email)
+
+            switch result {
+            case .success(let entity):
+                eventPublisher.send(.showMessage(entity.message))
+                eventPublisher.send(.cleanUpEmailField)
+            case .failure(let error):
+                showError(error)
+            }
         }
     }
 }

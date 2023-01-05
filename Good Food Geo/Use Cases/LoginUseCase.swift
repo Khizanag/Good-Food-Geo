@@ -8,7 +8,7 @@
 import SwiftUI
 
 protocol LoginUseCase {
-    func execute(email: String, password: String) async -> Bool
+    func execute(email: String, password: String) async -> Result<Void, AppError>
 }
 
 struct DefaultLoginUseCase: LoginUseCase {
@@ -16,17 +16,23 @@ struct DefaultLoginUseCase: LoginUseCase {
     private let userInformationStorage: UserInformationStorage = DefaultUserInformationStorage.shared
     private let authenticationTokenStorage: AuthenticationTokenStorage = DefaultAuthenticationTokenStorage.shared
 
-    func execute(email: String, password: String) async -> Bool {
-        guard let entity = await repository.login(email: email, password: password) else { return false }
+    func execute(email: String, password: String) async -> Result<Void, AppError> {
+        switch await repository.login(email: email, password: password) {
+        case .success(let entity):
+            let token = entity.token.access
+            authenticationTokenStorage.write(token)
 
-        let token = entity.token.access
+            let result = await repository.getUserInformation()
 
-        authenticationTokenStorage.write(token)
-
-        guard let userInformationEntity = await repository.getUserInformation(using: token) else { return false }
-
-        userInformationStorage.write(userInformationEntity)
-
-        return true
+            switch result {
+            case .success(let userInformationEntity):
+                userInformationStorage.write(userInformationEntity)
+                return .success(())
+            case .failure(let error):
+                return .failure(error)
+            }
+        case .failure(let error):
+            return .failure(error)
+        }
     }
 }

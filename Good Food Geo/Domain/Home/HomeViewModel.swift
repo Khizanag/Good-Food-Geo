@@ -8,12 +8,17 @@
 import Foundation
 import Combine
 
-//@MainActor
 final class HomeViewModel: ObservableObject {
     private let postsRepository: PostsRepository = DefaultPostsRepository()
 
     @Published var posts: [Post] = []
     @Published var isLoading: Bool = false
+
+    enum Event {
+        case showError(AppError)
+    }
+
+    let eventPublisher = PassthroughSubject<Event, Never>()
 
     // MARK: - Init
     init() {
@@ -28,7 +33,12 @@ final class HomeViewModel: ObservableObject {
     private func fetchPosts() {
         Task {
             isLoading = true
-            posts = await postsRepository.getPosts()
+            switch await postsRepository.getPosts() {
+            case .success(let posts):
+                self.posts = posts
+            case .failure(let error):
+                eventPublisher.send(.showError(error))
+            }
             isLoading = false
         }
     }

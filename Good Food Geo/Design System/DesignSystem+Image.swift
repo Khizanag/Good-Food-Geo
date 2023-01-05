@@ -29,6 +29,7 @@ extension DesignSystem {
         case pencil
         case person
         case phone
+        case photo
         case placeholderPhoto = "photo.on.rectangle.angled"
         case qr = "qrcode.viewfinder"
         case submit = "icloud.and.arrow.up"

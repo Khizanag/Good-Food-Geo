@@ -57,7 +57,7 @@ struct MainTabBarView: View {
                 AboutUsView()
                     .tag(MainTabBarItem.aboutUs)
 
-                ScanView()
+                ProductComplaintSubmissionView()
                     .tag(MainTabBarItem.scanning)
 
                 DonationView()
@@ -66,6 +66,7 @@ struct MainTabBarView: View {
                 ExpertView(expert: .example)
                     .tag(MainTabBarItem.expert)
             }
+            .background(Color.clear)
             .navigationBarBackButtonHidden(true)
 
             VStack {
@@ -91,7 +92,7 @@ struct MainTabBarView: View {
                 .frame(height: MainTabBarConstant.height)
             }
         }
-        .edgesIgnoringSafeArea([.bottom])
+        .edgesIgnoringSafeArea(.bottom)
     }
 
     private func makeTabBarItem(with model: MainTabBarItemModel) -> some View {

@@ -8,7 +8,7 @@
 import Combine
 
 @MainActor
-final class RegistrationViewModel: ObservableObject {
+final class RegistrationViewModel: DefaultViewModel {
     private let repository: Repository = DefaultRepository()
     private let verifyRegistrationUseCase: VerifyRegistrationUseCase = DefaultVerifyRegistrationUseCase()
     @Published var isVerificationCodeSent = false
@@ -16,32 +16,32 @@ final class RegistrationViewModel: ObservableObject {
 
     private var registeredEmail = ""
 
-    enum Event {
-        case showMessage(String)
-    }
-
-    var eventPublisher = PassthroughSubject<Event, Never>()
-
     // MARK: - Functions
     func register(with params: RegistrationParams) {
         guard params.userAgreesTermsAndConditions else {
-            eventPublisher.send(.showMessage("To continue registration you should agree with our terms and conditions"))
+            showError(.descriptive("To continue registration you should agree with our terms and conditions"))
             return
         }
         guard params.password == params.repeatedPassword else {
-            eventPublisher.send(.showMessage("Passwords does not match!"))
+            showError(.descriptive("Passwords does not match!"))
+            return
+        }
+        guard [params.fullName, params.password, params.email, params.phoneNumber].allSatisfy({ !$0.isEmpty }) else {
+            showError(.descriptive("Fields should not be empty"))
             return
         }
 
         Task {
-            guard let entity = await repository.register(with: params) else {
-                eventPublisher.send(.showMessage("Error during Registration. Enter correct information!"))
-                return
+            let result = await repository.register(with: params)
+
+            switch result {
+            case .success(let entity):
+                registeredEmail = entity.email
+
+                isVerificationCodeSent = true
+            case .failure(let error):
+                showError(error)
             }
-
-            registeredEmail = entity.email
-
-            isVerificationCodeSent = true
         }
     }
 
@@ -55,11 +55,15 @@ final class RegistrationViewModel: ObservableObject {
 
     func verifyRegistration(using code: String) {
         Task {
-            guard let _ = await verifyRegistrationUseCase.execute(email: registeredEmail, code: code) else {
-                eventPublisher.send(.showMessage("Error during Verification"))
-                return
+            let result = await verifyRegistrationUseCase.execute(email: registeredEmail, code: code)
+
+            switch result {
+            case .success(let entity):
+                // showMessage entity.message
+                isRegistrationCompleted = true
+            case .failure(let error):
+                showError(error)
             }
-            isRegistrationCompleted = true
         }
     }
 }

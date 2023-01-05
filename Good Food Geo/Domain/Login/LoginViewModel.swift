@@ -8,8 +8,7 @@
 import SwiftUI
 import FacebookLogin
 
-@MainActor
-final class LoginViewModel: ObservableObject {
+final class LoginViewModel: DefaultViewModel {
     private let loginUseCase: LoginUseCase = DefaultLoginUseCase()
 
     @Published var shouldNavigateInto: Bool = false
@@ -18,9 +17,11 @@ final class LoginViewModel: ObservableObject {
     private let loginManager = LoginManager()
 
     // MARK: - Init
-    init() {
+    override init() {
         let isSessionActive = UserDefaults.standard.value(forKey: AppStorageKey.authenticationToken()) != nil
         self.isLoading = isSessionActive // is session is active wait and then navigate to app
+
+        super.init()
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.1) { [weak self] in
             self?.shouldNavigateInto = isSessionActive
@@ -30,14 +31,19 @@ final class LoginViewModel: ObservableObject {
 
     func login(email: String, password: String) {
         if email.isEmpty || password.isEmpty {
-//            showMessage(Localization.loginInputIsEmptyErrorMessage())
+            showError(.descriptive(Localization.loginInputIsEmptyErrorMessage()))
             return
         }
 
 
         Task {
-            guard await loginUseCase.execute(email: email, password: password) else { return }
-            shouldNavigateInto = true
+            let result = await loginUseCase.execute(email: email, password: password)
+            switch result {
+            case .success:
+                shouldNavigateInto = true
+            case .failure(let error):
+                showError(error)
+            }
         }
     }
 

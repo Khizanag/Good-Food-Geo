@@ -9,74 +9,32 @@ import Foundation
 
 // MARK: - Protocol
 protocol NetworkLayer {
-    func execute<T>(_ type: T.Type, using request: URLRequest) async -> T? where T: Decodable
+    func execute<T>(_ type: T.Type, using request: URLRequest) async -> Result<T, AppError> where T: Decodable
 }
 
 // MARK: - Implementation
 final class DefaultNetworkLayer: NetworkLayer {
-    func execute<T>(_ type: T.Type, using request: URLRequest) async -> T? where T: Decodable {
+    func execute<T>(_ type: T.Type, using request: URLRequest) async -> Result<T, AppError> where T: Decodable {
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
 
             debugPrint(data, String(data: data, encoding: .utf8) ?? "*unknown encoding*")
 
             guard let httpResponse = response as? HTTPURLResponse,
-                  (200...299).contains(httpResponse.statusCode) else { return nil }
+                  (200...299).contains(httpResponse.statusCode) else { return .failure(.wrongStatusCode) }
 
             let decoder = JSONDecoder()
             let responseObject = try decoder.decode(type, from: data)
-            return responseObject
+            return .success(responseObject)
         } catch {
             // Error handling in case the data couldn't be loaded
             // For now, only display the error on the console
             debugPrint("Error loading: \(String(describing: error))")
-            return nil
+            return .failure(.parsing)
         }
     }
 }
 
 enum NetworkConstant {
-    static let baseUrl = "https://web-production-eff5.up.railway.app/"
-}
-
-enum EndPoint {
-    case registration           // -
-    case login                  // +
-    case userInformation        // +
-    case resetLink              // +
-    case googleAuthentication   // -
-    case facebookAuthentication // -
-    case verifyRegistration     // -
-    case feed                   // +
-}
-
-extension EndPoint {
-    var relativePath: String {
-        switch self {
-        case .registration:
-            return "register"
-        case .login:
-            return "login"
-        case .userInformation:
-            return "profile"
-        case .resetLink:
-            return "reset-link"
-        case .googleAuthentication:
-            return "google"
-        case .facebookAuthentication:
-            return "facebook"
-        case .verifyRegistration:
-            return "verify-registration"
-        case .feed:
-            return "feed"
-        }
-    }
-
-    var fullPath: String {
-        NetworkConstant.baseUrl + relativePath + "/"
-    }
-
-    var fullUrl: URL {
-        URL(string: fullPath)!
-    }
+    static let baseUrl = "https://" + "web-production-eff5.up.railway.app/"
 }
