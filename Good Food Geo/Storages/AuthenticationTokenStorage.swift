@@ -5,7 +5,7 @@
 //  Created by Giga Khizanishvili on 03.01.23.
 //
 
-import SwiftUI // @State
+import SwiftUI
 
 protocol AuthenticationTokenStorage {
     func read() -> String?
@@ -14,11 +14,12 @@ protocol AuthenticationTokenStorage {
 }
 
 struct DefaultAuthenticationTokenStorage: AuthenticationTokenStorage {
-    private static let key: String = "khizanag.Good-Food-Geo.authenticationToken"
-    @AppStorage(key) private var value: String?
-
     static let shared = DefaultAuthenticationTokenStorage()
 
+    private static let key = AppStorageKey.authenticationToken()
+    @AppStorage(key) private var value: String?
+
+    // MARK: - Init
     private init() { }
 
     func read() -> String? {
