@@ -34,8 +34,6 @@ struct HomeView: View {
 
             Button(action: {
                 UserDefaults.standard.set(nil, forKey: AppStorageKey.authenticationToken())
-                print("did delete")
-                print(UserDefaults.standard.value(forKey: AppStorageKey.authenticationToken()))
             }, label: {
                 Text("Log out")
             })

@@ -56,6 +56,9 @@ struct RegistrationView: View {
         .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
             Button(Localization.gotIt(), role: .cancel) { }
         })
+        .navigationDestination(isPresented: $viewModel.isRegistrationCompleted, destination: {
+            MainTabBarView()
+        })
     }
 
     // MARK: - Components
@@ -94,7 +97,12 @@ struct RegistrationView: View {
 
     private var registerAndGetVerificationCodeButton: some View {
         PrimaryButton(action: {
-            viewModel.register(email: email, fullName: fullName, password: password, phoneNumber: phoneNumber)
+            viewModel.register(with: RegistrationParams(
+                email: email,
+                password: password,
+                fullName: fullName,
+                phoneNumber: phoneNumber
+            ))
         }, label: {
             Text("Register and Get Verification Code")
         })

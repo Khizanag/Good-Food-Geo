@@ -9,7 +9,7 @@ import Foundation
 
 protocol Repository {
     func login(email: String, password: String) async -> LoginResponse?
-    func register(email: String, name: String, password: String, phoneNumber: String) async -> RegistrationResponse?
+    func register(with params: RegistrationParams) async -> RegistrationResponse?
     func authenticateViaGoogle(token: String) async
     func authenticateViaFacebook(token: String) async
     func verifyRegistration(email: String, code: String) async -> VerificationEntity?
@@ -34,15 +34,15 @@ struct DefaultRepository: Repository {
         return await networkLayer.execute(LoginResponse.self, using: request)
     }
 
-    func register(email: String, name: String, password: String, phoneNumber: String) async -> RegistrationResponse? {
+    func register(with params: RegistrationParams) async -> RegistrationResponse? {
         var request = URLRequest(url: EndPoint.registration.fullUrl)
         request.setMethod(.post)
         request.setContentType(.applicationJson)
         request.setBody([
-            "email": email,
-            "password": password,
-            "name": name,
-            "phone_number": phoneNumber
+            "email": params.email,
+            "password": params.password,
+            "name": params.fullName,
+            "phone_number": params.phoneNumber
         ])
 
         return await networkLayer.execute(RegistrationResponse.self, using: request)

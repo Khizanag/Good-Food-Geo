@@ -10,8 +10,9 @@ import SwiftUI
 @MainActor
 final class RegistrationViewModel: ObservableObject {
     private let repository: Repository = DefaultRepository()
-
+    private let verifyRegistrationUseCase: VerifyRegistrationUseCase = DefaultVerifyRegistrationUseCase()
     @Published var isVerificationCodeSent = false
+    @Published var isRegistrationCompleted = false
 
     private var registeredEmail = ""
 
@@ -20,16 +21,9 @@ final class RegistrationViewModel: ObservableObject {
 
     }
 
-    func register(email: String, fullName: String, password: String, phoneNumber: String) {
+    func register(with params: RegistrationParams) {
         Task {
-            guard let entity = await repository.register(
-                email: email,
-                name: fullName,
-                password: password,
-                phoneNumber: phoneNumber
-            ) else {
-                return
-            }
+            guard let entity = await repository.register(with: params) else { return }
 
             registeredEmail = entity.email
 
@@ -47,10 +41,16 @@ final class RegistrationViewModel: ObservableObject {
 
     func verifyRegistration(using code: String) {
         Task {
-            await repository.verifyRegistration(email: registeredEmail, code: code)
-            // TODO: save token here
-            // TODO: navigate to the app
+            guard let _ = await verifyRegistrationUseCase.execute(email: registeredEmail, code: code) else { return }
+            isRegistrationCompleted = true
         }
     }
 }
 
+// MARK: - Params
+struct RegistrationParams {
+    let email: String
+    let password: String
+    let fullName: String
+    let phoneNumber: String
+}
