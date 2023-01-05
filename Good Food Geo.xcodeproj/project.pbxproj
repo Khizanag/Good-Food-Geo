@@ -132,6 +132,7 @@
 		FB0FAFB52966BD0E008175A2 /* Good Food Geo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Good Food Geo.entitlements"; sourceTree = "<group>"; };
 		FB0FAFC02966C859008175A2 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		FB0FAFC22966CFFC008175A2 /* PhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerView.swift; sourceTree = "<group>"; };
+		FB0FAFC42966EC9C008175A2 /* Good-Food-Geo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Good-Food-Geo-Info.plist"; sourceTree = SOURCE_ROOT; };
 		FB93931A295D918D00D491CE /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		FB93931C295D968000D491CE /* SubSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubSectionView.swift; sourceTree = "<group>"; };
 		FB939320295D9A6400D491CE /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
@@ -163,7 +164,6 @@
 		FBF9402429559BEB00A8EF10 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FBF9402629559BEB00A8EF10 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		FBF9402929559BEB00A8EF10 /* Good_Food_Geo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Good_Food_Geo.xcdatamodel; sourceTree = "<group>"; };
-		FBF9402B29559BEB00A8EF10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FBF9403029559BEC00A8EF10 /* Good Food GeoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Good Food GeoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF9403429559BEC00A8EF10 /* Good_Food_GeoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Good_Food_GeoTests.swift; sourceTree = "<group>"; };
 		FBF9403A29559BEC00A8EF10 /* Good Food GeoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Good Food GeoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -378,6 +378,7 @@
 		FBF9401C29559BE900A8EF10 /* Good Food Geo */ = {
 			isa = PBXGroup;
 			children = (
+				FB0FAFC42966EC9C008175A2 /* Good-Food-Geo-Info.plist */,
 				FB0FAFBF2966C831008175A2 /* Infrastructure */,
 				FB0FAFB52966BD0E008175A2 /* Good Food Geo.entitlements */,
 				FB0FAF9129641BF2008175A2 /* Storages */,
@@ -393,7 +394,6 @@
 				FB93933A295EBEEB00D491CE /* MainTabBarView.swift */,
 				FBF9402129559BEB00A8EF10 /* Assets.xcassets */,
 				FBF9402629559BEB00A8EF10 /* Persistence.swift */,
-				FBF9402B29559BEB00A8EF10 /* Info.plist */,
 				FBF9402829559BEB00A8EF10 /* Good_Food_Geo.xcdatamodeld */,
 				FBF9402329559BEB00A8EF10 /* Preview Content */,
 			);
@@ -970,14 +970,17 @@
 				DEVELOPMENT_TEAM = 487Z879GSQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Good-Food-Geo-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Good Food";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSCameraUsageDescription = "$(PRODUCT_NAME) is requesting Camera Usage to let you take a photo for submision.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1005,14 +1008,17 @@
 				DEVELOPMENT_TEAM = 487Z879GSQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Good-Food-Geo-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Good Food";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSCameraUsageDescription = "$(PRODUCT_NAME) is requesting Camera Usage to let you take a photo for submision.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
