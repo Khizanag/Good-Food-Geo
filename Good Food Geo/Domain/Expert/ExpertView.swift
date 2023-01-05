@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct ExpertView: View {
+    @Environment(\.dismiss) private var dismiss
+
     let expert: Expert
 
     private let userInformationStorage: UserInformationStorage = DefaultUserInformationStorage.shared
+    private let headerViewModel = HeaderViewModel()
 
     var body: some View {
         ZStack {
@@ -19,7 +22,15 @@ struct ExpertView: View {
 
             VStack {
                 VStack {
-                    HeaderView(viewModel: HeaderViewModel(), fullName: userInformationStorage.read()?.fullName)
+                    HeaderView(viewModel: headerViewModel, fullName: userInformationStorage.read()?.fullName)
+                        .onReceive(headerViewModel.eventPublisher) { event in
+                            switch event {
+                            case .shouldLogout:
+                                withAnimation {
+                                    dismiss()
+                                }
+                            }
+                        }
 
                     HStack(spacing: 8) {
                         ZStack {

@@ -98,6 +98,10 @@ struct LoginView: View {
         .navigationDestination(isPresented: $viewModel.shouldNavigateInto) {
             MainTabBarView()
         }
+        .onAppear {
+            email = ""
+            password = ""
+        }
         .overlay {
             Color.clear
                 .overlay {

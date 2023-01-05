@@ -24,6 +24,7 @@ final class LoginViewModel: ObservableObject {
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.1) { [weak self] in
             self?.shouldNavigateInto = isSessionActive
+            self?.isLoading = false
         }
     }
 

@@ -27,9 +27,9 @@ struct StaticPage: View {
                         .onReceive(headerViewModel.eventPublisher) { event in
                             switch event {
                             case .shouldLogout:
-                                print("dismiss received in static page")
-                                dismiss()
-                                print("should have dismissed")
+                                withAnimation {
+                                    dismiss()
+                                }
                             }
                         }
 
