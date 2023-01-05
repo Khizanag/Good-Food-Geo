@@ -8,6 +8,12 @@
 import SwiftUI
 
 struct PreScanFormView: View {
+    @State private var sourceType: UIImagePickerController.SourceType = .camera
+    @State private var selectedImage: UIImage?
+    @State private var isImagePickerPresented = false
+    @State private var isPhotoPickerPresented = false
+    @State private var isConfirmationDialogPresented = false
+
     @State private var fullName = ""
     @State private var idNumber = ""
     @State private var comment = ""
@@ -23,6 +29,30 @@ struct PreScanFormView: View {
 
     var body: some View {
         VStack {
+            (selectedImage != nil ? Image(uiImage: selectedImage!) : Image(systemName: "snow"))
+                .resizable()
+                .scaledToFit()
+                .clipShape(Circle())
+                .frame(width: 300, height: 300)
+                .sheet(isPresented: $isImagePickerPresented) {
+                    ImagePickerView(selectedImage: $selectedImage, sourceType: sourceType)
+                }
+                .sheet(isPresented: $isPhotoPickerPresented) {
+                    PhotoPicker(selectedImage: $selectedImage)
+                }
+                .confirmationDialog("How to open photo?", isPresented: $isConfirmationDialogPresented) {
+                    Button("Camera") {
+                        isImagePickerPresented = true
+                    }
+
+                    Button("Photo Library") {
+                        isPhotoPickerPresented = true
+                    }
+                }
+                .onTapGesture {
+                    isConfirmationDialogPresented = true
+                }
+
             Spacer()
             
             Text(Localization.preScanFormTitle().uppercased())

@@ -91,12 +91,14 @@ struct LoginView: View {
                         loginManager.logOut()
                         authenticationToken = nil
                     } else {
-                        loginManager.logIn(permissions: ["public_profile", "email"], from: nil) { (result, error) in
+                        loginManager.logIn(permissions: ["public_profile", "email", "full_name"], from: nil) { (result, error) in
                             if let error {
                                 print(error.localizedDescription)
                                 return
                             }
 
+                            guard let result else { return }
+                            
 
                         }
                     }
