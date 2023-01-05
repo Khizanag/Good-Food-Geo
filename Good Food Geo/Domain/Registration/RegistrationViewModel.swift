@@ -5,7 +5,7 @@
 //  Created by Giga Khizanishvili on 04.01.23.
 //
 
-import SwiftUI
+import Combine
 
 @MainActor
 final class RegistrationViewModel: ObservableObject {
@@ -16,14 +16,28 @@ final class RegistrationViewModel: ObservableObject {
 
     private var registeredEmail = ""
 
-    // MARK: - Init
-    init() {
-
+    enum Event {
+        case showMessage(String)
     }
 
+    var eventPublisher = PassthroughSubject<Event, Never>()
+
+    // MARK: - Functions
     func register(with params: RegistrationParams) {
+        guard params.userAgreesTermsAndConditions else {
+            eventPublisher.send(.showMessage("To continue registration you should agree with our terms and conditions"))
+            return
+        }
+        guard params.password == params.repeatedPassword else {
+            eventPublisher.send(.showMessage("Passwords does not match!"))
+            return
+        }
+
         Task {
-            guard let entity = await repository.register(with: params) else { return }
+            guard let entity = await repository.register(with: params) else {
+                eventPublisher.send(.showMessage("Error during Registration. Enter correct information!"))
+                return
+            }
 
             registeredEmail = entity.email
 
@@ -41,7 +55,10 @@ final class RegistrationViewModel: ObservableObject {
 
     func verifyRegistration(using code: String) {
         Task {
-            guard let _ = await verifyRegistrationUseCase.execute(email: registeredEmail, code: code) else { return }
+            guard let _ = await verifyRegistrationUseCase.execute(email: registeredEmail, code: code) else {
+                eventPublisher.send(.showMessage("Error during Verification"))
+                return
+            }
             isRegistrationCompleted = true
         }
     }
@@ -51,6 +68,8 @@ final class RegistrationViewModel: ObservableObject {
 struct RegistrationParams {
     let email: String
     let password: String
+    let repeatedPassword: String
     let fullName: String
     let phoneNumber: String
+    let userAgreesTermsAndConditions: Bool
 }

@@ -53,6 +53,12 @@ struct RegistrationView: View {
             .padding(32)
         }
         .navigationTitle(Localization.signUpTitle())
+        .onReceive(viewModel.eventPublisher) { event in
+            switch event {
+            case .showMessage(let message):
+                showMessage(message)
+            }
+        }
         .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
             Button(Localization.gotIt(), role: .cancel) { }
         })
@@ -100,8 +106,10 @@ struct RegistrationView: View {
             viewModel.register(with: RegistrationParams(
                 email: email,
                 password: password,
+                repeatedPassword: confirmPassword,
                 fullName: fullName,
-                phoneNumber: phoneNumber
+                phoneNumber: phoneNumber,
+                userAgreesTermsAndConditions: userAgreesTerms
             ))
         }, label: {
             Text("Register and Get Verification Code")
