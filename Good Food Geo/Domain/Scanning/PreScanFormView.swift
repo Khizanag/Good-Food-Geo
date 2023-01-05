@@ -72,34 +72,7 @@ struct PreScanFormView: View {
             .tint(DesignSystem.Color.primary())
             .padding()
 
-            Button(action: {
-                guard allFieldsAreFilled else {
-                    showMessage("All fields should be empty to navigate to scanning")
-                    return
-                }
-
-                guard userAgreesTerms else {
-                    showMessage("You should accept our terns of Use and Privacy Statement to navigate to scanning")
-                    return
-                }
-
-                guard selectedImage != nil else {
-                    showMessage("Please select image to submit")
-                    return
-                }
-
-                // TODO: SUBMIT your information
-            }, label: {
-                DesignSystem.Image.qr()
-                    .imageScale(.large)
-
-                Text(Localization.scanProduct())
-            })
-            .padding()
-            .frame(maxWidth: .infinity)
-            .foregroundColor(DesignSystem.Color.buttonTitle())
-            .background(DesignSystem.Color.buttonImportant())
-            .cornerRadius(15)
+            submitButton
 
             Spacer()
         }
@@ -140,6 +113,38 @@ struct PreScanFormView: View {
         Image(uiImage: selectedImage!)
             .resizable()
             .scaledToFill()
+    }
+
+    private var submitButton: some View {
+        Button(action: {
+            guard allFieldsAreFilled else {
+                showMessage("All fields should be filled to submit the information")
+                return
+            }
+
+            guard userAgreesTerms else {
+                showMessage("You should accept our terns of Use and Privacy Statement to submit the information")
+                return
+            }
+
+            guard selectedImage != nil else {
+                showMessage("Please select image to submit the information")
+                return
+            }
+
+            // TODO: SUBMIT your information
+        }, label: {
+
+            DesignSystem.Image.submit()
+                .imageScale(.large)
+
+            Text("Submit your information")
+        })
+        .padding()
+        .frame(maxWidth: .infinity)
+        .foregroundColor(DesignSystem.Color.buttonTitle())
+        .background(Color(hex: 0x4285F4))
+        .cornerRadius(15)
     }
 
     private var allFieldsAreFilled: Bool {

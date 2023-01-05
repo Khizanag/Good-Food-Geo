@@ -31,6 +31,7 @@ extension DesignSystem {
         case phone
         case placeholderPhoto = "photo.on.rectangle.angled"
         case qr = "qrcode.viewfinder"
+        case submit = "icloud.and.arrow.up"
         case tbcLogo
     }
 }
