@@ -8,9 +8,14 @@
 import SwiftUI
 
 struct HeaderView: View {
+    typealias ViewModel = HeaderViewModel
+
+    @ObservedObject var viewModel: ViewModel
+
     let fullName: String?
 
-    init(fullName: String? = nil) {
+    init(viewModel: ViewModel, fullName: String? = nil) {
+        self.viewModel = viewModel
         self.fullName = fullName
     }
 
@@ -24,9 +29,11 @@ struct HeaderView: View {
             Spacer()
 
             if let fullName {
-                Text("\(Localization.hi()), \(fullName)")
-                    .foregroundColor(.white)
-                    .font(.callout)
+                Menu("\(Localization.hi()), \(fullName)") {
+                    Button("Logout", action: viewModel.logout)
+                }
+                .foregroundColor(.white)
+                .font(.callout)
             }
         }
         .padding(.vertical)

@@ -11,7 +11,10 @@ struct StaticPage: View {
     let section: SectionView.Model
     let subSections: [SubSectionView<AnyView>.Model]
 
+    @Environment(\.dismiss) var dismiss
+
     private let userInformationStorage: UserInformationStorage = DefaultUserInformationStorage.shared
+    private let headerViewModel = HeaderViewModel()
 
     var body: some View {
         ZStack {
@@ -20,7 +23,15 @@ struct StaticPage: View {
 
             VStack {
                 VStack {
-                    HeaderView(fullName: userInformationStorage.read()?.fullName)
+                    HeaderView(viewModel: headerViewModel, fullName: userInformationStorage.read()?.fullName)
+                        .onReceive(headerViewModel.eventPublisher) { event in
+                            switch event {
+                            case .shouldLogout:
+                                print("dismiss received in static page")
+                                dismiss()
+                                print("should have dismissed")
+                            }
+                        }
 
                     SectionView(title: section.title, description: section.description)
                 }

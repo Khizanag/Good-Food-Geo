@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FacebookLogin
 
 @MainActor
 final class LoginViewModel: ObservableObject {
@@ -13,6 +14,8 @@ final class LoginViewModel: ObservableObject {
 
     @Published var shouldNavigateInto: Bool = false
     @Published var isLoading: Bool
+
+    private let loginManager = LoginManager()
 
     // MARK: - Init
     init() {
@@ -39,6 +42,17 @@ final class LoginViewModel: ObservableObject {
 
     func loginUsingFacebook() {
         print("loginUsingFacebook")
+//            print("Facebook login did tap")
+//        loginManager.logIn(permissions: [.publicProfile, .email]) { result in }
+            //                print("Login using fb did finish")
+            //                switch result {
+            //                case .success(let grantedPermissions, let declinedPermissions, let token):
+            //                    print("FB Login success: token", token?.tokenString ?? "nil")
+            //                case .cancelled: print("Facebook login canceled")
+            //                case .failed(let error):
+            //                    print(error.localizedDescription)
+            //                }
+            //            }
     }
 
     func loginUsingGoogle() {

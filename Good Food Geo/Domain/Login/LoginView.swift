@@ -6,30 +6,23 @@
 //
 
 import SwiftUI
-import FBSDKLoginKit
 
 struct LoginView: View {
     @ObservedObject var viewModel: LoginViewModel
 
     private let repository: Repository = DefaultRepository()
 
-    @State private var email = "admin@tdig.ge"
-    @State private var password = "admin"
+    @State private var email = ""
+    @State private var password = ""
 
     @State var alertData = AlertData()
 
-    @State var loginManager = LoginManager()
-
     @AppStorage(AppStorageKey.authenticationToken()) private var authenticationToken: String?
-
-    var isLoggedIn: Bool {
-        authenticationToken != nil
-    }
 
     // MARK: - Body
     var body: some View {
         VStack(spacing: 24) {
-            HeaderView()
+            HeaderView(viewModel: HeaderViewModel())
 
             VStack(alignment: .leading, spacing: 6) {
                 Text(Localization.loginTitle())
@@ -83,28 +76,7 @@ struct LoginView: View {
                 .foregroundColor(DesignSystem.Color.primaryText())
 
             VStack(spacing: 12) {
-//                CompanyButton(company: Company.facebook, action: viewModel.loginUsingFacebook)
-                Button(action: {
-                    print("FB login button did tap")
-
-                    if isLoggedIn {
-                        loginManager.logOut()
-                        authenticationToken = nil
-                    } else {
-                        loginManager.logIn(permissions: ["public_profile", "email", "full_name"], from: nil) { (result, error) in
-                            if let error {
-                                print(error.localizedDescription)
-                                return
-                            }
-
-                            guard let result else { return }
-                            
-
-                        }
-                    }
-                }, label: {
-                    Text(isLoggedIn ? "FB Logout" : "FB Login")
-                })
+                facebookButton
 
                 CompanyButton(company: Company.google, action: viewModel.loginUsingGoogle)
             }
@@ -139,6 +111,11 @@ struct LoginView: View {
         .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
             Button(Localization.gotIt(), role: .cancel) { }
         })
+    }
+
+    // MARK: - Components
+    private var facebookButton: some View {
+        CompanyButton(company: Company.facebook, action: viewModel.loginUsingFacebook)
     }
 
     // MARK: - Message Displayer

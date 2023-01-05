@@ -19,7 +19,7 @@ struct ExpertView: View {
 
             VStack {
                 VStack {
-                    HeaderView(fullName: userInformationStorage.read()?.fullName)
+                    HeaderView(viewModel: HeaderViewModel(), fullName: userInformationStorage.read()?.fullName)
 
                     HStack(spacing: 8) {
                         ZStack {

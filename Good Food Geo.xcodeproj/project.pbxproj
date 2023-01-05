@@ -33,6 +33,8 @@
 		FB0FAFBE2966C005008175A2 /* FacebookShare in Frameworks */ = {isa = PBXBuildFile; productRef = FB0FAFBD2966C005008175A2 /* FacebookShare */; };
 		FB0FAFC12966C859008175A2 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAFC02966C859008175A2 /* ImagePickerView.swift */; };
 		FB0FAFC32966CFFC008175A2 /* PhotoPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAFC22966CFFC008175A2 /* PhotoPickerView.swift */; };
+		FB0FAFC729670D36008175A2 /* HeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAFC629670D36008175A2 /* HeaderViewModel.swift */; };
+		FB0FAFC929670D5F008175A2 /* LogoutUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAFC829670D5F008175A2 /* LogoutUseCase.swift */; };
 		FB93931B295D918D00D491CE /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93931A295D918D00D491CE /* HeaderView.swift */; };
 		FB93931D295D968000D491CE /* SubSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93931C295D968000D491CE /* SubSectionView.swift */; };
 		FB939321295D9A6400D491CE /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB939320295D9A6400D491CE /* SectionView.swift */; };
@@ -133,6 +135,8 @@
 		FB0FAFC02966C859008175A2 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		FB0FAFC22966CFFC008175A2 /* PhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerView.swift; sourceTree = "<group>"; };
 		FB0FAFC42966EC9C008175A2 /* Good-Food-Geo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Good-Food-Geo-Info.plist"; sourceTree = SOURCE_ROOT; };
+		FB0FAFC629670D36008175A2 /* HeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewModel.swift; sourceTree = "<group>"; };
+		FB0FAFC829670D5F008175A2 /* LogoutUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutUseCase.swift; sourceTree = "<group>"; };
 		FB93931A295D918D00D491CE /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		FB93931C295D968000D491CE /* SubSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubSectionView.swift; sourceTree = "<group>"; };
 		FB939320295D9A6400D491CE /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
@@ -246,6 +250,7 @@
 			children = (
 				FB0FAF8F29641AD7008175A2 /* LoginUseCase.swift */,
 				FB0FAFB32966A6E9008175A2 /* VerifyRegistrationUseCase.swift */,
+				FB0FAFC829670D5F008175A2 /* LogoutUseCase.swift */,
 			);
 			path = "Use Cases";
 			sourceTree = "<group>";
@@ -275,6 +280,15 @@
 				FB0FAFC22966CFFC008175A2 /* PhotoPickerView.swift */,
 			);
 			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		FB0FAFC529670D27008175A2 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				FB93931A295D918D00D491CE /* HeaderView.swift */,
+				FB0FAFC629670D36008175A2 /* HeaderViewModel.swift */,
+			);
+			path = Header;
 			sourceTree = "<group>";
 		};
 		FB939326295DBFA100D491CE /* PasswordReset */ = {
@@ -511,12 +525,12 @@
 		FBF940822955BAD500A8EF10 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				FB0FAFC529670D27008175A2 /* Header */,
 				FB939345295F180000D491CE /* Spacing */,
 				FB939340295F086D00D491CE /* Shapes */,
 				FB939335295EBE1900D491CE /* TabBar */,
 				FB93932C295DC7BF00D491CE /* Buttons */,
 				FBF940832955BAF900A8EF10 /* HorizontalDivider.swift */,
-				FB93931A295D918D00D491CE /* HeaderView.swift */,
 				FB93931C295D968000D491CE /* SubSectionView.swift */,
 				FB939320295D9A6400D491CE /* SectionView.swift */,
 				FB939322295D9FCB00D491CE /* StaticPage.swift */,
@@ -758,6 +772,7 @@
 				FB0FAF9F29656B5C008175A2 /* HomeViewModel.swift in Sources */,
 				FB939342295F087B00D491CE /* RoundedCorner.swift in Sources */,
 				FB93931D295D968000D491CE /* SubSectionView.swift in Sources */,
+				FB0FAFC729670D36008175A2 /* HeaderViewModel.swift in Sources */,
 				FBF940812955B3A800A8EF10 /* FormItemView.swift in Sources */,
 				FB93931B295D918D00D491CE /* HeaderView.swift in Sources */,
 				FB0FAFAA2965CB28008175A2 /* UserInformationStorage.swift in Sources */,
@@ -777,6 +792,7 @@
 				FB939332295DF0B900D491CE /* ActivityViewController.swift in Sources */,
 				FB0FAF9029641AD7008175A2 /* LoginUseCase.swift in Sources */,
 				FB94BA7A295F43F700944E37 /* NetworkLayer.swift in Sources */,
+				FB0FAFC929670D5F008175A2 /* LogoutUseCase.swift in Sources */,
 				FBF940842955BAF900A8EF10 /* HorizontalDivider.swift in Sources */,
 				FBF940862955BB9000A8EF10 /* DesignSystem+Color.swift in Sources */,
 				FB939339295EBE7A00D491CE /* TabBarMainItemView.swift in Sources */,
@@ -974,6 +990,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Good Food";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSCameraUsageDescription = "$(PRODUCT_NAME) is requesting Camera Usage to let you take a photo for submision.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "$(PRODUCT_NAME) is requesting Photo Library access to let you take a photo for submision.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -985,6 +1002,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "khizanag.Good-Food-Geo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1012,6 +1030,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Good Food";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSCameraUsageDescription = "$(PRODUCT_NAME) is requesting Camera Usage to let you take a photo for submision.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "$(PRODUCT_NAME) is requesting Photo Library access to let you take a photo for submision.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1023,6 +1042,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "khizanag.Good-Food-Geo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
