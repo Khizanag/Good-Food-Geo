@@ -11,8 +11,9 @@ import PhotosUI
 import Photos
 
 struct PhotoPickerView: UIViewControllerRepresentable {
-    @Environment(\.dismiss) var dismiss: DismissAction
     @Binding var selectedImage: UIImage?
+
+    @Environment(\.dismiss) private var dismiss: DismissAction
 
     func makeUIViewController(context: Context) -> PHPickerViewController {
         var configuration = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())

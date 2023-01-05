@@ -29,16 +29,20 @@ struct PreScanFormView: View {
 
     var body: some View {
         VStack {
-            (selectedImage != nil ? Image(uiImage: selectedImage!) : Image(systemName: "snow"))
-                .resizable()
-                .scaledToFit()
-                .clipShape(Circle())
-                .frame(width: 300, height: 300)
+            Text(Localization.preScanFormTitle().uppercased())
+                .font(.subheadline)
+                .multilineTextAlignment(.center)
+                .padding()
+
+            selectedImageContainer
+                .frame(height: 145)
+                .frame(maxWidth: .infinity)
+                .cornerRadius(15)
                 .sheet(isPresented: $isImagePickerPresented) {
                     ImagePickerView(selectedImage: $selectedImage, sourceType: sourceType)
                 }
                 .sheet(isPresented: $isPhotoPickerPresented) {
-                    PhotoPicker(selectedImage: $selectedImage)
+                    PhotoPickerView(selectedImage: $selectedImage)
                 }
                 .confirmationDialog("How to open photo?", isPresented: $isConfirmationDialogPresented) {
                     Button("Camera") {
@@ -52,13 +56,6 @@ struct PreScanFormView: View {
                 .onTapGesture {
                     isConfirmationDialogPresented = true
                 }
-
-            Spacer()
-            
-            Text(Localization.preScanFormTitle().uppercased())
-                .font(.subheadline)
-                .multilineTextAlignment(.center)
-                .padding()
 
             FormItemView(model: FormItemModel(icon: DesignSystem.Image.person(), placeholder: Localization.fullName()), text: $fullName)
             FormItemView(model: FormItemModel(icon: DesignSystem.Image.fingerprint(), placeholder: Localization.idNumber(), keyboardType: .numberPad), text: $idNumber)
@@ -86,7 +83,12 @@ struct PreScanFormView: View {
                     return
                 }
 
-                // TODO: Navigate to the Camera
+                guard selectedImage != nil else {
+                    showMessage("Please select image to submit")
+                    return
+                }
+
+                // TODO: SUBMIT your information
             }, label: {
                 DesignSystem.Image.qr()
                     .imageScale(.large)
@@ -105,6 +107,39 @@ struct PreScanFormView: View {
         .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
             Button(Localization.gotIt(), role: .cancel) { }
         })
+    }
+
+    // MARK: - Components
+    private var selectedImageContainer: some View {
+        if selectedImage == nil {
+            return AnyView(imagePlaceholder)
+        } else {
+            return AnyView(selectedImageView)
+        }
+    }
+
+    private var imagePlaceholder: some View {
+        ZStack {
+            Color(hex: 0xD9D9D9)
+
+            VStack(spacing: 8) {
+                    DesignSystem.Image.placeholderPhoto()
+                        .resizable()
+                        .scaledToFit()
+                        .foregroundColor(Color(hex: 0x898484))
+                        .frame(width: 32, height: 32)
+
+                    Text("Touch to choose the image")
+                        .foregroundColor(Color(hex: 0x898484))
+            }
+            .offset(y: 8)
+        }
+    }
+
+    private var selectedImageView: some View {
+        Image(uiImage: selectedImage!)
+            .resizable()
+            .scaledToFill()
     }
 
     private var allFieldsAreFilled: Bool {

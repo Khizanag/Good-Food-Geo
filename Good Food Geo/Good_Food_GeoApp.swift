@@ -10,8 +10,6 @@ import FBSDKCoreKit
 
 @main
 struct Good_Food_GeoApp: App {
-    private let persistenceController = PersistenceController.shared
-
     var body: some Scene {
         WindowGroup {
             NavigationStack {
