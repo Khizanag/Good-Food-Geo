@@ -27,6 +27,10 @@
 		FB0FAFB02965DE68008175A2 /* PasswordResetEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAFAF2965DE68008175A2 /* PasswordResetEntity.swift */; };
 		FB0FAFB22965E322008175A2 /* VerificationEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAFB12965E322008175A2 /* VerificationEntity.swift */; };
 		FB0FAFB42966A6E9008175A2 /* VerifyRegistrationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAFB32966A6E9008175A2 /* VerifyRegistrationUseCase.swift */; };
+		FB0FAFB82966C005008175A2 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = FB0FAFB72966C005008175A2 /* FacebookCore */; };
+		FB0FAFBA2966C005008175A2 /* FacebookGamingServices in Frameworks */ = {isa = PBXBuildFile; productRef = FB0FAFB92966C005008175A2 /* FacebookGamingServices */; };
+		FB0FAFBC2966C005008175A2 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = FB0FAFBB2966C005008175A2 /* FacebookLogin */; };
+		FB0FAFBE2966C005008175A2 /* FacebookShare in Frameworks */ = {isa = PBXBuildFile; productRef = FB0FAFBD2966C005008175A2 /* FacebookShare */; };
 		FB93931B295D918D00D491CE /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93931A295D918D00D491CE /* HeaderView.swift */; };
 		FB93931D295D968000D491CE /* SubSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93931C295D968000D491CE /* SubSectionView.swift */; };
 		FB939321295D9A6400D491CE /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB939320295D9A6400D491CE /* SectionView.swift */; };
@@ -123,6 +127,7 @@
 		FB0FAFAF2965DE68008175A2 /* PasswordResetEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetEntity.swift; sourceTree = "<group>"; };
 		FB0FAFB12965E322008175A2 /* VerificationEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationEntity.swift; sourceTree = "<group>"; };
 		FB0FAFB32966A6E9008175A2 /* VerifyRegistrationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyRegistrationUseCase.swift; sourceTree = "<group>"; };
+		FB0FAFB52966BD0E008175A2 /* Good Food Geo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Good Food Geo.entitlements"; sourceTree = "<group>"; };
 		FB93931A295D918D00D491CE /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		FB93931C295D968000D491CE /* SubSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubSectionView.swift; sourceTree = "<group>"; };
 		FB939320295D9A6400D491CE /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
@@ -192,7 +197,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB0FAFBC2966C005008175A2 /* FacebookLogin in Frameworks */,
+				FB0FAFBA2966C005008175A2 /* FacebookGamingServices in Frameworks */,
 				FB0FAF8A2964178F008175A2 /* KeychainAccess in Frameworks */,
+				FB0FAFBE2966C005008175A2 /* FacebookShare in Frameworks */,
+				FB0FAFB82966C005008175A2 /* FacebookCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +365,7 @@
 		FBF9401C29559BE900A8EF10 /* Good Food Geo */ = {
 			isa = PBXGroup;
 			children = (
+				FB0FAFB52966BD0E008175A2 /* Good Food Geo.entitlements */,
 				FB0FAF9129641BF2008175A2 /* Storages */,
 				FB0FAF8E29641ACA008175A2 /* Use Cases */,
 				FB94BA82295F842E00944E37 /* Repositories */,
@@ -573,6 +583,10 @@
 			name = "Good Food Geo";
 			packageProductDependencies = (
 				FB0FAF892964178F008175A2 /* KeychainAccess */,
+				FB0FAFB72966C005008175A2 /* FacebookCore */,
+				FB0FAFB92966C005008175A2 /* FacebookGamingServices */,
+				FB0FAFBB2966C005008175A2 /* FacebookLogin */,
+				FB0FAFBD2966C005008175A2 /* FacebookShare */,
 			);
 			productName = "Good Food Geo";
 			productReference = FBF9401A29559BE900A8EF10 /* Good Food Geo.app */;
@@ -648,6 +662,7 @@
 			mainGroup = FBF9401129559BE900A8EF10;
 			packageReferences = (
 				FB0FAF882964178F008175A2 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				FB0FAFB62966C005008175A2 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 			);
 			productRefGroup = FBF9401B29559BE900A8EF10 /* Products */;
 			projectDirPath = "";
@@ -861,7 +876,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -916,7 +931,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -931,15 +946,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Good Food Geo/Good Food Geo.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Good Food Geo/Preview Content\"";
 				DEVELOPMENT_TEAM = 487Z879GSQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Good Food";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -949,6 +969,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "khizanag.Good-Food-Geo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -960,15 +981,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Good Food Geo/Good Food Geo.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Good Food Geo/Preview Content\"";
 				DEVELOPMENT_TEAM = 487Z879GSQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Good Food";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -978,6 +1004,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "khizanag.Good-Food-Geo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1110,6 +1137,14 @@
 				kind = branch;
 			};
 		};
+		FB0FAFB62966C005008175A2 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1117,6 +1152,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FB0FAF882964178F008175A2 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
+		};
+		FB0FAFB72966C005008175A2 /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FB0FAFB62966C005008175A2 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
+		};
+		FB0FAFB92966C005008175A2 /* FacebookGamingServices */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FB0FAFB62966C005008175A2 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookGamingServices;
+		};
+		FB0FAFBB2966C005008175A2 /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FB0FAFB62966C005008175A2 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
+		};
+		FB0FAFBD2966C005008175A2 /* FacebookShare */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FB0FAFB62966C005008175A2 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookShare;
 		};
 /* End XCSwiftPackageProductDependency section */
 

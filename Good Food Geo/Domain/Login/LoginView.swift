@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FBSDKLoginKit
 
 struct LoginView: View {
     @ObservedObject var viewModel: LoginViewModel
@@ -16,6 +17,14 @@ struct LoginView: View {
     @State private var password = "admin"
 
     @State var alertData = AlertData()
+
+    @State var loginManager = LoginManager()
+
+    @AppStorage(AppStorageKey.authenticationToken()) private var authenticationToken: String?
+
+    var isLoggedIn: Bool {
+        authenticationToken != nil
+    }
 
     // MARK: - Body
     var body: some View {
@@ -74,7 +83,27 @@ struct LoginView: View {
                 .foregroundColor(DesignSystem.Color.primaryText())
 
             VStack(spacing: 12) {
-                CompanyButton(company: Company.facebook, action: viewModel.loginUsingFacebook)
+//                CompanyButton(company: Company.facebook, action: viewModel.loginUsingFacebook)
+                Button(action: {
+                    print("FB login button did tap")
+
+                    if isLoggedIn {
+                        loginManager.logOut()
+                        authenticationToken = nil
+                    } else {
+                        loginManager.logIn(permissions: ["public_profile", "email"], from: nil) { (result, error) in
+                            if let error {
+                                print(error.localizedDescription)
+                                return
+                            }
+
+
+                        }
+                    }
+                }, label: {
+                    Text(isLoggedIn ? "FB Logout" : "FB Login")
+                })
+
                 CompanyButton(company: Company.google, action: viewModel.loginUsingGoogle)
             }
 
