@@ -13,12 +13,10 @@ struct HomeView: View {
     var body: some View {
         VStack {
             if viewModel.isLoading {
-                VStack {
-                    ProgressView()
-                        .font(.callout)
-                        .scaleEffect(2)
-                        .offset(y: -36)
-                }
+                ProgressView()
+                    .font(.callout)
+                    .scaleEffect(2)
+                    .offset(y: -36)
             } else {
                 bodyWhenDidLoad
             }

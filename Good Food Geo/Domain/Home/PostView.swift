@@ -6,27 +6,27 @@
 //
 
 import SwiftUI
+import CachedAsyncImage
 
 struct PostView: View {
     let post: Post
 
     var body: some View {
         VStack(alignment: .leading) {
-            AsyncImage(
+            CachedAsyncImage(
                 url: URL(string: post.imageUrl),
-                content:  { image in
+                content: { image in
                     image
                         .resizable()
                         .scaledToFit()
+                        .frame(maxWidth: .infinity)
                 },
                 placeholder: {
-                    VStack {
-                        ProgressView()
-                            .padding()
-                    }
+                    ProgressView()
+                        .frame(height: 250)
+                        .padding()
                 }
             )
-            .frame(maxWidth: .infinity)
             .cornerRadius(8)
             .overlay(
                 RoundedRectangle(cornerRadius: 8)

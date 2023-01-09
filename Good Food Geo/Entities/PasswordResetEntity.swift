@@ -7,10 +7,4 @@
 
 import Foundation
 
-struct PasswordResetEntity: Decodable {
-    let message: String
-
-    enum CodingKeys: String, CodingKey {
-        case message = "msg"
-    }
-}
+typealias PasswordResetEntity = MessageEntity

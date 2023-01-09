@@ -20,8 +20,11 @@ final class DefaultNetworkLayer: NetworkLayer {
 
             debugPrint(data, String(data: data, encoding: .utf8) ?? "*unknown encoding*")
 
-            guard let httpResponse = response as? HTTPURLResponse,
-                  (200...299).contains(httpResponse.statusCode) else { return .failure(.wrongStatusCode) }
+            guard let httpResponse = response as? HTTPURLResponse else { return .failure(.general)}
+
+            debugPrint("Status code: \(httpResponse.statusCode)")
+
+            guard (200...299).contains(httpResponse.statusCode) else { return .failure(.wrongStatusCode) }
 
             let decoder = JSONDecoder()
             let responseObject = try decoder.decode(type, from: data)

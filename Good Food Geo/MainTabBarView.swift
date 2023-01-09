@@ -57,7 +57,7 @@ struct MainTabBarView: View {
                 AboutUsView()
                     .tag(MainTabBarItem.aboutUs)
 
-                ProductComplaintSubmissionView()
+                ProductComplaintSubmissionView(viewModel: ProductComplaintSubmissionViewModel())
                     .tag(MainTabBarItem.scanning)
 
                 DonationView()

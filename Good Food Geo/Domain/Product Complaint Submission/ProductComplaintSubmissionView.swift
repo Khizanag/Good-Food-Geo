@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct ProductComplaintSubmissionView: View {
+    typealias ViewModel = ProductComplaintSubmissionViewModel
+
+    @ObservedObject var viewModel: ViewModel
+
     private struct SelectableImageInfo {
         var image: UIImage? = nil
         var isImagePickerPresented: Bool = false
@@ -74,6 +78,7 @@ struct ProductComplaintSubmissionView: View {
 
             VSpacing(MainTabBarConstant.height)
         }
+        .onReceive(viewModel.errorPublisher, perform: showError)
         .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
             Button(Localization.gotIt(), role: .cancel) { }
         })
@@ -144,28 +149,22 @@ struct ProductComplaintSubmissionView: View {
 
     private var submitButton: some View {
         Button(action: {
-            guard allFieldsAreFilled else {
-                showMessage("All fields should be filled to submit the information")
-                return
-            }
-
-            guard userAgreesTerms else {
-                showMessage("You should accept our terns of Use and Privacy Statement to submit the information")
-                return
-            }
-
-            guard selectableImages.allSatisfy(\.isSelected) else {
-                showMessage("Please select image all images to submit the information")
-                return
-            }
-
-            // TODO: SUBMIT your information
+            viewModel.submitProductComplaint(
+                ProductComplaint(
+                    product: .init(title: productTitle, images: selectableImages.compactMap(\.image)),
+                    author: ProductComplaint.Author(fullName: fullName, idNumber: idNumber),
+                    comment: comment,
+                    location: location,
+                    areTermsAgreed: userAgreesTerms
+                )
+            )
         }, label: {
-
-            DesignSystem.Image.submit()
-                .imageScale(.large)
-
-            Text("Submit your information")
+            Label(title: {
+                Text("Submit your information")
+            }, icon: {
+                DesignSystem.Image.submit()
+                    .imageScale(.large)
+            })
         })
         .padding()
         .frame(maxWidth: .infinity)
@@ -174,11 +173,11 @@ struct ProductComplaintSubmissionView: View {
         .cornerRadius(15)
     }
 
-    private var allFieldsAreFilled: Bool {
-        [productTitle, fullName, idNumber, comment, location].allSatisfy { !$0.isEmpty }
+    // MARK: - Message Displayer
+    private func showError(_ error: AppError) {
+        showMessage(error.description)
     }
 
-    // MARK: - Show Message
     private func showMessage(_ message: String, description: String? = nil) {
         alertData.title = message
         if let description {
@@ -188,8 +187,9 @@ struct ProductComplaintSubmissionView: View {
     }
 }
 
+// MARK: - Previews
 struct ScanView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductComplaintSubmissionView()
+        ProductComplaintSubmissionView(viewModel: ProductComplaintSubmissionViewModel())
     }
 }
