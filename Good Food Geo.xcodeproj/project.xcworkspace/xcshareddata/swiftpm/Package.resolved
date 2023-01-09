@@ -37,6 +37,15 @@
       }
     },
     {
+      "identity" : "loadingbutton",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Changemin/LoadingButton",
+      "state" : {
+        "branch" : "main",
+        "revision" : "099aed136cb3c5a08c7b98bd9847edf44a76b4cf"
+      }
+    },
+    {
       "identity" : "swiftui-cached-async-image",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/lorenzofiamingo/swiftui-cached-async-image",

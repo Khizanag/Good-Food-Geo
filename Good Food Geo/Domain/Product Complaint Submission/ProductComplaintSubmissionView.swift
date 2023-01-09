@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import LoadingButton
 
 struct ProductComplaintSubmissionView: View {
     typealias ViewModel = ProductComplaintSubmissionViewModel
@@ -23,7 +24,7 @@ struct ProductComplaintSubmissionView: View {
         }
     }
 
-    @State private var selectableImages: [SelectableImageInfo] = [.init(), .init(), .init()]
+    @State private var selectableImages = [SelectableImageInfo](repeating: .init(), count: 3)
 
     @State private var productTitle = ""
     @State private var fullName = ""
@@ -79,6 +80,12 @@ struct ProductComplaintSubmissionView: View {
             VSpacing(MainTabBarConstant.height)
         }
         .onReceive(viewModel.errorPublisher, perform: showError)
+        .onReceive(viewModel.eventPublisher) { event in
+            switch event {
+            case .cleanUp:
+                cleanUp()
+            }
+        }
         .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
             Button(Localization.gotIt(), role: .cancel) { }
         })
@@ -148,29 +155,50 @@ struct ProductComplaintSubmissionView: View {
 
 
     private var submitButton: some View {
-        Button(action: {
-            viewModel.submitProductComplaint(
-                ProductComplaint(
-                    product: .init(title: productTitle, images: selectableImages.compactMap(\.image)),
-                    author: ProductComplaint.Author(fullName: fullName, idNumber: idNumber),
-                    comment: comment,
-                    location: location,
-                    areTermsAgreed: userAgreesTerms
+        Button(
+            action: {
+                viewModel.submitProductComplaint(
+                    ProductComplaint(
+                        product: .init(title: productTitle, images: selectableImages.compactMap(\.image)),
+                        author: ProductComplaint.Author(fullName: fullName, idNumber: idNumber),
+                        comment: comment,
+                        location: location,
+                        areTermsAgreed: userAgreesTerms
+                    )
                 )
-            )
-        }, label: {
-            Label(title: {
-                Text("Submit your information")
-            }, icon: {
-                DesignSystem.Image.submit()
-                    .imageScale(.large)
-            })
-        })
+            },
+            label: {
+                if !viewModel.isLoading {
+                    Label(title: {
+                        Text("Submit your information")
+                    }, icon: {
+                        DesignSystem.Image.submit()
+                            .imageScale(.large)
+                    })
+                } else {
+                    ProgressView()
+                }
+            }
+        )
+        .disabled(viewModel.isLoading)
         .padding()
         .frame(maxWidth: .infinity)
         .foregroundColor(DesignSystem.Color.buttonTitle())
         .background(Color(hex: 0x4285F4))
         .cornerRadius(15)
+    }
+
+    // MARK: - Functions
+    private func cleanUp() {
+        selectableImages = [SelectableImageInfo](repeating: .init(), count: 3)
+
+        productTitle = ""
+        fullName = ""
+        idNumber = ""
+        comment = ""
+        location = ""
+
+        userAgreesTerms = false
     }
 
     // MARK: - Message Displayer
