@@ -5,12 +5,12 @@
 //  Created by Giga Khizanishvili on 05.01.23.
 //
 
-import SwiftUI
+import UIKit
 
 struct ProductComplaint {
     struct Product {
         let title: String
-        let images: [Image]
+        let images: [UIImage]
     }
 
     struct Author {
@@ -22,4 +22,5 @@ struct ProductComplaint {
     let author: Author
     let comment: String
     let location: String
+    let areTermsAgreed: Bool
 }
