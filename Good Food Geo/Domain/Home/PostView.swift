@@ -23,10 +23,12 @@ struct PostView: View {
                 },
                 placeholder: {
                     ProgressView()
+                        .frame(maxWidth: .infinity)
                         .frame(height: 250)
                         .padding()
                 }
             )
+            .frame(maxWidth: .infinity)
             .cornerRadius(8)
             .overlay(
                 RoundedRectangle(cornerRadius: 8)

@@ -14,6 +14,7 @@ final class HomeViewModel: ObservableObject {
     @Published var posts: [Post] = []
     @Published var isLoading: Bool = false
 
+    // MARK: - Events
     enum Event {
         case showError(AppError)
     }
