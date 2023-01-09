@@ -32,14 +32,24 @@ final class HomeViewModel: ObservableObject {
     // MARK: - Private
     private func fetchPosts() {
         Task {
-            isLoading = true
-            switch await postsRepository.getPosts() {
+            DispatchQueue.main.async { [weak self] in
+                self?.isLoading = true
+            }
+
+            let result = await postsRepository.getPosts()
+
+            switch result {
             case .success(let posts):
-                self.posts = posts
+                DispatchQueue.main.async { [weak self] in
+                    self?.posts = posts
+                }
             case .failure(let error):
                 eventPublisher.send(.showError(error))
             }
-            isLoading = false
+
+            DispatchQueue.main.async { [weak self] in
+                self?.isLoading = false
+            }
         }
     }
 }

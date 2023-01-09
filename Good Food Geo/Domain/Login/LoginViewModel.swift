@@ -19,7 +19,7 @@ final class LoginViewModel: DefaultViewModel {
     // MARK: - Init
     override init() {
         let isSessionActive = UserDefaults.standard.value(forKey: AppStorageKey.authenticationToken()) != nil
-        self.isLoading = isSessionActive // is session is active wait and then navigate to app
+        self.isLoading = isSessionActive // if session is active wait and then navigate to app
 
         super.init()
 
@@ -37,18 +37,26 @@ final class LoginViewModel: DefaultViewModel {
 
 
         Task {
-            isLoading = true
+            DispatchQueue.main.async { [weak self] in
+                self?.isLoading = true
+            }
+
 
             let result = await loginUseCase.execute(email: email, password: password)
 
             switch result {
             case .success:
-                shouldNavigateInto = true
+                DispatchQueue.main.async { [weak self] in
+                    self?.shouldNavigateInto = true
+                }
             case .failure(let error):
                 showError(error)
             }
 
-            isLoading = false
+            DispatchQueue.main.async { [weak self] in
+                self?.isLoading = false
+            }
+
         }
     }
 
