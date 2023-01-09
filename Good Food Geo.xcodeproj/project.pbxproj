@@ -46,7 +46,6 @@
 		FB100A12296C499100D87FC8 /* MessageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB100A11296C499100D87FC8 /* MessageEntity.swift */; };
 		FB100A15296C4AD700D87FC8 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = FB100A14296C4AD700D87FC8 /* CachedAsyncImage */; };
 		FB100A17296C688E00D87FC8 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB100A16296C688E00D87FC8 /* String+Extension.swift */; };
-		FB100A1A296C69C900D87FC8 /* LoadingButton in Frameworks */ = {isa = PBXBuildFile; productRef = FB100A19296C69C900D87FC8 /* LoadingButton */; };
 		FB907B83296B7A00002CBB23 /* Optional+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB907B82296B7A00002CBB23 /* Optional+Extension.swift */; };
 		FB93931B295D918D00D491CE /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93931A295D918D00D491CE /* HeaderView.swift */; };
 		FB93931D295D968000D491CE /* SubSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93931C295D968000D491CE /* SubSectionView.swift */; };
@@ -229,7 +228,6 @@
 				FB100A15296C4AD700D87FC8 /* CachedAsyncImage in Frameworks */,
 				FB0FAFBA2966C005008175A2 /* FacebookGamingServices in Frameworks */,
 				FB0FAF8A2964178F008175A2 /* KeychainAccess in Frameworks */,
-				FB100A1A296C69C900D87FC8 /* LoadingButton in Frameworks */,
 				FB100A0D296C305200D87FC8 /* Alamofire in Frameworks */,
 				FB0FAFBE2966C005008175A2 /* FacebookShare in Frameworks */,
 				FB0FAFB82966C005008175A2 /* FacebookCore in Frameworks */,
@@ -658,7 +656,6 @@
 				FB100A0C296C305200D87FC8 /* Alamofire */,
 				FB100A0F296C306A00D87FC8 /* AlamofireImage */,
 				FB100A14296C4AD700D87FC8 /* CachedAsyncImage */,
-				FB100A19296C69C900D87FC8 /* LoadingButton */,
 			);
 			productName = "Good Food Geo";
 			productReference = FBF9401A29559BE900A8EF10 /* Good Food Geo.app */;
@@ -1317,11 +1314,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FB100A13296C4AD700D87FC8 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
 			productName = CachedAsyncImage;
-		};
-		FB100A19296C69C900D87FC8 /* LoadingButton */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FB100A18296C69C800D87FC8 /* XCRemoteSwiftPackageReference "LoadingButton" */;
-			productName = LoadingButton;
 		};
 /* End XCSwiftPackageProductDependency section */
 
