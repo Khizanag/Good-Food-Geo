@@ -53,7 +53,7 @@ final class LoginViewModel: DefaultViewModel {
     }
 
     func loginUsingFacebook() {
-        print("loginUsingFacebook")
+        showError(.descriptive("Login using Facebook currently is not supported"))
 //            print("Facebook login did tap")
 //        loginManager.logIn(permissions: [.publicProfile, .email]) { result in }
             //                print("Login using fb did finish")
@@ -68,6 +68,6 @@ final class LoginViewModel: DefaultViewModel {
     }
 
     func loginUsingGoogle() {
-        print("loginUsingGoogle")
+        showError(.descriptive("Login using Google currently is not supported"))
     }
 }
