@@ -68,6 +68,11 @@ struct MainTabBarView: View {
             }
             .background(Color.clear)
             .navigationBarBackButtonHidden(true)
+            .onAppear {
+                let transparentAppearance = UITabBarAppearance()
+                transparentAppearance.configureWithTransparentBackground()
+                UITabBar.appearance().standardAppearance = transparentAppearance
+            }
 
             VStack {
                 Spacer()

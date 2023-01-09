@@ -42,6 +42,7 @@
 		FB0FAFD329675CDD008175A2 /* ProductComplaintSubmissionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAFD229675CDD008175A2 /* ProductComplaintSubmissionEntity.swift */; };
 		FB0FAFD629675D40008175A2 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAFD529675D40008175A2 /* AppError.swift */; };
 		FB0FAFD8296763EA008175A2 /* DefaultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAFD7296763EA008175A2 /* DefaultViewModel.swift */; };
+		FB907B83296B7A00002CBB23 /* Optional+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB907B82296B7A00002CBB23 /* Optional+Extension.swift */; };
 		FB93931B295D918D00D491CE /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93931A295D918D00D491CE /* HeaderView.swift */; };
 		FB93931D295D968000D491CE /* SubSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93931C295D968000D491CE /* SubSectionView.swift */; };
 		FB939321295D9A6400D491CE /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB939320295D9A6400D491CE /* SectionView.swift */; };
@@ -150,6 +151,7 @@
 		FB0FAFD229675CDD008175A2 /* ProductComplaintSubmissionEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductComplaintSubmissionEntity.swift; sourceTree = "<group>"; };
 		FB0FAFD529675D40008175A2 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		FB0FAFD7296763EA008175A2 /* DefaultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultViewModel.swift; sourceTree = "<group>"; };
+		FB907B82296B7A00002CBB23 /* Optional+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extension.swift"; sourceTree = "<group>"; };
 		FB93931A295D918D00D491CE /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		FB93931C295D968000D491CE /* SubSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubSectionView.swift; sourceTree = "<group>"; };
 		FB939320295D9A6400D491CE /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
@@ -472,15 +474,14 @@
 			path = "About Us";
 			sourceTree = "<group>";
 		};
-		FBF9404E29559CC000A8EF10 /* Scanning */ = {
+		FBF9404E29559CC000A8EF10 /* Product Complaint Submission */ = {
 			isa = PBXGroup;
 			children = (
 				FBF9407C2955B23F00A8EF10 /* ProductComplaintSubmissionView.swift */,
-				FBF940802955B3A800A8EF10 /* FormItemView.swift */,
 				FB0FAFCE29672038008175A2 /* ProductComplaint.swift */,
 				FB0FAFD02967552D008175A2 /* ProductComplaintSubmissionViewModel.swift */,
 			);
-			path = Scanning;
+			path = "Product Complaint Submission";
 			sourceTree = "<group>";
 		};
 		FBF9404F29559CCE00A8EF10 /* Home */ = {
@@ -532,7 +533,7 @@
 				FBF9405129559CDB00A8EF10 /* Expert */,
 				FBF9405029559CD500A8EF10 /* Donation */,
 				FBF9404F29559CCE00A8EF10 /* Home */,
-				FBF9404E29559CC000A8EF10 /* Scanning */,
+				FBF9404E29559CC000A8EF10 /* Product Complaint Submission */,
 				FBF9404D29559CB600A8EF10 /* About Us */,
 			);
 			path = Domain;
@@ -551,6 +552,7 @@
 		FBF940822955BAD500A8EF10 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				FBF940802955B3A800A8EF10 /* FormItemView.swift */,
 				FB0FAFC529670D27008175A2 /* Header */,
 				FB939345295F180000D491CE /* Spacing */,
 				FB939340295F086D00D491CE /* Shapes */,
@@ -597,6 +599,7 @@
 				FBF9409829560B6100A8EF10 /* LinearGradient+Extension.swift */,
 				FBF9409A29560C3C00A8EF10 /* Gradient+Extension.swift */,
 				FB94BA80295F51CC00944E37 /* URLRequest+Extension.swift */,
+				FB907B82296B7A00002CBB23 /* Optional+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -828,6 +831,7 @@
 				FBF940842955BAF900A8EF10 /* HorizontalDivider.swift in Sources */,
 				FBF940862955BB9000A8EF10 /* DesignSystem+Color.swift in Sources */,
 				FB939339295EBE7A00D491CE /* TabBarMainItemView.swift in Sources */,
+				FB907B83296B7A00002CBB23 /* Optional+Extension.swift in Sources */,
 				FB0FAFA829659F56008175A2 /* LoginViewModel.swift in Sources */,
 				FB0FAFB42966A6E9008175A2 /* VerifyRegistrationUseCase.swift in Sources */,
 				FBF940792955AD0F00A8EF10 /* DonationView.swift in Sources */,
