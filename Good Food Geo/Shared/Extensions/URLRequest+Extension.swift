@@ -41,4 +41,17 @@ extension URLRequest {
             rawValue
         }
     }
+
+    // MARK: - Authorisation
+    mutating func makeAuthorized(forTokenType tokenType: TokenType, using token: String) {
+        setValue("\(tokenType.title) \(token)", forHTTPHeaderField: "Authorization")
+    }
+
+    enum TokenType: String {
+        case bearer
+
+        var title: String {
+            rawValue.uppercasedFirstLetter()
+        }
+    }
 }

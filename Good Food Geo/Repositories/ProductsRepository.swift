@@ -14,11 +14,16 @@ protocol ProductsRepository {
 
 struct DefaultProductsRepository: ProductsRepository {
     private let networkLayer: NetworkLayer = DefaultNetworkLayer()
+    private let authenticationTokenStorage: AuthenticationTokenStorage = DefaultAuthenticationTokenStorage.shared
 
     func submitProductComplaint(_ productComplaint: ProductComplaint) async -> Result<ProductComplaintSubmissionEntity, AppError> {
-        let url = EndPoint.products.fullUrl
-        var request = URLRequest(url: url)
+        guard let token = authenticationTokenStorage.read() else {
+            return .failure(.sessionNotFound)
+        }
+
+        var request = URLRequest(url: EndPoint.products.fullUrl)
         request.setMethod(.post)
+        request.makeAuthorized(forTokenType: .bearer, using: token)
 
         let parameters = [
             "picture_name": productComplaint.product.title,

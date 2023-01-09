@@ -85,12 +85,10 @@ struct DefaultRepository: Repository {
             return .failure(.sessionNotFound)
         }
 
-        let tokenType = "Bearer"
-
         var request = URLRequest(url: EndPoint.userInformation.fullUrl)
         request.setMethod(.get)
         request.setContentType(.applicationJson)
-        request.setValue("\(tokenType) \(token)", forHTTPHeaderField: "Authorization")
+        request.makeAuthorized(forTokenType: .bearer, using: token)
 
         let result = await networkLayer.execute(UserInformationDTO.self, using: request)
 
