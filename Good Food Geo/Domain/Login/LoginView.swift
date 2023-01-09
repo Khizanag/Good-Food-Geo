@@ -10,14 +10,12 @@ import SwiftUI
 struct LoginView: View {
     @ObservedObject var viewModel: LoginViewModel
 
-    private let repository: Repository = DefaultRepository()
+    @AppStorage(AppStorageKey.authenticationToken()) private var authenticationToken: String?
 
     @State private var email = ""
     @State private var password = ""
 
     @State var alertData = AlertData()
-
-    @AppStorage(AppStorageKey.authenticationToken()) private var authenticationToken: String?
 
     // MARK: - Body
     var body: some View {
@@ -34,7 +32,6 @@ struct LoginView: View {
                     .foregroundColor(DesignSystem.Color.secondaryText())
             }
             .padding()
-
 
             VStack(alignment: .leading, spacing: 8) {
                 FormItemView(model: FormItemModel(
@@ -68,7 +65,11 @@ struct LoginView: View {
             PrimaryButton(action: {
                 viewModel.login(email: email, password: password)
             }, label: {
-                Text(Localization.login())
+                if !viewModel.isLoading {
+                    Text(Localization.login())
+                } else {
+                    ProgressView()
+                }
             })
 
             Text(Localization.loginWithSocialNetworksTitle())
@@ -98,20 +99,9 @@ struct LoginView: View {
         .navigationDestination(isPresented: $viewModel.shouldNavigateInto) {
             MainTabBarView()
         }
-        .onAppear {
-            email = ""
-            password = ""
-        }
-        .overlay {
-            Color.clear
-                .overlay {
-                    if viewModel.isLoading {
-                        ProgressView()
-                            .scaleEffect(2)
-                    }
-                }
-        }
+        .onAppear(perform: cleanUp)
         .allowsHitTesting(!viewModel.isLoading)
+        .onReceive(viewModel.errorPublisher, perform: showError)
         .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
             Button(Localization.gotIt(), role: .cancel) { }
         })
@@ -122,7 +112,17 @@ struct LoginView: View {
         CompanyButton(company: Company.facebook, action: viewModel.loginUsingFacebook)
     }
 
+    // MARK: - Functions
+    private func cleanUp() {
+        email = ""
+        password = ""
+    }
+
     // MARK: - Message Displayer
+    private func showError(_ error: AppError) {
+        showMessage(error.description)
+    }
+
     private func showMessage(_ message: String, description: String? = nil) {
         alertData.title = message
         if let description {

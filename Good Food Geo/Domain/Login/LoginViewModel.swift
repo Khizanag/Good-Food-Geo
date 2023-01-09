@@ -37,13 +37,18 @@ final class LoginViewModel: DefaultViewModel {
 
 
         Task {
+            isLoading = true
+
             let result = await loginUseCase.execute(email: email, password: password)
+
             switch result {
             case .success:
                 shouldNavigateInto = true
             case .failure(let error):
                 showError(error)
             }
+
+            isLoading = false
         }
     }
 
