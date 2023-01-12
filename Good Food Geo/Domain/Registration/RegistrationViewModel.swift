@@ -36,8 +36,8 @@ final class RegistrationViewModel: DefaultViewModel {
 
             switch result {
             case .success(let entity):
+                showError(.descriptive(entity.message))
                 registeredEmail = entity.email
-
                 isVerificationCodeSent = true
             case .failure(let error):
                 showError(error)
@@ -59,7 +59,7 @@ final class RegistrationViewModel: DefaultViewModel {
 
             switch result {
             case .success(let entity):
-                // showMessage entity.message
+                showError(.descriptive(entity.message))
                 isRegistrationCompleted = true
             case .failure(let error):
                 showError(error)
