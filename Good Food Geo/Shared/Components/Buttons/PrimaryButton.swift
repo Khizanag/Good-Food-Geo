@@ -8,15 +8,27 @@
 import SwiftUI
 
 struct PrimaryButton<Label>: View where Label: View {
+    @Binding var isLoading: Bool
     let action: () -> Void
     @ViewBuilder var label: () -> Label
 
+    init(action: @escaping () -> Void, label: @escaping () -> Label, isLoading: Binding<Bool> = .constant(false)) {
+        self._isLoading = isLoading
+        self.action = action
+        self.label = label
+    }
+
+    // MARK: - Body
     var body: some View {
         Button(
             action: action,
             label: {
-                label()
-                    .foregroundColor(DesignSystem.Color.buttonTitle())
+                if isLoading {
+                    ProgressView()
+                } else {
+                    label()
+                        .foregroundColor(DesignSystem.Color.buttonTitle())
+                }
             }
         )
         .padding()
