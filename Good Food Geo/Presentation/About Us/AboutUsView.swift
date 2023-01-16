@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import MessageUI
 
 struct AboutUsView: View {
     // MARK: - Properties
@@ -37,9 +36,7 @@ struct AboutUsView: View {
                 SubSectionView.Model(title: Localization.contactUs(), content: {
                     AnyView(
                         VStack(alignment: .leading) {
-                            HStack {
-                                Text("\(Localization.email()): GFGAPK@GMAIL.COM")
-                            }
+                            Text("\(Localization.email()): GFGAPK@GMAIL.COM")
 
                             HStack {
                                 Text("\(Localization.phoneNumber()):")

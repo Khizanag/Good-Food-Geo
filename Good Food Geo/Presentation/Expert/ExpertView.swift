@@ -16,89 +16,30 @@ struct ExpertView: View {
     private let headerViewModel = HeaderViewModel()
 
     var body: some View {
-        ZStack {
-            LinearGradient.background
-                .edgesIgnoringSafeArea([.top])
+        StaticPage(
+            section: .init(title: "კონსულტაცია", description: "სურსათის უვნებლობის ექსპერტის დახმარების სერვისი"),
+            subSections: [
+                .init(
+                    title: Localization.expertAboutServiceSectionTitle(),
+                    content: {
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("საქართველოს ტრენინგებისა და განვითარების ინსტიტუტი (TDIG)  გთავაზობთ ეტიკეტირების სფეროში ექსპერტის საკონსულტაციო მომსახურეობის სერვისს.")
 
-            VStack {
-                VStack {
-                    HeaderView(viewModel: headerViewModel, fullName: userInformationStorage.read()?.fullName)
-                        .onReceive(headerViewModel.eventPublisher) { event in
-                            switch event {
-                            case .shouldLogout:
-                                withAnimation {
-                                    dismiss()
-                                }
-                            }
+                            Text("დეტალური ინფორმაციისთვის, დაუკავშირდით ექსპერტს:")
                         }
-
-                    HStack(spacing: 8) {
-                        ZStack {
-                            Circle()
-                                .fill(Color(hex: 0xE9E9E9))
-                                .frame(width: 72, height: 72)
-
-                            DesignSystem.Image.person()
-                                .resizable()
-                                .foregroundColor(.secondary)
-                                .frame(width: 32, height: 32)
-                        }
-
-                        VStack(alignment: .leading) {
-                            Text(expert.fullName)
-                                .foregroundColor(.white)
-
-                            Text(expert.about)
-                                .foregroundColor(.white)
-                        }
-
-                        Spacer()
+                        .foregroundColor(.gray)
+                        .toAnyView()
                     }
-                    .padding(.vertical)
-                }
-                .padding(.horizontal, 32)
-
-                ZStack {
-                    Color.white
-                        .cornerRadius(44, corners: [.topLeft, .topRight])
-                        .ignoresSafeArea()
-
-                    VStack {
-                        SubSectionView(model: .init(title: Localization.expertAboutServiceSectionTitle(), content: {
-                            Text(expert.serviceInfo)
-                                .foregroundColor(.secondary)
-                        }))
-
-                        Spacer()
-
-                        HStack {
-                            SubSectionView(model: .init(title: Localization.callExpertSectionTitle(), content: { }))
-
-                            if let url = URL(string: "tel://\(expert.phoneNumber)") {
-                                Spacer()
-
-                                Button(action: {
-                                    UIApplication.shared.open(url)
-                                }, label: {
-                                    DesignSystem.Image.phone()
-                                })
-                                .foregroundColor(.white)
-                                .frame(width: 100, height: 44)
-                                .background(
-                                    LinearGradient(gradient: .primary, startPoint: .leading, endPoint: .trailing)
-                                )
-                                .cornerRadius(22, corners: [.topLeft, .bottomLeft])
-                                .offset(x: 36)
-                            }
-                        }
-
-                        Spacer()
+                ),
+                .init(
+                    title: "მისწერე ექსპერტს",
+                    content: {
+                        Text("\(Localization.email()): GFGAPK@GMAIL.COM")
+                            .toAnyView()
                     }
-                    .padding(.top, 32)
-                    .padding(.horizontal, 32)
-                }
-            }
-        }
+                )
+            ]
+        )
     }
 }
 
