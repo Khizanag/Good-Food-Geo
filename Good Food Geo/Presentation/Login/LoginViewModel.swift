@@ -78,32 +78,9 @@ final class LoginViewModel: DefaultViewModel {
                     self.isFacebookButtonLoading = false
                     return
                 }
-                Task {
-                    let result = await self.authenticationRepository.authenticateUsingFacebook(with: token)
 
-                    switch result {
-                    case .success(let entity):
-                        if let token = entity.token {
-                            self.authenticationTokenStorage.write(token)
-                            DispatchQueue.main.async {
-                                self.isFacebookButtonLoading = false
-                                self.shouldNavigateToHome = true
-                            }
-                        } else {
-                            // Is not registered, needs registration
-                            self.registrationName = entity.name
-                            self.registrationEmail = entity.email
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                self.isFacebookButtonLoading = false
-                                self.shouldNavigateToRegistration = true
-                            }
-                        }
-                    case .failure(let error):
-                        DispatchQueue.main.async {
-                            self.isFacebookButtonLoading = false
-                        }
-                        self.showError(error)
-                    }
+                Task {
+                    await self.handleFacebookAuthentication(using: token)
                 }
             case .cancelled:
                 self.isFacebookButtonLoading = false
@@ -117,5 +94,33 @@ final class LoginViewModel: DefaultViewModel {
 
     func loginUsingGoogle() {
         showError(.descriptive("Login using Google currently is not supported"))
+    }
+
+    private func handleFacebookAuthentication(using token: String) async {
+        let result = await self.authenticationRepository.authenticateUsingFacebook(with: token)
+
+        switch result {
+        case .success(let entity):
+            if let token = entity.token {
+                self.authenticationTokenStorage.write(token)
+                DispatchQueue.main.async {
+                    self.isFacebookButtonLoading = false
+                    self.shouldNavigateToHome = true
+                }
+            } else {
+                // Is not registered, needs registration
+                self.registrationName = entity.name
+                self.registrationEmail = entity.email
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.isFacebookButtonLoading = false
+                    self.shouldNavigateToRegistration = true
+                }
+            }
+        case .failure(let error):
+            DispatchQueue.main.async {
+                self.isFacebookButtonLoading = false
+            }
+            self.showError(error)
+        }
     }
 }
