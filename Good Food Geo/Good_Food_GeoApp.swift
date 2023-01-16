@@ -14,12 +14,15 @@ struct Good_Food_GeoApp: App {
         WindowGroup {
             NavigationStack {
                 LaunchScreen(viewModel: LaunchScreenViewModel())
+                    .onAppear {
+                        ApplicationDelegate.shared.application(UIApplication.shared, didFinishLaunchingWithOptions: nil)
+                    }
                     .onOpenURL { url in
                         ApplicationDelegate.shared.application(
                             UIApplication.shared,
                             open: url,
                             sourceApplication: nil,
-                            annotation: UIApplication.OpenURLOptionsKey.annotation
+                            annotation: [UIApplication.OpenURLOptionsKey.annotation] // TODO: remove array brackets
                         )
                     }
             }

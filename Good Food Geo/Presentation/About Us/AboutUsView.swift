@@ -6,13 +6,15 @@
 //
 
 import SwiftUI
+import MessageUI
 
 struct AboutUsView: View {
     // MARK: - Properties
     private let phoneNumber = "+995598935050"
     private let facebookPageUrl = "https://www.fcebook.com/TDIG.ge"
-    private let email = "tdig.org@gmail.com"
+    private let email = "gfgapk@gmail.com"
 
+    @State private var isMailViewPresented = false
     @State private var alertData = AlertData()
 
     // MARK: - Body
@@ -35,7 +37,9 @@ struct AboutUsView: View {
                 SubSectionView.Model(title: Localization.contactUs(), content: {
                     AnyView(
                         VStack(alignment: .leading) {
-                            Text("\(Localization.email()): \(email.uppercased())")
+                            HStack {
+                                Text("\(Localization.email()): GFGAPK@GMAIL.COM")
+                            }
 
                             HStack {
                                 Text("\(Localization.phoneNumber()):")
@@ -49,10 +53,13 @@ struct AboutUsView: View {
         .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
             Button(Localization.gotIt(), role: .cancel) { }
         })
+        .sheet(isPresented: $isMailViewPresented) {
+
+        }
     }
 
     // MARK: - Functions
-    private func goToFacebookPage() {
+    @MainActor private func goToFacebookPage() {
         guard let url = URL(string: facebookPageUrl) else {
             showMessage(Localization.facebookUrlIsInvalid())
             return

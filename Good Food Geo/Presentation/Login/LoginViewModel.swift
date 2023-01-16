@@ -35,12 +35,10 @@ final class LoginViewModel: DefaultViewModel {
             return
         }
 
-
         Task {
             DispatchQueue.main.async { [weak self] in
                 self?.isLoading = true
             }
-
 
             let result = await loginUseCase.execute(email: email, password: password)
 
@@ -62,17 +60,22 @@ final class LoginViewModel: DefaultViewModel {
 
     func loginUsingFacebook() {
         showError(.descriptive("Login using Facebook currently is not supported"))
-//            print("Facebook login did tap")
-//        loginManager.logIn(permissions: [.publicProfile, .email]) { result in }
-            //                print("Login using fb did finish")
-            //                switch result {
-            //                case .success(let grantedPermissions, let declinedPermissions, let token):
-            //                    print("FB Login success: token", token?.tokenString ?? "nil")
-            //                case .cancelled: print("Facebook login canceled")
-            //                case .failed(let error):
-            //                    print(error.localizedDescription)
-            //                }
-            //            }
+        print("Facebook login did tap")
+        loginManager.logIn(permissions: [.publicProfile, .email]) { [weak self] result in
+            guard let self else { return }
+            print("Login using fb did finish")
+
+            switch result {
+            case .success(_, _, let token):
+//                guard let token?.toke
+                print("FB Login success: token", token?.tokenString ?? "nil")
+            case .cancelled:
+                self.showError(.descriptive("Facebook login canceled"))
+            case .failed(let error):
+                self.showError(.descriptive("Facebook login failed"))
+                print(error.localizedDescription)
+            }
+        }
     }
 
     func loginUsingGoogle() {
