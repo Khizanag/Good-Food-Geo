@@ -12,18 +12,34 @@ struct ProductComplaintSubmissionView: View {
 
     @ObservedObject var viewModel: ViewModel
 
+    private static let imagePlaceholderTexts = [
+        "გადაუღე ნათლად პროდუქტის ვადას",
+        "გადაუღე ნათლად პროდუქტის წინა მხარეს",
+        "გადაუღე ნათლად პროდუქტის უკანა მხარეს",
+        "პროდუქტის მარცხენა ან ზედა მხარე",
+        "პროდუქტის ნათლად მარჯვენა ან ქვედა მხარე"
+    ]
+
     private struct SelectableImageInfo {
         var image: UIImage? = nil
-        var isImagePickerPresented: Bool = false
-        var isPhotoPickerPresented: Bool = false
-        var isConfirmationDialogPresented: Bool = false
+        var isImagePickerPresented = false
+        var isPhotoPickerPresented = false
+        var isConfirmationDialogPresented = false
+        let placeholderText: String
 
         var isSelected: Bool {
             image.isNotNil
         }
+
+        mutating func reset() {
+            image = nil
+            isImagePickerPresented = false
+            isPhotoPickerPresented = false
+            isConfirmationDialogPresented = false
+        }
     }
 
-    @State private var selectableImages = [SelectableImageInfo](repeating: .init(), count: 3)
+    @State private var selectableImages = imagePlaceholderTexts.map { SelectableImageInfo(placeholderText: $0) }
 
     @State private var productTitle = ""
     @State private var fullName = ""
@@ -35,6 +51,7 @@ struct ProductComplaintSubmissionView: View {
 
     @State private var alertData = AlertData()
 
+    // MARK: - Body
     var body: some View {
         ScrollView {
             VStack {
@@ -45,11 +62,16 @@ struct ProductComplaintSubmissionView: View {
 
                 FormItemView(model: FormItemModel(icon: DesignSystem.Image.photo(), placeholder: "Product Title..."), text: $productTitle)
 
+                selectedImageComponent(for: 0)
 
                 HStack {
-                    ForEach(selectableImages.indices, id: \.self) { index in
-                        selectedImageComponent(for: index)
-                    }
+                    selectedImageComponent(for: 1)
+                    selectedImageComponent(for: 2)
+                }
+
+                HStack {
+                    selectedImageComponent(for: 3)
+                    selectedImageComponent(for: 4)
                 }
 
                 VStack {
@@ -76,7 +98,7 @@ struct ProductComplaintSubmissionView: View {
             }
             .padding([.horizontal], 32)
 
-            VSpacing(MainTabBarConstant.height)
+            VSpacing(MainTabBarConstant.height - 16)
         }
         .onReceive(viewModel.errorPublisher, perform: showError)
         .onReceive(viewModel.eventPublisher) { event in
@@ -125,12 +147,12 @@ struct ProductComplaintSubmissionView: View {
                 .resizable()
                 .toAnyView()
         } else {
-            return imagePlaceholder
+            return getImagePlaceholder(for: index)
                 .toAnyView()
         }
     }
 
-    private var imagePlaceholder: some View {
+    private func getImagePlaceholder(for index: Int) -> some View {
         ZStack {
             Color(hex: 0xD9D9D9)
 
@@ -141,12 +163,12 @@ struct ProductComplaintSubmissionView: View {
                     .foregroundColor(Color(hex: 0x898484))
                     .frame(width: 32, height: 32)
 
-                Text("Touch to choose the image")
+                Text(selectableImages[index].placeholderText)
                     .foregroundColor(Color(hex: 0x898484))
                     .font(.caption2)
                     .multilineTextAlignment(.center)
             }
-            .padding()
+            .padding(2)
             .offset(y: 8)
         }
         .cornerRadius(15)
@@ -189,7 +211,9 @@ struct ProductComplaintSubmissionView: View {
 
     // MARK: - Functions
     private func cleanUp() {
-        selectableImages = [SelectableImageInfo](repeating: .init(), count: 3)
+        selectableImages.indices.forEach { index in
+            selectableImages[index].reset()
+        }
 
         productTitle = ""
         fullName = ""
