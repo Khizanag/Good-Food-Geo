@@ -19,7 +19,7 @@ struct FormItemView: View {
                     .scaledToFit()
                     .padding(8)
                     .foregroundColor(DesignSystem.Color.primary())
-                    .frame(width: 32)
+                    .frame(width: 32, height: 32)
 
                 textField
                     .font(.caption)
