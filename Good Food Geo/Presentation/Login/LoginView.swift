@@ -96,8 +96,15 @@ struct LoginView: View {
         }
         .padding([.horizontal, .bottom], 32)
         .navigationBarBackButtonHidden(true)
-        .navigationDestination(isPresented: $viewModel.shouldNavigateInto) {
+        .navigationDestination(isPresented: $viewModel.shouldNavigateToHome) {
             MainTabBarView()
+        }
+        .navigationDestination(isPresented: $viewModel.shouldNavigateToRegistration) {
+            RegistrationView(
+                viewModel: RegistrationViewModel(),
+                email: viewModel.registrationEmail ?? "",
+                fullName: viewModel.registrationName ?? ""
+            )
         }
         .onAppear(perform: cleanUp)
         .allowsHitTesting(!viewModel.isLoading)

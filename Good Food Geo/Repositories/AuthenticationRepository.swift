@@ -2,72 +2,49 @@
 //  AuthenticationRepository.swift
 //  Good Food Geo
 //
-//  Created by Giga Khizanishvili on 31.12.22.
+//  Created by Giga Khizanishvili on 17.01.23.
 //
 
 import Foundation
 
-protocol Repository {
-    func login(email: String, password: String) async -> LoginResponse?
-    func register(email: String, name: String, password: String, phoneNumber: String) async -> RegistrationResponse?
-    func refreshToken(_ token: String) async
-    func authenticateViaGoogle(token: String) async
-    func authenticateViaFacebook(token: String) async
-    func verifyRegistration(email: String, code: String) async
+protocol AuthenticationRepository {
+    func authenticateUsingFacebook(with token: String) async -> Result<SocialNetworkAuthenticationResponse, AppError>
+    func authenticateUsingGoogle(with token: String) async -> Result<SocialNetworkAuthenticationResponse, AppError>
 }
 
-struct DefaultAuthenticationRepository: Repository {
+struct DefaultAuthenticationRepository: AuthenticationRepository {
     private let networkLayer: NetworkLayer = DefaultNetworkLayer()
 
-    func login(email: String, password: String) async -> LoginResponse? {
-        var request = URLRequest(url: EndPoint.login.fullUrl)
+    func authenticateUsingFacebook(with token: String) async -> Result<SocialNetworkAuthenticationResponse, AppError> {
+        await authenticate(using: .facebook, with: token)
+    }
+
+    func authenticateUsingGoogle(with token: String) async -> Result<SocialNetworkAuthenticationResponse, AppError> {
+        await authenticate(using: .google, with: token)
+    }
+
+    private func authenticate(using socialNetwork: AuthenticatingSocialNetwork, with token: String) async -> Result<SocialNetworkAuthenticationResponse, AppError> {
+        var request = URLRequest(url: socialNetwork.endpointUrl)
         request.setMethod(.post)
         request.setContentType(.applicationJson)
         request.setBody([
-            "email": email,
-            "password": password
+            "auth_token": token
         ])
 
-        return await networkLayer.execute(LoginResponse.self, using: request)
+        return await networkLayer.execute(SocialNetworkAuthenticationResponse.self, using: request)
     }
+}
 
-    func register(email: String, name: String, password: String, phoneNumber: String) async -> RegistrationResponse? {
-        var request = URLRequest(url: EndPoint.login.fullUrl)
-        request.setMethod(.post)
-        request.setContentType(.applicationJson)
-        request.setBody([
-            "email": email,
-            "password": password,
-            "name": name,
-            "phone_number": phoneNumber
-        ])
+enum AuthenticatingSocialNetwork {
+    case facebook
+    case google
 
-        return await networkLayer.execute(RegistrationResponse.self, using: request)
-    }
-
-    func refreshToken(_ token: String) async {
-        // TODO
-    }
-
-    func authenticateViaGoogle(token: String) async {
-        // TODO
-    }
-
-    func authenticateViaFacebook(token: String) async {
-        // TODO
-    }
-
-    func verifyRegistration(email: String, code: String) async {
-//        guard let url = EndPoint.verifyRegistration.fullUrl else { return nil }
-//
-//        var request = URLRequest(url: url)
-//        request.setMethod(.get)
-//        request.setContentType(.applicationJson)
-//        request.setBody([
-//            "email": email,
-//            "password": password
-//        ])
-//
-//        return await networkLayer.execute(LoginResponse.self, using: request)
+    var endpointUrl: URL {
+        switch self {
+        case .facebook:
+            return EndPoint.facebookAuthentication.fullUrl
+        case .google:
+            return EndPoint.googleAuthentication.fullUrl
+        }
     }
 }

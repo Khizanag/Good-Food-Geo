@@ -50,6 +50,53 @@
             endingLineNumber = "35"
             landmarkName = "submitProductComplaint(_:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3DE8107C-E5A5-4BD4-8681-2FF6D163BE55 - 612fedd8a4f8e1c5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for Good_Food_Geo.DefaultProductsRepository.submitProductComplaint(Good_Food_Geo.ProductComplaint) async -&gt; Swift.Result&lt;Good_Food_Geo.MessageEntity, Good_Food_Geo.AppError&gt;"
+                  moduleName = "Good Food Geo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gigakhizanishvili/GitHub/Good%20Food%20Geo/Good%20Food%20Geo/Repositories/ProductsRepository.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "1100">
+               </Location>
+               <Location
+                  uuid = "3DE8107C-E5A5-4BD4-8681-2FF6D163BE55 - 97e57ff7ae7b175b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Int, __C.UIImage) -&gt; Swift.Optional&lt;Good_Food_Geo.RequestMedia&gt; in Good_Food_Geo.DefaultProductsRepository.submitProductComplaint(Good_Food_Geo.ProductComplaint) async -&gt; Swift.Result&lt;Good_Food_Geo.MessageEntity, Good_Food_Geo.AppError&gt;"
+                  moduleName = "Good Food Geo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gigakhizanishvili/GitHub/Good%20Food%20Geo/Good%20Food%20Geo/Repositories/ProductsRepository.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "76">
+               </Location>
+               <Location
+                  uuid = "3DE8107C-E5A5-4BD4-8681-2FF6D163BE55 - 97e57ff7ae7b14b8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Int, __C.UIImage) -&gt; Swift.Optional&lt;Good_Food_Geo.RequestMedia&gt; in Good_Food_Geo.DefaultProductsRepository.submitProductComplaint(Good_Food_Geo.ProductComplaint) async -&gt; Swift.Result&lt;Good_Food_Geo.MessageEntity, Good_Food_Geo.AppError&gt;"
+                  moduleName = "Good Food Geo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gigakhizanishvili/GitHub/Good%20Food%20Geo/Good%20Food%20Geo/Repositories/ProductsRepository.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "632">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

@@ -10,8 +10,8 @@ import SwiftUI
 struct RegistrationView: View {
     @ObservedObject var viewModel: RegistrationViewModel
 
-    @State private var fullName = ""
-    @State private var email = ""
+    @State private var fullName: String
+    @State private var email: String
     @State private var password = ""
     @State private var confirmPassword = ""
     @State private var phoneNumber = ""
@@ -21,13 +21,24 @@ struct RegistrationView: View {
 
     @State var alertData = AlertData()
 
+    // MARK: - Init
+    init(viewModel: RegistrationViewModel, email: String = "", fullName: String = "") {
+        self.viewModel = viewModel
+        self.email = email
+        self.fullName = fullName
+    }
+
     // MARK: - Body
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
                 VStack(spacing: 12) {
-                    CompanyButton(company: Company.facebook, action: viewModel.registerUsingFacebook)
-                    CompanyButton(company: Company.google, action: viewModel.registerUsingGoogle)
+                    CompanyButton(company: Company.facebook, action: {
+                        viewModel.registerUsingFacebook()
+                    })
+                    CompanyButton(company: Company.google, action: {
+                        viewModel.registerUsingGoogle()
+                    })
                 }
 
                 Text(Localization.signUpSubtitle())
