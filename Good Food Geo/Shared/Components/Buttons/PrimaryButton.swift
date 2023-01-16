@@ -31,6 +31,7 @@ struct PrimaryButton<Label>: View where Label: View {
                 }
             }
         )
+        .disabled(isLoading)
         .padding()
         .frame(height: 50)
         .frame(maxWidth: .infinity)

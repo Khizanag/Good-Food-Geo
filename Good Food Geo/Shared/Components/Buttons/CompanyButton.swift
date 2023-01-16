@@ -12,34 +12,40 @@ struct CompanyButton: View {
     let action: () -> Void
     let title: String?
     let foregroundColor: Color?
+    @Binding var isLoading: Bool
 
     // MARK: - Init
-    init(company: CompanyModel, action: @escaping () -> Void, title: String? = nil, foregroundColor: Color? = nil) {
+    init(company: CompanyModel, action: @escaping () -> Void, title: String? = nil, foregroundColor: Color? = nil, isLoading: Binding<Bool> = .constant(false)) {
         self.company = company
         self.action = action
         self.title = title
         self.foregroundColor = foregroundColor
+        self._isLoading = isLoading
     }
 
     // MARK: - Body
     var body: some View {
         Button(action: action, label: {
-            ZStack {
-                HStack {
-                    company.icon
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 32, height: 32)
+            if isLoading {
+                ProgressView()
+            } else {
+                ZStack {
+                    HStack {
+                        company.icon
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 32, height: 32)
 
-                    Spacer()
+                        Spacer()
+                    }
+
+                    Text(title ?? company.name)
+                        .multilineTextAlignment(.center)
+                        .frame(maxWidth: .infinity)
+                        .foregroundColor(foregroundColor ?? .black) // FIXME: LOL
                 }
-
-                Text(title ?? company.name)
-                    .multilineTextAlignment(.center)
-                    .frame(maxWidth: .infinity)
-                    .foregroundColor(foregroundColor ?? .black) // FIXME: LOL
+                .padding(.horizontal)
             }
-            .padding(.horizontal)
         })
         .frame(height: 50)
         .frame(maxWidth: .infinity)

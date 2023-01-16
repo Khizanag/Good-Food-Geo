@@ -65,12 +65,8 @@ struct LoginView: View {
             PrimaryButton(action: {
                 viewModel.login(email: email, password: password)
             }, label: {
-                if !viewModel.isLoading {
-                    Text(Localization.login())
-                } else {
-                    ProgressView()
-                }
-            })
+                Text(Localization.login())
+            }, isLoading: $viewModel.isLoading)
 
             Text(Localization.loginWithSocialNetworksTitle())
                 .font(.footnote)
@@ -116,7 +112,7 @@ struct LoginView: View {
 
     // MARK: - Components
     private var facebookButton: some View {
-        CompanyButton(company: Company.facebook, action: viewModel.loginUsingFacebook)
+        CompanyButton(company: Company.facebook, action: viewModel.loginUsingFacebook, isLoading: $viewModel.isFacebookButtonLoading)
     }
 
     // MARK: - Functions

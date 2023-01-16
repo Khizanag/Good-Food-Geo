@@ -86,6 +86,7 @@ final class LoginViewModel: DefaultViewModel {
                         if let token = entity.token {
                             self.authenticationTokenStorage.write(token)
                             DispatchQueue.main.async {
+                                self.isFacebookButtonLoading = false
                                 self.shouldNavigateToHome = true
                             }
                         } else {
@@ -93,22 +94,23 @@ final class LoginViewModel: DefaultViewModel {
                             self.registrationName = entity.name
                             self.registrationEmail = entity.email
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                self.isFacebookButtonLoading = false
                                 self.shouldNavigateToRegistration = true
                             }
                         }
                     case .failure(let error):
+                        DispatchQueue.main.async {
+                            self.isFacebookButtonLoading = false
+                        }
                         self.showError(error)
-                    }
-
-                    DispatchQueue.main.async {
-                        self.isFacebookButtonLoading = false
                     }
                 }
             case .cancelled:
+                self.isFacebookButtonLoading = false
                 self.showError(.descriptive("Facebook login canceled"))
             case .failed(let error):
-                self.showError(.descriptive("Facebook login failed"))
-                print(error.localizedDescription)
+                self.isFacebookButtonLoading = false
+                self.showError(.descriptive("Facebook login failed, \(error.localizedDescription)"))
             }
         }
     }
