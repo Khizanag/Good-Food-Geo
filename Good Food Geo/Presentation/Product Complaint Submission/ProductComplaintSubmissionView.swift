@@ -191,7 +191,7 @@ struct ProductComplaintSubmissionView: View {
             label: {
                 if !viewModel.isLoading {
                     Label(title: {
-                        Text("Submit your information")
+                        Text("გაგზავნა")
                     }, icon: {
                         DesignSystem.Image.submit()
                             .imageScale(.large)

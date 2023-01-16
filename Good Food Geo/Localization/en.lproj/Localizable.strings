@@ -24,7 +24,7 @@
 
 // MARK: - Login
 "login" = "Login";
-"loginTitle" = "Login and Scan Your Product";
+"loginTitle" = "Login and Scan Product";
 "loginSubtitle" = "By continuing, you accept our Terms of Use and Privacy Statement";
 "loginWithSocialNetworksTitle" = "Or, Login with..";
 "areYouNotRegistered" = "New to Good Food Geo?";
