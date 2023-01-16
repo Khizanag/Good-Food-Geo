@@ -10,8 +10,7 @@ import SwiftUI
 struct AboutUsView: View {
     // MARK: - Properties
     private let phoneNumber = "+995598935050"
-    private let facebookPageUrl = "https://www.fcebook.com/TDIG.ge"
-    private let email = "gfgapk@gmail.com"
+    private let facebookPageUrl = "https://www.facebook.com/TDIG.ge"
 
     @State private var alertData = AlertData()
 
