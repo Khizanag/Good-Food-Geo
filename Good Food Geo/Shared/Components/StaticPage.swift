@@ -41,11 +41,15 @@ struct StaticPage: View {
 
                 ZStack {
                     Color.white
-                        .cornerRadius(44, corners: [.topLeft, .topRight])
+                        .cornerRadius(32, corners: [.topLeft, .topRight])
                         .ignoresSafeArea()
 
                     VStack {
                         List {
+                            VSpacing(8)
+                                .listRowSeparator(.hidden)
+                                .listRowBackground(Color.clear)
+
                             ForEach(subSections, id: \.title) { model in
                                 SubSectionView(model: model)
                             }
@@ -56,9 +60,9 @@ struct StaticPage: View {
                         .listStyle(.plain)
                         .scrollIndicators(.hidden)
                     }
-                    .padding(.top, 32)
                     .padding(.horizontal, 32)
                 }
+                .clipped()
             }
         }
     }
