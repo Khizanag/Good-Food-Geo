@@ -28,7 +28,6 @@ struct DefaultAuthenticationTokenStorage: AuthenticationTokenStorage {
 
     func write(_ token: String) {
         value = token
-        print("tokens new value is written")
     }
 
     func delete() {
