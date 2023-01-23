@@ -32,17 +32,17 @@ final class ProductComplaintSubmissionViewModel: DefaultViewModel {
             .allSatisfy({ !$0.isEmpty })
 
         guard allInputIsFilled else {
-            showError(.descriptive("All fields should be filled to submit the information"))
+            showError(.descriptive("ყველა ველი უნდა იყოს შევსებული"))
             return
         }
 
         guard productComplaint.areTermsAgreed else {
-            showError(.descriptive("You should accept our terms of Use and Privacy Statement to submit the information"))
+            showError(.descriptive("გაგზავნამდე, აუცილებელია, რომ დაეთანხმოთ წესებსა და პირობებს"))
             return
         }
 
         guard productComplaint.product.images.count == numRequiredImages else {
-            showError(.descriptive("Please select image all images to submit the information"))
+            showError(.descriptive("გთხოვთ, ატვირთეთ ყველა მოთხოვნილი ფოტო"))
             return
         }
 

@@ -19,15 +19,15 @@ final class RegistrationViewModel: DefaultViewModel {
     // MARK: - Functions
     func register(with params: RegistrationParams) {
         guard params.userAgreesTermsAndConditions else {
-            showError(.descriptive("To continue registration you should agree with our terms and conditions"))
+            showError(.descriptive("რეგისტრაციის პროცესის გაგრძელებისათვის, აუცილებელია, რომ დაეთანხმოთ წესებსა და პირობებს"))
             return
         }
         guard params.password == params.repeatedPassword else {
-            showError(.descriptive("Passwords does not match!"))
+            showError(.descriptive("პაროლები არ ემთხვევა ერთმანეთს"))
             return
         }
         guard [params.fullName, params.password, params.email, params.phoneNumber].allSatisfy({ !$0.isEmpty }) else {
-            showError(.descriptive("Fields should not be empty"))
+            showError(.descriptive("გთხოვთ, შეავსოთ ყველა ველი"))
             return
         }
 

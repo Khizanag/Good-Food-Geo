@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RegistrationView: View {
-    private enum Field: Arrangable {
+    private enum Field: Arrangeable {
         case fullName
         case email
         case password
@@ -33,6 +33,8 @@ struct RegistrationView: View {
     @State private var verificationCode = ""
 
     @FocusState private var focusedField: Field?
+
+    @State private var isTermsAndConditionsSheetPresented = false
 
     @State var alertData = AlertData()
 
@@ -63,11 +65,17 @@ struct RegistrationView: View {
                 form
 
                 Toggle(isOn: $userAgreesTerms) {
-                    Text(Localization.agreeNotifications())
+                    Text(#"დიახ, ვეთანხმები გამოყენების "წესებსა და პირობებს""#)
                         .font(.caption)
                         .frame(maxWidth: .infinity)
-                        .foregroundColor(DesignSystem.Color.secondaryText())
+                        .foregroundColor(.accentColor)
                         .multilineTextAlignment(.trailing)
+                        .onTapGesture {
+                            isTermsAndConditionsSheetPresented = true
+                        }
+                }
+                .sheet(isPresented: $isTermsAndConditionsSheetPresented) {
+                    RegistrationTermsAndConditionsView(userAgreesTerms: $userAgreesTerms, isPresented: $isTermsAndConditionsSheetPresented)
                 }
 
                 if viewModel.isVerificationCodeSent {
@@ -155,7 +163,7 @@ struct RegistrationView: View {
         PrimaryButton(
             action: register,
             label: {
-                Text("Register and Get Verification Code")
+                Text("რეგისტრაცია")
             }
         )
     }
@@ -164,7 +172,7 @@ struct RegistrationView: View {
         PrimaryButton(action: {
             viewModel.verifyRegistration(using: verificationCode)
         }, label: {
-            Text("Verify Registration")
+            Text("ვერიფიკაცია")
         })
     }
 

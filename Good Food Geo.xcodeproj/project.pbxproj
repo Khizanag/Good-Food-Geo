@@ -74,8 +74,9 @@
 		FB94BA7F295F468F00944E37 /* RegistrationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB94BA7E295F468F00944E37 /* RegistrationResponse.swift */; };
 		FB94BA81295F51CC00944E37 /* URLRequest+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB94BA80295F51CC00944E37 /* URLRequest+Extension.swift */; };
 		FB94BA84295F844700944E37 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB94BA83295F844700944E37 /* Repository.swift */; };
-		FBDE6BF5297EA25F005CF115 /* Arrangable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE6BF4297EA25F005CF115 /* Arrangable.swift */; };
+		FBDE6BF5297EA25F005CF115 /* Arrangeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE6BF4297EA25F005CF115 /* Arrangeable.swift */; };
 		FBDE6BF7297ECC66005CF115 /* URLCache+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE6BF6297ECC66005CF115 /* URLCache+Extension.swift */; };
+		FBDE6BFB297ED5E0005CF115 /* RegistrationTermsAndConditionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE6BFA297ED5E0005CF115 /* RegistrationTermsAndConditionsView.swift */; };
 		FBF9401E29559BE900A8EF10 /* Good_Food_GeoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF9401D29559BE900A8EF10 /* Good_Food_GeoApp.swift */; };
 		FBF9402229559BEB00A8EF10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBF9402129559BEB00A8EF10 /* Assets.xcassets */; };
 		FBF9402529559BEB00A8EF10 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBF9402429559BEB00A8EF10 /* Preview Assets.xcassets */; };
@@ -188,8 +189,9 @@
 		FB94BA7E295F468F00944E37 /* RegistrationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationResponse.swift; sourceTree = "<group>"; };
 		FB94BA80295F51CC00944E37 /* URLRequest+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Extension.swift"; sourceTree = "<group>"; };
 		FB94BA83295F844700944E37 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
-		FBDE6BF4297EA25F005CF115 /* Arrangable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arrangable.swift; sourceTree = "<group>"; };
+		FBDE6BF4297EA25F005CF115 /* Arrangeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arrangeable.swift; sourceTree = "<group>"; };
 		FBDE6BF6297ECC66005CF115 /* URLCache+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLCache+Extension.swift"; sourceTree = "<group>"; };
+		FBDE6BFA297ED5E0005CF115 /* RegistrationTermsAndConditionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationTermsAndConditionsView.swift; sourceTree = "<group>"; };
 		FBF9401A29559BE900A8EF10 /* Good Food Geo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Good Food Geo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF9401D29559BE900A8EF10 /* Good_Food_GeoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Good_Food_GeoApp.swift; sourceTree = "<group>"; };
 		FBF9402129559BEB00A8EF10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -310,7 +312,7 @@
 				FB0FAFC02966C859008175A2 /* ImagePickerView.swift */,
 				FB0FAFC22966CFFC008175A2 /* PhotoPickerView.swift */,
 				FB0FAFD7296763EA008175A2 /* DefaultViewModel.swift */,
-				FBDE6BF4297EA25F005CF115 /* Arrangable.swift */,
+				FBDE6BF4297EA25F005CF115 /* Arrangeable.swift */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -647,6 +649,7 @@
 			children = (
 				FBF94094295600A600A8EF10 /* RegistrationView.swift */,
 				FB0FAFAB2965D2D7008175A2 /* RegistrationViewModel.swift */,
+				FBDE6BFA297ED5E0005CF115 /* RegistrationTermsAndConditionsView.swift */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -812,10 +815,11 @@
 				FB0FAFA629659E64008175A2 /* AppStorageKey.swift in Sources */,
 				FBF940642955A7D100A8EF10 /* Language.swift in Sources */,
 				FBF9402A29559BEB00A8EF10 /* Good_Food_Geo.xcdatamodeld in Sources */,
-				FBDE6BF5297EA25F005CF115 /* Arrangable.swift in Sources */,
+				FBDE6BF5297EA25F005CF115 /* Arrangeable.swift in Sources */,
 				FB46A07F2975E645009286C0 /* SocialNetworkAuthenticationResponse.swift in Sources */,
 				FBF9407D2955B23F00A8EF10 /* ProductComplaintSubmissionView.swift in Sources */,
 				FBF94095295600A600A8EF10 /* RegistrationView.swift in Sources */,
+				FBDE6BFB297ED5E0005CF115 /* RegistrationTermsAndConditionsView.swift in Sources */,
 				FB0FAFCD29671F8C008175A2 /* ProductsRepository.swift in Sources */,
 				FBF9402729559BEB00A8EF10 /* Persistence.swift in Sources */,
 				FB939347295F181000D491CE /* HSpacing.swift in Sources */,

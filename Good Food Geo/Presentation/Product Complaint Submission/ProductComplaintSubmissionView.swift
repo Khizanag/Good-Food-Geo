@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProductComplaintSubmissionView: View {
-    private enum Field: Arrangable {
+    private enum Field: Arrangeable {
         case productTitle
         case fullName
         case comment
@@ -150,12 +150,12 @@ struct ProductComplaintSubmissionView: View {
                 PhotoPickerView(selectedImage: $selectableImages[index].image)
                     .ignoresSafeArea()
             }
-            .confirmationDialog("How to select photo?", isPresented: $selectableImages[index].isConfirmationDialogPresented) {
-                Button("Camera") {
+            .confirmationDialog("როგორ გსურთ ფოტოს არჩევა?", isPresented: $selectableImages[index].isConfirmationDialogPresented) {
+                Button("კამერა") {
                     selectableImages[index].isImagePickerPresented = true
                 }
 
-                Button("Photo Library") {
+                Button("ფოტოების გალერია") {
                     selectableImages[index].isPhotoPickerPresented = true
                 }
             }

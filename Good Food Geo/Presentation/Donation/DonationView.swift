@@ -14,12 +14,12 @@ struct DonationView: View {
         (Company.tbc, "GE54TB7337945064300021"),
         (Company.liberty, "GE54TB7337945064300021")
     ]
-    
+
     private let receiver = "ა(ა)იპ საქართველოს ტრენინგებისა და განვითარების ინსტიტუტი"
     private let purpose = "დონაცია/ქველმოქმედება"
-    
+
     @State private var isSharePresented = false
-    
+
     // MARK: - Body
     var body: some View {
         StaticPage(
@@ -43,7 +43,7 @@ struct DonationView: View {
                         Button(action: {
                             UIPasteboard.general.string = receiver
                         }, label: {
-                            Label("Copy", systemImage: "doc.on.doc.fill")
+                            Label("დაკოპირება", systemImage: "doc.on.doc.fill")
                         })
                     } label: {
                         Text(receiver)
@@ -57,7 +57,7 @@ struct DonationView: View {
                         Button(action: {
                             UIPasteboard.general.string = purpose
                         }, label: {
-                            Label("Copy", systemImage: "doc.on.doc.fill")
+                            Label("დაკოპირება", systemImage: "doc.on.doc.fill")
                         })
                     } label: {
                         Text(purpose)

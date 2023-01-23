@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    private enum Field: Arrangable {
+    private enum Field: Arrangeable {
         case email
         case password
 

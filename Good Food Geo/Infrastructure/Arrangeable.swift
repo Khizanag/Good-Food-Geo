@@ -1,17 +1,15 @@
 //
-//  Arrangable.swift
+//  Arrangeable.swift
 //  Good Food Geo
 //
 //  Created by Giga Khizanishvili on 23.01.23.
 //
 
-import Foundation
-
-protocol Arrangable {
+protocol Arrangeable {
     var arranged: [Self] { get }
 }
 
-extension Arrangable where Self: Equatable {
+extension Arrangeable where Self: Equatable {
     var next: Self? {
         guard let currentIndex = arranged.firstIndex(of: self) else { return nil }
         let nextIndex = currentIndex + 1
