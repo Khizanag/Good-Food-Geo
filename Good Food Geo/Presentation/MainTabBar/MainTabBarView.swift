@@ -44,14 +44,11 @@ struct MainTabBarView: View {
         .init(type: .expert, title: Localization.expert(), icon: DesignSystem.Image.person())
     ]
 
-    private let homeViewModel = HomeViewModel()
-
     // MARK: - Body
     var body: some View {
         ZStack {
-
             TabView(selection: $selectedTabBarItem) {
-                HomeView(viewModel: homeViewModel)
+                HomeView(viewModel: HomeViewModel())
                     .tag(MainTabBarItem.home)
 
                 AboutUsView()
@@ -67,12 +64,6 @@ struct MainTabBarView: View {
                     .tag(MainTabBarItem.expert)
             }
             .background(Color.clear)
-            .navigationBarBackButtonHidden(true)
-            .onAppear {
-                let transparentAppearance = UITabBarAppearance()
-                transparentAppearance.configureWithTransparentBackground()
-                UITabBar.appearance().standardAppearance = transparentAppearance
-            }
 
             VStack {
                 Spacer()
@@ -97,6 +88,7 @@ struct MainTabBarView: View {
                 .frame(height: MainTabBarConstant.height)
             }
         }
+        .navigationBarBackButtonHidden(true)
         .edgesIgnoringSafeArea(.bottom)
     }
 
