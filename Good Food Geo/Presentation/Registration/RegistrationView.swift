@@ -63,6 +63,7 @@ struct RegistrationView: View {
             }
             .padding(32)
         }
+        .scrollDismissesKeyboard(.interactively)
         .navigationTitle(Localization.signUpTitle())
         .onReceive(viewModel.errorPublisher, perform: showError)
         .alert(alertData.title, isPresented: $alertData.isPresented, actions: {

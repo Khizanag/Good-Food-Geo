@@ -100,6 +100,7 @@ struct ProductComplaintSubmissionView: View {
 
             VSpacing(MainTabBarConstant.height - 16)
         }
+        .scrollDismissesKeyboard(.interactively)
         .onReceive(viewModel.errorPublisher, perform: showError)
         .onReceive(viewModel.eventPublisher) { event in
             switch event {
