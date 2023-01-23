@@ -89,6 +89,12 @@ struct LoginView: View {
                 Text(Localization.login())
             }, isLoading: $viewModel.isLoading)
 
+            PrimaryButton(action: {
+                viewModel.login(email: "admin@gfg.ge", password: "admin")
+            }, label: {
+                Text("Test login by Admin")
+            }, isLoading: $viewModel.isLoading)
+
             Text(Localization.loginWithSocialNetworksTitle())
                 .font(.footnote)
                 .foregroundColor(DesignSystem.Color.primaryText())

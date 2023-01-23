@@ -71,7 +71,7 @@
 "donation" = "დონაცია";
 "aboutDonationSectionTitle" = "დონაციის შესახებ";
 "aboutDonationSectionDescription" = "ნებისმიერ მსურველს აქვს შესაძლებლობა გააკეთოს ფინანსური შემოწირულობა და დააფინანსოს აპლიკაციის მუშაობა მომხმარებელთა საკეთილდღეოდ.";
-"donationBankAccountNumber" = "ბანკის ანგარიშის ნომერი";
+"donationBankAccountNumber" = "საბანკო ანგარიშის ნომერი";
 
 // MARK: - Expert
 "expert" = "ექსპერტი";

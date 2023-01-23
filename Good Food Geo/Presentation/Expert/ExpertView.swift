@@ -12,9 +12,6 @@ struct ExpertView: View {
 
     let expert: Expert
 
-    private let userInformationStorage: UserInformationStorage = DefaultUserInformationStorage.shared
-    private let headerViewModel = HeaderViewModel()
-
     var body: some View {
         StaticPage(
             section: .init(title: "კონსულტაცია", description: "სურსათის უვნებლობის ექსპერტის დახმარების სერვისი"),
