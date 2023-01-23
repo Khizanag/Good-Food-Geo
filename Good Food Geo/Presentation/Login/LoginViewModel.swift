@@ -15,21 +15,18 @@ final class LoginViewModel: DefaultViewModel {
 
     @Published var shouldNavigateToHome = false
     @Published var shouldNavigateToRegistration = false
-    @Published var isLoading: Bool
+    @Published var isLoading = false
     @Published var isFacebookButtonLoading = false
     @Published var isGoogleButtonLoading = false
 
     var registrationName: String?
     var registrationEmail: String?
 
-    private let loginManager = LoginManager()
+    private let facebookLoginManager = LoginManager()
 
-    // MARK: - Init
-    override init() {
+    func viewDidAppear() {
         let isSessionActive = UserDefaults.standard.value(forKey: AppStorageKey.authenticationToken()) != nil
         self.isLoading = isSessionActive // if session is active wait and then navigate to app
-
-        super.init()
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.1) {
             self.shouldNavigateToHome = isSessionActive
@@ -68,7 +65,7 @@ final class LoginViewModel: DefaultViewModel {
 
     func loginUsingFacebook() {
         isFacebookButtonLoading = true
-        loginManager.logIn(permissions: [.publicProfile, .email]) { [weak self] result in
+        facebookLoginManager.logIn(permissions: [.publicProfile, .email]) { [weak self] result in
             guard let self else { return }
 
             switch result {

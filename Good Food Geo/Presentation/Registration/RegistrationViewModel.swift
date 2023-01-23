@@ -78,6 +78,33 @@ final class RegistrationViewModel: DefaultViewModel {
             isVerificationLoading = false
         }
     }
+
+    func loginUsingFacebook() {
+//        isFacebookButtonLoading = true
+//        facebookLoginManager.logIn(permissions: [.publicProfile, .email]) { [weak self] result in
+//            guard let self else { return }
+//
+//            switch result {
+//            case .success(_, _, let token):
+//                guard let token = token?.tokenString else {
+//                    self.showError(.descriptive("Facebook-ით ავტორიზაცია წარუმატებელია"))
+//                    self.isFacebookButtonLoading = false
+//                    return
+//                }
+//
+//                Task {
+//                    await self.handleFacebookAuthentication(using: token)
+//                }
+//            case .cancelled:
+//                self.isFacebookButtonLoading = false
+//                self.showError(.descriptive("Facebook-ით ავტორიზაცია შეწყდა"))
+//            case .failed(let error):
+//                self.isFacebookButtonLoading = false
+//                self.showError(.descriptive("Facebook-ით ავტორიზაცია წარუმატებელია"))
+//                debugPrint(error.localizedDescription)
+//            }
+//        }
+    }
 }
 
 // MARK: - Params

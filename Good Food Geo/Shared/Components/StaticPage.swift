@@ -45,24 +45,18 @@ struct StaticPage: View {
                         .ignoresSafeArea()
 
                     VStack {
-                        List {
+                        ScrollView {
                             VSpacing(8)
-                                .listRowSeparator(.hidden)
-                                .listRowBackground(Color.clear)
 
                             ForEach(subSections, id: \.title) { model in
                                 SubSectionView(model: model)
                             }
-                            .listRowSeparator(.hidden)
-                            .listRowBackground(Color.white)
-                            .listRowInsets(.init(top: 0, leading: 1, bottom: 0, trailing: 1))
                         }
-                        .listStyle(.plain)
                         .scrollIndicators(.hidden)
+                        .padding(1)
                     }
                     .padding(.horizontal, 32)
                 }
-                .clipped()
             }
         }
     }

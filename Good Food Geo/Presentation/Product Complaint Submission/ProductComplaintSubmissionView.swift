@@ -72,12 +72,13 @@ struct ProductComplaintSubmissionView: View {
                     .multilineTextAlignment(.center)
                     .padding()
 
-                FormItemView(model: FormItemModel(icon: DesignSystem.Image.photo(), placeholder: "Product Title..."), text: $productTitle)
+                FormItemView(model: FormItemModel(icon: DesignSystem.Image.photo(), placeholder: "პროდუქტის სახელი"), text: $productTitle)
                     .focused($focusedField, equals: .productTitle)
 
-                selectedImageComponent(for: 0)
+
 
                 HStack {
+                    selectedImageComponent(for: 0)
                     selectedImageComponent(for: 1)
                     selectedImageComponent(for: 2)
                 }
@@ -138,6 +139,7 @@ struct ProductComplaintSubmissionView: View {
         getImageOrPlaceholder(for: index)
             .frame(height: 145)
             .clipped()
+            .frame(maxWidth: .infinity)
             .cornerRadius(15)
             .onTapGesture {
                 selectableImages[index].isConfirmationDialogPresented = true
@@ -166,6 +168,7 @@ struct ProductComplaintSubmissionView: View {
         if let image = selectableImages[index].image {
             return Image(uiImage: image)
                 .resizable()
+                .scaledToFill()
                 .toAnyView()
         } else {
             return getImagePlaceholder(for: index)
@@ -180,7 +183,6 @@ struct ProductComplaintSubmissionView: View {
             VStack(spacing: 8) {
                 DesignSystem.Image.placeholderPhoto()
                     .resizable()
-                    .scaledToFit()
                     .foregroundColor(Color(hex: 0x898484))
                     .frame(width: 32, height: 32)
 
