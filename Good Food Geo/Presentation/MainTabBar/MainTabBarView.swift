@@ -9,12 +9,14 @@ import SwiftUI
 
 // MARK: - HomeTabBarConstant
 struct MainTabBarConstant {
-    static private var hasBottomSwipeIndicator : Bool {
+    static var hasBottomSwipeIndicator : Bool {
         UIApplication.shared.windows.filter { $0.isKeyWindow }.first?.safeAreaInsets.top ?? 0 > 20
     }
 
-    static var height : CGFloat{
-        54 + (hasBottomSwipeIndicator ? 20 : 0)
+    static var swipeIndicatorHeight: CGFloat = 16
+
+    static var height: CGFloat {
+        54 + (hasBottomSwipeIndicator ? swipeIndicatorHeight : 0)
     }
 }
 
@@ -44,17 +46,20 @@ struct MainTabBarView: View {
         .init(type: .expert, title: Localization.expert(), icon: DesignSystem.Image.person())
     ]
 
+    private let homeViewModel = HomeViewModel()
+    private let productComplaintSubmissionViewModel = ProductComplaintSubmissionViewModel()
+
     // MARK: - Body
     var body: some View {
         ZStack {
             TabView(selection: $selectedTabBarItem) {
-                HomeView(viewModel: HomeViewModel())
+                HomeView(viewModel: homeViewModel)
                     .tag(MainTabBarItem.home)
 
                 AboutUsView()
                     .tag(MainTabBarItem.aboutUs)
 
-                ProductComplaintSubmissionView(viewModel: ProductComplaintSubmissionViewModel())
+                ProductComplaintSubmissionView(viewModel: productComplaintSubmissionViewModel)
                     .tag(MainTabBarItem.scanning)
 
                 DonationView()
@@ -87,7 +92,7 @@ struct MainTabBarView: View {
                         makeTabBarItem(with: tabBarItems[3])
                     }
                     .padding(.horizontal)
-                    .padding(.bottom)
+                    .padding(.bottom, 2 + (MainTabBarConstant.hasBottomSwipeIndicator ? MainTabBarConstant.swipeIndicatorHeight : 0))
                 }
                 .frame(height: MainTabBarConstant.height)
             }
