@@ -1,5 +1,5 @@
 //
-//  StaticPage.swift
+//  PrimaryPageView.swift
 //  Good Food Geo
 //
 //  Created by Giga Khizanishvili on 29.12.22.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct StaticPage: View {
+struct PrimaryPageView: View {
     let section: SectionView.Model
     let subSections: [SubSectionView<AnyView>.Model]
 
@@ -65,7 +65,7 @@ struct StaticPage: View {
 // MARK: - Previews
 struct StaticPage_Previews: PreviewProvider {
     static var previews: some View {
-        StaticPage(
+        PrimaryPageView(
             section: .init(title: "Title", description: "Description"),
             subSections: (0...2).map { index in
                 SubSectionView.Model(title: "Section Title \(index)", content: {

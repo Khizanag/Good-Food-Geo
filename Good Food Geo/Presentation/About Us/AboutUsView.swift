@@ -16,7 +16,7 @@ struct AboutUsView: View {
 
     // MARK: - Body
     var body: some View {
-        StaticPage(
+        PrimaryPageView(
             section: .init(title: Localization.aboutUs(), description: Localization.aboutUsDescription()),
             subSections: [
                 SubSectionView.Model(title: Localization.aboutUsSectionTitle(), content: {

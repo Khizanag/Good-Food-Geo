@@ -12,6 +12,7 @@ final class LoginViewModel: DefaultViewModel {
     private let loginUseCase: LoginUseCase = DefaultLoginUseCase()
     private let authenticationRepository: AuthenticationRepository = DefaultAuthenticationRepository()
     private let authenticationTokenStorage: AuthenticationTokenStorage = DefaultAuthenticationTokenStorage.shared
+    private let facebookLoginManager = LoginManager()
 
     @Published var shouldNavigateToHome = false
     @Published var shouldNavigateToRegistration = false
@@ -21,8 +22,6 @@ final class LoginViewModel: DefaultViewModel {
 
     var registrationName: String?
     var registrationEmail: String?
-
-    private let facebookLoginManager = LoginManager()
 
     func viewDidAppear() {
         let isSessionActive = UserDefaults.standard.value(forKey: AppStorageKey.authenticationToken()) != nil

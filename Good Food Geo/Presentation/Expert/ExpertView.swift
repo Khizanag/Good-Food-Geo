@@ -13,7 +13,7 @@ struct ExpertView: View {
     let expert: Expert
 
     var body: some View {
-        StaticPage(
+        PrimaryPageView(
             section: .init(title: "კონსულტაცია", description: "სურსათის უვნებლობის ექსპერტის დახმარების სერვისი"),
             subSections: [
                 .init(

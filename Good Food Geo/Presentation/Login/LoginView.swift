@@ -30,7 +30,15 @@ struct LoginView: View {
     // MARK: - Body
     var body: some View {
         VStack(spacing: 24) {
-            HeaderView(viewModel: HeaderViewModel())
+            HStack {
+                DesignSystem.Image.appIconPrimary()
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 32, height: 48)
+
+                Spacer()
+            }
+            .padding([.bottom, .horizontal])
 
             VStack(alignment: .leading, spacing: 6) {
                 Text(Localization.loginTitle())
