@@ -8,6 +8,17 @@
 import SwiftUI
 
 struct ProductComplaintSubmissionView: View {
+    private enum Field: Arrangable {
+        case productTitle
+        case fullName
+        case comment
+        case location
+
+        var arranged: [Field] {
+            [.productTitle, .fullName, .comment, .location]
+        }
+    }
+
     typealias ViewModel = ProductComplaintSubmissionViewModel
 
     @ObservedObject var viewModel: ViewModel
@@ -48,6 +59,8 @@ struct ProductComplaintSubmissionView: View {
 
     @State private var userAgreesTerms = false
 
+    @FocusState private var focusedField: Field?
+
     @State private var alertData = AlertData()
 
     // MARK: - Body
@@ -60,6 +73,7 @@ struct ProductComplaintSubmissionView: View {
                     .padding()
 
                 FormItemView(model: FormItemModel(icon: DesignSystem.Image.photo(), placeholder: "Product Title..."), text: $productTitle)
+                    .focused($focusedField, equals: .productTitle)
 
                 selectedImageComponent(for: 0)
 
@@ -75,8 +89,11 @@ struct ProductComplaintSubmissionView: View {
 
                 VStack {
                     FormItemView(model: FormItemModel(icon: DesignSystem.Image.person(), placeholder: Localization.fullName()), text: $fullName)
+                        .focused($focusedField, equals: .fullName)
                     FormItemView(model: FormItemModel(icon: DesignSystem.Image.pencil(), placeholder: Localization.comment()), text: $comment)
+                        .focused($focusedField, equals: .comment)
                     FormItemView(model: FormItemModel(icon: DesignSystem.Image.location(), placeholder: Localization.location()), text: $location)
+                        .focused($focusedField, equals: .location)
                 }
 
                 Toggle(isOn: $userAgreesTerms) {
@@ -92,6 +109,14 @@ struct ProductComplaintSubmissionView: View {
                 submitButton
             }
             .padding(.horizontal, 32)
+            .onSubmit {
+                guard let focusedField = focusedField else { return }
+                guard let nextField = focusedField.next else {
+                    submit()
+                    return
+                }
+                self.focusedField = nextField
+            }
 
             VSpacing(MainTabBarConstant.height - 16)
         }
@@ -173,17 +198,7 @@ struct ProductComplaintSubmissionView: View {
 
     private var submitButton: some View {
         PrimaryButton(
-            action: {
-                viewModel.submitProductComplaint(
-                    ProductComplaint(
-                        product: .init(title: productTitle, images: selectableImages.compactMap(\.image)),
-                        author: ProductComplaint.Author(fullName: fullName),
-                        comment: comment,
-                        location: location,
-                        areTermsAgreed: userAgreesTerms
-                    )
-                )
-            },
+            action: submit,
             label: {
                 Label(title: {
                     Text("გაგზავნა")
@@ -199,6 +214,18 @@ struct ProductComplaintSubmissionView: View {
     }
 
     // MARK: - Functions
+    private func submit() {
+        viewModel.submitProductComplaint(
+            ProductComplaint(
+                product: .init(title: productTitle, images: selectableImages.compactMap(\.image)),
+                author: ProductComplaint.Author(fullName: fullName),
+                comment: comment,
+                location: location,
+                areTermsAgreed: userAgreesTerms
+            )
+        )
+    }
+
     private func cleanUp() {
         selectableImages.indices.forEach { index in
             selectableImages[index].reset()

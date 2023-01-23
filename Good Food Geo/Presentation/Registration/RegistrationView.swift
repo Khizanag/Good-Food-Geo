@@ -8,6 +8,19 @@
 import SwiftUI
 
 struct RegistrationView: View {
+    private enum Field: Arrangable {
+        case fullName
+        case email
+        case password
+        case confirmationPassword
+        case phoneNumber
+        case verificationCode
+
+        var arranged: [Field] {
+            [.fullName, .email, .password, .confirmationPassword, .phoneNumber, .verificationCode]
+        }
+    }
+
     @ObservedObject var viewModel: RegistrationViewModel
 
     @State private var fullName: String
@@ -18,6 +31,8 @@ struct RegistrationView: View {
     @State private var userAgreesTerms = false
 
     @State private var verificationCode = ""
+
+    @FocusState private var focusedField: Field?
 
     @State var alertData = AlertData()
 
@@ -77,50 +92,72 @@ struct RegistrationView: View {
     // MARK: - Components
     private var form: some View {
         VStack(spacing: 8) {
-            FormItemView(model: FormItemModel(
-                icon: DesignSystem.Image.person(),
-                placeholder: Localization.fullName()
-            ), text: $fullName)
+            FormItemView(
+                model: FormItemModel(
+                    icon: DesignSystem.Image.person(),
+                    placeholder: Localization.fullName()
+                ),
+                text: $fullName
+            )
+            .focused($focusedField, equals: .fullName)
 
-            FormItemView(model: FormItemModel(
-                icon: DesignSystem.Image.email(),
-                placeholder: Localization.email(),
-                keyboardType: .emailAddress
-            ), text: $email)
+            FormItemView(
+                model: FormItemModel(
+                    icon: DesignSystem.Image.email(),
+                    placeholder: Localization.email(),
+                    keyboardType: .emailAddress
+                ),
+                text: $email
+            )
+            .focused($focusedField, equals: .email)
 
-            FormItemView(model: FormItemModel(
-                icon: DesignSystem.Image.lock(),
-                placeholder: Localization.password(),
-                isSecured: true
-            ), text: $password)
+            FormItemView(
+                model: FormItemModel(
+                    icon: DesignSystem.Image.lock(),
+                    placeholder: Localization.password(),
+                    isSecured: true
+                ),
+                text: $password
+            )
+            .focused($focusedField, equals: .password)
 
-            FormItemView(model: FormItemModel(
-                icon: DesignSystem.Image.lockOpened(),
-                placeholder: Localization.confirmPassword(),
-                isSecured: true
-            ), text: $confirmPassword)
+            FormItemView(
+                model: FormItemModel(
+                    icon: DesignSystem.Image.lockOpened(),
+                    placeholder: Localization.confirmPassword(),
+                    isSecured: true
+                ),
+                text: $confirmPassword
+            )
+            .focused($focusedField, equals: .confirmationPassword)
 
-            FormItemView(model: FormItemModel(
-                icon: DesignSystem.Image.phone(),
-                placeholder: Localization.phoneNumber(),
-                keyboardType: .phonePad
-            ), text: $phoneNumber)
+            FormItemView(
+                model: FormItemModel(
+                    icon: DesignSystem.Image.phone(),
+                    placeholder: Localization.phoneNumber(),
+                    keyboardType: .phonePad
+                ),
+                text: $phoneNumber
+            )
+            .focused($focusedField, equals: .phoneNumber)
+        }
+        .onSubmit {
+            guard let focusedField = focusedField else { return }
+            guard let nextField = focusedField.next else {
+                register()
+                return
+            }
+            self.focusedField = nextField
         }
     }
 
     private var registerAndGetVerificationCodeButton: some View {
-        PrimaryButton(action: {
-            viewModel.register(with: RegistrationParams(
-                email: email,
-                password: password,
-                repeatedPassword: confirmPassword,
-                fullName: fullName,
-                phoneNumber: phoneNumber,
-                userAgreesTermsAndConditions: userAgreesTerms
-            ))
-        }, label: {
-            Text("Register and Get Verification Code")
-        })
+        PrimaryButton(
+            action: register,
+            label: {
+                Text("Register and Get Verification Code")
+            }
+        )
     }
 
     private var verifyRegistrationButton: some View {
@@ -149,6 +186,18 @@ struct RegistrationView: View {
     private var verificationCodeTextField: some View {
         PrimaryTextField(text: $verificationCode, placeholder: Localization.codePlaceholder())
             .textContentType(.oneTimeCode)
+    }
+
+    // MARK: - Functions
+    private func register() {
+        viewModel.register(with: RegistrationParams(
+            email: email,
+            password: password,
+            repeatedPassword: confirmPassword,
+            fullName: fullName,
+            phoneNumber: phoneNumber,
+            userAgreesTermsAndConditions: userAgreesTerms
+        ))
     }
 
     // MARK: - Message Displayer

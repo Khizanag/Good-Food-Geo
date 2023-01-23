@@ -8,12 +8,22 @@
 import SwiftUI
 
 struct LoginView: View {
+    private enum Field: Arrangable {
+        case email
+        case password
+
+        var arranged: [LoginView.Field] {
+            [.email, .password]
+        }
+    }
+
     @ObservedObject var viewModel: LoginViewModel
 
     @AppStorage(AppStorageKey.authenticationToken()) private var authenticationToken: String?
 
     @State private var email = ""
     @State private var password = ""
+    @FocusState private var focusedField: Field?
 
     @State var alertData = AlertData()
 
@@ -39,6 +49,8 @@ struct LoginView: View {
                     placeholder: Localization.email(),
                     keyboardType: .emailAddress
                 ), text: $email)
+                .focused($focusedField, equals: .email)
+
 
                 ZStack {
                     FormItemView(model: FormItemModel(
@@ -46,6 +58,7 @@ struct LoginView: View {
                         placeholder: Localization.password(),
                         isSecured: true
                     ), text: $password)
+                    .focused($focusedField, equals: .password)
 
                     HStack {
                         Spacer()
@@ -60,6 +73,14 @@ struct LoginView: View {
                         })
                     }
                 }
+            }
+            .onSubmit {
+                guard let focusedField = focusedField else { return }
+                guard let nextField = focusedField.next else {
+                    viewModel.login(email: email, password: password)
+                    return
+                }
+                self.focusedField = nextField
             }
 
             PrimaryButton(action: {
