@@ -11,6 +11,8 @@ struct FormItemView: View {
     let model: FormItemModel
     @Binding var text: String
 
+    @FocusState private var isFocused: Bool
+
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -24,17 +26,23 @@ struct FormItemView: View {
                 textField
                     .font(.caption)
                     .keyboardType(model.keyboardType)
+                    .focused($isFocused)
             }
 
             HorizontalDivider(color: DesignSystem.Color.primary(), height: 1)
         }
         .frame(height: 48)
+        .onTapGesture {
+            withAnimation {
+                isFocused = true
+            }
+        }
     }
 
     private var textField: some View {
         model.isSecured
-            ? AnyView(SecureField(model.placeholder, text: $text))
-            : AnyView(TextField(model.placeholder, text: $text))
+        ? SecureField(model.placeholder, text: $text).toAnyView()
+        : TextField(model.placeholder, text: $text).toAnyView().toAnyView()
     }
 }
 
