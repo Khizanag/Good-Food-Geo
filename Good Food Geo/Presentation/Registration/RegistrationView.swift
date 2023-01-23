@@ -81,7 +81,7 @@ struct RegistrationView: View {
                 if viewModel.isVerificationCodeSent {
                     verificationSection
                 } else {
-                    registerAndGetVerificationCodeButton
+                    registrationButton
                 }
             }
             .padding(32)
@@ -159,21 +159,26 @@ struct RegistrationView: View {
         }
     }
 
-    private var registerAndGetVerificationCodeButton: some View {
+    private var registrationButton: some View {
         PrimaryButton(
             action: register,
             label: {
                 Text("რეგისტრაცია")
-            }
+            },
+            isLoading: $viewModel.isRegistrationLoading
         )
     }
 
-    private var verifyRegistrationButton: some View {
-        PrimaryButton(action: {
-            viewModel.verifyRegistration(using: verificationCode)
-        }, label: {
-            Text("ვერიფიკაცია")
-        })
+    private var verificationButton: some View {
+        PrimaryButton(
+            action: {
+                viewModel.verifyRegistration(using: verificationCode)
+            },
+            label: {
+                Text("ვერიფიკაცია")
+            },
+            isLoading: $viewModel.isVerificationLoading
+        )
     }
 
     private var verificationSection: some View {
@@ -186,7 +191,7 @@ struct RegistrationView: View {
             verificationCodeTextField
 
             if !verificationCode.isEmpty {
-                verifyRegistrationButton
+                verificationButton
             }
         }
     }

@@ -19,15 +19,15 @@ extension AppError {
     var description: String {
         switch self {
         case .general:
-            return "An error has happened"
+            return "ტექნიკური შეცდომა"
         case .descriptive(let description):
             return description
         case .parsing:
-            return "Parsing error has happened"
+            return "ტექნიკური შეცდომა"
         case .sessionNotFound:
-            return "You are not logged in. Session is invalid."
+            return "მიმდინარე სესია არაა აქტიური. გთხოვთ გამოხვიდეთ პროფილიდან და თავიდან გაიაროთ ავტორიზაცია"
         case .wrongStatusCode:
-            return "Technical error during service call"
+            return "მოთხოვნა შესრულდა წარუმატებლად"
         }
     }
 }

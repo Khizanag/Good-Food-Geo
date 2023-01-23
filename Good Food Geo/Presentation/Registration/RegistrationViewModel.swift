@@ -11,8 +11,12 @@ import Combine
 final class RegistrationViewModel: DefaultViewModel {
     private let repository: Repository = DefaultRepository()
     private let verifyRegistrationUseCase: VerifyRegistrationUseCase = DefaultVerifyRegistrationUseCase()
-    @Published var isVerificationCodeSent = false
+
     @Published var isRegistrationCompleted = false
+    @Published var isVerificationCodeSent = false
+
+    @Published var isRegistrationLoading = false
+    @Published var isVerificationLoading = false
 
     private var registeredEmail = ""
 
@@ -32,6 +36,8 @@ final class RegistrationViewModel: DefaultViewModel {
         }
 
         Task {
+            isRegistrationLoading = true
+
             let result = await repository.register(with: params)
 
             switch result {
@@ -42,19 +48,23 @@ final class RegistrationViewModel: DefaultViewModel {
             case .failure(let error):
                 showError(error)
             }
+
+            isRegistrationLoading = false
         }
     }
 
     func registerUsingFacebook() {
-
+        // TODO: stub
     }
 
     func registerUsingGoogle() {
-
+        // TODO: stub
     }
 
     func verifyRegistration(using code: String) {
         Task {
+            isVerificationLoading = true
+
             let result = await verifyRegistrationUseCase.execute(email: registeredEmail, code: code)
 
             switch result {
@@ -64,6 +74,8 @@ final class RegistrationViewModel: DefaultViewModel {
             case .failure(let error):
                 showError(error)
             }
+
+            isVerificationLoading = false
         }
     }
 }
