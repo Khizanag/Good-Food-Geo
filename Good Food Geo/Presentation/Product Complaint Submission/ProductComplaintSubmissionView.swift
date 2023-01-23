@@ -43,7 +43,6 @@ struct ProductComplaintSubmissionView: View {
 
     @State private var productTitle = ""
     @State private var fullName = ""
-    @State private var idNumber = ""
     @State private var comment = ""
     @State private var location = ""
 
@@ -76,10 +75,6 @@ struct ProductComplaintSubmissionView: View {
 
                 VStack {
                     FormItemView(model: FormItemModel(icon: DesignSystem.Image.person(), placeholder: Localization.fullName()), text: $fullName)
-                        .onSubmit {
-                            print("should activate next field")
-                        }
-                    FormItemView(model: FormItemModel(icon: DesignSystem.Image.fingerprint(), placeholder: Localization.idNumber(), keyboardType: .numberPad), text: $idNumber)
                     FormItemView(model: FormItemModel(icon: DesignSystem.Image.pencil(), placeholder: Localization.comment()), text: $comment)
                     FormItemView(model: FormItemModel(icon: DesignSystem.Image.location(), placeholder: Localization.location()), text: $location)
                 }
@@ -182,7 +177,7 @@ struct ProductComplaintSubmissionView: View {
                 viewModel.submitProductComplaint(
                     ProductComplaint(
                         product: .init(title: productTitle, images: selectableImages.compactMap(\.image)),
-                        author: ProductComplaint.Author(fullName: fullName, idNumber: idNumber),
+                        author: ProductComplaint.Author(fullName: fullName),
                         comment: comment,
                         location: location,
                         areTermsAgreed: userAgreesTerms
@@ -218,7 +213,6 @@ struct ProductComplaintSubmissionView: View {
 
         productTitle = ""
         fullName = ""
-        idNumber = ""
         comment = ""
         location = ""
 

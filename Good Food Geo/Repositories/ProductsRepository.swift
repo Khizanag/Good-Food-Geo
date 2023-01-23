@@ -28,7 +28,6 @@ struct DefaultProductsRepository: ProductsRepository {
         let parameters = [
             "picture_name": productComplaint.product.title,
             "full_name": productComplaint.author.fullName,
-            "id_number": productComplaint.author.idNumber,
             "comment": productComplaint.comment,
             "location": productComplaint.location
         ]

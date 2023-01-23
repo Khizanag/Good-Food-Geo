@@ -15,7 +15,6 @@ struct ProductComplaint {
 
     struct Author {
         let fullName: String
-        let idNumber: String
     }
 
     let product: Product

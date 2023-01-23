@@ -27,8 +27,7 @@ final class ProductComplaintSubmissionViewModel: DefaultViewModel {
             productComplaint.location,
             productComplaint.comment,
             productComplaint.product.title,
-            productComplaint.author.fullName,
-            productComplaint.author.idNumber,
+            productComplaint.author.fullName
         ]
             .allSatisfy({ !$0.isEmpty })
 
