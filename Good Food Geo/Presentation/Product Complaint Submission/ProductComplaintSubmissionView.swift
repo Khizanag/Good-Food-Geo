@@ -91,7 +91,7 @@ struct ProductComplaintSubmissionView: View {
 
                 submitButton
             }
-            .padding([.horizontal], 32)
+            .padding(.horizontal, 32)
 
             VSpacing(MainTabBarConstant.height - 16)
         }
@@ -172,7 +172,7 @@ struct ProductComplaintSubmissionView: View {
 
 
     private var submitButton: some View {
-        Button(
+        PrimaryButton(
             action: {
                 viewModel.submitProductComplaint(
                     ProductComplaint(
@@ -185,24 +185,17 @@ struct ProductComplaintSubmissionView: View {
                 )
             },
             label: {
-                if !viewModel.isLoading {
-                    Label(title: {
-                        Text("გაგზავნა")
-                    }, icon: {
-                        DesignSystem.Image.submit()
-                            .imageScale(.large)
-                    })
-                } else {
-                    ProgressView()
-                }
-            }
+                Label(title: {
+                    Text("გაგზავნა")
+                        .padding()
+                }, icon: {
+                    DesignSystem.Image.submit()
+                        .imageScale(.large)
+                })
+            },
+            isLoading: $viewModel.isLoading,
+            backgroundColor: Color(hex: 0x4285F4)
         )
-        .disabled(viewModel.isLoading)
-        .padding()
-        .frame(maxWidth: .infinity)
-        .foregroundColor(DesignSystem.Color.buttonTitle())
-        .background(Color(hex: 0x4285F4))
-        .cornerRadius(15)
     }
 
     // MARK: - Functions

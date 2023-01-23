@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct PrimaryButton<Label>: View where Label: View {
-    @Binding var isLoading: Bool
     let action: () -> Void
     @ViewBuilder var label: () -> Label
+    @Binding var isLoading: Bool
+    let backgroundColor: Color?
 
-    init(action: @escaping () -> Void, label: @escaping () -> Label, isLoading: Binding<Bool> = .constant(false)) {
+    init(action: @escaping () -> Void, label: @escaping () -> Label, isLoading: Binding<Bool> = .constant(false), backgroundColor: Color? = nil) {
         self._isLoading = isLoading
         self.action = action
         self.label = label
+        self.backgroundColor = backgroundColor
     }
 
     // MARK: - Body
@@ -27,6 +29,7 @@ struct PrimaryButton<Label>: View where Label: View {
                     ProgressView()
                 } else {
                     label()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .foregroundColor(DesignSystem.Color.buttonTitle())
                 }
             }
@@ -35,7 +38,13 @@ struct PrimaryButton<Label>: View where Label: View {
         .padding()
         .frame(height: 50)
         .frame(maxWidth: .infinity)
-        .background(LinearGradient(gradient: .primary, startPoint: .leading, endPoint: .trailing))
+        .background {
+            if let backgroundColor {
+                backgroundColor
+            } else {
+                LinearGradient(gradient: .primary, startPoint: .leading, endPoint: .trailing)
+            }
+        }
         .cornerRadius(15)
     }
 }
