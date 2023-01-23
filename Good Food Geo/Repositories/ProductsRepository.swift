@@ -75,14 +75,7 @@ struct DefaultProductsRepository: ProductsRepository {
 
 }
 
-fileprivate extension Data {
-    mutating func append(_ string: String) {
-        if let data = string.data(using: .utf8) {
-            append(data)
-        }
-    }
-}
-
+// MARK: - RequestMedia
 struct RequestMedia {
     let key: String
     let filename: String
@@ -96,5 +89,13 @@ struct RequestMedia {
         self.filename = "imagefile.jpg"
         self.data = data
         self.mimeType = "image/jpeg"
+    }
+}
+
+fileprivate extension Data {
+    mutating func append(_ string: String) {
+        if let data = string.data(using: .utf8) {
+            append(data)
+        }
     }
 }

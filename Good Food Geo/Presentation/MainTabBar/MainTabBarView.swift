@@ -63,7 +63,11 @@ struct MainTabBarView: View {
                 ExpertView(expert: .example)
                     .tag(MainTabBarItem.expert)
             }
-            .background(Color.clear)
+            .onAppear {
+                let transparentAppearance = UITabBarAppearance()
+                transparentAppearance.configureWithTransparentBackground()
+                UITabBar.appearance().standardAppearance = transparentAppearance
+            }
 
             VStack {
                 Spacer()
