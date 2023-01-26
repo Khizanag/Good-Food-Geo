@@ -1,48 +1,12 @@
 {
   "pins" : [
     {
-      "identity" : "alamofire",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Alamofire/Alamofire",
-      "state" : {
-        "branch" : "master",
-        "revision" : "ce7f662709a152e840b130a158b9afef3402e146"
-      }
-    },
-    {
-      "identity" : "alamofireimage",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Alamofire/AlamofireImage",
-      "state" : {
-        "branch" : "master",
-        "revision" : "af1c41645ef2d3ab48ffb3fb3a11941c71e5f9a0"
-      }
-    },
-    {
       "identity" : "facebook-ios-sdk",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/facebook/facebook-ios-sdk",
       "state" : {
         "revision" : "c3d367656ae8ced1149c2c6a5e6b5dd91ecad63c",
         "version" : "9.3.0"
-      }
-    },
-    {
-      "identity" : "keychainaccess",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/kishikawakatsumi/KeychainAccess",
-      "state" : {
-        "branch" : "master",
-        "revision" : "6299daec1d74be12164fec090faf9ed14d0da9d6"
-      }
-    },
-    {
-      "identity" : "loadingbutton",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Changemin/LoadingButton",
-      "state" : {
-        "branch" : "main",
-        "revision" : "099aed136cb3c5a08c7b98bd9847edf44a76b4cf"
       }
     },
     {

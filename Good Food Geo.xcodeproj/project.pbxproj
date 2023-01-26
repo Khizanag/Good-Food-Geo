@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		FB0FAF85296349A3008175A2 /* MessageDisplayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAF84296349A3008175A2 /* MessageDisplayer.swift */; };
-		FB0FAF8A2964178F008175A2 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = FB0FAF892964178F008175A2 /* KeychainAccess */; };
 		FB0FAF9029641AD7008175A2 /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAF8F29641AD7008175A2 /* LoginUseCase.swift */; };
 		FB0FAF9329641C04008175A2 /* AuthenticationTokenStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAF9229641C04008175A2 /* AuthenticationTokenStorage.swift */; };
 		FB0FAF9529641C63008175A2 /* AuthenticationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAF9429641C63008175A2 /* AuthenticationToken.swift */; };
@@ -41,8 +40,6 @@
 		FB0FAFD329675CDD008175A2 /* ProductComplaintSubmissionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAFD229675CDD008175A2 /* ProductComplaintSubmissionEntity.swift */; };
 		FB0FAFD629675D40008175A2 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAFD529675D40008175A2 /* AppError.swift */; };
 		FB0FAFD8296763EA008175A2 /* DefaultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAFD7296763EA008175A2 /* DefaultViewModel.swift */; };
-		FB100A0D296C305200D87FC8 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FB100A0C296C305200D87FC8 /* Alamofire */; };
-		FB100A10296C306A00D87FC8 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = FB100A0F296C306A00D87FC8 /* AlamofireImage */; };
 		FB100A12296C499100D87FC8 /* MessageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB100A11296C499100D87FC8 /* MessageEntity.swift */; };
 		FB100A15296C4AD700D87FC8 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = FB100A14296C4AD700D87FC8 /* CachedAsyncImage */; };
 		FB100A17296C688E00D87FC8 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB100A16296C688E00D87FC8 /* String+Extension.swift */; };
@@ -237,11 +234,8 @@
 				FB0FAFBC2966C005008175A2 /* FacebookLogin in Frameworks */,
 				FB100A15296C4AD700D87FC8 /* CachedAsyncImage in Frameworks */,
 				FB0FAFBA2966C005008175A2 /* FacebookGamingServices in Frameworks */,
-				FB0FAF8A2964178F008175A2 /* KeychainAccess in Frameworks */,
-				FB100A0D296C305200D87FC8 /* Alamofire in Frameworks */,
 				FB0FAFBE2966C005008175A2 /* FacebookShare in Frameworks */,
 				FB0FAFB82966C005008175A2 /* FacebookCore in Frameworks */,
-				FB100A10296C306A00D87FC8 /* AlamofireImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -671,13 +665,10 @@
 			);
 			name = "Good Food Geo";
 			packageProductDependencies = (
-				FB0FAF892964178F008175A2 /* KeychainAccess */,
 				FB0FAFB72966C005008175A2 /* FacebookCore */,
 				FB0FAFB92966C005008175A2 /* FacebookGamingServices */,
 				FB0FAFBB2966C005008175A2 /* FacebookLogin */,
 				FB0FAFBD2966C005008175A2 /* FacebookShare */,
-				FB100A0C296C305200D87FC8 /* Alamofire */,
-				FB100A0F296C306A00D87FC8 /* AlamofireImage */,
 				FB100A14296C4AD700D87FC8 /* CachedAsyncImage */,
 			);
 			productName = "Good Food Geo";
@@ -753,12 +744,8 @@
 			);
 			mainGroup = FBF9401129559BE900A8EF10;
 			packageReferences = (
-				FB0FAF882964178F008175A2 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				FB0FAFB62966C005008175A2 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
-				FB100A0B296C305200D87FC8 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				FB100A0E296C306A00D87FC8 /* XCRemoteSwiftPackageReference "AlamofireImage" */,
 				FB100A13296C4AD700D87FC8 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
-				FB100A18296C69C800D87FC8 /* XCRemoteSwiftPackageReference "LoadingButton" */,
 			);
 			productRefGroup = FBF9401B29559BE900A8EF10 /* Products */;
 			projectDirPath = "";
@@ -1254,36 +1241,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		FB0FAF882964178F008175A2 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		FB0FAFB62966C005008175A2 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 9.0.0;
-			};
-		};
-		FB100A0B296C305200D87FC8 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-		FB100A0E296C306A00D87FC8 /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/AlamofireImage";
-			requirement = {
-				branch = master;
-				kind = branch;
 			};
 		};
 		FB100A13296C4AD700D87FC8 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
@@ -1294,22 +1257,9 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		FB100A18296C69C800D87FC8 /* XCRemoteSwiftPackageReference "LoadingButton" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Changemin/LoadingButton";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		FB0FAF892964178F008175A2 /* KeychainAccess */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FB0FAF882964178F008175A2 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
-			productName = KeychainAccess;
-		};
 		FB0FAFB72966C005008175A2 /* FacebookCore */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = FB0FAFB62966C005008175A2 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
@@ -1329,16 +1279,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FB0FAFB62966C005008175A2 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
 			productName = FacebookShare;
-		};
-		FB100A0C296C305200D87FC8 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FB100A0B296C305200D87FC8 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-		FB100A0F296C306A00D87FC8 /* AlamofireImage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FB100A0E296C306A00D87FC8 /* XCRemoteSwiftPackageReference "AlamofireImage" */;
-			productName = AlamofireImage;
 		};
 		FB100A14296C4AD700D87FC8 /* CachedAsyncImage */ = {
 			isa = XCSwiftPackageProductDependency;
