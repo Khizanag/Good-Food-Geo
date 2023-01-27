@@ -25,7 +25,7 @@
 "gotIt" = "Got It";
 "agree" = "Agree";
 "close" = "Close";
-"copy" = "დაკოპირება";
+"copy" = "copy";
 
 // MARK: - Header
 "logout" = "Logout";
@@ -49,16 +49,16 @@
 "verify" = "ვერიფიცაკია";
 "getVerificationCode" = "Get verification code";
 "verificationCodeInstruction" = "The activation code will be sent vie SMS";
-"agreeRegistrationTermsDescription" = "დიახ, ვეთანხმები გამოყენების \"წესებსა და პირობებს\"";
+"agreeRegistrationTermsDescription" = "*ENG* დიახ, ვეთანხმები გამოყენების \"წესებსა და პირობებს\"";
 "signUpSmsCodeInfo" = "The activation code will be sent via SMS";
 
 // MARK: - Terms and Conditions
-"termsAndConditionsTitle" = "აპლიკაციის გამოყენების პირობები";
-"privacyPolicyTitle" = "პირადი მონაცემების პოლიტიკა";
-"privacyPolicyDescription" = "აპლიკაციის მუშაობს კონფიდენციალურობის პოლიტიკის სამართლებრივი საფუძვლის გათვალისწინებით, რომლის ფარგლებში პირად მონაცემთა უსაფრთხოება დაცულია.";
-"termsAndConditionsSectionsTitle" = "ვეთანხმები წესებს და პირობებს";
-"termsAndConditionsFirstSection" = "მომხმარებელი გამოგზავნამდე ადასტურებს თანხმობას, რომ სრულად პასუხისმგებელია ინფორმაციის უტყუარობასა და შინაარსზე და ინფორმირებულია, რომ მის მიერ მოწოდებული ინფორმაციის საფუძველზე მოხდება მიმართვა ბიზნესსუბიექტებისა და სურსათის ეროვნული სააგენტოსათვის.";
-"termsAndConditionsSecondSection" = "დახარვეზდება ისეთი მოწოდებული მასალები, რაც შეიცავს აშკარა ბუნდოვანებას და გაურკევლობას და ასეთ შემთხვევაში დაზუსტების მიზნით, კომუნიკაცია იწარმოებს მომხმარებელთან.";
+"termsAndConditionsTitle" = "*ENG* აპლიკაციის გამოყენების პირობები";
+"privacyPolicyTitle" = "*ENG* პირადი მონაცემების პოლიტიკა";
+"privacyPolicyDescription" = "*ENG* აპლიკაციის მუშაობს კონფიდენციალურობის პოლიტიკის სამართლებრივი საფუძვლის გათვალისწინებით, რომლის ფარგლებში პირად მონაცემთა უსაფრთხოება დაცულია.";
+"termsAndConditionsSectionsTitle" = "*ENG* ვეთანხმები წესებს და პირობებს";
+"termsAndConditionsFirstSection" = "*ENG* მომხმარებელი გამოგზავნამდე ადასტურებს თანხმობას, რომ სრულად პასუხისმგებელია ინფორმაციის უტყუარობასა და შინაარსზე და ინფორმირებულია, რომ მის მიერ მოწოდებული ინფორმაციის საფუძველზე მოხდება მიმართვა ბიზნესსუბიექტებისა და სურსათის ეროვნული სააგენტოსათვის.";
+"termsAndConditionsSecondSection" = "*ENG* დახარვეზდება ისეთი მოწოდებული მასალები, რაც შეიცავს აშკარა ბუნდოვანებას და გაურკევლობას და ასეთ შემთხვევაში დაზუსტების მიზნით, კომუნიკაცია იწარმოებს მომხმარებელთან.";
 
 // MARK: - PasswordReset
 "passwordResetTitle" = "Forgot Password";
@@ -84,11 +84,11 @@
 "acceptTerms" = "You accept our terns of Use and Privacy Statement";
 "scanProduct" = "Scan Your Product";
 "productTitle" = "პროდუქტის სახელი";
-"scanFirstImageDescription" = "გადაუღე ნათლად პროდუქტის ვადას";
-"scanSecondImageDescription" = "გადაუღე ნათლად პროდუქტის წინა მხარეს";
-"scanThirdImageDescription" = "გადაუღე ნათლად პროდუქტის უკანა მხარეს";
-"scanFourthImageDescription" = "პროდუქტის მარცხენა ან ზედა მხარე";
-"scanFifthImageDescription" = "პროდუქტის ნათლად მარჯვენა ან ქვედა მხარე";
+"scanFirstImageDescription" = "*ENG* გადაუღე ნათლად პროდუქტის ვადას";
+"scanSecondImageDescription" = "*ENG* გადაუღე ნათლად პროდუქტის წინა მხარეს";
+"scanThirdImageDescription" = "*ENG* გადაუღე ნათლად პროდუქტის უკანა მხარეს";
+"scanFourthImageDescription" = "*ENG* პროდუქტის მარცხენა ან ზედა მხარე";
+"scanFifthImageDescription" = "*ENG* პროდუქტის ნათლად მარჯვენა ან ქვედა მხარე";
 
 // MARK: - Donation
 "donation" = "Donation";
@@ -96,24 +96,24 @@
 "aboutDonationSectionDescription" = "Anyone can make a financial donation and fund the application's operation to benefit users.";
 "donationBankAccountNumber" = "Bank account number";
 "receiver" = "receiver";
-"receiverValue" = "ა(ა)იპ საქართველოს ტრენინგებისა და განვითარების ინსტიტუტი";
+"receiverValue" = "*ENG* ა(ა)იპ საქართველოს ტრენინგებისა და განვითარების ინსტიტუტი";
 "purpose" = "purpose";
-"purposeValue" = "დონაცია/ქველმოქმედება";
+"purposeValue" = "*ENG* დონაცია/ქველმოქმედება";
 
 // MARK: - Expert
 "expert" = "Expert";
-"expertPageTitle" = "კონსულტაცია";
-"expertPageSubtitle" = "სურსათის უვნებლობის ექსპერტის დახმარების სერვისი";
-"expertAboutServiceSectionTitle" = "About Service";
+"expertPageTitle" = "*ENG* კონსულტაცია";
+"expertPageSubtitle" = "*ENG* სურსათის უვნებლობის ექსპერტის დახმარების სერვისი";
+"expertAboutServiceSectionTitle" = "*ENG* About Service";
 "callExpertSectionTitle" = "Call to Expert";
-"aboutExpertServiceFirstSectionDescription" = "საქართველოს ტრენინგებისა და განვითარების ინსტიტუტი (TDIG)  გთავაზობთ ეტიკეტირების სფეროში ექსპერტის საკონსულტაციო მომსახურეობის სერვისს.";
-"aboutExpertServiceSecondSectionDescription" = "დეტალური ინფორმაციისთვის, დაუკავშირდით ექსპერტს";
+"aboutExpertServiceFirstSectionDescription" = "*ENG* საქართველოს ტრენინგებისა და განვითარების ინსტიტუტი (TDIG)  გთავაზობთ ეტიკეტირების სფეროში ექსპერტის საკონსულტაციო მომსახურეობის სერვისს.";
+"aboutExpertServiceSecondSectionDescription" = "*ENG* დეტალური ინფორმაციისთვის, დაუკავშირდით ექსპერტს";
 "textToExpert" = "Text to expert";
 
 // MARK: - Errors
-"technicalErrorDescription" = "ტექნიკური შეცდომა";
-"sessionNotFoundErrorDescription" = "მიმდინარე სესია არაა აქტიური. გთხოვთ გამოხვიდეთ პროფილიდან და თავიდან გაიაროთ ავტორიზაცია";
-"failedRequestErrorDescription" = "მოთხოვნა შესრულდა წარუმატებლად";
+"technicalErrorDescription" = "*ENG* ტექნიკური შეცდომა";
+"sessionNotFoundErrorDescription" = "*ENG* მიმდინარე სესია არაა აქტიური. გთხოვთ გამოხვიდეთ პროფილიდან და თავიდან გაიაროთ ავტორიზაცია";
+"failedRequestErrorDescription" = "*ENG* მოთხოვნა შესრულდა წარუმატებლად";
 "shouldFillAllFieldsDescription" = "All field is not field";
 "passwordsMismatchErrorDescription" = "passwords does not match";
-"termsAreNotAgreedErrorDescription" = "პროცესის გასაგრძელებლად, აუცილებელია დაეთანხმოთ \"წესებსა და პირობებს\"";
+"termsAreNotAgreedErrorDescription" = "*ENG* პროცესის გასაგრძელებლად, აუცილებელია დაეთანხმოთ \"წესებსა და პირობებს\"";

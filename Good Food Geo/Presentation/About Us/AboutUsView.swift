@@ -9,6 +9,8 @@ import SwiftUI
 
 struct AboutUsView: View {
     // MARK: - Properties
+    @ObservedObject var viewModel: AboutUsViewModel
+    
     private let phoneNumber = "+995598935050"
     private let facebookPageUrl = "https://www.facebook.com/TDIG.ge"
 
@@ -71,6 +73,6 @@ struct AboutUsView: View {
 // MARK: - Previews
 struct AboutUsView_Previews: PreviewProvider {
     static var previews: some View {
-        AboutUsView()
+        AboutUsView(viewModel: AboutUsViewModel())
     }
 }

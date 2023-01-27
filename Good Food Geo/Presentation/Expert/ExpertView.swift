@@ -10,8 +10,11 @@ import SwiftUI
 struct ExpertView: View {
     @Environment(\.dismiss) private var dismiss
 
+    @ObservedObject var viewModel: ExpertViewModel
+
     let expert: Expert
-    
+
+    // MARK: - Body
     var body: some View {
         PrimaryPageView(
             section: .init(title: Localization.expertPageTitle(), description: Localization.expertPageSubtitle()),
@@ -39,8 +42,9 @@ struct ExpertView: View {
     }
 }
 
+// MARK: - Previews
 struct ExpertView_Previews: PreviewProvider {
     static var previews: some View {
-        ExpertView(expert: .example)
+        ExpertView(viewModel: ExpertViewModel(), expert: .example)
     }
 }

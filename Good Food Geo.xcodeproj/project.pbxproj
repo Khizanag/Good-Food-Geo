@@ -46,6 +46,8 @@
 		FB46A07D2975E55A009286C0 /* AuthenticationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB46A07C2975E55A009286C0 /* AuthenticationRepository.swift */; };
 		FB46A07F2975E645009286C0 /* SocialNetworkAuthenticationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB46A07E2975E645009286C0 /* SocialNetworkAuthenticationResponse.swift */; };
 		FB6FE8072983BD0200C184C0 /* LanguageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6FE8062983BD0200C184C0 /* LanguageStorage.swift */; };
+		FB6FE8092983FF0E00C184C0 /* ExpertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6FE8082983FF0E00C184C0 /* ExpertViewModel.swift */; };
+		FB6FE80B2983FF5800C184C0 /* AboutUsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6FE80A2983FF5800C184C0 /* AboutUsViewModel.swift */; };
 		FB907B83296B7A00002CBB23 /* Optional+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB907B82296B7A00002CBB23 /* Optional+Extension.swift */; };
 		FB93931B295D918D00D491CE /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93931A295D918D00D491CE /* HeaderView.swift */; };
 		FB93931D295D968000D491CE /* SubSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93931C295D968000D491CE /* SubSectionView.swift */; };
@@ -162,6 +164,8 @@
 		FB46A07C2975E55A009286C0 /* AuthenticationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRepository.swift; sourceTree = "<group>"; };
 		FB46A07E2975E645009286C0 /* SocialNetworkAuthenticationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialNetworkAuthenticationResponse.swift; sourceTree = "<group>"; };
 		FB6FE8062983BD0200C184C0 /* LanguageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageStorage.swift; sourceTree = "<group>"; };
+		FB6FE8082983FF0E00C184C0 /* ExpertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertViewModel.swift; sourceTree = "<group>"; };
+		FB6FE80A2983FF5800C184C0 /* AboutUsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewModel.swift; sourceTree = "<group>"; };
 		FB907B82296B7A00002CBB23 /* Optional+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extension.swift"; sourceTree = "<group>"; };
 		FB93931A295D918D00D491CE /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		FB93931C295D968000D491CE /* SubSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubSectionView.swift; sourceTree = "<group>"; };
@@ -495,6 +499,7 @@
 			isa = PBXGroup;
 			children = (
 				FBF940722955ACE300A8EF10 /* AboutUsView.swift */,
+				FB6FE80A2983FF5800C184C0 /* AboutUsViewModel.swift */,
 			);
 			path = "About Us";
 			sourceTree = "<group>";
@@ -534,6 +539,7 @@
 			children = (
 				FBF9407A2955AD1800A8EF10 /* ExpertView.swift */,
 				FB93933E295EFD0100D491CE /* Expert.swift */,
+				FB6FE8082983FF0E00C184C0 /* ExpertViewModel.swift */,
 			);
 			path = Expert;
 			sourceTree = "<group>";
@@ -801,6 +807,7 @@
 				FBF9405F29559F4100A8EF10 /* DesignSystem+Image.swift in Sources */,
 				FBF9408F2955EE9F00A8EF10 /* Color+Extension.swift in Sources */,
 				FB0FAF9B2965657E008175A2 /* PostsDTO.swift in Sources */,
+				FB6FE8092983FF0E00C184C0 /* ExpertViewModel.swift in Sources */,
 				FB46A07D2975E55A009286C0 /* AuthenticationRepository.swift in Sources */,
 				FB0FAFA629659E64008175A2 /* AppStorageKey.swift in Sources */,
 				FBF940642955A7D100A8EF10 /* Language.swift in Sources */,
@@ -862,6 +869,7 @@
 				FB0FAFCF29672038008175A2 /* ProductComplaint.swift in Sources */,
 				FB0FAFCB29671EF7008175A2 /* Endpoint.swift in Sources */,
 				FB0FAFC929670D5F008175A2 /* LogoutUseCase.swift in Sources */,
+				FB6FE80B2983FF5800C184C0 /* AboutUsViewModel.swift in Sources */,
 				FBF940842955BAF900A8EF10 /* HorizontalDivider.swift in Sources */,
 				FBF940862955BB9000A8EF10 /* DesignSystem+Color.swift in Sources */,
 				FB100A12296C499100D87FC8 /* MessageEntity.swift in Sources */,

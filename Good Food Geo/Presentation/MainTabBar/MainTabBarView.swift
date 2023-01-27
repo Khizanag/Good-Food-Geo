@@ -56,7 +56,7 @@ struct MainTabBarView: View {
                 HomeView(viewModel: homeViewModel)
                     .tag(MainTabBarItem.home)
 
-                AboutUsView()
+                AboutUsView(viewModel: AboutUsViewModel())
                     .tag(MainTabBarItem.aboutUs)
 
                 ProductComplaintSubmissionView(viewModel: productComplaintSubmissionViewModel)
@@ -65,7 +65,7 @@ struct MainTabBarView: View {
                 DonationView()
                     .tag(MainTabBarItem.donation)
 
-                ExpertView(expert: .example)
+                ExpertView(viewModel: ExpertViewModel(), expert: .example)
                     .tag(MainTabBarItem.expert)
             }
             .onAppear {
