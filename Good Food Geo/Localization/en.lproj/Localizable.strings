@@ -102,8 +102,13 @@
 
 // MARK: - Expert
 "expert" = "Expert";
+"expertPageTitle" = "კონსულტაცია";
+"expertPageSubtitle" = "სურსათის უვნებლობის ექსპერტის დახმარების სერვისი";
 "expertAboutServiceSectionTitle" = "About Service";
 "callExpertSectionTitle" = "Call to Expert";
+"aboutExpertServiceFirstSectionDescription" = "საქართველოს ტრენინგებისა და განვითარების ინსტიტუტი (TDIG)  გთავაზობთ ეტიკეტირების სფეროში ექსპერტის საკონსულტაციო მომსახურეობის სერვისს.";
+"aboutExpertServiceSecondSectionDescription" = "დეტალური ინფორმაციისთვის, დაუკავშირდით ექსპერტს";
+"textToExpert" = "Text to expert";
 
 // MARK: - Errors
 "technicalErrorDescription" = "ტექნიკური შეცდომა";

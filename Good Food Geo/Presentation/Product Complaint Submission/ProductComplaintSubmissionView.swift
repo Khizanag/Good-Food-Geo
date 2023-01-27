@@ -118,6 +118,8 @@ struct ProductComplaintSubmissionView: View {
                 self.focusedField = nextField
             }
 
+
+
             VSpacing(MainTabBarConstant.height - 16)
         }
         .scrollDismissesKeyboard(.interactively)
@@ -160,7 +162,6 @@ struct ProductComplaintSubmissionView: View {
                     selectableImages[index].isPhotoPickerPresented = true
                 }
             }
-
     }
 
     private func getImageOrPlaceholder(for index: Int) -> some View {

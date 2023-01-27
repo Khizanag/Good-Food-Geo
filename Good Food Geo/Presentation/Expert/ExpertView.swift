@@ -11,25 +11,24 @@ struct ExpertView: View {
     @Environment(\.dismiss) private var dismiss
 
     let expert: Expert
-#warning("Localize")
+    
     var body: some View {
         PrimaryPageView(
-            section: .init(title: "კონსულტაცია", description: "სურსათის უვნებლობის ექსპერტის დახმარების სერვისი"),
+            section: .init(title: Localization.expertPageTitle(), description: Localization.expertPageSubtitle()),
             subSections: [
                 .init(
                     title: Localization.expertAboutServiceSectionTitle(),
                     content: {
                         VStack(alignment: .leading, spacing: 8) {
-                            Text("საქართველოს ტრენინგებისა და განვითარების ინსტიტუტი (TDIG)  გთავაზობთ ეტიკეტირების სფეროში ექსპერტის საკონსულტაციო მომსახურეობის სერვისს.")
-
-                            Text("დეტალური ინფორმაციისთვის, დაუკავშირდით ექსპერტს:")
+                            Text(Localization.aboutExpertServiceFirstSectionDescription())
+                            Text(Localization.aboutExpertServiceSecondSectionDescription())
                         }
                         .foregroundColor(.gray)
                         .toAnyView()
                     }
                 ),
                 .init(
-                    title: "მისწერე ექსპერტს",
+                    title: Localization.textToExpert(),
                     content: {
                         Text("\(Localization.email()): GFGAPK@GMAIL.COM")
                             .toAnyView()

@@ -102,8 +102,13 @@ enum Localization: String {
 
     // MARK: - Expert
     case expert
+    case expertPageTitle
+    case expertPageSubtitle
     case expertAboutServiceSectionTitle
     case callExpertSectionTitle
+    case aboutExpertServiceFirstSectionDescription
+    case aboutExpertServiceSecondSectionDescription
+    case textToExpert
 
     // MARK: - Errors
     case technicalErrorDescription
