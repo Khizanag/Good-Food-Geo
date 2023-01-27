@@ -26,12 +26,8 @@ final class LoginViewModel: DefaultViewModel {
 
     func viewDidAppear() {
         let isSessionActive = UserDefaults.standard.value(forKey: AppStorageKey.authenticationToken()) != nil
-        self.isLoading = isSessionActive // if session is active wait and then navigate to app
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.1) {
-            self.shouldNavigateToHome = isSessionActive
-            self.isLoading = false
-        }
+        shouldNavigateToHome = isSessionActive
+        isLoading = false
     }
 
     func changeLanguage(to newLanguage: Language) {
