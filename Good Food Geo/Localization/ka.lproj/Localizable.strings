@@ -29,6 +29,7 @@
 
 // MARK: - Header
 "logout" = "გამოსვლა";
+"changeLanguage" = "ენის შეცვლა";
 
 // MARK: - Login
 "login" = "შესვლა";

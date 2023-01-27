@@ -100,7 +100,7 @@ final class LoginViewModel: DefaultViewModel {
         switch result {
         case .success(let entity):
             if let token = entity.token {
-                self.authenticationTokenStorage.write(token)
+                authenticationTokenStorage.write(token)
                 DispatchQueue.main.async {
                     self.isFacebookButtonLoading = false
                     self.shouldNavigateToHome = true
@@ -118,7 +118,7 @@ final class LoginViewModel: DefaultViewModel {
             DispatchQueue.main.async {
                 self.isFacebookButtonLoading = false
             }
-            self.showError(error)
+            showError(error)
         }
     }
 }

@@ -5,7 +5,7 @@
 //  Created by Giga Khizanishvili on 23.12.22.
 //
 
-import Foundation
+import SwiftUI
 
 enum Localization: String {
     // MARK: - Shared
@@ -29,6 +29,7 @@ enum Localization: String {
 
     // MARK: - Header
     case logout
+    case changeLanguage
 
     // MARK: - Login
     case login
@@ -117,7 +118,7 @@ extension Localization {
     private var key: String { rawValue }
 
     private var localized: String {
-        let language: Language = (UserDefaults.standard.object(forKey: "language") as? Language) ?? .georgian
+        let language = DefaultLanguageStorage.shared.read()
         let path = Bundle.main.path(forResource: language.localizableIdentifier, ofType: "lproj")
         let bundle = Bundle(path: path!)!
 

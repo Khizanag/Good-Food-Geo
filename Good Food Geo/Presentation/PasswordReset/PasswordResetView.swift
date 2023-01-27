@@ -72,10 +72,22 @@ struct PasswordResetView: View {
             Button(Localization.gotIt(), role: .cancel) { }
         })
     }
+
+    // MARK: - Message Displayer
+    private func showError(_ error: AppError) {
+        showMessage(error.description)
+    }
+
+    private func showMessage(_ message: String, description: String? = nil) {
+        alertData.title = message
+        if let description {
+            alertData.subtitle = description
+        }
+        alertData.isPresented = true
+    }
 }
 
-extension PasswordResetView: MessageDisplayer { }
-
+// MARK: - Previews
 struct PasswordResetView_Previews: PreviewProvider {
     static var previews: some View {
         PasswordResetView(viewModel: PasswordResetViewModel())

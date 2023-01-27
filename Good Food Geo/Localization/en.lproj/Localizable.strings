@@ -29,6 +29,7 @@
 
 // MARK: - Header
 "logout" = "Logout";
+"changeLanguage" = "Change Language";
 
 // MARK: - Login
 "login" = "Login";
@@ -48,7 +49,7 @@
 "verify" = "ვერიფიცაკია";
 "getVerificationCode" = "Get verification code";
 "verificationCodeInstruction" = "The activation code will be sent vie SMS";
-"agreeRegistrationTermsDescription" = "დიახ, ვეთანხმები გამოყენების \"წესებსა და პირობებს\""
+"agreeRegistrationTermsDescription" = "დიახ, ვეთანხმები გამოყენების \"წესებსა და პირობებს\"";
 "signUpSmsCodeInfo" = "The activation code will be sent via SMS";
 
 // MARK: - Terms and Conditions

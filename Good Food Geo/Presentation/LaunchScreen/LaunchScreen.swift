@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LaunchScreen: View {
     @ObservedObject var viewModel: LaunchScreenViewModel
-
+    
     var paths: [String] = []
 
     var body: some View {

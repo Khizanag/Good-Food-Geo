@@ -11,6 +11,7 @@ struct HeaderView: View {
     typealias ViewModel = HeaderViewModel
 
     @ObservedObject var viewModel: ViewModel
+    @AppStorage(AppStorageKey.language()) private var language: Language = .english
 
     let fullName: String?
 
@@ -32,13 +33,35 @@ struct HeaderView: View {
             Spacer()
 
             if let fullName {
-                Menu("\(Localization.hi()), \(fullName)") {
+                Menu(content: {
+                    Menu(Localization.changeLanguage()) {
+                        ForEach(Language.allCases, id: \.localizableIdentifier) { language in
+                            Button(action: {
+                                viewModel.changeLanguage(to: language)
+                            }, label: {
+                                if language == self.language {
+                                    Label(language.name, systemImage: "checkmark")
+                                } else {
+                                    Text(language.name)
+                                }
+                            })
+                        }
+                    }
                     Button(Localization.logout(), action: viewModel.logout)
-                }
+                }, label: {
+                    Label("\(Localization.hi()), \(fullName)", systemImage: "person")
+                })
                 .foregroundColor(.white)
                 .font(.callout)
             }
         }
         .padding(.vertical)
+    }
+}
+
+// MARK: - Previews
+struct HeaderView_Previews: PreviewProvider {
+    static var previews: some View {
+        HeaderView(viewModel: .init(), fullName: "Giga Khizanishvili")
     }
 }
