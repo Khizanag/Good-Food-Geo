@@ -9,7 +9,7 @@ import Combine
 
 @MainActor
 final class RegistrationViewModel: DefaultViewModel {
-    private let repository: Repository = DefaultRepository()
+    private let repository: MainRepository = DefaultMainRepository()
     private let verifyRegistrationUseCase: VerifyRegistrationUseCase = DefaultVerifyRegistrationUseCase()
 
     @Published var isRegistrationCompleted = false
@@ -23,15 +23,15 @@ final class RegistrationViewModel: DefaultViewModel {
     // MARK: - Functions
     func register(with params: RegistrationParams) {
         guard params.userAgreesTermsAndConditions else {
-            showError(.descriptive("რეგისტრაციის პროცესის გაგრძელებისათვის, აუცილებელია, რომ დაეთანხმოთ წესებსა და პირობებს"))
+            showError(.termsAreNotAgreed)
             return
         }
         guard params.password == params.repeatedPassword else {
-            showError(.descriptive("პაროლები არ ემთხვევა ერთმანეთს"))
+            showError(.passwordsMismatch)
             return
         }
         guard [params.fullName, params.password, params.email, params.phoneNumber].allSatisfy({ !$0.isEmpty }) else {
-            showError(.descriptive("გთხოვთ, შეავსოთ ყველა ველი"))
+            showError(.emptyField)
             return
         }
 
@@ -80,6 +80,7 @@ final class RegistrationViewModel: DefaultViewModel {
     }
 
     func loginUsingFacebook() {
+        #warning("Fix and finish that flow")
 //        isFacebookButtonLoading = true
 //        facebookLoginManager.logIn(permissions: [.publicProfile, .email]) { [weak self] result in
 //            guard let self else { return }

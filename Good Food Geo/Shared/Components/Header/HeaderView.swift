@@ -33,7 +33,7 @@ struct HeaderView: View {
 
             if let fullName {
                 Menu("\(Localization.hi()), \(fullName)") {
-                    Button("გამოსვლა", action: viewModel.logout)
+                    Button(Localization.logout(), action: viewModel.logout)
                 }
                 .foregroundColor(.white)
                 .font(.callout)

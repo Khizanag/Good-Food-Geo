@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+#warning("Fix enum Company and CompanyModel problem")
 enum Company {
     static let bog = CompanyModel(
         name: "Bank of Georgia",

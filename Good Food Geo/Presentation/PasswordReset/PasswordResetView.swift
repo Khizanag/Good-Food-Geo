@@ -14,9 +14,9 @@ struct PasswordResetView: View {
     @FocusState private var isFieldFocused
     @State private var alertData = AlertData()
 
+    // MARK: - Body
     var body: some View {
         VStack {
-
             Spacer()
 
             Text(Localization.enterEmailAddress())
@@ -42,7 +42,7 @@ struct PasswordResetView: View {
             NavigationLink(destination: {
                 RegistrationView(viewModel: RegistrationViewModel())
             }, label: {
-                Text(Localization.signUp())
+                Text(Localization.register())
                     .font(.callout)
                     .foregroundColor(.black)
                     .frame(height: 50)
@@ -72,16 +72,9 @@ struct PasswordResetView: View {
             Button(Localization.gotIt(), role: .cancel) { }
         })
     }
-
-    // MARK: - Show Message
-    private func showMessage(_ message: String, description: String? = nil) {
-        alertData.title = message
-        if let description {
-            alertData.subtitle = description
-        }
-        alertData.isPresented = true
-    }
 }
+
+extension PasswordResetView: MessageDisplayer { }
 
 struct PasswordResetView_Previews: PreviewProvider {
     static var previews: some View {

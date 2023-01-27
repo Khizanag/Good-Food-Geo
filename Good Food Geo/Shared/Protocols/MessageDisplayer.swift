@@ -5,6 +5,7 @@
 //  Created by Giga Khizanishvili on 02.01.23.
 //
 
+#warning("fix and use messageDisplayer")
 @MainActor
 protocol MessageDisplayer: AnyObject {
     func showMessage(_ message: String, description: String?)

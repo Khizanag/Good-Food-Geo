@@ -12,7 +12,7 @@ protocol LoginUseCase {
 }
 
 struct DefaultLoginUseCase: LoginUseCase {
-    private let repository: Repository = DefaultRepository()
+    private let repository: MainRepository = DefaultMainRepository()
     private let userInformationStorage: UserInformationStorage = DefaultUserInformationStorage.shared
     private let authenticationTokenStorage: AuthenticationTokenStorage = DefaultAuthenticationTokenStorage.shared
 

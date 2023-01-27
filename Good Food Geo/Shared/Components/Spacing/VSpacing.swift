@@ -20,6 +20,7 @@ struct VSpacing: View {
     }
 }
 
+// MARK: - Previews
 struct VSpacing_Previews: PreviewProvider {
     static var previews: some View {
         VSpacing(1)

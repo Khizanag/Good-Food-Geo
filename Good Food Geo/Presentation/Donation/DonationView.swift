@@ -15,8 +15,8 @@ struct DonationView: View {
         (Company.liberty, "GE54TB7337945064300021")
     ]
 
-    private let receiver = "ა(ა)იპ საქართველოს ტრენინგებისა და განვითარების ინსტიტუტი"
-    private let purpose = "დონაცია/ქველმოქმედება"
+    private let receiver = Localization.receiverValue()
+    private let purpose = Localization.purposeValue()
 
     @State private var isSharePresented = false
 
@@ -38,12 +38,12 @@ struct DonationView: View {
                     }
                     .toAnyView()
                 }),
-                .init(title: "მიმღები", content: {
+                .init(title: Localization.receiver(), content: {
                     Menu {
                         Button(action: {
                             UIPasteboard.general.string = receiver
                         }, label: {
-                            Label("დაკოპირება", systemImage: "doc.on.doc.fill")
+                            Label(Localization.copy(), systemImage: "doc.on.doc.fill")
                         })
                     } label: {
                         Text(receiver)
@@ -52,12 +52,12 @@ struct DonationView: View {
                     }
                     .toAnyView()
                 }),
-                .init(title: "დანიშნულება", content: {
+                .init(title: Localization.purpose(), content: {
                     Menu {
                         Button(action: {
                             UIPasteboard.general.string = purpose
                         }, label: {
-                            Label("დაკოპირება", systemImage: "doc.on.doc.fill")
+                            Label(Localization.copy(), systemImage: "doc.on.doc.fill")
                         })
                     } label: {
                         Text(purpose)

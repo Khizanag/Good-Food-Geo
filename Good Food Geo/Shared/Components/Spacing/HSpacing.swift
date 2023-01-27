@@ -20,6 +20,7 @@ struct HSpacing: View {
     }
 }
 
+// MARK: - Previews
 struct HSpacing_Previews: PreviewProvider {
     static var previews: some View {
         HSpacing(5)

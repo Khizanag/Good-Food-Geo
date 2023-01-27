@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol Repository {
+protocol MainRepository {
     func login(email: String, password: String) async -> Result<LoginResponse, AppError>
     func register(with params: RegistrationParams) async -> Result<RegistrationResponse, AppError>
     func authenticateViaGoogle(token: String) async
@@ -19,7 +19,7 @@ protocol Repository {
     func getUserInformation() async -> Result<UserInformationEntity, AppError>
 }
 
-struct DefaultRepository: Repository {
+struct DefaultMainRepository: MainRepository {
     private let networkLayer: NetworkLayer = DefaultNetworkLayer()
     private let authenticationTokenStorage: AuthenticationTokenStorage = DefaultAuthenticationTokenStorage.shared
 

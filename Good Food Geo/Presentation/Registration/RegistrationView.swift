@@ -58,14 +58,14 @@ struct RegistrationView: View {
                     })
                 }
 
-                Text(Localization.signUpSubtitle())
+                Text(Localization.registrationSubtitle())
                     .font(.footnote)
                     .foregroundColor(DesignSystem.Color.primaryText())
 
                 form
 
                 Toggle(isOn: $userAgreesTerms) {
-                    Text(#"დიახ, ვეთანხმები გამოყენების "წესებსა და პირობებს""#)
+                    Text(Localization.agreeRegistrationTermsDescription())
                         .font(.caption)
                         .frame(maxWidth: .infinity)
                         .foregroundColor(.accentColor)
@@ -87,7 +87,7 @@ struct RegistrationView: View {
             .padding(32)
         }
         .scrollDismissesKeyboard(.interactively)
-        .navigationTitle(Localization.signUpTitle())
+        .navigationTitle(Localization.registrationTitle())
         .onReceive(viewModel.errorPublisher, perform: showError)
         .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
             Button(Localization.gotIt(), role: .cancel) { }
@@ -163,7 +163,7 @@ struct RegistrationView: View {
         PrimaryButton(
             action: register,
             label: {
-                Text("რეგისტრაცია")
+                Text(Localization.register())
             },
             isLoading: $viewModel.isRegistrationLoading
         )
@@ -175,7 +175,7 @@ struct RegistrationView: View {
                 viewModel.verifyRegistration(using: verificationCode)
             },
             label: {
-                Text("ვერიფიკაცია")
+                Text(Localization.verify())
             },
             isLoading: $viewModel.isVerificationLoading
         )

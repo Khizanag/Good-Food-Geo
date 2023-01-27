@@ -6,6 +6,8 @@
   
 */
 
+
+
 // MARK: - Shared
 "fullName" = "სრული სახელი";
 "email" = "ელ.ფოსტა";
@@ -21,6 +23,12 @@
 "or" = "ან";
 "send" = "გაგზავნა";
 "gotIt" = "გასაგებია";
+"agree" = "დათანხმება";
+"close" = "დახურვა";
+"copy" = "დაკოპირება";
+
+// MARK: - Header
+"logout" = "გამოსვლა";
 
 // MARK: - Login
 "login" = "შესვლა";
@@ -32,16 +40,24 @@
 "loginInputIsEmptyErrorMessage" = "მაილის ან პაროლის ველი ცარიელია";
 
 // MARK: - Registration
-"signUp" = "რეგისტრაცია";
-"signUpTitle" = "დარეგისტრირდი";
-"signUpSubtitle" = "ან, დარეგისტრირდი ელ.ფოსტით";
 "register" = "რეგისტრაცია";
+"registrationTitle" = "დარეგისტრირდი";
+"registrationSubtitle" = "ან, დარეგისტრირდი ელ.ფოსტით";
 "resend" = "თავიდან გაგზავნა";
+"verify" = "ვერიფიცაკია";
 "codePlaceholder" = "კოდი*";
 "getVerificationCode" = "ვერიფიკაციის კოდის მიღება";
 "verificationCodeInstruction" = "აქტივაციის კოდი გაიგზავნება შეტყობინების საშუალებით";
-"agreeNotifications" = "დიახ, თანახმა ვარ მივიღო ტექსტური შეტყობინებები და სატელეფონო ზარები";
+"agreeRegistrationTermsDescription" = "დიახ, ვეთანხმები გამოყენების \"წესებსა და პირობებს\"";
 "signUpSmsCodeInfo" = "აქტივაციის კოდი გაიგზავნება შეტყობინების საშუალებით";
+
+// MARK: - Terms and Conditions
+"termsAndConditionsTitle" = "აპლიკაციის გამოყენების პირობები";
+"privacyPolicyTitle" = "პირადი მონაცემების პოლიტიკა";
+"privacyPolicyDescription" = "აპლიკაციის მუშაობს კონფიდენციალურობის პოლიტიკის სამართლებრივი საფუძვლის გათვალისწინებით, რომლის ფარგლებში პირად მონაცემთა უსაფრთხოება დაცულია.";
+"termsAndConditionsSectionsTitle" = "ვეთანხმები წესებს და პირობებს";
+"termsAndConditionsFirstSection" = "მომხმარებელი გამოგზავნამდე ადასტურებს თანხმობას, რომ სრულად პასუხისმგებელია ინფორმაციის უტყუარობასა და შინაარსზე და ინფორმირებულია, რომ მის მიერ მოწოდებული ინფორმაციის საფუძველზე მოხდება მიმართვა ბიზნესსუბიექტებისა და სურსათის ეროვნული სააგენტოსათვის.";
+"termsAndConditionsSecondSection" = "დახარვეზდება ისეთი მოწოდებული მასალები, რაც შეიცავს აშკარა ბუნდოვანებას და გაურკევლობას და ასეთ შემთხვევაში დაზუსტების მიზნით, კომუნიკაცია იწარმოებს მომხმარებელთან.";
 
 // MARK: - PasswordReset
 "passwordResetTitle" = "დაგავიწყდა პაროლი";
@@ -66,14 +82,32 @@
 "preScanFormTitle" = "სკანირების დაწყებამდე თქვენ უნდა შეავსოთ ეს ველები.";
 "acceptTerms" = "თქვენ ეთანხმებით მოხმარების პირობებს.";
 "scanProduct" = "პროდუქტის სკანირება";
+"productTitle" = "პროდუქტის სახელი";
+"scanFirstImageDescription" = "გადაუღე ნათლად პროდუქტის ვადას";
+"scanSecondImageDescription" = "გადაუღე ნათლად პროდუქტის წინა მხარეს";
+"scanThirdImageDescription" = "გადაუღე ნათლად პროდუქტის უკანა მხარეს";
+"scanFourthImageDescription" = "პროდუქტის მარცხენა ან ზედა მხარე";
+"scanFifthImageDescription" = "პროდუქტის ნათლად მარჯვენა ან ქვედა მხარე";
 
 // MARK: - Donation
 "donation" = "დონაცია";
 "aboutDonationSectionTitle" = "დონაციის შესახებ";
 "aboutDonationSectionDescription" = "ნებისმიერ მსურველს აქვს შესაძლებლობა გააკეთოს ფინანსური შემოწირულობა და დააფინანსოს აპლიკაციის მუშაობა მომხმარებელთა საკეთილდღეოდ.";
 "donationBankAccountNumber" = "საბანკო ანგარიშის ნომერი";
+"receiver" = "მიმღები";
+"receiverValue" = "ა(ა)იპ საქართველოს ტრენინგებისა და განვითარების ინსტიტუტი";
+"purpose" = "დანიშნულება";
+"purposeValue" = "დონაცია/ქველმოქმედება";
 
 // MARK: - Expert
 "expert" = "ექსპერტი";
 "expertAboutServiceSectionTitle" = "სერვისის შესახებ";
 "callExpertSectionTitle" = "დაურეკე ექსპერტს";
+
+// MARK: - Errors
+"technicalErrorDescription" = "ტექნიკური შეცდომა";
+"sessionNotFoundErrorDescription" = "მიმდინარე სესია არაა აქტიური. გთხოვთ გამოხვიდეთ პროფილიდან და თავიდან გაიაროთ ავტორიზაცია";
+"failedRequestErrorDescription" = "მოთხოვნა შესრულდა წარუმატებლად";
+"shouldFillAllFieldsDescription" = "ყველა ველი არაა შევსებული";
+"passwordsMismatchErrorDescription" = "პაროლები არ ემთხვევა ერთმანეთს";
+"termsAreNotAgreedErrorDescription" = "პროცესის გასაგრძელებლად, აუცილებელია დაეთანხმოთ \"წესებსა და პირობებს\"";

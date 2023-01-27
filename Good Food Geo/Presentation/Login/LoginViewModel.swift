@@ -70,7 +70,7 @@ final class LoginViewModel: DefaultViewModel {
             switch result {
             case .success(_, _, let token):
                 guard let token = token?.tokenString else {
-                    self.showError(.descriptive("Facebook-ით ავტორიზაცია წარუმატებელია"))
+                    self.showError(.descriptive("Facebook login is failed"))
                     self.isFacebookButtonLoading = false
                     return
                 }
@@ -80,17 +80,18 @@ final class LoginViewModel: DefaultViewModel {
                 }
             case .cancelled:
                 self.isFacebookButtonLoading = false
-                self.showError(.descriptive("Facebook-ით ავტორიზაცია შეწყდა"))
+                self.showError(.descriptive("Facebook login has been canceled"))
             case .failed(let error):
                 self.isFacebookButtonLoading = false
-                self.showError(.descriptive("Facebook-ით ავტორიზაცია წარუმატებელია"))
+                self.showError(.descriptive("Facebook login is failed"))
                 debugPrint(error.localizedDescription)
             }
         }
     }
 
     func loginUsingGoogle() {
-        showError(.descriptive("სანწუხაროდ, ამ მომენტისათვის Google-ის საშუალებით ავტორიზაცია არაა ხელმისაწვდომი"))
+        #warning("implement Google login and remove that message")
+        showError(.descriptive("სამწუხაროდ, ამ მომენტისათვის Google-ის საშუალებით ავტორიზაცია არაა ხელმისაწვდომი"))
     }
 
     private func handleFacebookAuthentication(using token: String) async {

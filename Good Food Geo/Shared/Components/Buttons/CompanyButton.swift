@@ -15,7 +15,13 @@ struct CompanyButton: View {
     @Binding var isLoading: Bool
 
     // MARK: - Init
-    init(company: CompanyModel, action: @escaping () -> Void, title: String? = nil, foregroundColor: Color? = nil, isLoading: Binding<Bool> = .constant(false)) {
+    init(
+        company: CompanyModel,
+        action: @escaping () -> Void,
+        title: String? = nil,
+        foregroundColor: Color? = nil,
+        isLoading: Binding<Bool> = .constant(false)
+    ) {
         self.company = company
         self.action = action
         self.title = title
@@ -42,7 +48,8 @@ struct CompanyButton: View {
                     Text(title ?? company.name)
                         .multilineTextAlignment(.center)
                         .frame(maxWidth: .infinity)
-                        .foregroundColor(foregroundColor ?? .black) // FIXME: LOL
+                        .foregroundColor(foregroundColor ?? .black)
+                    #warning("should be fixed foregroundColor")
                 }
                 .padding(.horizontal)
             }

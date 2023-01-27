@@ -11,7 +11,7 @@ struct PrimaryPageView: View {
     let section: SectionView.Model
     let subSections: [SubSectionView<AnyView>.Model]
 
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss) private var dismiss
 
     private let userInformationStorage: UserInformationStorage = DefaultUserInformationStorage.shared
 

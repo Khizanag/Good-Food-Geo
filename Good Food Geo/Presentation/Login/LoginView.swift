@@ -97,11 +97,13 @@ struct LoginView: View {
                 Text(Localization.login())
             }, isLoading: $viewModel.isLoading)
 
+            #if DEBUG
             PrimaryButton(action: {
                 viewModel.login(email: "admin@gfg.ge", password: "admin")
             }, label: {
                 Text("Test login by Admin")
             }, isLoading: $viewModel.isLoading)
+            #endif
 
             Text(Localization.loginWithSocialNetworksTitle())
                 .font(.footnote)
@@ -170,6 +172,7 @@ struct LoginView: View {
     }
 }
 
+// MARK: - Previews
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView(viewModel: LoginViewModel())

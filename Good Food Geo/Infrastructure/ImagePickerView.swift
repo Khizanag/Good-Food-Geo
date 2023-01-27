@@ -10,7 +10,7 @@ import SwiftUI
 
 // MARK: - ImagePickerView
 struct ImagePickerView: UIViewControllerRepresentable {
-    @Environment(\.presentationMode) var isPresented
+    @Environment(\.dismiss) private var dismiss
 
     @Binding var selectedImage: UIImage?
 
@@ -19,22 +19,23 @@ struct ImagePickerView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIImagePickerController {
         let imagePicker = UIImagePickerController()
         imagePicker.sourceType = self.sourceType
-        imagePicker.delegate = context.coordinator // confirming the delegate
+        imagePicker.delegate = context.coordinator
         return imagePicker
     }
 
-    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) { }
 
+    func makeCoordinator() -> Coordinator {
+        Coordinator(picker: self)
     }
 
-    // Connecting the Coordinator class with this struct
-    func makeCoordinator() -> Coordinator {
-        return Coordinator(picker: self)
+    func shouldDismiss() {
+        dismiss()
     }
 }
 
 // MARK: - Coordinator
-class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+final class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     var picker: ImagePickerView
 
     init(picker: ImagePickerView) {
@@ -44,7 +45,6 @@ class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerContro
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         guard let selectedImage = info[.originalImage] as? UIImage else { return }
         self.picker.selectedImage = selectedImage
-        self.picker.isPresented.wrappedValue.dismiss()
+        self.picker.shouldDismiss()
     }
-
 }

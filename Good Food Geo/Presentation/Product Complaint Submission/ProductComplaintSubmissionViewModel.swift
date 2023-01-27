@@ -11,7 +11,7 @@ import Combine
 final class ProductComplaintSubmissionViewModel: DefaultViewModel {
     private let productsRepository: ProductsRepository = DefaultProductsRepository()
 
-    let numRequiredImages = 3
+    let numRequiredImages = 5
 
     @Published var isLoading = false
 
@@ -32,12 +32,12 @@ final class ProductComplaintSubmissionViewModel: DefaultViewModel {
             .allSatisfy({ !$0.isEmpty })
 
         guard allInputIsFilled else {
-            showError(.descriptive("ყველა ველი უნდა იყოს შევსებული"))
+            showError(.emptyField)
             return
         }
 
         guard productComplaint.areTermsAgreed else {
-            showError(.descriptive("გაგზავნამდე, აუცილებელია, რომ დაეთანხმოთ წესებსა და პირობებს"))
+            showError(.termsAreNotAgreed)
             return
         }
 

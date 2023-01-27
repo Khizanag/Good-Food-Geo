@@ -12,7 +12,7 @@ protocol VerifyRegistrationUseCase {
 }
 
 struct DefaultVerifyRegistrationUseCase: VerifyRegistrationUseCase {
-    private let repository: Repository = DefaultRepository()
+    private let repository: MainRepository = DefaultMainRepository()
     private let authenticationTokenStorage: AuthenticationTokenStorage = DefaultAuthenticationTokenStorage.shared
 
     func execute(email: String, code: String) async -> Result<VerificationEntity, AppError> {

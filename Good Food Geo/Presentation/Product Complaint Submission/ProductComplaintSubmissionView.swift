@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ProductComplaintSubmissionView: View {
+    // MARK: - Typealias
+    typealias ViewModel = ProductComplaintSubmissionViewModel
+
     private enum Field: Arrangeable {
         case productTitle
         case fullName
@@ -19,16 +22,14 @@ struct ProductComplaintSubmissionView: View {
         }
     }
 
-    typealias ViewModel = ProductComplaintSubmissionViewModel
-
     @ObservedObject var viewModel: ViewModel
 
     private static let imagePlaceholderTexts = [
-        "გადაუღე ნათლად პროდუქტის ვადას",
-        "გადაუღე ნათლად პროდუქტის წინა მხარეს",
-        "გადაუღე ნათლად პროდუქტის უკანა მხარეს",
-        "პროდუქტის მარცხენა ან ზედა მხარე",
-        "პროდუქტის ნათლად მარჯვენა ან ქვედა მხარე"
+        Localization.scanFirstImageDescription(),
+        Localization.scanSecondImageDescription(),
+        Localization.scanThirdImageDescription(),
+        Localization.scanFourthImageDescription(),
+        Localization.scanFifthImageDescription()
     ]
 
     private struct SelectableImageInfo {
@@ -72,10 +73,8 @@ struct ProductComplaintSubmissionView: View {
                     .multilineTextAlignment(.center)
                     .padding()
 
-                FormItemView(model: FormItemModel(icon: DesignSystem.Image.photo(), placeholder: "პროდუქტის სახელი"), text: $productTitle)
+                FormItemView(model: FormItemModel(icon: DesignSystem.Image.photo(), placeholder: Localization.productTitle()), text: $productTitle)
                     .focused($focusedField, equals: .productTitle)
-
-
 
                 HStack {
                     selectedImageComponent(for: 0)
@@ -152,12 +151,12 @@ struct ProductComplaintSubmissionView: View {
                 PhotoPickerView(selectedImage: $selectableImages[index].image)
                     .ignoresSafeArea()
             }
-            .confirmationDialog("როგორ გსურთ ფოტოს არჩევა?", isPresented: $selectableImages[index].isConfirmationDialogPresented) {
-                Button("კამერა") {
+            .confirmationDialog("?", isPresented: $selectableImages[index].isConfirmationDialogPresented) {
+                Button("Camera") {
                     selectableImages[index].isImagePickerPresented = true
                 }
 
-                Button("ფოტოების გალერია") {
+                Button("Photo Gallery") {
                     selectableImages[index].isPhotoPickerPresented = true
                 }
             }
@@ -197,13 +196,12 @@ struct ProductComplaintSubmissionView: View {
         .cornerRadius(15)
     }
 
-
     private var submitButton: some View {
         PrimaryButton(
             action: submit,
             label: {
                 Label(title: {
-                    Text("გაგზავნა")
+                    Text(Localization.send())
                         .padding()
                 }, icon: {
                     DesignSystem.Image.submit()

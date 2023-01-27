@@ -13,33 +13,31 @@ struct RegistrationTermsAndConditionsView: View {
 
     var body: some View {
         ScrollView {
-
-
             VStack(alignment: .leading, spacing: 32) {
-                Text("აპლიკაციის გამოყენების პირობები")
+                Text(Localization.termsAndConditionsTitle())
                     .font(.title)
                     .bold()
 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("პირადი მონაცემების პოლიტიკა")
+                    Text(Localization.privacyPolicyTitle())
                         .font(.title2)
                         .fontWeight(.semibold)
                         .italic()
 
-                    Text("აპლიკაციის მუშაობს კონფიდენციალურობის პოლიტიკის სამართლებრივი საფუძვლის გათვალისწინებით, რომლის ფარგლებში პირად მონაცემთა უსაფრთხოება დაცულია.")
+                    Text(Localization.privacyPolicyDescription())
                         .font(.body)
                 }
 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("ვეთანხმები წესებს და პირობებს")
+                    Text(Localization.termsAndConditionsSectionsTitle())
                         .font(.title2)
                         .fontWeight(.semibold)
                         .italic()
 
                     VStack(alignment: .leading, spacing: 4) {
-                        Text("მომხმარებელი გამოგზავნამდე ადასტურებს თანხმობას, რომ სრულად პასუხისმგებელია ინფორმაციის უტყუარობასა და შინაარსზე და ინფორმირებულია, რომ მის მიერ მოწოდებული ინფორმაციის საფუძველზე მოხდება მიმართვა ბიზნესსუბიექტებისა და სურსათის ეროვნული სააგენტოსათვის.")
+                        Text(Localization.termsAndConditionsFirstSection())
                             .font(.body)
-                        Text("დახარვეზდება ისეთი მოწოდებული მასალები, რაც შეიცავს აშკარა ბუნდოვანებას და გაურკევლობას და ასეთ შემთხვევაში დაზუსტების მიზნით, კომუნიკაცია იწარმოებს მომხმარებელთან.")
+                        Text(Localization.termsAndConditionsSecondSection())
                             .font(.body)
                     }
                 }
@@ -50,7 +48,7 @@ struct RegistrationTermsAndConditionsView: View {
                             userAgreesTerms = true
                             isPresented = false
                         },
-                        label: { Text("ვეთანხმები") },
+                        label: { Text(Localization.agree()) },
                         backgroundColor: .green.opacity(0.85)
                     )
 
@@ -58,7 +56,7 @@ struct RegistrationTermsAndConditionsView: View {
                         action: {
                             isPresented = false
                         },
-                        label: { Text("დახურვა") },
+                        label: { Text(Localization.close()) },
                         backgroundColor: .red.opacity(0.85)
                     )
                 }

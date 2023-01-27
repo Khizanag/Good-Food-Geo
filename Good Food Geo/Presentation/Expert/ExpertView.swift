@@ -11,7 +11,7 @@ struct ExpertView: View {
     @Environment(\.dismiss) private var dismiss
 
     let expert: Expert
-
+#warning("Localize")
     var body: some View {
         PrimaryPageView(
             section: .init(title: "კონსულტაცია", description: "სურსათის უვნებლობის ექსპერტის დახმარების სერვისი"),

@@ -23,4 +23,11 @@ extension Language {
     var name: String { rawValue.capitalized }
 
     var image: Image { Image(rawValue) }
+
+    var icon: String {
+        switch self {
+        case .english: return "🇬🇧"
+        case .georgian: return "🇬🇪"
+        }
+    }
 }

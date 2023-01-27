@@ -8,7 +8,7 @@
 import Combine
 
 final class PasswordResetViewModel: DefaultViewModel {
-    private let repository: Repository = DefaultRepository()
+    private let repository: MainRepository = DefaultRepository()
 
     enum Event {
         case cleanUpEmailField

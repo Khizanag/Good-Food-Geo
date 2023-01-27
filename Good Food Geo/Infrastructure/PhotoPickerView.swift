@@ -33,7 +33,7 @@ struct PhotoPickerView: UIViewControllerRepresentable {
     }
 
     // Use a Coordinator to act as your PHPickerViewControllerDelegate
-    class Coordinator: PHPickerViewControllerDelegate {
+    final class Coordinator: PHPickerViewControllerDelegate {
 
         private let parent: PhotoPickerView
 

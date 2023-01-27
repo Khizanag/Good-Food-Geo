@@ -5,8 +5,6 @@
 //  Created by Giga Khizanishvili on 05.01.23.
 //
 
-import Foundation
-
 protocol LogoutUseCase {
     func execute()
 }

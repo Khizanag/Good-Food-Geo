@@ -23,6 +23,12 @@ enum Localization: String {
     case or
     case send
     case gotIt
+    case agree
+    case close
+    case copy
+
+    // MARK: - Header
+    case logout
 
     // MARK: - Login
     case login
@@ -34,16 +40,24 @@ enum Localization: String {
     case loginInputIsEmptyErrorMessage
 
     // MARK: - Registration
-    case signUp
-    case signUpTitle
-    case signUpSubtitle
     case register
+    case registrationTitle
+    case registrationSubtitle
     case resend
+    case verify
     case codePlaceholder
     case getVerificationCode
     case verificationCodeInstruction
-    case agreeNotifications
+    case agreeRegistrationTermsDescription
     case signUpSmsCodeInfo
+
+    // MARK: - Terms and Conditions
+    case termsAndConditionsTitle
+    case privacyPolicyTitle
+    case privacyPolicyDescription
+    case termsAndConditionsSectionsTitle
+    case termsAndConditionsFirstSection
+    case termsAndConditionsSecondSection
 
     // MARK: - Password Reset
     case passwordResetTitle
@@ -68,17 +82,35 @@ enum Localization: String {
     case preScanFormTitle
     case acceptTerms
     case scanProduct
+    case productTitle
+    case scanFirstImageDescription
+    case scanSecondImageDescription
+    case scanThirdImageDescription
+    case scanFourthImageDescription
+    case scanFifthImageDescription
 
     // MARK: - Donation
     case donation
     case aboutDonationSectionTitle
     case aboutDonationSectionDescription
     case donationBankAccountNumber
+    case receiver
+    case receiverValue
+    case purpose
+    case purposeValue
 
     // MARK: - Expert
     case expert
     case expertAboutServiceSectionTitle
     case callExpertSectionTitle
+
+    // MARK: - Errors
+    case technicalErrorDescription
+    case sessionNotFoundErrorDescription
+    case failedRequestErrorDescription
+    case shouldFillAllFieldsDescription
+    case passwordsMismatchErrorDescription
+    case termsAreNotAgreedErrorDescription
 }
 
 extension Localization {
