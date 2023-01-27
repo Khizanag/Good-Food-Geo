@@ -13,6 +13,7 @@ final class LoginViewModel: DefaultViewModel {
     private let authenticationRepository: AuthenticationRepository = DefaultAuthenticationRepository()
     private let authenticationTokenStorage: AuthenticationTokenStorage = DefaultAuthenticationTokenStorage.shared
     private let facebookLoginManager = LoginManager()
+    private let languageStorage: LanguageStorage = DefaultLanguageStorage.shared
 
     @Published var shouldNavigateToHome = false
     @Published var shouldNavigateToRegistration = false
@@ -31,6 +32,10 @@ final class LoginViewModel: DefaultViewModel {
             self.shouldNavigateToHome = isSessionActive
             self.isLoading = false
         }
+    }
+
+    func changeLanguage(to newLanguage: Language) {
+        languageStorage.write(newLanguage)
     }
 
     func login(email: String, password: String) {

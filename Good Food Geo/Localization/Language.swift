@@ -20,7 +20,14 @@ extension Language {
         }
     }
 
-    var name: String { rawValue.capitalized }
+    var name: String {
+        switch self {
+        case .english:
+            return "English"
+        case .georgian:
+            return "ქართული"
+        }
+    }
 
     var image: Image { Image(rawValue) }
 

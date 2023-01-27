@@ -39,10 +39,12 @@ struct HeaderView: View {
                             Button(action: {
                                 viewModel.changeLanguage(to: language)
                             }, label: {
+                                let title = "\(language.icon) \(language.name)"
+
                                 if language == self.language {
-                                    Label(language.name, systemImage: "checkmark")
+                                    Label(title, systemImage: "checkmark")
                                 } else {
-                                    Text(language.name)
+                                    Text(title)
                                 }
                             })
                         }
@@ -62,6 +64,6 @@ struct HeaderView: View {
 // MARK: - Previews
 struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        HeaderView(viewModel: .init(), fullName: "Giga Khizanishvili")
+        HeaderView(viewModel: HeaderViewModel(), fullName: "Full Name")
     }
 }

@@ -20,6 +20,7 @@ struct LoginView: View {
     @ObservedObject var viewModel: LoginViewModel
 
     @AppStorage(AppStorageKey.authenticationToken()) private var authenticationToken: String?
+    @AppStorage(AppStorageKey.language()) private var language: Language = .english
 
     @State private var email = ""
     @State private var password = ""
@@ -30,6 +31,8 @@ struct LoginView: View {
     // MARK: - Body
     var body: some View {
         VStack(spacing: 24) {
+            HSpacing(8)
+
             HStack {
                 DesignSystem.Image.appIconPrimary()
                     .resizable()
@@ -37,7 +40,24 @@ struct LoginView: View {
                     .frame(width: 32, height: 48)
 
                 Spacer()
+
+                Menu(Localization.changeLanguage()) {
+                    ForEach(Language.allCases, id: \.localizableIdentifier) { language in
+                        Button(action: {
+                            viewModel.changeLanguage(to: language)
+                        }, label: {
+                            let title = "\(language.icon) \(language.name)"
+
+                            if language == self.language {
+                                Label(title, systemImage: "checkmark")
+                            } else {
+                                Text(title)
+                            }
+                        })
+                    }
+                }
             }
+            .frame(maxWidth: .infinity)
             .padding([.bottom, .horizontal])
 
             VStack(alignment: .leading, spacing: 6) {
@@ -139,7 +159,10 @@ struct LoginView: View {
                 fullName: viewModel.registrationName ?? ""
             )
         }
-        .onAppear(perform: cleanUp)
+        .onAppear {
+            cleanUp()
+            viewModel.viewDidAppear()
+        }
         .allowsHitTesting(!viewModel.isLoading)
         .onReceive(viewModel.errorPublisher, perform: showError)
         .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
