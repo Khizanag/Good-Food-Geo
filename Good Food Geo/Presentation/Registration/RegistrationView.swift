@@ -50,12 +50,16 @@ struct RegistrationView: View {
         ScrollView {
             VStack(spacing: 16) {
                 VStack(spacing: 12) {
-                    CompanyButton(company: Company.facebook, action: {
-                        viewModel.registerUsingFacebook()
-                    })
-                    CompanyButton(company: Company.google, action: {
-                        viewModel.registerUsingGoogle()
-                    })
+                    CompanyButton(
+                        company: Company.facebook,
+                        action: { viewModel.registerUsingFacebook() },
+                        isLoading: $viewModel.isFacebookButtonLoading
+                    )
+                    CompanyButton(
+                        company: Company.google,
+                        action: { viewModel.registerUsingGoogle() },
+                        isLoading: $viewModel.isGoogleButtonLoading
+                    )
                 }
 
                 Text(Localization.registrationSubtitle())
@@ -89,6 +93,14 @@ struct RegistrationView: View {
         .scrollDismissesKeyboard(.interactively)
         .navigationTitle(Localization.registrationTitle())
         .onReceive(viewModel.errorPublisher, perform: showError)
+        .onReceive(viewModel.eventPublisher) { event in
+            switch event {
+            case .updateFields(name: let fullName, email: let email):
+                self.fullName = fullName
+                self.email = email
+                focusedField = .password.next
+            }
+        }
         .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
             Button(Localization.gotIt(), role: .cancel) { }
         })

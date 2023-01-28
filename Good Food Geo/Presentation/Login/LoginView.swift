@@ -133,7 +133,7 @@ struct LoginView: View {
             VStack(spacing: 12) {
                 CompanyButton(
                     company: Company.facebook,
-                    action: viewModel.loginUsingFacebook,
+                    action: { viewModel.loginUsingFacebook() },
                     isLoading: $viewModel.isFacebookButtonLoading
                 )
 

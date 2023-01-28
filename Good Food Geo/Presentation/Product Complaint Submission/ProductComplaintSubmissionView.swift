@@ -76,15 +76,7 @@ struct ProductComplaintSubmissionView: View {
                 FormItemView(model: FormItemModel(icon: DesignSystem.Image.photo(), placeholder: Localization.productTitle()), text: $productTitle)
                     .focused($focusedField, equals: .productTitle)
 
-//                VStack {
-//                    selectedImageComponent(for: 0)
-//                    selectedImageComponent(for: 1)
-//                    selectedImageComponent(for: 2)
-//                    selectedImageComponent(for: 3)
-//                    selectedImageComponent(for: 4)
-//                }
-
-                ForEach(selectableImages.indices) { index in
+                ForEach(selectableImages.indices, id: \.self) { index in
                     selectedImageComponent(for: index)
                 }
 

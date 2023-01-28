@@ -10,6 +10,7 @@ import FacebookLogin
 import GoogleSignIn
 
 final class LoginViewModel: BaseViewModel {
+    // MARK: - Properties
     private let loginUseCase: LoginUseCase = DefaultLoginUseCase()
     private let authenticationRepository: AuthenticationRepository = DefaultAuthenticationRepository()
     private let authenticationTokenStorage: AuthenticationTokenStorage = DefaultAuthenticationTokenStorage.shared
@@ -25,6 +26,7 @@ final class LoginViewModel: BaseViewModel {
     var registrationName: String?
     var registrationEmail: String?
 
+    // MARK: - Methods
     func viewDidAppear() {
         let isSessionActive = UserDefaults.standard.value(forKey: AppStorageKey.authenticationToken()) != nil
         shouldNavigateToHome = isSessionActive
@@ -91,7 +93,7 @@ final class LoginViewModel: BaseViewModel {
         }
     }
 
-    func loginUsingGoogle(by presentingViewController: UIViewController) {
+    @MainActor func loginUsingGoogle(by presentingViewController: UIViewController) {
         let configuration = GIDConfiguration(clientID: "469167745457-fnccgvj7ntdvcn19br65g5542sbnfpd7")
         GIDSignIn.sharedInstance.configuration = configuration
         GIDSignIn.sharedInstance.signIn(withPresenting: presentingViewController) { user, error in
