@@ -95,9 +95,9 @@
 "aboutDonationSectionTitle" = "About Donation";
 "aboutDonationSectionDescription" = "Anyone can make a financial donation and fund the application's operation to benefit users.";
 "donationBankAccountNumber" = "Bank account number";
-"receiver" = "receiver";
+"receiver" = "Receiver";
 "receiverValue" = "*ENG* ა(ა)იპ საქართველოს ტრენინგებისა და განვითარების ინსტიტუტი";
-"purpose" = "purpose";
+"purpose" = "Purpose";
 "purposeValue" = "*ENG* დონაცია/ქველმოქმედება";
 
 // MARK: - Expert
