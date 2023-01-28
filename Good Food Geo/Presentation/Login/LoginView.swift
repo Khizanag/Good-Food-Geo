@@ -94,7 +94,7 @@ struct LoginView: View {
                             Spacer()
 
                             NavigationLink(destination: {
-                                PasswordResetView(viewModel: PasswordResetViewModel(), shouldNavigateToRegistration: $viewModel.shouldNavigateToRegistration)
+                                PasswordResetView(viewModel: PasswordResetViewModel())
                             }, label: {
                                 Text(Localization.forgotButtonTitle())
                                     .foregroundColor(DesignSystem.Color.primary())
@@ -113,19 +113,23 @@ struct LoginView: View {
                     self.focusedField = nextField
                 }
 
-                PrimaryButton(action: {
-                    viewModel.login(email: email, password: password)
-                }, label: {
-                    Text(Localization.login())
-                }, isLoading: $viewModel.isLoading)
+                PrimaryButton(
+                    action: {
+                        viewModel.login(email: email, password: password)
+                    },
+                    label: {
+                        Text(Localization.login())
+                    },
+                    isLoading: $viewModel.isLoading
+                )
 
-#if DEBUG
-                PrimaryButton(action: {
-                    viewModel.login(email: "admin@gfg.ge", password: "admin")
-                }, label: {
-                    Text("Test login by Admin")
-                }, isLoading: $viewModel.isLoading)
-#endif
+//#if DEBUG
+//                PrimaryButton(action: {
+//                    viewModel.login(email: "admin@gfg.ge", password: "admin")
+//                }, label: {
+//                    Text("Test login by Admin")
+//                }, isLoading: $viewModel.isLoading)
+//#endif
 
                 Text(Localization.loginWithSocialNetworksTitle())
                     .font(.footnote)
@@ -138,15 +142,15 @@ struct LoginView: View {
                         isLoading: $viewModel.isFacebookButtonLoading
                     )
 
-                    CompanyButton(
-                        company: Company.google,
-                        action: {
-                            guard let presentingViewController = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.rootViewController else { return }
-
-                            viewModel.loginUsingGoogle(by: presentingViewController)
-                        },
-                        isLoading: $viewModel.isGoogleButtonLoading
-                    )
+//                    CompanyButton(
+//                        company: Company.google,
+//                        action: {
+//                            guard let presentingViewController = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.rootViewController else { return }
+//
+//                            viewModel.loginUsingGoogle(by: presentingViewController)
+//                        },
+//                        isLoading: $viewModel.isGoogleButtonLoading
+//                    )
                 }
 
                 HStack {

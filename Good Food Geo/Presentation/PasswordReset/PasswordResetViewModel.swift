@@ -6,19 +6,30 @@
 //
 
 import Combine
+import Foundation
 
 final class PasswordResetViewModel: BaseViewModel {
+    // MARK: - Properties
+    @Published var shouldDismiss = false
+
     private let repository: MainRepository = DefaultMainRepository()
 
     enum Event {
         case cleanUpEmailField
         case showMessage(String)
+        case dismiss
     }
 
     var eventPublisher = PassthroughSubject<Event, Never>()
 
-    @MainActor
-    func resetPassword(for email: String) {
+    func viewDidAppear() {
+        let isLoggedIn = UserDefaults.standard.value(forKey: AppStorageKey.authenticationToken()) != nil
+        if isLoggedIn {
+            eventPublisher.send(.dismiss)
+        }
+    }
+
+    @MainActor func resetPassword(for email: String) {
         Task {
             let result = await repository.resetPassword(email: email)
 

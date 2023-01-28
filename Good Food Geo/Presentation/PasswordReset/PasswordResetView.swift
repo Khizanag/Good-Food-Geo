@@ -11,9 +11,14 @@ struct PasswordResetView: View {
     @ObservedObject var viewModel: PasswordResetViewModel
     @Environment(\.dismiss) private var dismiss
 
-    @Binding var shouldNavigateToRegistration: Bool
     @State private var email = ""
+    @State private var shouldNavigateToRegistration = false
+    @State var fullNameForRegistration = ""
+    @State var emailForRegistration = ""
     @FocusState private var isFieldFocused
+
+    @State private var registrationViewModel = RegistrationViewModel()
+
     @State private var alertData = AlertData()
 
     // MARK: - Body
@@ -40,19 +45,26 @@ struct PasswordResetView: View {
                 .foregroundColor(.secondary)
                 .font(.footnote)
 
-            Text(Localization.register())
-                .font(.callout)
-                .foregroundColor(.black)
-                .frame(height: 50)
-                .frame(maxWidth: .infinity)
-                .background(
-                    RoundedRectangle(cornerRadius: 15)
-                        .stroke(DesignSystem.Color.primary())
-                )
-                .onTapGesture {
-//                    dismiss()
+            PrimaryButton(
+                action: {
+                    print("should navigate to registration")
                     shouldNavigateToRegistration = true
-                }
+                },
+                label: {
+                    Text(Localization.register())
+                        .font(.callout)
+                        .foregroundColor(.black)
+                        .frame(height: 50)
+                        .frame(maxWidth: .infinity)
+                        .background(
+                            RoundedRectangle(cornerRadius: 15)
+                                .stroke(DesignSystem.Color.primary())
+                        )
+                },
+                backgroundColor: .white
+            )
+
+
 
             Spacer()
         }
@@ -66,7 +78,16 @@ struct PasswordResetView: View {
                 email = ""
             case .showMessage(let message):
                 showMessage(message)
+            case .dismiss:
+                dismiss()
             }
+        }
+        .navigationDestination(isPresented: $shouldNavigateToRegistration) {
+            RegistrationView(
+                viewModel: registrationViewModel,
+                fullName: $fullNameForRegistration,
+                email: $emailForRegistration
+            )
         }
         .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
             Button(Localization.gotIt(), role: .cancel) { }
@@ -90,6 +111,6 @@ struct PasswordResetView: View {
 // MARK: - Previews
 struct PasswordResetView_Previews: PreviewProvider {
     static var previews: some View {
-        PasswordResetView(viewModel: PasswordResetViewModel(), shouldNavigateToRegistration: .constant(false))
+        PasswordResetView(viewModel: PasswordResetViewModel())
     }
 }

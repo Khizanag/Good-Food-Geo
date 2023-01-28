@@ -42,7 +42,6 @@ struct PrimaryPageView: View {
                             }
                         }
                         .scrollIndicators(.hidden)
-                        .padding(1)
                     }
                     .padding(.horizontal, 32)
                 }

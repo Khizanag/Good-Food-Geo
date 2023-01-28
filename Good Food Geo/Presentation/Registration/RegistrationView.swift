@@ -35,11 +35,11 @@ struct RegistrationView: View {
                         action: { viewModel.registerUsingFacebook() },
                         isLoading: $viewModel.isFacebookButtonLoading
                     )
-                    CompanyButton(
-                        company: Company.google,
-                        action: { viewModel.registerUsingGoogle() },
-                        isLoading: $viewModel.isGoogleButtonLoading
-                    )
+//                    CompanyButton(
+//                        company: Company.google,
+//                        action: { viewModel.registerUsingGoogle() },
+//                        isLoading: $viewModel.isGoogleButtonLoading
+//                    )
                 }
 
                 Text(Localization.registrationSubtitle())

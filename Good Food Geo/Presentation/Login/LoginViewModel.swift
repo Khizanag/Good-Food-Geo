@@ -128,7 +128,7 @@ final class LoginViewModel: BaseViewModel {
                 // Is not registered, needs registration
                 self.registrationName = entity.name ?? ""
                 self.registrationEmail = entity.email ?? ""
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                DispatchQueue.main.async {
                     self.setSocialNetworkIsLoadingButton(to: false, for: socialNetwork)
                     self.shouldNavigateToRegistration = true
                 }
