@@ -76,15 +76,16 @@ struct ProductComplaintSubmissionView: View {
                 FormItemView(model: FormItemModel(icon: DesignSystem.Image.photo(), placeholder: Localization.productTitle()), text: $productTitle)
                     .focused($focusedField, equals: .productTitle)
 
-                HStack {
-                    selectedImageComponent(for: 0)
-                    selectedImageComponent(for: 1)
-                    selectedImageComponent(for: 2)
-                }
+//                VStack {
+//                    selectedImageComponent(for: 0)
+//                    selectedImageComponent(for: 1)
+//                    selectedImageComponent(for: 2)
+//                    selectedImageComponent(for: 3)
+//                    selectedImageComponent(for: 4)
+//                }
 
-                HStack {
-                    selectedImageComponent(for: 3)
-                    selectedImageComponent(for: 4)
+                ForEach(selectableImages.indices) { index in
+                    selectedImageComponent(for: index)
                 }
 
                 VStack {
@@ -139,9 +140,9 @@ struct ProductComplaintSubmissionView: View {
     private func selectedImageComponent(for index: Int) -> some View {
         getImageOrPlaceholder(for: index)
             .frame(height: 145)
-            .clipped()
             .frame(maxWidth: .infinity)
-            .cornerRadius(15)
+            .cornerRadius(16)
+            .clipped()
             .onTapGesture {
                 selectableImages[index].isConfirmationDialogPresented = true
             }
@@ -168,7 +169,6 @@ struct ProductComplaintSubmissionView: View {
         if let image = selectableImages[index].image {
             return Image(uiImage: image)
                 .resizable()
-                .scaledToFill()
                 .toAnyView()
         } else {
             return getImagePlaceholder(for: index)
@@ -194,7 +194,7 @@ struct ProductComplaintSubmissionView: View {
             .padding(2)
             .offset(y: 8)
         }
-        .cornerRadius(15)
+        .cornerRadius(16)
     }
 
     private var submitButton: some View {

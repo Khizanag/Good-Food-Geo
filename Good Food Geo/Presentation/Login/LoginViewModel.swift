@@ -35,7 +35,7 @@ final class LoginViewModel: BaseViewModel {
         languageStorage.write(newLanguage)
     }
 
-    func login(email: String, password: String) {
+    @MainActor func login(email: String, password: String) {
         if email.isEmpty || password.isEmpty {
             showError(.descriptive(Localization.loginInputIsEmptyErrorMessage()))
             return
@@ -64,7 +64,7 @@ final class LoginViewModel: BaseViewModel {
         }
     }
 
-    func loginUsingFacebook() {
+    @MainActor func loginUsingFacebook() {
         isFacebookButtonLoading = true
         facebookLoginManager.logIn(permissions: [.publicProfile, .email]) { [weak self] result in
             guard let self else { return }
@@ -111,7 +111,7 @@ final class LoginViewModel: BaseViewModel {
     }
 
     // MARK: - Private
-    private func handleSocialNetworkAuthentication(for socialNetwork: AuthenticatingSocialNetwork, using token: String) async {
+    @MainActor private func handleSocialNetworkAuthentication(for socialNetwork: AuthenticatingSocialNetwork, using token: String) async {
         let result = await self.authenticationRepository.authenticateUsingFacebook(with: token)
 
         switch result {

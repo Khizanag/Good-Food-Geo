@@ -22,7 +22,7 @@ final class ProductComplaintSubmissionViewModel: BaseViewModel {
 
     let eventPublisher = PassthroughSubject<Event, Never>()
 
-    func submitProductComplaint(_ productComplaint: ProductComplaint) {
+    @MainActor func submitProductComplaint(_ productComplaint: ProductComplaint) {
         let allInputIsFilled = [
             productComplaint.location,
             productComplaint.comment,
