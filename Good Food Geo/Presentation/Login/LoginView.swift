@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import GoogleSignIn
 
 struct LoginView: View {
     private enum Field: Arrangeable {
@@ -117,22 +118,34 @@ struct LoginView: View {
                 Text(Localization.login())
             }, isLoading: $viewModel.isLoading)
 
-            #if DEBUG
+#if DEBUG
             PrimaryButton(action: {
                 viewModel.login(email: "admin@gfg.ge", password: "admin")
             }, label: {
                 Text("Test login by Admin")
             }, isLoading: $viewModel.isLoading)
-            #endif
+#endif
 
             Text(Localization.loginWithSocialNetworksTitle())
                 .font(.footnote)
                 .foregroundColor(DesignSystem.Color.primaryText())
 
             VStack(spacing: 12) {
-                facebookButton
+                CompanyButton(
+                    company: Company.facebook,
+                    action: viewModel.loginUsingFacebook,
+                    isLoading: $viewModel.isFacebookButtonLoading
+                )
 
-                CompanyButton(company: Company.google, action: viewModel.loginUsingGoogle)
+                CompanyButton(
+                    company: Company.google,
+                    action: {
+                        guard let presentingViewController = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.rootViewController else { return }
+
+                        viewModel.loginUsingGoogle(by: presentingViewController)
+                    },
+                    isLoading: $viewModel.isGoogleButtonLoading
+                )
             }
 
             HStack {
@@ -168,11 +181,6 @@ struct LoginView: View {
         .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
             Button(Localization.gotIt(), role: .cancel) { }
         })
-    }
-
-    // MARK: - Components
-    private var facebookButton: some View {
-        CompanyButton(company: Company.facebook, action: viewModel.loginUsingFacebook, isLoading: $viewModel.isFacebookButtonLoading)
     }
 
     // MARK: - Functions

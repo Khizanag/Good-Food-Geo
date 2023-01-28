@@ -7,4 +7,4 @@
 
 import Foundation
 
-final class ExpertViewModel: DefaultViewModel { }
+final class ExpertViewModel: BaseViewModel { }

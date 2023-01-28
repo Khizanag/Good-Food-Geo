@@ -8,7 +8,7 @@
 import Combine
 import SwiftUI
 
-class DefaultViewModel: ObservableObject {
+class BaseViewModel: ObservableObject {
     var errorPublisher = PassthroughSubject<AppError, Never>()
     @AppStorage(AppStorageKey.language()) private var language: Language = .english
 

@@ -39,7 +39,7 @@
 		FB0FAFD12967552D008175A2 /* ProductComplaintSubmissionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAFD02967552D008175A2 /* ProductComplaintSubmissionViewModel.swift */; };
 		FB0FAFD329675CDD008175A2 /* ProductComplaintSubmissionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAFD229675CDD008175A2 /* ProductComplaintSubmissionEntity.swift */; };
 		FB0FAFD629675D40008175A2 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAFD529675D40008175A2 /* AppError.swift */; };
-		FB0FAFD8296763EA008175A2 /* DefaultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAFD7296763EA008175A2 /* DefaultViewModel.swift */; };
+		FB0FAFD8296763EA008175A2 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAFD7296763EA008175A2 /* BaseViewModel.swift */; };
 		FB100A12296C499100D87FC8 /* MessageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB100A11296C499100D87FC8 /* MessageEntity.swift */; };
 		FB100A15296C4AD700D87FC8 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = FB100A14296C4AD700D87FC8 /* CachedAsyncImage */; };
 		FB100A17296C688E00D87FC8 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB100A16296C688E00D87FC8 /* String+Extension.swift */; };
@@ -48,6 +48,8 @@
 		FB6FE8072983BD0200C184C0 /* LanguageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6FE8062983BD0200C184C0 /* LanguageStorage.swift */; };
 		FB6FE8092983FF0E00C184C0 /* ExpertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6FE8082983FF0E00C184C0 /* ExpertViewModel.swift */; };
 		FB6FE80B2983FF5800C184C0 /* AboutUsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6FE80A2983FF5800C184C0 /* AboutUsViewModel.swift */; };
+		FB8E4402298469BB00849925 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = FB8E4401298469BB00849925 /* GoogleSignIn */; };
+		FB8E4404298469BB00849925 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FB8E4403298469BB00849925 /* GoogleSignInSwift */; };
 		FB907B83296B7A00002CBB23 /* Optional+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB907B82296B7A00002CBB23 /* Optional+Extension.swift */; };
 		FB93931B295D918D00D491CE /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93931A295D918D00D491CE /* HeaderView.swift */; };
 		FB93931D295D968000D491CE /* SubSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93931C295D968000D491CE /* SubSectionView.swift */; };
@@ -74,6 +76,7 @@
 		FB94BA7F295F468F00944E37 /* RegistrationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB94BA7E295F468F00944E37 /* RegistrationResponse.swift */; };
 		FB94BA81295F51CC00944E37 /* URLRequest+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB94BA80295F51CC00944E37 /* URLRequest+Extension.swift */; };
 		FB94BA84295F844700944E37 /* MainRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB94BA83295F844700944E37 /* MainRepository.swift */; };
+		FBC4B54F2985962200ED67AC /* DonationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC4B54E2985962200ED67AC /* DonationViewModel.swift */; };
 		FBDE6BF5297EA25F005CF115 /* Arrangeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE6BF4297EA25F005CF115 /* Arrangeable.swift */; };
 		FBDE6BF7297ECC66005CF115 /* URLCache+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE6BF6297ECC66005CF115 /* URLCache+Extension.swift */; };
 		FBDE6BFB297ED5E0005CF115 /* RegistrationTermsAndConditionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE6BFA297ED5E0005CF115 /* RegistrationTermsAndConditionsView.swift */; };
@@ -158,7 +161,7 @@
 		FB0FAFD02967552D008175A2 /* ProductComplaintSubmissionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductComplaintSubmissionViewModel.swift; sourceTree = "<group>"; };
 		FB0FAFD229675CDD008175A2 /* ProductComplaintSubmissionEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductComplaintSubmissionEntity.swift; sourceTree = "<group>"; };
 		FB0FAFD529675D40008175A2 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
-		FB0FAFD7296763EA008175A2 /* DefaultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultViewModel.swift; sourceTree = "<group>"; };
+		FB0FAFD7296763EA008175A2 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		FB100A11296C499100D87FC8 /* MessageEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageEntity.swift; sourceTree = "<group>"; };
 		FB100A16296C688E00D87FC8 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		FB46A07C2975E55A009286C0 /* AuthenticationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRepository.swift; sourceTree = "<group>"; };
@@ -192,6 +195,7 @@
 		FB94BA7E295F468F00944E37 /* RegistrationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationResponse.swift; sourceTree = "<group>"; };
 		FB94BA80295F51CC00944E37 /* URLRequest+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Extension.swift"; sourceTree = "<group>"; };
 		FB94BA83295F844700944E37 /* MainRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRepository.swift; sourceTree = "<group>"; };
+		FBC4B54E2985962200ED67AC /* DonationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonationViewModel.swift; sourceTree = "<group>"; };
 		FBDE6BF4297EA25F005CF115 /* Arrangeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arrangeable.swift; sourceTree = "<group>"; };
 		FBDE6BF6297ECC66005CF115 /* URLCache+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLCache+Extension.swift"; sourceTree = "<group>"; };
 		FBDE6BFA297ED5E0005CF115 /* RegistrationTermsAndConditionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationTermsAndConditionsView.swift; sourceTree = "<group>"; };
@@ -239,9 +243,11 @@
 			files = (
 				FB0FAFBC2966C005008175A2 /* FacebookLogin in Frameworks */,
 				FB100A15296C4AD700D87FC8 /* CachedAsyncImage in Frameworks */,
+				FB8E4404298469BB00849925 /* GoogleSignInSwift in Frameworks */,
 				FB0FAFBA2966C005008175A2 /* FacebookGamingServices in Frameworks */,
 				FB0FAFBE2966C005008175A2 /* FacebookShare in Frameworks */,
 				FB0FAFB82966C005008175A2 /* FacebookCore in Frameworks */,
+				FB8E4402298469BB00849925 /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,7 +318,7 @@
 				FB0FAFD429675D35008175A2 /* Error System */,
 				FB0FAFC02966C859008175A2 /* ImagePickerView.swift */,
 				FB0FAFC22966CFFC008175A2 /* PhotoPickerView.swift */,
-				FB0FAFD7296763EA008175A2 /* DefaultViewModel.swift */,
+				FB0FAFD7296763EA008175A2 /* BaseViewModel.swift */,
 				FBDE6BF4297EA25F005CF115 /* Arrangeable.swift */,
 			);
 			path = Infrastructure;
@@ -530,6 +536,7 @@
 			children = (
 				FBF940782955AD0F00A8EF10 /* DonationView.swift */,
 				FB93932F295DEAFC00D491CE /* BankButton.swift */,
+				FBC4B54E2985962200ED67AC /* DonationViewModel.swift */,
 			);
 			path = Donation;
 			sourceTree = "<group>";
@@ -679,6 +686,8 @@
 				FB0FAFBB2966C005008175A2 /* FacebookLogin */,
 				FB0FAFBD2966C005008175A2 /* FacebookShare */,
 				FB100A14296C4AD700D87FC8 /* CachedAsyncImage */,
+				FB8E4401298469BB00849925 /* GoogleSignIn */,
+				FB8E4403298469BB00849925 /* GoogleSignInSwift */,
 			);
 			productName = "Good Food Geo";
 			productReference = FBF9401A29559BE900A8EF10 /* Good Food Geo.app */;
@@ -755,6 +764,7 @@
 			packageReferences = (
 				FB0FAFB62966C005008175A2 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 				FB100A13296C4AD700D87FC8 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
+				FB8E4400298469BB00849925 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = FBF9401B29559BE900A8EF10 /* Products */;
 			projectDirPath = "";
@@ -822,7 +832,7 @@
 				FB939347295F181000D491CE /* HSpacing.swift in Sources */,
 				FB0FAF9529641C63008175A2 /* AuthenticationToken.swift in Sources */,
 				FB939321295D9A6400D491CE /* SectionView.swift in Sources */,
-				FB0FAFD8296763EA008175A2 /* DefaultViewModel.swift in Sources */,
+				FB0FAFD8296763EA008175A2 /* BaseViewModel.swift in Sources */,
 				FB0FAF972965648A008175A2 /* PostsRepository.swift in Sources */,
 				FB0FAFA129659802008175A2 /* UserInformationEntity.swift in Sources */,
 				FBF940922955EF0600A8EF10 /* LoginView.swift in Sources */,
@@ -845,6 +855,7 @@
 				FB939342295F087B00D491CE /* RoundedCorner.swift in Sources */,
 				FB93931D295D968000D491CE /* SubSectionView.swift in Sources */,
 				FB0FAFC729670D36008175A2 /* HeaderViewModel.swift in Sources */,
+				FBC4B54F2985962200ED67AC /* DonationViewModel.swift in Sources */,
 				FB100A17296C688E00D87FC8 /* String+Extension.swift in Sources */,
 				FBF940812955B3A800A8EF10 /* FormItemView.swift in Sources */,
 				FB93931B295D918D00D491CE /* HeaderView.swift in Sources */,
@@ -1269,6 +1280,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		FB8E4400298469BB00849925 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1296,6 +1315,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FB100A13296C4AD700D87FC8 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
 			productName = CachedAsyncImage;
+		};
+		FB8E4401298469BB00849925 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FB8E4400298469BB00849925 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		FB8E4403298469BB00849925 /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FB8E4400298469BB00849925 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 

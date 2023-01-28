@@ -62,7 +62,7 @@ struct MainTabBarView: View {
                 ProductComplaintSubmissionView(viewModel: productComplaintSubmissionViewModel)
                     .tag(MainTabBarItem.scanning)
 
-                DonationView()
+                DonationView(viewModel: DonationViewModel())
                     .tag(MainTabBarItem.donation)
 
                 ExpertView(viewModel: ExpertViewModel(), expert: .example)

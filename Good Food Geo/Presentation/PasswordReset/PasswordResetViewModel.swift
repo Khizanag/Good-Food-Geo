@@ -7,7 +7,7 @@
 
 import Combine
 
-final class PasswordResetViewModel: DefaultViewModel {
+final class PasswordResetViewModel: BaseViewModel {
     private let repository: MainRepository = DefaultMainRepository()
 
     enum Event {

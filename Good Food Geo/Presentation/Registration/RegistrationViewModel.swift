@@ -8,7 +8,7 @@
 import Combine
 
 @MainActor
-final class RegistrationViewModel: DefaultViewModel {
+final class RegistrationViewModel: BaseViewModel {
     private let repository: MainRepository = DefaultMainRepository()
     private let verifyRegistrationUseCase: VerifyRegistrationUseCase = DefaultVerifyRegistrationUseCase()
 
@@ -94,7 +94,7 @@ final class RegistrationViewModel: DefaultViewModel {
 //                }
 //
 //                Task {
-//                    await self.handleFacebookAuthentication(using: token)
+//                    await self.handleSocialNetworkAuthentication(using: token)
 //                }
 //            case .cancelled:
 //                self.isFacebookButtonLoading = false

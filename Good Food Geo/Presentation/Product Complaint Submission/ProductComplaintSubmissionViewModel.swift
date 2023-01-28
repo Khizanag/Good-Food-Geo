@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-final class ProductComplaintSubmissionViewModel: DefaultViewModel {
+final class ProductComplaintSubmissionViewModel: BaseViewModel {
     private let productsRepository: ProductsRepository = DefaultProductsRepository()
 
     let numRequiredImages = 5

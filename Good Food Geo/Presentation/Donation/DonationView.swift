@@ -9,14 +9,13 @@ import SwiftUI
 
 struct DonationView: View {
     // MARK: - Properties
+    @ObservedObject var viewModel: DonationViewModel
+
     private let banks: [(CompanyModel, String)] = [
         (Company.bog, "GE54TB7337945064300021"),
         (Company.tbc, "GE54TB7337945064300021"),
         (Company.liberty, "GE54TB7337945064300021")
     ]
-
-    private let receiver = Localization.receiverValue()
-    private let purpose = Localization.purposeValue()
 
     @State private var isSharePresented = false
 
@@ -41,12 +40,12 @@ struct DonationView: View {
                 .init(title: Localization.receiver(), content: {
                     Menu {
                         Button(action: {
-                            UIPasteboard.general.string = receiver
+                            UIPasteboard.general.string = Localization.receiverValue()
                         }, label: {
                             Label(Localization.copy(), systemImage: "doc.on.doc.fill")
                         })
                     } label: {
-                        Text(receiver)
+                        Text(Localization.receiverValue())
                             .multilineTextAlignment(.leading)
                             .foregroundColor(.black)
                     }
@@ -55,12 +54,12 @@ struct DonationView: View {
                 .init(title: Localization.purpose(), content: {
                     Menu {
                         Button(action: {
-                            UIPasteboard.general.string = purpose
+                            UIPasteboard.general.string = Localization.purposeValue()
                         }, label: {
                             Label(Localization.copy(), systemImage: "doc.on.doc.fill")
                         })
                     } label: {
-                        Text(purpose)
+                        Text(Localization.purposeValue())
                             .multilineTextAlignment(.leading)
                             .foregroundColor(.black)
                     }
@@ -74,6 +73,6 @@ struct DonationView: View {
 // MARK: - Previews
 struct DonationView_Previews: PreviewProvider {
     static var previews: some View {
-        DonationView()
+        DonationView(viewModel: DonationViewModel())
     }
 }

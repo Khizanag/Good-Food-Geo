@@ -7,8 +7,9 @@
 
 import SwiftUI
 import FacebookLogin
+import GoogleSignIn
 
-final class LoginViewModel: DefaultViewModel {
+final class LoginViewModel: BaseViewModel {
     private let loginUseCase: LoginUseCase = DefaultLoginUseCase()
     private let authenticationRepository: AuthenticationRepository = DefaultAuthenticationRepository()
     private let authenticationTokenStorage: AuthenticationTokenStorage = DefaultAuthenticationTokenStorage.shared
@@ -77,7 +78,7 @@ final class LoginViewModel: DefaultViewModel {
                 }
 
                 Task {
-                    await self.handleFacebookAuthentication(using: token)
+                    await self.handleSocialNetworkAuthentication(for: .facebook, using: token)
                 }
             case .cancelled:
                 self.isFacebookButtonLoading = false
@@ -90,12 +91,27 @@ final class LoginViewModel: DefaultViewModel {
         }
     }
 
-    func loginUsingGoogle() {
-        #warning("implement Google login and remove that message")
-        showError(.descriptive("სამწუხაროდ, ამ მომენტისათვის Google-ის საშუალებით ავტორიზაცია არაა ხელმისაწვდომი"))
+    func loginUsingGoogle(by presentingViewController: UIViewController) {
+        let configuration = GIDConfiguration(clientID: "469167745457-fnccgvj7ntdvcn19br65g5542sbnfpd7")
+        GIDSignIn.sharedInstance.configuration = configuration
+        GIDSignIn.sharedInstance.signIn(withPresenting: presentingViewController) { user, error in
+            if let _ = error {
+                self.showError(.general)
+            } else {
+                guard let token = user?.serverAuthCode else {
+                    self.showError(.general)
+                    return
+                }
+
+                Task {
+                    await self.handleSocialNetworkAuthentication(for: .facebook, using: token)
+                }
+            }
+        }
     }
 
-    private func handleFacebookAuthentication(using token: String) async {
+    // MARK: - Private
+    private func handleSocialNetworkAuthentication(for socialNetwork: AuthenticatingSocialNetwork, using token: String) async {
         let result = await self.authenticationRepository.authenticateUsingFacebook(with: token)
 
         switch result {
@@ -103,15 +119,15 @@ final class LoginViewModel: DefaultViewModel {
             if let token = entity.token {
                 authenticationTokenStorage.write(token)
                 DispatchQueue.main.async {
-                    self.isFacebookButtonLoading = false
+                    self.setSocialNetworkIsLoadingButton(to: false, for: socialNetwork)
                     self.shouldNavigateToHome = true
                 }
             } else {
                 // Is not registered, needs registration
                 self.registrationName = entity.name
                 self.registrationEmail = entity.email
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    self.isFacebookButtonLoading = false
+                DispatchQueue.main.async {
+                    self.setSocialNetworkIsLoadingButton(to: false, for: socialNetwork)
                     self.shouldNavigateToRegistration = true
                 }
             }
@@ -120,6 +136,13 @@ final class LoginViewModel: DefaultViewModel {
                 self.isFacebookButtonLoading = false
             }
             showError(error)
+        }
+    }
+
+    private func setSocialNetworkIsLoadingButton(to isLoading: Bool, for socialNetwork: AuthenticatingSocialNetwork) {
+        switch socialNetwork {
+        case .facebook: isFacebookButtonLoading = isLoading
+        case .google: isGoogleButtonLoading = isLoading
         }
     }
 }
