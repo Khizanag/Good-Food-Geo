@@ -9,7 +9,9 @@ import SwiftUI
 
 struct PasswordResetView: View {
     @ObservedObject var viewModel: PasswordResetViewModel
+    @Environment(\.dismiss) private var dismiss
 
+    @Binding var shouldNavigateToRegistration: Bool
     @State private var email = ""
     @FocusState private var isFieldFocused
     @State private var alertData = AlertData()
@@ -38,21 +40,19 @@ struct PasswordResetView: View {
                 .foregroundColor(.secondary)
                 .font(.footnote)
 
-
-            NavigationLink(destination: {
-                RegistrationView(viewModel: RegistrationViewModel())
-            }, label: {
-                Text(Localization.register())
-                    .font(.callout)
-                    .foregroundColor(.black)
-                    .frame(height: 50)
-                    .frame(maxWidth: .infinity)
-                    .background(
-                        RoundedRectangle(cornerRadius: 15)
-                            .stroke(DesignSystem.Color.primary())
-                    )
-            })
-
+            Text(Localization.register())
+                .font(.callout)
+                .foregroundColor(.black)
+                .frame(height: 50)
+                .frame(maxWidth: .infinity)
+                .background(
+                    RoundedRectangle(cornerRadius: 15)
+                        .stroke(DesignSystem.Color.primary())
+                )
+                .onTapGesture {
+//                    dismiss()
+                    shouldNavigateToRegistration = true
+                }
 
             Spacer()
         }
@@ -90,6 +90,6 @@ struct PasswordResetView: View {
 // MARK: - Previews
 struct PasswordResetView_Previews: PreviewProvider {
     static var previews: some View {
-        PasswordResetView(viewModel: PasswordResetViewModel())
+        PasswordResetView(viewModel: PasswordResetViewModel(), shouldNavigateToRegistration: .constant(false))
     }
 }

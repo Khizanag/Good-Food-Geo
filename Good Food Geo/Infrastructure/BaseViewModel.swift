@@ -11,7 +11,7 @@ import SwiftUI
 class BaseViewModel: ObservableObject {
     var errorPublisher = PassthroughSubject<AppError, Never>()
     @AppStorage(AppStorageKey.language()) private var language: Language = .english
-
+    
     @MainActor
     func showError(_ error: AppError) {
         errorPublisher.send(error)

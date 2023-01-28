@@ -20,20 +20,9 @@ struct PrimaryPageView: View {
             LinearGradient.background
                 .edgesIgnoringSafeArea([.top])
 
-
             VStack {
                 VStack {
-                    let headerViewModel = HeaderViewModel()
-                    HeaderView(viewModel: headerViewModel, fullName: userInformationStorage.read()?.fullName)
-                        .onReceive(headerViewModel.eventPublisher) { event in
-                            switch event {
-                            case .shouldLogout:
-                                withAnimation {
-                                    dismiss()
-                                }
-                            }
-                        }
-                        .ignoresSafeArea(.container, edges: .bottom)
+                    headerView
 
                     SectionView(title: section.title, description: section.description)
                 }
@@ -59,11 +48,26 @@ struct PrimaryPageView: View {
                 }
             }
         }
+        .edgesIgnoringSafeArea(.bottom)
+    }
+
+    // MARK: - Components
+    private var headerView: some View {
+        let headerViewModel = HeaderViewModel()
+
+        return HeaderView(viewModel: headerViewModel, fullName: userInformationStorage.read()?.fullName)
+            .onReceive(headerViewModel.eventPublisher) { event in
+                switch event {
+                case .shouldLogout:
+                    dismiss()
+                }
+            }
+            .ignoresSafeArea(.container, edges: .bottom)
     }
 }
 
 // MARK: - Previews
-struct StaticPage_Previews: PreviewProvider {
+struct PrimaryPage_Previews: PreviewProvider {
     static var previews: some View {
         PrimaryPageView(
             section: .init(title: "Title", description: "Description"),

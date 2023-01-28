@@ -8,23 +8,10 @@
 import SwiftUI
 
 struct RegistrationView: View {
-    private enum Field: Arrangeable {
-        case fullName
-        case email
-        case password
-        case confirmationPassword
-        case phoneNumber
-        case verificationCode
-
-        var arranged: [Field] {
-            [.fullName, .email, .password, .confirmationPassword, .phoneNumber, .verificationCode]
-        }
-    }
-
     @ObservedObject var viewModel: RegistrationViewModel
 
-    @State private var fullName: String
-    @State private var email: String
+    @Binding var fullName: String
+    @Binding var email: String
     @State private var password = ""
     @State private var confirmPassword = ""
     @State private var phoneNumber = ""
@@ -37,13 +24,6 @@ struct RegistrationView: View {
     @State private var isTermsAndConditionsSheetPresented = false
 
     @State var alertData = AlertData()
-
-    // MARK: - Init
-    init(viewModel: RegistrationViewModel, email: String = "", fullName: String = "") {
-        self.viewModel = viewModel
-        self.email = email
-        self.fullName = fullName
-    }
 
     // MARK: - Body
     var body: some View {
@@ -98,7 +78,7 @@ struct RegistrationView: View {
             case .updateFields(name: let fullName, email: let email):
                 self.fullName = fullName
                 self.email = email
-                focusedField = .password.next
+                focusedField = .email.next
             }
         }
         .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
@@ -239,9 +219,29 @@ struct RegistrationView: View {
     }
 }
 
+// MARK: - Arrangeable
+private extension RegistrationView {
+    enum Field: Arrangeable {
+        case fullName
+        case email
+        case password
+        case confirmationPassword
+        case phoneNumber
+        case verificationCode
+
+        var arranged: [Field] {
+            [.fullName, .email, .password, .confirmationPassword, .phoneNumber, .verificationCode]
+        }
+    }
+}
+
 // MARK: - Previews
 struct RegistrationView_Previews: PreviewProvider {
     static var previews: some View {
-        RegistrationView(viewModel: RegistrationViewModel())
+        RegistrationView(
+            viewModel: RegistrationViewModel(),
+            fullName: .constant("fullname"),
+            email: .constant("email")
+        )
     }
 }

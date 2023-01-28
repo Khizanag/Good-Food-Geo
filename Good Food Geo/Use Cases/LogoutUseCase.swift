@@ -11,7 +11,7 @@ protocol LogoutUseCase {
 
 struct DefaultLogoutUseCase: LogoutUseCase {
     private let authenticationTokenStorage: AuthenticationTokenStorage = DefaultAuthenticationTokenStorage.shared
-
+    
     func execute() {
         authenticationTokenStorage.delete()
     }

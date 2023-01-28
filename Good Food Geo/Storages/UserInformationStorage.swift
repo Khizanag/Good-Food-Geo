@@ -14,15 +14,15 @@ protocol UserInformationStorage {
 
 struct DefaultUserInformationStorage: UserInformationStorage {
     static let shared = DefaultUserInformationStorage()
-
+    
     private let key = AppStorageKey.userInformation()
-
+    
     private init() { }
-
+    
     func write(_ userInformation: UserInformationEntity) {
         UserDefaults.standard.set(try? PropertyListEncoder().encode(userInformation), forKey: key)
     }
-
+    
     func read() -> UserInformationEntity? {
         guard let object = UserDefaults.standard.object(forKey: key),
               let data = object as? Data,

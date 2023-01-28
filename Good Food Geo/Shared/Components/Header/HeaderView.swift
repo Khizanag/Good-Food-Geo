@@ -9,18 +9,18 @@ import SwiftUI
 
 struct HeaderView: View {
     typealias ViewModel = HeaderViewModel
-
+    
     @ObservedObject var viewModel: ViewModel
     @AppStorage(AppStorageKey.language()) private var language: Language = .english
-
+    
     let fullName: String?
-
+    
     // MARK: - Init
     init(viewModel: ViewModel, fullName: String? = nil) {
         self.viewModel = viewModel
         self.fullName = fullName
     }
-
+    
     // MARK: - Body
     var body: some View {
         HStack {
@@ -29,9 +29,9 @@ struct HeaderView: View {
                 .scaledToFit()
                 .frame(width: 32, height: 44)
                 .foregroundColor(.blue)
-
+            
             Spacer()
-
+            
             if let fullName {
                 Menu(content: {
                     Menu(Localization.changeLanguage()) {
@@ -40,7 +40,7 @@ struct HeaderView: View {
                                 viewModel.changeLanguage(to: language)
                             }, label: {
                                 let title = "\(language.icon) \(language.name)"
-
+                                
                                 if language == self.language {
                                     Label(title, systemImage: "checkmark")
                                 } else {

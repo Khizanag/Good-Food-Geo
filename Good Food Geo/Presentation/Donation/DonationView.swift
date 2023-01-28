@@ -22,7 +22,10 @@ struct DonationView: View {
     // MARK: - Body
     var body: some View {
         PrimaryPageView(
-            section: .init(title: Localization.aboutDonationSectionTitle(), description: Localization.aboutDonationSectionDescription()),
+            section: .init(
+                title: Localization.aboutDonationSectionTitle(),
+                description: Localization.aboutDonationSectionDescription()
+            ),
             subSections: [
                 .init(title: Localization.donationBankAccountNumber(), content: {
                     VStack {

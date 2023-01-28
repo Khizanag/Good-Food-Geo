@@ -14,10 +14,10 @@ protocol VerifyRegistrationUseCase {
 struct DefaultVerifyRegistrationUseCase: VerifyRegistrationUseCase {
     private let repository: MainRepository = DefaultMainRepository()
     private let authenticationTokenStorage: AuthenticationTokenStorage = DefaultAuthenticationTokenStorage.shared
-
+    
     func execute(email: String, code: String) async -> Result<VerificationEntity, AppError> {
         let result = await repository.verifyRegistration(email: email, code: code)
-
+        
         switch result {
         case .success(let entity):
             let token = entity.token.access

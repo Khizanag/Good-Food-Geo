@@ -13,17 +13,17 @@ protocol LanguageStorage {
 }
 
 struct DefaultLanguageStorage: LanguageStorage {
-
+    
     static var shared = DefaultLanguageStorage()
-
+    
     @AppStorage(AppStorageKey.language()) private var language: Language = .english
-
+    
     private init() { }
-
+    
     func read() -> Language {
         language
     }
-
+    
     func write(_ language: Language) {
         self.language = language
     }

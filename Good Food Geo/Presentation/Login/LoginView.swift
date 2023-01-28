@@ -31,156 +31,160 @@ struct LoginView: View {
 
     // MARK: - Body
     var body: some View {
-        VStack(spacing: 24) {
-            HSpacing(8)
+        ScrollView {
+            VStack(spacing: 24) {
+                HSpacing(8)
 
-            HStack {
-                DesignSystem.Image.appIconPrimary()
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 32, height: 48)
+                HStack {
+                    DesignSystem.Image.appIconPrimary()
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 32, height: 48)
 
-                Spacer()
+                    Spacer()
 
-                Menu(Localization.changeLanguage()) {
-                    ForEach(Language.allCases, id: \.localizableIdentifier) { language in
-                        Button(action: {
-                            viewModel.changeLanguage(to: language)
-                        }, label: {
-                            let title = "\(language.icon) \(language.name)"
+                    Menu(Localization.changeLanguage()) {
+                        ForEach(Language.allCases, id: \.localizableIdentifier) { language in
+                            Button(action: {
+                                viewModel.changeLanguage(to: language)
+                            }, label: {
+                                let title = "\(language.icon) \(language.name)"
 
-                            if language == self.language {
-                                Label(title, systemImage: "checkmark")
-                            } else {
-                                Text(title)
-                            }
-                        })
+                                if language == self.language {
+                                    Label(title, systemImage: "checkmark")
+                                } else {
+                                    Text(title)
+                                }
+                            })
+                        }
                     }
                 }
-            }
-            .frame(maxWidth: .infinity)
-            .padding([.bottom, .horizontal])
+                .frame(maxWidth: .infinity)
+                .padding([.bottom, .horizontal])
 
-            VStack(alignment: .leading, spacing: 6) {
-                Text(Localization.loginTitle())
-                    .font(.body)
-                    .bold()
+                VStack(alignment: .leading, spacing: 6) {
+                    Text(Localization.loginTitle())
+                        .font(.body)
+                        .bold()
 
-                Text(Localization.loginSubtitle())
-                    .font(.footnote)
-                    .foregroundColor(DesignSystem.Color.secondaryText())
-            }
-            .padding()
+                    Text(Localization.loginSubtitle())
+                        .font(.footnote)
+                        .foregroundColor(DesignSystem.Color.secondaryText())
+                }
+                .padding()
 
-            VStack(alignment: .leading, spacing: 8) {
-                FormItemView(model: FormItemModel(
-                    icon: DesignSystem.Image.email(),
-                    placeholder: Localization.email(),
-                    keyboardType: .emailAddress
-                ), text: $email)
-                .focused($focusedField, equals: .email)
-
-
-                ZStack {
+                VStack(alignment: .leading, spacing: 8) {
                     FormItemView(model: FormItemModel(
-                        icon: DesignSystem.Image.lock(),
-                        placeholder: Localization.password(),
-                        isSecured: true
-                    ), text: $password)
-                    .focused($focusedField, equals: .password)
+                        icon: DesignSystem.Image.email(),
+                        placeholder: Localization.email(),
+                        keyboardType: .emailAddress
+                    ), text: $email)
+                    .focused($focusedField, equals: .email)
 
-                    HStack {
-                        Spacer()
 
-                        NavigationLink(destination: {
-                            PasswordResetView(viewModel: PasswordResetViewModel())
-                        }, label: {
-                            Text(Localization.forgotButtonTitle())
-                                .foregroundColor(DesignSystem.Color.primary())
-                                .font(.footnote)
-                                .padding(.trailing)
-                        })
+                    ZStack {
+                        FormItemView(model: FormItemModel(
+                            icon: DesignSystem.Image.lock(),
+                            placeholder: Localization.password(),
+                            isSecured: true
+                        ), text: $password)
+                        .focused($focusedField, equals: .password)
+
+                        HStack {
+                            Spacer()
+
+                            NavigationLink(destination: {
+                                PasswordResetView(viewModel: PasswordResetViewModel(), shouldNavigateToRegistration: $viewModel.shouldNavigateToRegistration)
+                            }, label: {
+                                Text(Localization.forgotButtonTitle())
+                                    .foregroundColor(DesignSystem.Color.primary())
+                                    .font(.footnote)
+                                    .padding(.trailing)
+                            })
+                        }
                     }
                 }
-            }
-            .onSubmit {
-                guard let focusedField = focusedField else { return }
-                guard let nextField = focusedField.next else {
-                    viewModel.login(email: email, password: password)
-                    return
+                .onSubmit {
+                    guard let focusedField = focusedField else { return }
+                    guard let nextField = focusedField.next else {
+                        viewModel.login(email: email, password: password)
+                        return
+                    }
+                    self.focusedField = nextField
                 }
-                self.focusedField = nextField
-            }
 
-            PrimaryButton(action: {
-                viewModel.login(email: email, password: password)
-            }, label: {
-                Text(Localization.login())
-            }, isLoading: $viewModel.isLoading)
+                PrimaryButton(action: {
+                    viewModel.login(email: email, password: password)
+                }, label: {
+                    Text(Localization.login())
+                }, isLoading: $viewModel.isLoading)
 
 #if DEBUG
-            PrimaryButton(action: {
-                viewModel.login(email: "admin@gfg.ge", password: "admin")
-            }, label: {
-                Text("Test login by Admin")
-            }, isLoading: $viewModel.isLoading)
+                PrimaryButton(action: {
+                    viewModel.login(email: "admin@gfg.ge", password: "admin")
+                }, label: {
+                    Text("Test login by Admin")
+                }, isLoading: $viewModel.isLoading)
 #endif
 
-            Text(Localization.loginWithSocialNetworksTitle())
-                .font(.footnote)
-                .foregroundColor(DesignSystem.Color.primaryText())
-
-            VStack(spacing: 12) {
-                CompanyButton(
-                    company: Company.facebook,
-                    action: { viewModel.loginUsingFacebook() },
-                    isLoading: $viewModel.isFacebookButtonLoading
-                )
-
-                CompanyButton(
-                    company: Company.google,
-                    action: {
-                        guard let presentingViewController = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.rootViewController else { return }
-
-                        viewModel.loginUsingGoogle(by: presentingViewController)
-                    },
-                    isLoading: $viewModel.isGoogleButtonLoading
-                )
-            }
-
-            HStack {
-                Text(Localization.areYouNotRegistered())
+                Text(Localization.loginWithSocialNetworksTitle())
                     .font(.footnote)
+                    .foregroundColor(DesignSystem.Color.primaryText())
 
-                NavigationLink(destination: {
-                    RegistrationView(viewModel: RegistrationViewModel())
-                }, label: {
-                    Text(Localization.register())
-                })
+                VStack(spacing: 12) {
+                    CompanyButton(
+                        company: Company.facebook,
+                        action: { viewModel.loginUsingFacebook() },
+                        isLoading: $viewModel.isFacebookButtonLoading
+                    )
+
+                    CompanyButton(
+                        company: Company.google,
+                        action: {
+                            guard let presentingViewController = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.rootViewController else { return }
+
+                            viewModel.loginUsingGoogle(by: presentingViewController)
+                        },
+                        isLoading: $viewModel.isGoogleButtonLoading
+                    )
+                }
+
+                HStack {
+                    Text(Localization.areYouNotRegistered())
+                        .font(.footnote)
+
+                    Button(action: {
+                        viewModel.shouldNavigateToRegistration = true
+                    }, label: {
+                        Text(Localization.register())
+                    })
+                }
+                .padding(.vertical)
             }
-            .padding(.vertical)
+            .padding([.horizontal, .bottom], 32)
+            .navigationBarBackButtonHidden(true)
+            .navigationDestination(isPresented: $viewModel.shouldNavigateToHome) {
+                MainTabBarView()
+            }
+            .navigationDestination(isPresented: $viewModel.shouldNavigateToRegistration) {
+                RegistrationView(
+                    viewModel: RegistrationViewModel(),
+                    fullName: $viewModel.registrationName,
+                    email: $viewModel.registrationEmail
+
+                )
+            }
+            .onAppear {
+                cleanUp()
+                viewModel.viewDidAppear()
+            }
+            .allowsHitTesting(!viewModel.isLoading)
+            .onReceive(viewModel.errorPublisher, perform: showError)
+            .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
+                Button(Localization.gotIt(), role: .cancel) { }
+            })
         }
-        .padding([.horizontal, .bottom], 32)
-        .navigationBarBackButtonHidden(true)
-        .navigationDestination(isPresented: $viewModel.shouldNavigateToHome) {
-            MainTabBarView()
-        }
-        .navigationDestination(isPresented: $viewModel.shouldNavigateToRegistration) {
-            RegistrationView(
-                viewModel: RegistrationViewModel(),
-                email: viewModel.registrationEmail ?? "",
-                fullName: viewModel.registrationName ?? ""
-            )
-        }
-        .onAppear {
-            cleanUp()
-            viewModel.viewDidAppear()
-        }
-        .allowsHitTesting(!viewModel.isLoading)
-        .onReceive(viewModel.errorPublisher, perform: showError)
-        .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
-            Button(Localization.gotIt(), role: .cancel) { }
-        })
+        .scrollDismissesKeyboard(.interactively)
     }
 
     // MARK: - Functions

@@ -23,8 +23,8 @@ final class LoginViewModel: BaseViewModel {
     @Published var isFacebookButtonLoading = false
     @Published var isGoogleButtonLoading = false
 
-    var registrationName: String?
-    var registrationEmail: String?
+    var registrationName = ""
+    var registrationEmail = ""
 
     // MARK: - Methods
     func viewDidAppear() {
@@ -126,9 +126,9 @@ final class LoginViewModel: BaseViewModel {
                 }
             } else {
                 // Is not registered, needs registration
-                self.registrationName = entity.name
-                self.registrationEmail = entity.email
-                DispatchQueue.main.async {
+                self.registrationName = entity.name ?? ""
+                self.registrationEmail = entity.email ?? ""
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     self.setSocialNetworkIsLoadingButton(to: false, for: socialNetwork)
                     self.shouldNavigateToRegistration = true
                 }

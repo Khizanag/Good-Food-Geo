@@ -9,11 +9,11 @@ import SwiftUI
 
 struct VSpacing: View {
     let spacing: Double
-
+    
     init(_ spacing: Double) {
         self.spacing = spacing
     }
-
+    
     var body: some View {
         VStack { }
             .padding(.bottom, spacing)

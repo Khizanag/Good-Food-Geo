@@ -15,21 +15,21 @@ protocol AuthenticationTokenStorage {
 
 struct DefaultAuthenticationTokenStorage: AuthenticationTokenStorage {
     static let shared = DefaultAuthenticationTokenStorage()
-
+    
     private static let key = AppStorageKey.authenticationToken()
     @AppStorage(key) private var value: String?
-
+    
     // MARK: - Init
     private init() { }
-
+    
     func read() -> String? {
         value
     }
-
+    
     func write(_ token: String) {
         value = token
     }
-
+    
     func delete() {
         value = nil
     }
