@@ -35,11 +35,15 @@ struct RegistrationView: View {
                         action: { viewModel.registerUsingFacebook() },
                         isLoading: $viewModel.isFacebookButtonLoading
                     )
-//                    CompanyButton(
-//                        company: Company.google,
-//                        action: { viewModel.registerUsingGoogle() },
-//                        isLoading: $viewModel.isGoogleButtonLoading
-//                    )
+
+                    CompanyButton(
+                        company: Company.google,
+                        action: {
+                            guard let presentingViewController = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.rootViewController else { return }
+                            viewModel.registerUsingGoogle(withPresenting: presentingViewController)
+                        },
+                        isLoading: $viewModel.isGoogleButtonLoading
+                    )
                 }
 
                 Text(Localization.registrationSubtitle())
@@ -87,6 +91,12 @@ struct RegistrationView: View {
         .navigationDestination(isPresented: $viewModel.isRegistrationCompleted, destination: {
             MainTabBarView()
         })
+        .disabled(
+            viewModel.isGoogleButtonLoading ||
+            viewModel.isFacebookButtonLoading ||
+            viewModel.isRegistrationLoading ||
+            viewModel.isVerificationLoading
+        )
     }
 
     // MARK: - Components

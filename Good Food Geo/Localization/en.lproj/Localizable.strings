@@ -49,14 +49,14 @@
 "verify" = "verification";
 "getVerificationCode" = "Get verification code";
 "verificationCodeInstruction" = "The activation code will be sent vie SMS";
-"agreeRegistrationTermsDescription" = "yes,  agree to the \"Terms and Conditions\"";
+"agreeRegistrationTermsDescription" = "Yes, I agree to the \"Terms and Conditions\"";
 "signUpSmsCodeInfo" = "The activation code will be sent via SMS";
 
 // MARK: - Terms and Conditions
 "termsAndConditionsTitle" = "Application Terms of Use";
 "privacyPolicyTitle" = "Personal data policy";
 "privacyPolicyDescription" = "The application operates in accordance with the legal basis of the privacy policy, within which the security of personal data is protected.";
-"termsAndConditionsSectionsTitle" = "agree terms and conditions";
+"termsAndConditionsSectionsTitle" = "Agree Terms and Conditions";
 "termsAndConditionsFirstSection" = "Before sending, the user confirms his consent that he is fully responsible for the truthfulness and content of the information and is informed that based on the information provided by him, an appeal will be made to the business entities and the National Food Agency.";
 "termsAndConditionsSecondSection" = "Materials provided that contain obvious ambiguities and uncertainty will be rejected and the customer will be contacted for clarification.";
 

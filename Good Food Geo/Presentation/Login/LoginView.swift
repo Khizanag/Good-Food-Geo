@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import GoogleSignIn
 
 struct LoginView: View {
     private enum Field: Arrangeable {
@@ -142,15 +141,14 @@ struct LoginView: View {
                         isLoading: $viewModel.isFacebookButtonLoading
                     )
 
-//                    CompanyButton(
-//                        company: Company.google,
-//                        action: {
-//                            guard let presentingViewController = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.rootViewController else { return }
-//
-//                            viewModel.loginUsingGoogle(by: presentingViewController)
-//                        },
-//                        isLoading: $viewModel.isGoogleButtonLoading
-//                    )
+                    CompanyButton(
+                        company: Company.google,
+                        action: {
+                            guard let presentingViewController = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.rootViewController else { return }
+                            viewModel.loginUsingGoogle(by: presentingViewController)
+                        },
+                        isLoading: $viewModel.isGoogleButtonLoading
+                    )
                 }
 
                 HStack {
@@ -189,6 +187,7 @@ struct LoginView: View {
             })
         }
         .scrollDismissesKeyboard(.interactively)
+        .disabled(viewModel.isLoading || viewModel.isGoogleButtonLoading || viewModel.isFacebookButtonLoading)
     }
 
     // MARK: - Functions
