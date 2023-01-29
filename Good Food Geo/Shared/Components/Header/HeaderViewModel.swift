@@ -10,6 +10,8 @@ import Combine
 final class HeaderViewModel: ObservableObject {
     private let logoutUseCase: LogoutUseCase = DefaultLogoutUseCase()
     private let languageStorage: LanguageStorage = DefaultLanguageStorage.shared
+
+    @Published var isLoading = false
     
     enum Event {
         case shouldLogout
@@ -18,6 +20,13 @@ final class HeaderViewModel: ObservableObject {
     
     func changeLanguage(to newLanguage: Language) {
         languageStorage.write(newLanguage)
+    }
+
+    func deleteAccount() {
+        isLoading = true
+        #warning("Implement account deletion")
+        eventPublisher.send(.shouldLogout)
+        isLoading = false
     }
     
     func logout() {

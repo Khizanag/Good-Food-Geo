@@ -21,15 +21,19 @@
 "google" = "Google";
 "hi" = "Hi";
 "or" = "or";
-"send" = "send";
+"send" = "Send";
 "gotIt" = "Got It";
 "agree" = "Agree";
 "close" = "Close";
-"copy" = "copy";
+"copy" = "Copy";
 
 // MARK: - Header
 "logout" = "Logout";
 "changeLanguage" = "Change Language";
+"deleteAccount" = "Delete Profile";
+"approveAccountDeletionTitle" = "Do You really want to delete your account?";
+"approveAccountDeletionDescription" = "Your account will be deleted forever. \nYou will not be able to recover it. \nAll your personal information associated with it will be also permanently removed.";
+"approveAccountDeletionButtonTitle" = "Yes, Delete";
 
 // MARK: - Login
 "login" = "Login";
@@ -111,7 +115,7 @@
 "textToExpert" = "Text to expert";
 
 // MARK: - Errors
-"technicalErrorDescription" = "technical error";
+"technicalErrorDescription" = "Technical Error";
 "sessionNotFoundErrorDescription" = "The current session is not active. Please log out and log in again";
 "failedRequestErrorDescription" = "request failed";
 "shouldFillAllFieldsDescription" = "All field is not field";

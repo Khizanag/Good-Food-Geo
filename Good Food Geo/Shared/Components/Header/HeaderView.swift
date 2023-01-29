@@ -11,15 +11,10 @@ struct HeaderView: View {
     typealias ViewModel = HeaderViewModel
     
     @ObservedObject var viewModel: ViewModel
+    let fullName: String
+
     @AppStorage(AppStorageKey.language()) private var language: Language = .english
-    
-    let fullName: String?
-    
-    // MARK: - Init
-    init(viewModel: ViewModel, fullName: String? = nil) {
-        self.viewModel = viewModel
-        self.fullName = fullName
-    }
+    @State private var accountDeletionSheetIsPresented = false
     
     // MARK: - Body
     var body: some View {
@@ -31,33 +26,60 @@ struct HeaderView: View {
                 .foregroundColor(.blue)
             
             Spacer()
-            
-            if let fullName {
+
+            Menu(content: {
                 Menu(content: {
-                    Menu(Localization.changeLanguage()) {
-                        ForEach(Language.allCases, id: \.localizableIdentifier) { language in
-                            Button(action: {
-                                viewModel.changeLanguage(to: language)
-                            }, label: {
-                                let title = "\(language.icon) \(language.name)"
-                                
-                                if language == self.language {
-                                    Label(title, systemImage: "checkmark")
-                                } else {
-                                    Text(title)
-                                }
-                            })
-                        }
+                    ForEach(Language.allCases, id: \.localizableIdentifier) { language in
+                        Button(action: {
+                            viewModel.changeLanguage(to: language)
+                        }, label: {
+                            let title = "\(language.icon) \(language.name)"
+
+                            if language == self.language {
+                                Label(title, systemImage: "checkmark")
+                            } else {
+                                Text(title)
+                            }
+                        })
                     }
-                    Button(Localization.logout(), action: viewModel.logout)
                 }, label: {
-                    Label("\(Localization.hi()), \(fullName)", systemImage: "person")
+                    Label(Localization.changeLanguage(), systemImage: "globe.europe.africa")
                 })
-                .foregroundColor(.white)
-                .font(.callout)
-            }
+
+                Button(action: {
+                    accountDeletionSheetIsPresented = true
+                }, label: {
+                    Label(Localization.deleteAccount(), systemImage: "person.2.slash")
+                })
+
+                Button(action: {
+                    viewModel.logout()
+                }, label: {
+                    Label(Localization.logout(), systemImage: "figure.walk.motion")
+                })
+            }, label: {
+                Label("\(Localization.hi()), \(fullName)", systemImage: "person")
+            })
+            .foregroundColor(.white)
+            .font(.callout)
+            .confirmationDialog(
+                Localization.approveAccountDeletionTitle(),
+                isPresented: $accountDeletionSheetIsPresented,
+                titleVisibility: .visible,
+                actions: {
+                    Button(role: .destructive, action: {
+                        viewModel.deleteAccount()
+                    }, label: {
+                        Text(Localization.approveAccountDeletionButtonTitle())
+                    })
+                },
+                message: {
+                    Text(Localization.approveAccountDeletionDescription())
+                }
+            )
         }
         .padding(.vertical)
+        .disabled(viewModel.isLoading)
     }
 }
 
