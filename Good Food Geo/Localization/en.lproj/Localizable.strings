@@ -1,9 +1,9 @@
-/* 
-  Localization.strings
-  Good Food Geo
+/*
+ Localization.strings
+ Good Food Geo
 
-  Created by Giga Khizanishvili on 23.12.22.
-  
+ Created by Giga Khizanishvili on 23.12.22.
+
 */
 
 
@@ -46,19 +46,19 @@
 "registrationSubtitle" = "Or, register with Email";
 "resend" = "Resend";
 "codePlaceholder" = "Code*";
-"verify" = "ვერიფიცაკია";
+"verify" = "verification";
 "getVerificationCode" = "Get verification code";
 "verificationCodeInstruction" = "The activation code will be sent vie SMS";
-"agreeRegistrationTermsDescription" = "*ENG* დიახ, ვეთანხმები გამოყენების \"წესებსა და პირობებს\"";
+"agreeRegistrationTermsDescription" = "yes,  agree to the \"Terms and Conditions\"";
 "signUpSmsCodeInfo" = "The activation code will be sent via SMS";
 
 // MARK: - Terms and Conditions
-"termsAndConditionsTitle" = "*ENG* აპლიკაციის გამოყენების პირობები";
-"privacyPolicyTitle" = "*ENG* პირადი მონაცემების პოლიტიკა";
-"privacyPolicyDescription" = "*ENG* აპლიკაციის მუშაობს კონფიდენციალურობის პოლიტიკის სამართლებრივი საფუძვლის გათვალისწინებით, რომლის ფარგლებში პირად მონაცემთა უსაფრთხოება დაცულია.";
-"termsAndConditionsSectionsTitle" = "*ENG* ვეთანხმები წესებს და პირობებს";
-"termsAndConditionsFirstSection" = "*ENG* მომხმარებელი გამოგზავნამდე ადასტურებს თანხმობას, რომ სრულად პასუხისმგებელია ინფორმაციის უტყუარობასა და შინაარსზე და ინფორმირებულია, რომ მის მიერ მოწოდებული ინფორმაციის საფუძველზე მოხდება მიმართვა ბიზნესსუბიექტებისა და სურსათის ეროვნული სააგენტოსათვის.";
-"termsAndConditionsSecondSection" = "*ENG* დახარვეზდება ისეთი მოწოდებული მასალები, რაც შეიცავს აშკარა ბუნდოვანებას და გაურკევლობას და ასეთ შემთხვევაში დაზუსტების მიზნით, კომუნიკაცია იწარმოებს მომხმარებელთან.";
+"termsAndConditionsTitle" = "Application Terms of Use";
+"privacyPolicyTitle" = "Personal data policy";
+"privacyPolicyDescription" = "The application operates in accordance with the legal basis of the privacy policy, within which the security of personal data is protected.";
+"termsAndConditionsSectionsTitle" = "agree terms and conditions";
+"termsAndConditionsFirstSection" = "Before sending, the user confirms his consent that he is fully responsible for the truthfulness and content of the information and is informed that based on the information provided by him, an appeal will be made to the business entities and the National Food Agency.";
+"termsAndConditionsSecondSection" = "Materials provided that contain obvious ambiguities and uncertainty will be rejected and the customer will be contacted for clarification.";
 
 // MARK: - PasswordReset
 "passwordResetTitle" = "Forgot Password";
@@ -72,7 +72,7 @@
 
 // MARK: - About Us
 "aboutUs" = "About Us";
-"aboutUsDescription" = "The Good Food Geo app allows users to monitor food labeling, identify issues, get expert advice, and get helpful information. The Georgian Training and Development Institute is responsible for the application.";
+"aboutUsDescription" = "The Good Food Geo app allows users to monitor food labelling, identify issues, get expert advice, and get helpful information. The Georgian Training and Development Institute is responsible for the application.";
 "aboutUsSectionTitle" = "TDIG";
 "aboutUsSectionDescription" = "Training and Development Institute of Georgia (TDIG) will constantly share useful materials with you.";
 "contactUs" = "Contact Us";
@@ -83,12 +83,12 @@
 "preScanFormTitle" = "Before the scan, you need to fill those fields.";
 "acceptTerms" = "You accept our terns of Use and Privacy Statement";
 "scanProduct" = "Scan Your Product";
-"productTitle" = "პროდუქტის სახელი";
-"scanFirstImageDescription" = "*ENG* გადაუღე ნათლად პროდუქტის ვადას";
-"scanSecondImageDescription" = "*ENG* გადაუღე ნათლად პროდუქტის წინა მხარეს";
-"scanThirdImageDescription" = "*ENG* გადაუღე ნათლად პროდუქტის უკანა მხარეს";
-"scanFourthImageDescription" = "*ENG* პროდუქტის მარცხენა ან ზედა მხარე";
-"scanFifthImageDescription" = "*ENG* პროდუქტის ნათლად მარჯვენა ან ქვედა მხარე";
+"productTitle" = "Name of the Product";
+"scanFirstImageDescription" = "Take a clear picture of the product's expiration date";
+"scanSecondImageDescription" = "Take a clear picture of the front side of the product";
+"scanThirdImageDescription" = "Take a clear picture of the back side of the product";
+"scanFourthImageDescription" = "Left or top side of the product";
+"scanFifthImageDescription" = "Right or lower side of the product ";
 
 // MARK: - Donation
 "donation" = "Donation";
@@ -96,24 +96,24 @@
 "aboutDonationSectionDescription" = "Anyone can make a financial donation and fund the application's operation to benefit users.";
 "donationBankAccountNumber" = "Bank account number";
 "receiver" = "Receiver";
-"receiverValue" = "*ENG* ა(ა)იპ საქართველოს ტრენინგებისა და განვითარების ინსტიტუტი";
+"receiverValue" = "ISSA Training and Development Institute of Georgia";
 "purpose" = "Purpose";
-"purposeValue" = "*ENG* დონაცია/ქველმოქმედება";
+"purposeValue" = "Donation/charity";
 
 // MARK: - Expert
 "expert" = "Expert";
-"expertPageTitle" = "*ENG* კონსულტაცია";
-"expertPageSubtitle" = "*ENG* სურსათის უვნებლობის ექსპერტის დახმარების სერვისი";
-"expertAboutServiceSectionTitle" = "*ENG* About Service";
+"expertPageTitle" = "Consultation";
+"expertPageSubtitle" = "Food Safety Expert Help Desk";
+"expertAboutServiceSectionTitle" = "About Service";
 "callExpertSectionTitle" = "Call to Expert";
-"aboutExpertServiceFirstSectionDescription" = "*ENG* საქართველოს ტრენინგებისა და განვითარების ინსტიტუტი (TDIG)  გთავაზობთ ეტიკეტირების სფეროში ექსპერტის საკონსულტაციო მომსახურეობის სერვისს.";
-"aboutExpertServiceSecondSectionDescription" = "*ENG* დეტალური ინფორმაციისთვის, დაუკავშირდით ექსპერტს";
+"aboutExpertServiceFirstSectionDescription" = "The Training and Development Institute of Georgia (TDIG) offers expert consulting services in the field of labeling.";
+"aboutExpertServiceSecondSectionDescription" = "For detailed information, contact an expert";
 "textToExpert" = "Text to expert";
 
 // MARK: - Errors
-"technicalErrorDescription" = "*ENG* ტექნიკური შეცდომა";
-"sessionNotFoundErrorDescription" = "*ENG* მიმდინარე სესია არაა აქტიური. გთხოვთ გამოხვიდეთ პროფილიდან და თავიდან გაიაროთ ავტორიზაცია";
-"failedRequestErrorDescription" = "*ENG* მოთხოვნა შესრულდა წარუმატებლად";
+"technicalErrorDescription" = "technical error";
+"sessionNotFoundErrorDescription" = "The current session is not active. Please log out and log in again";
+"failedRequestErrorDescription" = "request failed";
 "shouldFillAllFieldsDescription" = "All field is not field";
 "passwordsMismatchErrorDescription" = "passwords does not match";
-"termsAreNotAgreedErrorDescription" = "*ENG* პროცესის გასაგრძელებლად, აუცილებელია დაეთანხმოთ \"წესებსა და პირობებს\"";
+"termsAreNotAgreedErrorDescription" = "To continue the process, you must agree to the \"Terms and Conditions\"";

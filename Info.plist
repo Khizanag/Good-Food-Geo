@@ -14,10 +14,9 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>469167745457-fnccgvj7ntdvcn19br65g5542sbnfpd7</string>
-			</array>
+			<array/>
 		</dict>
+		<dict/>
 	</array>
 	<key>FacebookAppID</key>
 	<string>1130334330955777</string>
