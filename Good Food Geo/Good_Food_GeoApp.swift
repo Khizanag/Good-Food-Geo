@@ -22,7 +22,7 @@ struct Good_Food_GeoApp: App {
                             UIApplication.shared,
                             open: url,
                             sourceApplication: nil,
-                            annotation: [UIApplication.OpenURLOptionsKey.annotation] // TODO: remove array brackets
+                            annotation: UIApplication.OpenURLOptionsKey.annotation
                         )
                     }
             }

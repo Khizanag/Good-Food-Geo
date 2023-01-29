@@ -8,6 +8,7 @@
 import Combine
 import FacebookLogin
 import SwiftUI
+import GoogleSignIn
 
 @MainActor
 final class RegistrationViewModel: BaseViewModel {
@@ -109,13 +110,29 @@ final class RegistrationViewModel: BaseViewModel {
         }
     }
 
-    func registerUsingGoogle() {
-        #warning("Implement register using Google")
+    func registerUsingGoogle(withPresenting presentingViewController: UIViewController) {
+        isGoogleButtonLoading = true
+        GIDSignIn.sharedInstance.signIn(withPresenting: presentingViewController) { result, error in
+            guard let result, let token = result.user.idToken?.tokenString else {
+                self.showError(.general)
+                self.isGoogleButtonLoading = false
+                return
+            }
+
+            Task {
+                await self.handleSocialNetworkAuthentication(for: .google, using: token)
+            }
+        }
     }
 
     // MARK: - Private
     @MainActor private func handleSocialNetworkAuthentication(for socialNetwork: AuthenticatingSocialNetwork, using token: String) async {
-        let result = await self.authenticationRepository.authenticateUsingFacebook(with: token)
+        let result = await {
+            switch socialNetwork {
+            case .facebook: return await self.authenticationRepository.authenticateUsingFacebook(with: token)
+            case .google: return await self.authenticationRepository.authenticateUsingGoogle(with: token)
+            }
+        }()
 
         switch result {
         case .success(let entity):

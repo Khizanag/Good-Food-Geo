@@ -94,27 +94,28 @@ final class LoginViewModel: BaseViewModel {
     }
 
     @MainActor func loginUsingGoogle(by presentingViewController: UIViewController) {
-        let configuration = GIDConfiguration(clientID: "469167745457-fnccgvj7ntdvcn19br65g5542sbnfpd7")
-        GIDSignIn.sharedInstance.configuration = configuration
-        GIDSignIn.sharedInstance.signIn(withPresenting: presentingViewController) { user, error in
-            if let _ = error {
+        isGoogleButtonLoading = true
+        GIDSignIn.sharedInstance.signIn(withPresenting: presentingViewController) { result, error in
+            guard let result, let token = result.user.idToken?.tokenString else {
                 self.showError(.general)
-            } else {
-                guard let token = user?.serverAuthCode else {
-                    self.showError(.general)
-                    return
-                }
+                self.isGoogleButtonLoading = false
+                return
+            }
 
-                Task {
-                    await self.handleSocialNetworkAuthentication(for: .facebook, using: token)
-                }
+            Task {
+                await self.handleSocialNetworkAuthentication(for: .google, using: token)
             }
         }
     }
 
     // MARK: - Private
     @MainActor private func handleSocialNetworkAuthentication(for socialNetwork: AuthenticatingSocialNetwork, using token: String) async {
-        let result = await self.authenticationRepository.authenticateUsingFacebook(with: token)
+        let result = await {
+            switch socialNetwork {
+            case .facebook: return await self.authenticationRepository.authenticateUsingFacebook(with: token)
+            case .google: return await self.authenticationRepository.authenticateUsingGoogle(with: token)
+            }
+        }()
 
         switch result {
         case .success(let entity):

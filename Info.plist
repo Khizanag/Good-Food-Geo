@@ -8,6 +8,7 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb1130334330955777</string>
+                <string>com.googleusercontent.apps.469167745457-hht7qrsde74salecjs41q3r8v9pbeih8</string>
 			</array>
 		</dict>
 		<dict>
@@ -24,5 +25,7 @@
 	<string>329654dc5bc1085ffddf6c7f63e68935</string>
 	<key>FacebookDisplayName</key>
 	<string>GoodFoodG</string>
+    <key>GIDClientID</key>
+    <string>469167745457-hht7qrsde74salecjs41q3r8v9pbeih8.apps.googleusercontent.com</string>
 </dict>
 </plist>
