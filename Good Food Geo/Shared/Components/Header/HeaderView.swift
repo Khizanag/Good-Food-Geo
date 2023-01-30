@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct HeaderView: View {
-    typealias ViewModel = HeaderViewModel
-    
-    @ObservedObject var viewModel: ViewModel
+    @ObservedObject var viewModel: HeaderViewModel
+
     let fullName: String
 
     @AppStorage(AppStorageKey.language()) private var language: Language = .english
+
     @State private var accountDeletionSheetIsPresented = false
+
+    @State var alertData = AlertData()
     
     // MARK: - Body
     var body: some View {
@@ -62,24 +64,49 @@ struct HeaderView: View {
             })
             .foregroundColor(.white)
             .font(.callout)
-            .confirmationDialog(
-                Localization.approveAccountDeletionTitle(),
-                isPresented: $accountDeletionSheetIsPresented,
-                titleVisibility: .visible,
-                actions: {
-                    Button(role: .destructive, action: {
-                        viewModel.deleteAccount()
-                    }, label: {
-                        Text(Localization.approveAccountDeletionButtonTitle())
-                    })
-                },
-                message: {
-                    Text(Localization.approveAccountDeletionDescription())
-                }
-            )
         }
+        .confirmationDialog(
+            Localization.approveAccountDeletionTitle(),
+            isPresented: $accountDeletionSheetIsPresented,
+            titleVisibility: .visible,
+            actions: {
+                Button(role: .destructive, action: {
+                    viewModel.deleteAccount()
+                }, label: {
+                    Text(Localization.approveAccountDeletionButtonTitle())
+                })
+            },
+            message: {
+                Text(Localization.approveAccountDeletionDescription())
+            }
+        )
+        .onReceive(viewModel.errorPublisher, perform: showError)
+        .onReceive(viewModel.eventPublisher) { event in
+            switch event {
+            case .shouldLogout:
+                break
+            case .showMessage(let message):
+                showMessage(message)
+            }
+        }
+        .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
+            Button(Localization.gotIt(), role: .cancel) { }
+        })
         .padding(.vertical)
         .disabled(viewModel.isLoading)
+    }
+
+    // MARK: - Message Displayer
+    private func showError(_ error: AppError) {
+        showMessage(error.description)
+    }
+
+    private func showMessage(_ message: String, description: String? = nil) {
+        alertData.title = message
+        if let description {
+            alertData.subtitle = description
+        }
+        alertData.isPresented = true
     }
 }
 

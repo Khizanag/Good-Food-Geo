@@ -13,6 +13,8 @@ struct PrimaryPageView: View {
 
     @Environment(\.dismiss) private var dismiss
 
+    @State private var headerViewModel = HeaderViewModel()
+
     private let userInformationStorage: UserInformationStorage = DefaultUserInformationStorage.shared
 
     var body: some View {
@@ -52,13 +54,13 @@ struct PrimaryPageView: View {
 
     // MARK: - Components
     private var headerView: some View {
-        let headerViewModel = HeaderViewModel()
-
-        return HeaderView(viewModel: headerViewModel, fullName: userInformationStorage.read()?.fullName ?? "")
+        HeaderView(viewModel: headerViewModel, fullName: userInformationStorage.read()?.fullName ?? "")
             .onReceive(headerViewModel.eventPublisher) { event in
                 switch event {
                 case .shouldLogout:
                     dismiss()
+                default:
+                    break
                 }
             }
             .ignoresSafeArea(.container, edges: .bottom)

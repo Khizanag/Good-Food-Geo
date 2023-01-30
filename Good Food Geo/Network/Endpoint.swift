@@ -17,6 +17,7 @@ enum EndPoint {
     case facebookAuthentication
     case verifyRegistration
     case feed
+    case deleteAccount
 }
 
 extension EndPoint {
@@ -40,6 +41,8 @@ extension EndPoint {
             return "feed"
         case .products:
             return "products"
+        case .deleteAccount:
+            return "delete-user"
         }
     }
 
