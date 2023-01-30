@@ -9,14 +9,16 @@ import Foundation
 
 protocol MainRepository {
     func login(email: String, password: String) async -> Result<LoginResponse, AppError>
+
     func register(with params: RegistrationParams) async -> Result<RegistrationResponse, AppError>
-    func authenticateViaGoogle(token: String) async
-    func authenticateViaFacebook(token: String) async
+
     func verifyRegistration(email: String, code: String) async -> Result<VerificationEntity, AppError>
 
     func resetPassword(email: String) async -> Result<PasswordResetEntity, AppError>
 
     func getUserInformation() async -> Result<UserInformationEntity, AppError>
+
+    func deleteAccount() async -> Result<UserDeletionEntity, AppError>
 }
 
 struct DefaultMainRepository: MainRepository {
@@ -47,14 +49,6 @@ struct DefaultMainRepository: MainRepository {
         ])
 
         return await networkLayer.execute(RegistrationResponse.self, using: request)
-    }
-
-    func authenticateViaGoogle(token: String) async {
-        // TODO: imp -
-    }
-
-    func authenticateViaFacebook(token: String) async {
-        // TODO: imp -
     }
 
     func verifyRegistration(email: String, code: String) async -> Result<VerificationEntity, AppError> {
@@ -104,5 +98,18 @@ struct DefaultMainRepository: MainRepository {
         case .failure(let error):
             return .failure(error)
         }
+    }
+
+    func deleteAccount() async -> Result<UserDeletionEntity, AppError> {
+        guard let token = authenticationTokenStorage.read() else {
+            return .failure(.sessionNotFound)
+        }
+
+        var request = URLRequest(url: EndPoint.deleteAccount.fullUrl)
+        request.setMethod(.post)
+        request.setContentType(.applicationJson)
+        request.makeAuthorized(forTokenType: .bearer, using: token)
+
+        return await networkLayer.execute(UserDeletionEntity.self, using: request)
     }
 }

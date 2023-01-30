@@ -30,6 +30,10 @@ enum Localization: String {
     // MARK: - Header
     case logout
     case changeLanguage
+    case deleteAccount
+    case approveAccountDeletionTitle
+    case approveAccountDeletionDescription
+    case approveAccountDeletionButtonTitle
 
     // MARK: - Login
     case login

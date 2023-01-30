@@ -10,6 +10,8 @@ import SwiftUI
 enum Language: String, CaseIterable {
     case english
     case georgian
+
+    static var `default`: Language { .english }
 }
 
 extension Language {

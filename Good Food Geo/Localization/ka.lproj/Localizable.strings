@@ -30,6 +30,10 @@
 // MARK: - Header
 "logout" = "გამოსვლა";
 "changeLanguage" = "ენის შეცვლა";
+"deleteAccount" = "პროფილის წაშლა";
+"approveAccountDeletionTitle" = "ნამდვილად გსურს პროფილის გაუქმება?";
+"approveAccountDeletionDescription" = "პროფილი წაიშლება სამუდამოდ და შენ არ გექნება მისი აღდგენის შესაძლებლობა. ასევე წაიშლება მასთან ასოცირებული ყველა ინფორმაცია.";
+"approveAccountDeletionButtonTitle" = "დიახ, გააუქმე";
 
 // MARK: - Login
 "login" = "შესვლა";

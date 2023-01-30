@@ -48,7 +48,7 @@ final class LoginViewModel: BaseViewModel {
                 self.isLoading = true
             }
 
-            let result = await loginUseCase.execute(email: email, password: password)
+            let result = await loginUseCase.execute(email: email.lowercased(), password: password)
 
             switch result {
             case .success:
