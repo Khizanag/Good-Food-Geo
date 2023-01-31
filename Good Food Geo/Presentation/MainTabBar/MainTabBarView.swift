@@ -46,8 +46,11 @@ struct MainTabBarView: View {
         .init(type: .expert, title: Localization.expert(), icon: DesignSystem.Image.person())
     ]
 
-    private let homeViewModel = HomeViewModel()
-    private let productComplaintSubmissionViewModel = ProductComplaintSubmissionViewModel()
+    @State private var homeViewModel = HomeViewModel()
+    @State private var productComplaintSubmissionViewModel = ProductComplaintSubmissionViewModel()
+    @State private var aboutUsViewModel = AboutUsViewModel()
+    @State private var donationViewModel = DonationViewModel()
+    @State private var expertViewModel = ExpertViewModel()
 
     // MARK: - Body
     var body: some View {
@@ -56,16 +59,16 @@ struct MainTabBarView: View {
                 HomeView(viewModel: homeViewModel)
                     .tag(MainTabBarItem.home)
 
-                AboutUsView(viewModel: AboutUsViewModel())
+                AboutUsView(viewModel: aboutUsViewModel)
                     .tag(MainTabBarItem.aboutUs)
 
                 ProductComplaintSubmissionView(viewModel: productComplaintSubmissionViewModel)
                     .tag(MainTabBarItem.scanning)
 
-                DonationView(viewModel: DonationViewModel())
+                DonationView(viewModel: donationViewModel)
                     .tag(MainTabBarItem.donation)
 
-                ExpertView(viewModel: ExpertViewModel(), expert: .example)
+                ExpertView(viewModel: expertViewModel, expert: .example)
                     .tag(MainTabBarItem.expert)
             }
             .onAppear {

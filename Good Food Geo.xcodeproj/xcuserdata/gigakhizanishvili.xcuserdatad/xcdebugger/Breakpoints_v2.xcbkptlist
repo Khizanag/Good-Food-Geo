@@ -64,7 +64,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "35"
                   endingLineNumber = "35"
-                  offsetFromSymbolStart = "964">
+                  offsetFromSymbolStart = "1258">
                </Location>
                <Location
                   uuid = "3DE8107C-E5A5-4BD4-8681-2FF6D163BE55 - 97e57ff7ae7b14b8"
@@ -79,7 +79,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "36"
                   endingLineNumber = "36"
-                  offsetFromSymbolStart = "76">
+                  offsetFromSymbolStart = "120">
                </Location>
                <Location
                   uuid = "3DE8107C-E5A5-4BD4-8681-2FF6D163BE55 - 97e57ff7ae7b1499"
@@ -94,7 +94,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "35"
                   endingLineNumber = "35"
-                  offsetFromSymbolStart = "632">
+                  offsetFromSymbolStart = "772">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -129,6 +129,53 @@
             endingLineNumber = "106"
             landmarkName = "loginUsingGoogle(by:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A320681B-91B6-40E1-A267-E23A667837A7 - 7b5c05c2bfc0d334"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable () async -&gt; () in closure #1 (Swift.Optional&lt;__C.GIDSignInResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Good_Food_Geo.LoginViewModel.loginUsingGoogle(by: __C.UIViewController) -&gt; ()"
+                  moduleName = "Good Food Geo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gigakhizanishvili/GitHub/Good%20Food%20Geo/Good%20Food%20Geo/Presentation/Login/LoginViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "106"
+                  endingLineNumber = "106"
+                  offsetFromSymbolStart = "129">
+               </Location>
+               <Location
+                  uuid = "A320681B-91B6-40E1-A267-E23A667837A7 - 402f5928836799"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) await resume partial function for closure #1 @Sendable () async -&gt; () in closure #1 (Swift.Optional&lt;__C.GIDSignInResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Good_Food_Geo.LoginViewModel.loginUsingGoogle(by: __C.UIViewController) -&gt; ()"
+                  moduleName = "Good Food Geo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gigakhizanishvili/GitHub/Good%20Food%20Geo/Good%20Food%20Geo/Presentation/Login/LoginViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "106"
+                  endingLineNumber = "106"
+                  offsetFromSymbolStart = "34">
+               </Location>
+               <Location
+                  uuid = "A320681B-91B6-40E1-A267-E23A667837A7 - d7e4df364357d83"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #1 (Swift.Optional&lt;__C.GIDSignInResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Good_Food_Geo.LoginViewModel.loginUsingGoogle(by: __C.UIViewController) -&gt; ()"
+                  moduleName = "Good Food Geo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gigakhizanishvili/GitHub/Good%20Food%20Geo/Good%20Food%20Geo/Presentation/Login/LoginViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "106"
+                  endingLineNumber = "106"
+                  offsetFromSymbolStart = "39">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

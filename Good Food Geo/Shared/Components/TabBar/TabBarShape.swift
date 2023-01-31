@@ -10,7 +10,7 @@ import SwiftUI
 struct TabBarShape: Shape {
     func path(in rect: CGRect) -> Path {
         let middleX = rect.width / 2.0
-        let curveMissingLength: Double = rect.width * 35.0 / 100.0
+        let curveMissingLength: Double = 144
         let curveDepth: Double = 47
         let topRemainedLength: CGFloat = (rect.width - curveMissingLength) / 2
         let dXForCurve: Double = 36
