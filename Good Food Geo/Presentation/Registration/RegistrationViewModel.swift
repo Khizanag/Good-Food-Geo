@@ -73,7 +73,7 @@ final class RegistrationViewModel: BaseViewModel {
 
             switch result {
             case .success(let entity):
-                isRegistrationCompleted = true
+                eventPublisher.send(.dismiss)
                 showError(.descriptive(entity.message))
             case .failure(let error):
                 showError(error)
@@ -170,6 +170,7 @@ final class RegistrationViewModel: BaseViewModel {
 
 extension RegistrationViewModel {
     enum Event {
+        case dismiss
         case updateFields(name: String, email: String)
     }
 }

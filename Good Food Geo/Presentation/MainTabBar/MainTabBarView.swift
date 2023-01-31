@@ -31,6 +31,7 @@ enum MainTabBarItem {
 
 // MARK: - MainTabBarView
 struct MainTabBarView: View {
+    @ObservedObject var viewModel: MainTabBarViewModel
     @State private var selectedTabBarItem: MainTabBarItem = .home
 
     private struct MainTabBarItemModel {
@@ -128,6 +129,6 @@ struct MainTabBarView: View {
 // MARK: - Previews
 struct TestTabBarView_Previews: PreviewProvider {
     static var previews: some View {
-        MainTabBarView()
+        MainTabBarView(viewModel: MainTabBarViewModel())
     }
 }

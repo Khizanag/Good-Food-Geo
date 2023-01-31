@@ -10,6 +10,8 @@ import SwiftUI
 struct RegistrationView: View {
     @ObservedObject var viewModel: RegistrationViewModel
 
+    @Environment(\.dismiss) private var dismiss
+
     @Binding var fullName: String
     @Binding var email: String
     @State private var password = ""
@@ -79,6 +81,8 @@ struct RegistrationView: View {
         .onReceive(viewModel.errorPublisher, perform: showError)
         .onReceive(viewModel.eventPublisher) { event in
             switch event {
+            case .dismiss:
+                dismiss()
             case .updateFields(name: let fullName, email: let email):
                 self.fullName = fullName
                 self.email = email
@@ -87,9 +91,6 @@ struct RegistrationView: View {
         }
         .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
             Button(Localization.gotIt(), role: .cancel) { }
-        })
-        .navigationDestination(isPresented: $viewModel.isRegistrationCompleted, destination: {
-            MainTabBarView()
         })
         .disabled(
             viewModel.isGoogleButtonLoading ||

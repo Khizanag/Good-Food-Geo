@@ -26,6 +26,8 @@ struct LoginView: View {
     @State private var password = ""
     @FocusState private var focusedField: Field?
 
+    @State private var mainTabBarViewModel = MainTabBarViewModel()
+
     @State var alertData = AlertData()
 
     // MARK: - Body
@@ -165,14 +167,13 @@ struct LoginView: View {
             .padding([.horizontal, .bottom], 32)
             .navigationBarBackButtonHidden(true)
             .navigationDestination(isPresented: $viewModel.shouldNavigateToHome) {
-                MainTabBarView()
+                MainTabBarView(viewModel: mainTabBarViewModel)
             }
             .navigationDestination(isPresented: $viewModel.shouldNavigateToRegistration) {
                 RegistrationView(
                     viewModel: RegistrationViewModel(),
                     fullName: $viewModel.registrationName,
                     email: $viewModel.registrationEmail
-
                 )
             }
             .onAppear {
