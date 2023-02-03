@@ -42,6 +42,8 @@ struct PrimaryPageView: View {
                             ForEach(subSections, id: \.title) { model in
                                 SubSectionView(model: model)
                             }
+
+                            VSpacing(MainTabBarConstant.height + 4)
                         }
                         .scrollIndicators(.hidden)
                     }

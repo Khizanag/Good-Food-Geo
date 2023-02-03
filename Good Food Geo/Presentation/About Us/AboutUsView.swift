@@ -34,16 +34,15 @@ struct AboutUsView: View {
                     )
                 }),
                 SubSectionView.Model(title: Localization.contactUs(), content: {
-                    AnyView(
-                        VStack(alignment: .leading) {
-                            Text("\(Localization.email()): GFGAPK@GMAIL.COM")
+                    VStack(alignment: .leading) {
+                        Text("\(Localization.email()): GFGAPK@GMAIL.COM")
 
-                            HStack {
-                                Text("\(Localization.phoneNumber()):")
-                                Link(phoneNumber, destination: URL(string: "tel:\(phoneNumber)")!)
-                            }
+                        HStack {
+                            Text("\(Localization.phoneNumber()):")
+                            Link(phoneNumber, destination: URL(string: "tel:\(phoneNumber)")!)
                         }
-                    )
+                    }
+                    .toAnyView()
                 })
             ]
         )

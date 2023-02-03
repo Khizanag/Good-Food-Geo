@@ -134,11 +134,12 @@ struct ProductComplaintSubmissionView: View {
             .frame(maxWidth: .infinity)
             .cornerRadius(16)
             .clipped()
+            .contentShape(Rectangle())
             .onTapGesture {
                 selectableImages[index].isConfirmationDialogPresented = true
             }
             .sheet(isPresented: $selectableImages[index].isImagePickerPresented) {
-                ImagePickerView(selectedImage: $selectableImages[index].image, sourceType: .camera)
+                ImagePickerView(selectedImage: $selectableImages[index].image)
                     .ignoresSafeArea()
             }
             .sheet(isPresented: $selectableImages[index].isPhotoPickerPresented) {
@@ -160,6 +161,7 @@ struct ProductComplaintSubmissionView: View {
         if let image = selectableImages[index].image {
             return Image(uiImage: image)
                 .resizable()
+                .scaledToFill()
                 .toAnyView()
         } else {
             return getImagePlaceholder(for: index)
