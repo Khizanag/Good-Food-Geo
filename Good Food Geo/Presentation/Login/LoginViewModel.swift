@@ -11,9 +11,10 @@ import GoogleSignIn
 
 final class LoginViewModel: BaseViewModel {
     // MARK: - Properties
+    @AppStorage(AppStorageKey.authenticationToken()) private var authenticationToken: String?
+
     private let loginUseCase: LoginUseCase = DefaultLoginUseCase()
     private let authenticationRepository: AuthenticationRepository = DefaultAuthenticationRepository()
-    private let authenticationTokenStorage: AuthenticationTokenStorage = DefaultAuthenticationTokenStorage.shared
     private let facebookLoginManager = LoginManager()
     private let languageStorage: LanguageStorage = DefaultLanguageStorage.shared
 
@@ -27,10 +28,13 @@ final class LoginViewModel: BaseViewModel {
     var registrationEmail = ""
 
     // MARK: - Methods
-    func viewDidAppear() {
-        let isSessionActive = UserDefaults.standard.value(forKey: AppStorageKey.authenticationToken()) != nil
-        shouldNavigateToHome = isSessionActive
-        isLoading = false
+    @MainActor func viewDidAppear() {
+        isLoading = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            let isLoggedIn = self.authenticationToken != nil
+            self.shouldNavigateToHome = isLoggedIn
+            self.isLoading = false
+        }
     }
 
     func changeLanguage(to newLanguage: Language) {
@@ -113,15 +117,15 @@ final class LoginViewModel: BaseViewModel {
         switch result {
         case .success(let entity):
             if let token = entity.token {
-                authenticationTokenStorage.write(token)
+                authenticationToken = token
                 setSocialNetworkIsLoadingButton(to: false, for: socialNetwork)
                 shouldNavigateToHome = true
             } else {
                 // Is not registered, needs registration
-                self.registrationName = entity.name ?? ""
-                self.registrationEmail = entity.email ?? ""
-                    self.setSocialNetworkIsLoadingButton(to: false, for: socialNetwork)
-                    self.shouldNavigateToRegistration = true
+                registrationName = entity.name ?? ""
+                registrationEmail = entity.email ?? ""
+                setSocialNetworkIsLoadingButton(to: false, for: socialNetwork)
+                shouldNavigateToRegistration = true
             }
         case .failure(let error):
             isFacebookButtonLoading = false
