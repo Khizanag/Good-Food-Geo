@@ -11,6 +11,7 @@ struct ProductComplaintSubmissionView: View {
     // MARK: - Typealias
     typealias ViewModel = ProductComplaintSubmissionViewModel
 
+    // MARK: - Properties
     private enum Field: Arrangeable {
         case productTitle
         case fullName
@@ -110,8 +111,6 @@ struct ProductComplaintSubmissionView: View {
                 }
                 self.focusedField = nextField
             }
-
-
 
             VSpacing(MainTabBarConstant.height - 16)
         }
@@ -214,7 +213,7 @@ struct ProductComplaintSubmissionView: View {
                 author: ProductComplaint.Author(fullName: fullName),
                 comment: comment,
                 location: location,
-                areTermsAgreed: userAgreesTerms
+                termsAreAgreed: userAgreesTerms
             )
         )
     }

@@ -6,14 +6,14 @@
 //
 
 import SwiftUI
-import CachedAsyncImage
 
 struct PostView: View {
     let post: Post
 
+    // MARK: - Body
     var body: some View {
         VStack(alignment: .leading) {
-            CachedAsyncImage(
+            AsyncImage(
                 url: URL(string: post.imageUrl),
                 content: { image in
                     image
@@ -43,6 +43,7 @@ struct PostView: View {
     }
 }
 
+// MARK: - Previews
 struct PostView_Previews: PreviewProvider {
     static var previews: some View {
         PostView(post: .example)

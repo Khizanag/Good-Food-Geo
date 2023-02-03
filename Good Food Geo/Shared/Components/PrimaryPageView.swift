@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PrimaryPageView: View {
-    let section: SectionView.Model
+    let section: SectionViewModel
     let subSections: [SubSectionView<AnyView>.Model]
 
     @Environment(\.dismiss) private var dismiss

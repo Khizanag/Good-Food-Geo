@@ -22,6 +22,7 @@ final class PasswordResetViewModel: BaseViewModel {
 
     var eventPublisher = PassthroughSubject<Event, Never>()
 
+    // MARK: - Public
     func viewDidAppear() {
         let isLoggedIn = UserDefaults.standard.value(forKey: AppStorageKey.authenticationToken()) != nil
         if isLoggedIn {

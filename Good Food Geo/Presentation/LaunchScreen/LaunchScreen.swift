@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct LaunchScreen: View {
+    // MARK: - Properties
     @ObservedObject var viewModel: LaunchScreenViewModel
-    
-    var paths: [String] = []
 
+    // MARK: - Body
     var body: some View {
         ZStack {
             LinearGradient(
@@ -33,6 +33,7 @@ struct LaunchScreen: View {
    }
 }
 
+// MARK: - Previews
 struct LaunchScreen_Previews: PreviewProvider {
     static var previews: some View {
         LaunchScreen(viewModel: LaunchScreenViewModel())

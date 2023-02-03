@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct HeaderView: View {
+    // MARK: - Properties
+    @AppStorage(AppStorageKey.language()) private var language: Language = .default
+
     @ObservedObject var viewModel: HeaderViewModel
 
     let fullName: String
-
-    @AppStorage(AppStorageKey.language()) private var language: Language = .english
 
     @State private var accountDeletionSheetIsPresented = false
 
@@ -29,41 +30,7 @@ struct HeaderView: View {
             
             Spacer()
 
-            Menu(content: {
-                Menu(content: {
-                    ForEach(Language.allCases, id: \.localizableIdentifier) { language in
-                        Button(action: {
-                            viewModel.changeLanguage(to: language)
-                        }, label: {
-                            let title = "\(language.icon) \(language.name)"
-
-                            if language == self.language {
-                                Label(title, systemImage: "checkmark")
-                            } else {
-                                Text(title)
-                            }
-                        })
-                    }
-                }, label: {
-                    Label(Localization.changeLanguage(), systemImage: "globe.europe.africa")
-                })
-
-                Button(action: {
-                    accountDeletionSheetIsPresented = true
-                }, label: {
-                    Label(Localization.deleteAccount(), systemImage: "person.2.slash")
-                })
-
-                Button(action: {
-                    viewModel.logout()
-                }, label: {
-                    Label(Localization.logout(), systemImage: "figure.walk.motion")
-                })
-            }, label: {
-                Label("\(Localization.hi()), \(fullName)", systemImage: "person")
-            })
-            .foregroundColor(.white)
-            .font(.callout)
+            profileMenu
         }
         .confirmationDialog(
             Localization.approveAccountDeletionTitle(),
@@ -94,6 +61,45 @@ struct HeaderView: View {
         })
         .padding(.vertical)
         .disabled(viewModel.isLoading)
+    }
+
+    // MARK: - Components
+    private var profileMenu: some View {
+        Menu(content: {
+            Menu(content: {
+                ForEach(Language.allCases, id: \.localizableIdentifier) { language in
+                    Button(action: {
+                        viewModel.changeLanguage(to: language)
+                    }, label: {
+                        let title = "\(language.icon) \(language.name)"
+
+                        if language == self.language {
+                            Label(title, systemImage: "checkmark")
+                        } else {
+                            Text(title)
+                        }
+                    })
+                }
+            }, label: {
+                Label(Localization.changeLanguage(), systemImage: "globe.europe.africa")
+            })
+
+            Button(action: {
+                accountDeletionSheetIsPresented = true
+            }, label: {
+                Label(Localization.deleteAccount(), systemImage: "person.2.slash")
+            })
+
+            Button(action: {
+                viewModel.logout()
+            }, label: {
+                Label(Localization.logout(), systemImage: "figure.walk.motion")
+            })
+        }, label: {
+            Label("\(Localization.hi()), \(fullName)", systemImage: "person")
+        })
+        .foregroundColor(.white)
+        .font(.callout)
     }
 
     // MARK: - Message Displayer

@@ -13,7 +13,13 @@ struct PrimaryButton<Label>: View where Label: View {
     @Binding var isLoading: Bool
     let backgroundColor: Color?
 
-    init(action: @escaping () -> Void, label: @escaping () -> Label, isLoading: Binding<Bool> = .constant(false), backgroundColor: Color? = nil) {
+    // MARK: - Init
+    init(
+        action: @escaping () -> Void,
+        label: @escaping () -> Label,
+        isLoading: Binding<Bool> = .constant(false),
+        backgroundColor: Color? = nil
+    ) {
         self._isLoading = isLoading
         self.action = action
         self.label = label

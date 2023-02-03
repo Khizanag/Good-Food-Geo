@@ -37,7 +37,7 @@ final class HomeViewModel: ObservableObject {
                 self?.isLoading = true
             }
 
-            let result = await postsRepository.getPosts()
+            let result = await postsRepository.posts()
 
             switch result {
             case .success(let posts):

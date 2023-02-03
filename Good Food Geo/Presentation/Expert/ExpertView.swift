@@ -12,8 +12,6 @@ struct ExpertView: View {
 
     @ObservedObject var viewModel: ExpertViewModel
 
-    let expert: Expert
-
     // MARK: - Body
     var body: some View {
         PrimaryPageView(
@@ -45,6 +43,6 @@ struct ExpertView: View {
 // MARK: - Previews
 struct ExpertView_Previews: PreviewProvider {
     static var previews: some View {
-        ExpertView(viewModel: ExpertViewModel(), expert: .example)
+        ExpertView(viewModel: ExpertViewModel())
     }
 }

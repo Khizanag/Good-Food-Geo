@@ -72,7 +72,6 @@ struct DefaultProductsRepository: ProductsRepository {
     func generateBoundary() -> String {
         "Boundary-\(UUID().uuidString)"
     }
-
 }
 
 // MARK: - RequestMedia

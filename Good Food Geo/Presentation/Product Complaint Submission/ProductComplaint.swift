@@ -21,5 +21,5 @@ struct ProductComplaint {
     let author: Author
     let comment: String
     let location: String
-    let areTermsAgreed: Bool
+    let termsAreAgreed: Bool
 }

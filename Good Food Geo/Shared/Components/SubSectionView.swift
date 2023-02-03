@@ -15,6 +15,7 @@ struct SubSectionView<Content>: View where Content: View {
 
     let model: Model
 
+    // MARK: - Body
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             VStack(alignment: .leading, spacing: 4){

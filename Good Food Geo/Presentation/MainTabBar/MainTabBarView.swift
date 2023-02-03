@@ -78,7 +78,7 @@ struct MainTabBarView: View {
                 DonationView(viewModel: donationViewModel)
                     .tag(MainTabBarItem.donation)
 
-                ExpertView(viewModel: expertViewModel, expert: .example)
+                ExpertView(viewModel: expertViewModel)
                     .tag(MainTabBarItem.expert)
             }
 
