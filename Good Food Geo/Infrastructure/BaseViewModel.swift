@@ -10,7 +10,6 @@ import SwiftUI
 
 class BaseViewModel: ObservableObject {
     var errorPublisher = PassthroughSubject<AppError, Never>()
-    @AppStorage(AppStorageKey.language()) private var language: Language = .default
     
     func showError(_ error: AppError) {
         errorPublisher.send(error)

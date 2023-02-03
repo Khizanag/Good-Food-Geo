@@ -53,6 +53,15 @@ struct MainTabBarView: View {
     @State private var donationViewModel = DonationViewModel()
     @State private var expertViewModel = ExpertViewModel()
 
+    // MARK: - Init
+    init(viewModel: MainTabBarViewModel) {
+        self.viewModel = viewModel
+
+        let transparentAppearance = UITabBarAppearance()
+        transparentAppearance.configureWithTransparentBackground()
+        UITabBar.appearance().standardAppearance = transparentAppearance
+    }
+
     // MARK: - Body
     var body: some View {
         ZStack {
@@ -71,11 +80,6 @@ struct MainTabBarView: View {
 
                 ExpertView(viewModel: expertViewModel, expert: .example)
                     .tag(MainTabBarItem.expert)
-            }
-            .onAppear {
-                let transparentAppearance = UITabBarAppearance()
-                transparentAppearance.configureWithTransparentBackground()
-                UITabBar.appearance().standardAppearance = transparentAppearance
             }
 
             VStack {

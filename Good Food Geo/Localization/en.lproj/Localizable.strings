@@ -50,7 +50,7 @@
 "registrationSubtitle" = "Or, register with Email";
 "resend" = "Resend";
 "codePlaceholder" = "Code*";
-"verify" = "verification";
+"verify" = "Verification";
 "getVerificationCode" = "Get verification code";
 "verificationCodeInstruction" = "The activation code will be sent vie SMS";
 "agreeRegistrationTermsDescription" = "Yes, I agree to the \"Terms and Conditions\"";
