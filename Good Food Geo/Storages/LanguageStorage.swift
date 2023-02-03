@@ -16,7 +16,7 @@ struct DefaultLanguageStorage: LanguageStorage {
     
     static var shared = DefaultLanguageStorage()
     
-    @AppStorage(AppStorageKey.language()) private var language: Language = .english
+    @AppStorage(AppStorageKey.language()) private var language: Language = .default
     
     private init() { }
     

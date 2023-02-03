@@ -6,7 +6,6 @@
 //
 
 import Combine
-import Foundation
 
 final class HeaderViewModel: BaseViewModel {
     private let logoutUseCase: LogoutUseCase = DefaultLogoutUseCase()
@@ -14,13 +13,14 @@ final class HeaderViewModel: BaseViewModel {
     private let mainRepository: MainRepository = DefaultMainRepository()
 
     @Published var isLoading = false
-    
+
     enum Event {
         case shouldLogout
         case showMessage(String)
     }
     var eventPublisher = PassthroughSubject<Event, Never>()
-    
+
+    // MARK: - Public
     func changeLanguage(to newLanguage: Language) {
         languageStorage.write(newLanguage)
     }

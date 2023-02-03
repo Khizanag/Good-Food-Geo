@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct SectionView: View {
+    // MARK: - Properties
     let title: String
     let description: String
 
+    // MARK: - Body
     var body: some View {
         VStack(alignment: .leading) {
             Text(title)
@@ -29,9 +31,7 @@ struct SectionView: View {
     }
 }
 
-extension SectionView {
-    struct Model {
-        let title: String
-        let description: String
-    }
+struct SectionViewModel {
+    let title: String
+    let description: String
 }

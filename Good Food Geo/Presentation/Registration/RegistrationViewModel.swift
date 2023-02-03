@@ -13,7 +13,7 @@ import GoogleSignIn
 @MainActor
 final class RegistrationViewModel: BaseViewModel {
     // MARK: - Properties
-    private let repository: MainRepository = DefaultMainRepository()
+    private let mainRepository: MainRepository = DefaultMainRepository()
     private let verifyRegistrationUseCase: VerifyRegistrationUseCase = DefaultVerifyRegistrationUseCase()
     private let authenticationRepository: AuthenticationRepository = DefaultAuthenticationRepository()
     private let authenticationTokenStorage: AuthenticationTokenStorage = DefaultAuthenticationTokenStorage.shared
@@ -32,7 +32,7 @@ final class RegistrationViewModel: BaseViewModel {
 
     var eventPublisher = PassthroughSubject<Event, Never>()
 
-    // MARK: - Functions
+    // MARK: - Public
     func register(with params: RegistrationParams) {
         guard params.userAgreesTermsAndConditions else {
             showError(.termsAreNotAgreed)
@@ -50,7 +50,7 @@ final class RegistrationViewModel: BaseViewModel {
         Task {
             isRegistrationLoading = true
 
-            let result = await repository.register(with: params)
+            let result = await mainRepository.register(with: params)
 
             switch result {
             case .success(let entity):

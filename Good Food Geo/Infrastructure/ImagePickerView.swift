@@ -8,6 +8,7 @@
 import UIKit
 import SwiftUI
 
+#warning("Refactor ImagePicker and PhotoPicker, choose one?")
 // MARK: - ImagePickerView
 struct ImagePickerView: UIViewControllerRepresentable {
     @Environment(\.dismiss) private var dismiss

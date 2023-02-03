@@ -13,6 +13,7 @@ struct FormItemView: View {
 
     @FocusState private var isFocused: Bool
 
+    // MARK: - Body
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -46,6 +47,7 @@ struct FormItemView: View {
     }
 }
 
+// MARK: - FormItemModel
 struct FormItemModel: Identifiable {
     let icon: Image
     let placeholder: String
@@ -64,6 +66,7 @@ struct FormItemModel: Identifiable {
     static let example = FormItemModel(icon: DesignSystem.Image.book(), placeholder: "placeholder")
 }
 
+// MARK: - FormItemView_Previews
 struct FormItemView_Previews: PreviewProvider {
     static var previews: some View {
         FormItemView(model: .example, text: .constant(""))

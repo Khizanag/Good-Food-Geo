@@ -10,11 +10,11 @@ import SwiftUI
 enum Language: String, CaseIterable {
     case english
     case georgian
-
-    static var `default`: Language { .english }
 }
 
 extension Language {
+    static var `default`: Language { .english }
+    
     var localizableIdentifier: String {
         switch self {
         case .english:  return "en"

@@ -35,14 +35,13 @@ final class ProductComplaintSubmissionViewModel: BaseViewModel {
             showError(.emptyField)
             return
         }
-
-        guard productComplaint.areTermsAgreed else {
+        guard productComplaint.termsAreAgreed else {
             showError(.termsAreNotAgreed)
             return
         }
-
         guard productComplaint.product.images.count == numRequiredImages else {
             showError(.descriptive("გთხოვთ, ატვირთეთ ყველა მოთხოვნილი ფოტო"))
+            #warning("Localize")
             return
         }
 

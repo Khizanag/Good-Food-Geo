@@ -89,11 +89,7 @@ struct DefaultMainRepository: MainRepository {
         switch result {
         case .success(let dto):
             return .success(
-                UserInformationEntity(
-                    email: dto.email,
-                    fullName: dto.name,
-                    phoneNumber: dto.phoneNumber
-                )
+                UserInformationEntity(email: dto.email, fullName: dto.name, phoneNumber: dto.phoneNumber)
             )
         case .failure(let error):
             return .failure(error)

@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct RegistrationView: View {
-    @ObservedObject var viewModel: RegistrationViewModel
-
     @Environment(\.dismiss) private var dismiss
+
+    @ObservedObject var viewModel: RegistrationViewModel
 
     @Binding var fullName: String
     @Binding var email: String
@@ -18,12 +18,10 @@ struct RegistrationView: View {
     @State private var confirmPassword = ""
     @State private var phoneNumber = ""
     @State private var userAgreesTerms = false
-
     @State private var verificationCode = ""
+    @State private var isTermsAndConditionsSheetPresented = false
 
     @FocusState private var focusedField: Field?
-
-    @State private var isTermsAndConditionsSheetPresented = false
 
     @State var alertData = AlertData()
 
@@ -31,22 +29,7 @@ struct RegistrationView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
-                VStack(spacing: 12) {
-                    CompanyButton(
-                        company: Company.facebook,
-                        action: { viewModel.registerUsingFacebook() },
-                        isLoading: $viewModel.isFacebookButtonLoading
-                    )
-
-                    CompanyButton(
-                        company: Company.google,
-                        action: {
-                            guard let presentingViewController = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.rootViewController else { return }
-                            viewModel.registerUsingGoogle(withPresenting: presentingViewController)
-                        },
-                        isLoading: $viewModel.isGoogleButtonLoading
-                    )
-                }
+                thirdPartyAuthenticationMethods
 
                 Text(Localization.registrationSubtitle())
                     .font(.footnote)
@@ -202,6 +185,25 @@ struct RegistrationView: View {
     private var verificationCodeTextField: some View {
         PrimaryTextField(text: $verificationCode, placeholder: Localization.codePlaceholder())
             .textContentType(.oneTimeCode)
+    }
+
+    private var thirdPartyAuthenticationMethods: some View {
+        VStack(spacing: 12) {
+            CompanyButton(
+                company: Company.facebook,
+                action: { viewModel.registerUsingFacebook() },
+                isLoading: $viewModel.isFacebookButtonLoading
+            )
+
+            CompanyButton(
+                company: Company.google,
+                action: {
+                    guard let presentingViewController = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.rootViewController else { return }
+                    viewModel.registerUsingGoogle(withPresenting: presentingViewController)
+                },
+                isLoading: $viewModel.isGoogleButtonLoading
+            )
+        }
     }
 
     // MARK: - Functions

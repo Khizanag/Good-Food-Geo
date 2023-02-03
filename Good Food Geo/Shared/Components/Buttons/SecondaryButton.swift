@@ -11,6 +11,7 @@ struct SecondaryButton<Label>: View where Label: View {
     let action: () -> Void
     @ViewBuilder var label: () -> Label
 
+    // MARK: - Body
     var body: some View {
         Button(
             action: action,

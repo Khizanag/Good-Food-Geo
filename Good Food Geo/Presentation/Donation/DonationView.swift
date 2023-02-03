@@ -11,7 +11,7 @@ struct DonationView: View {
     // MARK: - Properties
     @ObservedObject var viewModel: DonationViewModel
 
-    private let banks: [(CompanyModel, String)] = [
+    private let banks: [(bank: CompanyModel, accountNumber: String)] = [
         (Company.bog, "GE54TB7337945064300021"),
         (Company.tbc, "GE54TB7337945064300021"),
         (Company.liberty, "GE54TB7337945064300021")
@@ -29,7 +29,7 @@ struct DonationView: View {
             subSections: [
                 .init(title: Localization.donationBankAccountNumber(), content: {
                     VStack {
-                        ForEach(banks, id: \.0.name) { bank, accountNumber in
+                        ForEach(banks, id: \.bank.name) { bank, accountNumber in
                             BankButton(company: bank, accountNumber: accountNumber) {
                                 isSharePresented = true
                             }

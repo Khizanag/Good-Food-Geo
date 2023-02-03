@@ -8,7 +8,6 @@
 import UIKit
 import SwiftUI
 import PhotosUI
-import Photos
 
 struct PhotoPickerView: UIViewControllerRepresentable {
     @Binding var selectedImage: UIImage?

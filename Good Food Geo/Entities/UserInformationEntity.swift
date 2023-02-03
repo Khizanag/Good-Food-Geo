@@ -6,8 +6,6 @@
 //
 
 struct UserInformationEntity: Codable {
-    typealias RawValue = String
-
     let email: String
     let fullName: String
     let phoneNumber: String

@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct PasswordResetView: View {
-    @ObservedObject var viewModel: PasswordResetViewModel
     @Environment(\.dismiss) private var dismiss
+
+    @ObservedObject var viewModel: PasswordResetViewModel
 
     @State private var email = ""
     @State private var shouldNavigateToRegistration = false
     @State var fullNameForRegistration = ""
     @State var emailForRegistration = ""
-    @FocusState private var isFieldFocused
 
-    @State private var registrationViewModel = RegistrationViewModel()
+    @FocusState private var isFieldFocused
 
     @State private var alertData = AlertData()
 
@@ -47,7 +47,6 @@ struct PasswordResetView: View {
 
             PrimaryButton(
                 action: {
-                    print("should navigate to registration")
                     shouldNavigateToRegistration = true
                 },
                 label: {
@@ -63,8 +62,6 @@ struct PasswordResetView: View {
                 },
                 backgroundColor: .white
             )
-
-
 
             Spacer()
         }
@@ -84,7 +81,7 @@ struct PasswordResetView: View {
         }
         .navigationDestination(isPresented: $shouldNavigateToRegistration) {
             RegistrationView(
-                viewModel: registrationViewModel,
+                viewModel: RegistrationViewModel(),
                 fullName: $fullNameForRegistration,
                 email: $emailForRegistration
             )

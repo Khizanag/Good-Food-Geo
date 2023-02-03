@@ -12,6 +12,7 @@ struct BankButton: View {
     let accountNumber: String
     let action: () -> Void
 
+    // MARK: - Body
     var body: some View {
         CompanyButton(
             company: company,
@@ -23,6 +24,7 @@ struct BankButton: View {
     }
 }
 
+// MARK: - Previews
 struct BankButton_Previews: PreviewProvider {
     static var previews: some View {
         BankButton(company: Company.liberty, accountNumber: "", action: { })
