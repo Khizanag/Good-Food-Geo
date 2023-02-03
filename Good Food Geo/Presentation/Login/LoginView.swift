@@ -17,16 +17,15 @@ struct LoginView: View {
         }
     }
 
+    // MARK: - Properties
     @ObservedObject var viewModel: LoginViewModel
 
-    @AppStorage(AppStorageKey.authenticationToken()) private var authenticationToken: String?
-    @AppStorage(AppStorageKey.language()) private var language: Language = .english
+    @AppStorage(AppStorageKey.language()) private var language: Language = .default
 
     @State private var email = ""
     @State private var password = ""
-    @FocusState private var focusedField: Field?
 
-    @State private var mainTabBarViewModel = MainTabBarViewModel()
+    @FocusState private var focusedField: Field?
 
     @State var alertData = AlertData()
 
@@ -40,61 +39,20 @@ struct LoginView: View {
 
                 subHeader
 
-                Form {
-                    Section {
-                        FormItemView(
-                            model: FormItemModel(
-                                icon: DesignSystem.Image.email(),
-                                placeholder: Localization.email(),
-                                keyboardType: .emailAddress
-                            ),
-                            text: $email
-                        )
-                        .focused($focusedField, equals: .email)
-
-                        ZStack {
-                            FormItemView(
-                                model: FormItemModel(
-                                    icon: DesignSystem.Image.lock(),
-                                    placeholder: Localization.password(),
-                                    isSecured: true
-                                ),
-                                text: $password
-                            )
-                            .focused($focusedField, equals: .password)
-
-                            HStack {
-                                Spacer()
-
-                                NavigationLink(destination: {
-                                    PasswordResetView(viewModel: PasswordResetViewModel())
-                                }, label: {
-                                    Text(Localization.forgotButtonTitle())
-                                        .foregroundColor(DesignSystem.Color.primary())
-                                        .font(.footnote)
-                                        .padding(.trailing)
-                                })
-                            }
-                        }
-                    }
-                }
+                inputFieldsForm
 
                 PrimaryButton(
-                    action: {
-                        viewModel.login(email: email, password: password)
-                    },
-                    label: {
-                        Text(Localization.login())
-                    },
+                    action: { viewModel.login(email: email, password: password) },
+                    label: { Text(Localization.login()) },
                     isLoading: $viewModel.isLoading
                 )
 
 #if DEBUG
-                PrimaryButton(action: {
-                    viewModel.login(email: "admin@gfg.ge", password: "admin")
-                }, label: {
-                    Text("Test login by Admin")
-                }, isLoading: $viewModel.isLoading)
+                PrimaryButton(
+                    action: { viewModel.login(email: "admin@gfg.ge", password: "admin") },
+                    label: { Text("Test login by Admin") },
+                    isLoading: $viewModel.isLoading
+                )
 #endif
 
                 Text(Localization.loginWithSocialNetworksTitle())
@@ -106,27 +64,28 @@ struct LoginView: View {
                 registerSuggestion
             }
             .padding([.horizontal, .bottom], 32)
-            .navigationBarBackButtonHidden(true)
-            .navigationDestination(isPresented: $viewModel.shouldNavigateToHome) {
-                MainTabBarView(viewModel: mainTabBarViewModel)
-            }
-            .navigationDestination(isPresented: $viewModel.shouldNavigateToRegistration) {
-                RegistrationView(
-                    viewModel: RegistrationViewModel(),
-                    fullName: $viewModel.registrationName,
-                    email: $viewModel.registrationEmail
-                )
-            }
-            .onAppear {
-                cleanUp()
-                viewModel.viewDidAppear()
-            }
-            .allowsHitTesting(!viewModel.isLoading)
-            .onReceive(viewModel.errorPublisher, perform: showError)
-            .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
-                Button(Localization.gotIt(), role: .cancel) { }
-            })
+
         }
+        .onAppear {
+            cleanUp()
+            viewModel.viewDidAppear()
+        }
+        .allowsHitTesting(!viewModel.isLoading)
+        .onReceive(viewModel.errorPublisher, perform: showError)
+        .navigationBarBackButtonHidden(true)
+        .navigationDestination(isPresented: $viewModel.shouldNavigateToHome) {
+            MainTabBarView(viewModel: MainTabBarViewModel())
+        }
+        .navigationDestination(isPresented: $viewModel.shouldNavigateToRegistration) {
+            RegistrationView(
+                viewModel: RegistrationViewModel(),
+                fullName: $viewModel.registrationName,
+                email: $viewModel.registrationEmail
+            )
+        }
+        .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
+            Button(Localization.gotIt(), role: .cancel) { }
+        })
         .scrollDismissesKeyboard(.interactively)
         .disabled(viewModel.isLoading || viewModel.isGoogleButtonLoading || viewModel.isFacebookButtonLoading)
     }
@@ -172,6 +131,53 @@ struct LoginView: View {
                 .foregroundColor(DesignSystem.Color.secondaryText())
         }
         .padding()
+    }
+
+    private var inputFieldsForm: some View {
+        Group {
+            FormItemView(
+                model: FormItemModel(
+                    icon: DesignSystem.Image.email(),
+                    placeholder: Localization.email(),
+                    keyboardType: .emailAddress
+                ),
+                text: $email
+            )
+            .focused($focusedField, equals: .email)
+
+            ZStack {
+                FormItemView(
+                    model: FormItemModel(
+                        icon: DesignSystem.Image.lock(),
+                        placeholder: Localization.password(),
+                        isSecured: true
+                    ),
+                    text: $password
+                )
+                .focused($focusedField, equals: .password)
+
+                HStack {
+                    Spacer()
+
+                    NavigationLink(destination: {
+                        PasswordResetView(viewModel: PasswordResetViewModel())
+                    }, label: {
+                        Text(Localization.forgotButtonTitle())
+                            .foregroundColor(DesignSystem.Color.primary())
+                            .font(.footnote)
+                            .padding(.trailing)
+                    })
+                }
+            }
+        }
+        .onSubmit {
+            guard let focusedField = focusedField else { return }
+            guard let nextField = focusedField.next else {
+                viewModel.login(email: email, password: password)
+                return
+            }
+            self.focusedField = nextField
+        }
     }
 
     private var thirdPartyAuthenticationMethods: some View {
