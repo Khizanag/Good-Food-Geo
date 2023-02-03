@@ -44,25 +44,18 @@ final class LoginViewModel: BaseViewModel {
         }
 
         Task {
-            DispatchQueue.main.async {
-                self.isLoading = true
-            }
+            isLoading = true
 
             let result = await loginUseCase.execute(email: email.lowercased(), password: password)
 
             switch result {
             case .success:
-                DispatchQueue.main.async {
-                    self.shouldNavigateToHome = true
-                }
+                self.shouldNavigateToHome = true
             case .failure(let error):
                 showError(error)
             }
 
-            DispatchQueue.main.async { [weak self] in
-                self?.isLoading = false
-            }
-
+            isLoading = false
         }
     }
 
