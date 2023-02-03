@@ -36,81 +36,47 @@ struct LoginView: View {
             VStack(spacing: 24) {
                 HSpacing(8)
 
-                HStack {
-                    DesignSystem.Image.appIconPrimary()
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 32, height: 48)
+                header
 
-                    Spacer()
+                subHeader
 
-                    Menu(Localization.changeLanguage()) {
-                        ForEach(Language.allCases, id: \.localizableIdentifier) { language in
-                            Button(action: {
-                                viewModel.changeLanguage(to: language)
-                            }, label: {
-                                let title = "\(language.icon) \(language.name)"
+                Form {
+                    Section {
+                        FormItemView(
+                            model: FormItemModel(
+                                icon: DesignSystem.Image.email(),
+                                placeholder: Localization.email(),
+                                keyboardType: .emailAddress
+                            ),
+                            text: $email
+                        )
+                        .focused($focusedField, equals: .email)
 
-                                if language == self.language {
-                                    Label(title, systemImage: "checkmark")
-                                } else {
-                                    Text(title)
-                                }
-                            })
+                        ZStack {
+                            FormItemView(
+                                model: FormItemModel(
+                                    icon: DesignSystem.Image.lock(),
+                                    placeholder: Localization.password(),
+                                    isSecured: true
+                                ),
+                                text: $password
+                            )
+                            .focused($focusedField, equals: .password)
+
+                            HStack {
+                                Spacer()
+
+                                NavigationLink(destination: {
+                                    PasswordResetView(viewModel: PasswordResetViewModel())
+                                }, label: {
+                                    Text(Localization.forgotButtonTitle())
+                                        .foregroundColor(DesignSystem.Color.primary())
+                                        .font(.footnote)
+                                        .padding(.trailing)
+                                })
+                            }
                         }
                     }
-                }
-                .frame(maxWidth: .infinity)
-                .padding([.bottom, .horizontal])
-
-                VStack(alignment: .leading, spacing: 6) {
-                    Text(Localization.loginTitle())
-                        .font(.body)
-                        .bold()
-
-                    Text(Localization.loginSubtitle())
-                        .font(.footnote)
-                        .foregroundColor(DesignSystem.Color.secondaryText())
-                }
-                .padding()
-
-                VStack(alignment: .leading, spacing: 8) {
-                    FormItemView(model: FormItemModel(
-                        icon: DesignSystem.Image.email(),
-                        placeholder: Localization.email(),
-                        keyboardType: .emailAddress
-                    ), text: $email)
-                    .focused($focusedField, equals: .email)
-
-                    ZStack {
-                        FormItemView(model: FormItemModel(
-                            icon: DesignSystem.Image.lock(),
-                            placeholder: Localization.password(),
-                            isSecured: true
-                        ), text: $password)
-                        .focused($focusedField, equals: .password)
-
-                        HStack {
-                            Spacer()
-
-                            NavigationLink(destination: {
-                                PasswordResetView(viewModel: PasswordResetViewModel())
-                            }, label: {
-                                Text(Localization.forgotButtonTitle())
-                                    .foregroundColor(DesignSystem.Color.primary())
-                                    .font(.footnote)
-                                    .padding(.trailing)
-                            })
-                        }
-                    }
-                }
-                .onSubmit {
-                    guard let focusedField = focusedField else { return }
-                    guard let nextField = focusedField.next else {
-                        viewModel.login(email: email, password: password)
-                        return
-                    }
-                    self.focusedField = nextField
                 }
 
                 PrimaryButton(
@@ -135,34 +101,9 @@ struct LoginView: View {
                     .font(.footnote)
                     .foregroundColor(DesignSystem.Color.primaryText())
 
-                VStack(spacing: 12) {
-                    CompanyButton(
-                        company: Company.facebook,
-                        action: { viewModel.loginUsingFacebook() },
-                        isLoading: $viewModel.isFacebookButtonLoading
-                    )
+                thirdPartyAuthenticationMethods
 
-                    CompanyButton(
-                        company: Company.google,
-                        action: {
-                            guard let presentingViewController = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.rootViewController else { return }
-                            viewModel.loginUsingGoogle(by: presentingViewController)
-                        },
-                        isLoading: $viewModel.isGoogleButtonLoading
-                    )
-                }
-
-                HStack {
-                    Text(Localization.areYouNotRegistered())
-                        .font(.footnote)
-
-                    Button(action: {
-                        viewModel.shouldNavigateToRegistration = true
-                    }, label: {
-                        Text(Localization.register())
-                    })
-                }
-                .padding(.vertical)
+                registerSuggestion
             }
             .padding([.horizontal, .bottom], 32)
             .navigationBarBackButtonHidden(true)
@@ -188,6 +129,86 @@ struct LoginView: View {
         }
         .scrollDismissesKeyboard(.interactively)
         .disabled(viewModel.isLoading || viewModel.isGoogleButtonLoading || viewModel.isFacebookButtonLoading)
+    }
+
+    // MARK: - Components
+    private var header: some View {
+        HStack {
+            DesignSystem.Image.appIconPrimary()
+                .resizable()
+                .scaledToFit()
+                .frame(width: 32, height: 48)
+
+            Spacer()
+
+            Menu(Localization.changeLanguage()) {
+                ForEach(Language.allCases, id: \.localizableIdentifier) { language in
+                    Button(action: {
+                        viewModel.changeLanguage(to: language)
+                    }, label: {
+                        let title = "\(language.icon) \(language.name)"
+
+                        if language == self.language {
+                            Label(title, systemImage: "checkmark")
+                        } else {
+                            Text(title)
+                        }
+                    })
+                }
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .padding([.bottom, .horizontal])
+    }
+
+    private var subHeader: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text(Localization.loginTitle())
+                .font(.body)
+                .bold()
+
+            Text(Localization.loginSubtitle())
+                .font(.footnote)
+                .foregroundColor(DesignSystem.Color.secondaryText())
+        }
+        .padding()
+    }
+
+    private var thirdPartyAuthenticationMethods: some View {
+        VStack(spacing: 12) {
+            CompanyButton(
+                company: Company.facebook,
+                action: { viewModel.loginUsingFacebook() },
+                isLoading: $viewModel.isFacebookButtonLoading
+            )
+
+            CompanyButton(
+                company: Company.google,
+                action: {
+                    guard let presentingViewController = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.rootViewController else { return }
+                    viewModel.loginUsingGoogle(by: presentingViewController)
+                },
+                isLoading: $viewModel.isGoogleButtonLoading
+            )
+        }
+    }
+
+    private var registerSuggestion: some View {
+        HStack {
+            Text(Localization.areYouNotRegistered())
+                .font(.footnote)
+
+            NavigationLink(destination: {
+                RegistrationView(
+                    viewModel: RegistrationViewModel(),
+                    fullName: $viewModel.registrationName,
+                    email: $viewModel.registrationEmail
+                )
+            }, label: {
+                Text(Localization.register())
+            })
+        }
+        .padding(.vertical)
     }
 
     // MARK: - Functions
