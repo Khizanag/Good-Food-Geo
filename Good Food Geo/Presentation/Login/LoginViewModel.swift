@@ -114,23 +114,17 @@ final class LoginViewModel: BaseViewModel {
         case .success(let entity):
             if let token = entity.token {
                 authenticationTokenStorage.write(token)
-                DispatchQueue.main.async {
-                    self.setSocialNetworkIsLoadingButton(to: false, for: socialNetwork)
-                    self.shouldNavigateToHome = true
-                }
+                setSocialNetworkIsLoadingButton(to: false, for: socialNetwork)
+                shouldNavigateToHome = true
             } else {
                 // Is not registered, needs registration
                 self.registrationName = entity.name ?? ""
                 self.registrationEmail = entity.email ?? ""
-                DispatchQueue.main.async {
                     self.setSocialNetworkIsLoadingButton(to: false, for: socialNetwork)
                     self.shouldNavigateToRegistration = true
-                }
             }
         case .failure(let error):
-            DispatchQueue.main.async {
-                self.isFacebookButtonLoading = false
-            }
+            isFacebookButtonLoading = false
             showError(error)
         }
     }
