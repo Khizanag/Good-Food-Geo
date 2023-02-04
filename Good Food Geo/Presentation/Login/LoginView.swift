@@ -10,8 +10,11 @@ import SwiftUI
 struct LoginView: View {
     // MARK: - Properties
     @AppStorage(AppStorageKey.language()) private var language: Language = .default
+    @AppStorage(AppStorageKey.authenticationToken()) private var authenticationToken: String?
 
     @StateObject var viewModel: LoginViewModel
+
+    @State private var shouldLogIn = false
 
     @State private var email = ""
     @State private var password = ""
@@ -39,8 +42,13 @@ struct LoginView: View {
                 )
                 .onAppear {
                     cleanUp()
-                    viewModel.viewDidAppear()
+                    if authenticationToken != nil {
+                        shouldLogIn = true
+                    }
                 }
+                .navigationDestination(isPresented: $shouldLogIn, destination: {
+                    MainTabBarView(viewModel: MainTabBarViewModel())
+                })
 
 #if DEBUG
                 PrimaryButton(
@@ -59,7 +67,6 @@ struct LoginView: View {
                 registerSuggestion
             }
             .padding([.horizontal, .bottom], 32)
-
         }
         .allowsHitTesting(!viewModel.isLoading)
         .onReceive(viewModel.errorPublisher, perform: showError)

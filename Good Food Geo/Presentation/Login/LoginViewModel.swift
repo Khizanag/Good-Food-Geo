@@ -27,16 +27,7 @@ final class LoginViewModel: BaseViewModel {
     var registrationName = ""
     var registrationEmail = ""
 
-    // MARK: - Methods
-    @MainActor func viewDidAppear() {
-        isLoading = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            let isLoggedIn = self.authenticationToken != nil
-            self.shouldNavigateToHome = isLoggedIn
-            self.isLoading = false
-        }
-    }
-
+    // MARK: - Public
     func changeLanguage(to newLanguage: Language) {
         languageStorage.write(newLanguage)
     }
