@@ -10,7 +10,7 @@ import SwiftUI
 struct PasswordResetView: View {
     @Environment(\.dismiss) private var dismiss
 
-    @ObservedObject var viewModel: PasswordResetViewModel
+    @StateObject var viewModel: PasswordResetViewModel
 
     @State private var email = ""
     @State private var shouldNavigateToRegistration = false

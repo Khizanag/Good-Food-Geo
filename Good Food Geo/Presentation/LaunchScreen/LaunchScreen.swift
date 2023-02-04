@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LaunchScreen: View {
     // MARK: - Properties
-    @ObservedObject var viewModel: LaunchScreenViewModel
+    @StateObject var viewModel: LaunchScreenViewModel
 
     // MARK: - Body
     var body: some View {

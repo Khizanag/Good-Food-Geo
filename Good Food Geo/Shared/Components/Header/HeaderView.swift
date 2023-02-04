@@ -11,7 +11,7 @@ struct HeaderView: View {
     // MARK: - Properties
     @AppStorage(AppStorageKey.language()) private var language: Language = .default
 
-    @ObservedObject var viewModel: HeaderViewModel
+    @StateObject var viewModel: HeaderViewModel
 
     let fullName: String
 

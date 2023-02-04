@@ -8,22 +8,8 @@
 import SwiftUI
 
 struct ProductComplaintSubmissionView: View {
-    // MARK: - Typealias
-    typealias ViewModel = ProductComplaintSubmissionViewModel
-
     // MARK: - Properties
-    private enum Field: Arrangeable {
-        case productTitle
-        case fullName
-        case comment
-        case location
-
-        var arranged: [Field] {
-            [.productTitle, .fullName, .comment, .location]
-        }
-    }
-
-    @ObservedObject var viewModel: ViewModel
+    @StateObject var viewModel: ProductComplaintSubmissionViewModel
 
     private static let imagePlaceholderTexts = [
         Localization.scanFirstImageDescription(),
@@ -178,6 +164,20 @@ struct ProductComplaintSubmissionView: View {
             alertData.subtitle = description
         }
         alertData.isPresented = true
+    }
+}
+
+// MARK: - Fields
+private extension ProductComplaintSubmissionView {
+    enum Field: Arrangeable {
+        case productTitle
+        case fullName
+        case comment
+        case location
+
+        var arranged: [Field] {
+            [.productTitle, .fullName, .comment, .location]
+        }
     }
 }
 

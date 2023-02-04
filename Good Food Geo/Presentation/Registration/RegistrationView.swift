@@ -10,7 +10,7 @@ import SwiftUI
 struct RegistrationView: View {
     @Environment(\.dismiss) private var dismiss
 
-    @ObservedObject var viewModel: RegistrationViewModel
+    @StateObject var viewModel: RegistrationViewModel
 
     @Binding var fullName: String
     @Binding var email: String

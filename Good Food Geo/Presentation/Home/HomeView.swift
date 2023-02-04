@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct HomeView: View {
-    @ObservedObject var viewModel: HomeViewModel
+    @StateObject var viewModel: HomeViewModel
 
+    // MARK: - Body
     var body: some View {
         VStack {
             if viewModel.isLoading {
@@ -40,6 +41,7 @@ struct HomeView: View {
     }
 }
 
+// MARK: - Previews
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
         HomeView(viewModel: HomeViewModel())
