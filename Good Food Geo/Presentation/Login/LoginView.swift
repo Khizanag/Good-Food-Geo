@@ -8,19 +8,10 @@
 import SwiftUI
 
 struct LoginView: View {
-    private enum Field: Arrangeable {
-        case email
-        case password
-
-        var arranged: [LoginView.Field] {
-            [.email, .password]
-        }
-    }
-
     // MARK: - Properties
-    @ObservedObject var viewModel: LoginViewModel
-
     @AppStorage(AppStorageKey.language()) private var language: Language = .default
+
+    @StateObject var viewModel: LoginViewModel
 
     @State private var email = ""
     @State private var password = ""
@@ -46,6 +37,10 @@ struct LoginView: View {
                     label: { Text(Localization.login()) },
                     isLoading: $viewModel.isLoading
                 )
+                .onAppear {
+                    cleanUp()
+                    viewModel.viewDidAppear()
+                }
 
 #if DEBUG
                 PrimaryButton(
@@ -65,10 +60,6 @@ struct LoginView: View {
             }
             .padding([.horizontal, .bottom], 32)
 
-        }
-        .onAppear {
-            cleanUp()
-            viewModel.viewDidAppear()
         }
         .allowsHitTesting(!viewModel.isLoading)
         .onReceive(viewModel.errorPublisher, perform: showError)
@@ -234,6 +225,18 @@ struct LoginView: View {
             alertData.subtitle = description
         }
         alertData.isPresented = true
+    }
+}
+
+// MARK: - Field
+private extension LoginView {
+    enum Field: Arrangeable {
+        case email
+        case password
+
+        var arranged: [LoginView.Field] {
+            [.email, .password]
+        }
     }
 }
 
