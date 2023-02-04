@@ -85,7 +85,7 @@
 // MARK: - Scanning
 "scanning" = "Scanning";
 "preScanFormTitle" = "Before the scan, you need to fill those fields.";
-"acceptTerms" = "You accept our terns of Use and Privacy Statement";
+"acceptTerms" = "You accept our terms of Use and Privacy Statement";
 "scanProduct" = "Scan Your Product";
 "productTitle" = "Name of the Product";
 "scanFirstImageDescription" = "Take a clear picture of the product's expiration date";

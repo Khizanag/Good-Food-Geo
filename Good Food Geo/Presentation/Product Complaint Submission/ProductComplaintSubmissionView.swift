@@ -33,26 +33,15 @@ struct ProductComplaintSubmissionView: View {
         Localization.scanFifthImageDescription()
     ]
 
-    private struct SelectableImageInfo {
-        var image: UIImage? = nil
-        var isImagePickerPresented = false
-        var isPhotoPickerPresented = false
-        var isConfirmationDialogPresented = false
-        let placeholderText: String
+    @State private var imageableModel0 = ImageableModel(placeholderText: imagePlaceholderTexts[0])
+    @State private var imageableModel1 = ImageableModel(placeholderText: imagePlaceholderTexts[1])
+    @State private var imageableModel2 = ImageableModel(placeholderText: imagePlaceholderTexts[2])
+    @State private var imageableModel3 = ImageableModel(placeholderText: imagePlaceholderTexts[3])
+    @State private var imageableModel4 = ImageableModel(placeholderText: imagePlaceholderTexts[4])
 
-        var isSelected: Bool {
-            image.isNotNil
-        }
-
-        mutating func reset() {
-            image = nil
-            isImagePickerPresented = false
-            isPhotoPickerPresented = false
-            isConfirmationDialogPresented = false
-        }
+    private var imageableModels: [ImageableModel] {
+        [imageableModel0, imageableModel1, imageableModel2, imageableModel3, imageableModel4]
     }
-
-    @State private var selectableImages = imagePlaceholderTexts.map { SelectableImageInfo(placeholderText: $0) }
 
     @State private var productTitle = ""
     @State private var fullName = ""
@@ -77,8 +66,13 @@ struct ProductComplaintSubmissionView: View {
                 FormItemView(model: FormItemModel(icon: DesignSystem.Image.photo(), placeholder: Localization.productTitle()), text: $productTitle)
                     .focused($focusedField, equals: .productTitle)
 
-                ForEach(selectableImages.indices, id: \.self) { index in
-                    selectedImageComponent(for: index)
+                // With ForEach image is not loaded from ImagePickerView on some devices
+                Group {
+                    ImageableView(model: $imageableModel0)
+                    ImageableView(model: $imageableModel1)
+                    ImageableView(model: $imageableModel2)
+                    ImageableView(model: $imageableModel3)
+                    ImageableView(model: $imageableModel4)
                 }
 
                 VStack {
@@ -122,70 +116,10 @@ struct ProductComplaintSubmissionView: View {
                 cleanUp()
             }
         }
+        .disabled(viewModel.isLoading)
         .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
             Button(Localization.gotIt(), role: .cancel) { }
         })
-    }
-
-    // MARK: - Components
-    private func selectedImageComponent(for index: Int) -> some View {
-        getImageOrPlaceholder(for: index)
-            .frame(height: 145)
-            .frame(maxWidth: .infinity)
-            .cornerRadius(16)
-            .clipped()
-            .onTapGesture {
-                selectableImages[index].isConfirmationDialogPresented = true
-            }
-            .sheet(isPresented: $selectableImages[index].isImagePickerPresented) {
-                ImagePickerView(selectedImage: $selectableImages[index].image, sourceType: .camera)
-                    .ignoresSafeArea()
-            }
-            .sheet(isPresented: $selectableImages[index].isPhotoPickerPresented) {
-                PhotoPickerView(selectedImage: $selectableImages[index].image)
-                    .ignoresSafeArea()
-            }
-            .confirmationDialog("?", isPresented: $selectableImages[index].isConfirmationDialogPresented) {
-                Button("Camera") {
-                    selectableImages[index].isImagePickerPresented = true
-                }
-
-                Button("Photo Gallery") {
-                    selectableImages[index].isPhotoPickerPresented = true
-                }
-            }
-    }
-
-    private func getImageOrPlaceholder(for index: Int) -> some View {
-        if let image = selectableImages[index].image {
-            return Image(uiImage: image)
-                .resizable()
-                .toAnyView()
-        } else {
-            return getImagePlaceholder(for: index)
-                .toAnyView()
-        }
-    }
-
-    private func getImagePlaceholder(for index: Int) -> some View {
-        ZStack {
-            Color(hex: 0xD9D9D9)
-
-            VStack(spacing: 8) {
-                DesignSystem.Image.placeholderPhoto()
-                    .resizable()
-                    .foregroundColor(Color(hex: 0x898484))
-                    .frame(width: 32, height: 32)
-
-                Text(selectableImages[index].placeholderText)
-                    .foregroundColor(Color(hex: 0x898484))
-                    .font(.caption2)
-                    .multilineTextAlignment(.center)
-            }
-            .padding(2)
-            .offset(y: 8)
-        }
-        .cornerRadius(16)
     }
 
     private var submitButton: some View {
@@ -209,7 +143,7 @@ struct ProductComplaintSubmissionView: View {
     private func submit() {
         viewModel.submitProductComplaint(
             ProductComplaint(
-                product: .init(title: productTitle, images: selectableImages.compactMap(\.image)),
+                product: .init(title: productTitle, images: imageableModels.compactMap(\.image)),
                 author: ProductComplaint.Author(fullName: fullName),
                 comment: comment,
                 location: location,
@@ -219,9 +153,11 @@ struct ProductComplaintSubmissionView: View {
     }
 
     private func cleanUp() {
-        selectableImages.indices.forEach { index in
-            selectableImages[index].reset()
-        }
+        imageableModel0.reset()
+        imageableModel1.reset()
+        imageableModel2.reset()
+        imageableModel3.reset()
+        imageableModel4.reset()
 
         productTitle = ""
         fullName = ""

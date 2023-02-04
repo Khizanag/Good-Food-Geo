@@ -108,6 +108,7 @@
 		FBF9409929560B6100A8EF10 /* LinearGradient+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF9409829560B6100A8EF10 /* LinearGradient+Extension.swift */; };
 		FBF9409B29560C3C00A8EF10 /* Gradient+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF9409A29560C3C00A8EF10 /* Gradient+Extension.swift */; };
 		FBF9409F29560DF300A8EF10 /* CompanyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF9409E29560DF300A8EF10 /* CompanyButton.swift */; };
+		FBFAC4BC298DB72C003917A8 /* ImageableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFAC4BB298DB72C003917A8 /* ImageableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -230,6 +231,7 @@
 		FBF9409829560B6100A8EF10 /* LinearGradient+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LinearGradient+Extension.swift"; sourceTree = "<group>"; };
 		FBF9409A29560C3C00A8EF10 /* Gradient+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gradient+Extension.swift"; sourceTree = "<group>"; };
 		FBF9409E29560DF300A8EF10 /* CompanyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyButton.swift; sourceTree = "<group>"; };
+		FBFAC4BB298DB72C003917A8 /* ImageableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -497,6 +499,7 @@
 				FB0FAFCE29672038008175A2 /* ProductComplaint.swift */,
 				FBF9407C2955B23F00A8EF10 /* ProductComplaintSubmissionView.swift */,
 				FB0FAFD02967552D008175A2 /* ProductComplaintSubmissionViewModel.swift */,
+				FBFAC4BB298DB72C003917A8 /* ImageableView.swift */,
 			);
 			path = "Product Complaint Submission";
 			sourceTree = "<group>";
@@ -845,6 +848,7 @@
 				FB0FAFD12967552D008175A2 /* ProductComplaintSubmissionViewModel.swift in Sources */,
 				FB0FAFA42965982A008175A2 /* UserInformationDTO.swift in Sources */,
 				FBF9405D29559F2B00A8EF10 /* DesignSystem.swift in Sources */,
+				FBFAC4BC298DB72C003917A8 /* ImageableView.swift in Sources */,
 				FB93933B295EBEEB00D491CE /* MainTabBarView.swift in Sources */,
 				FB93933D295ED0D200D491CE /* TabBarShape.swift in Sources */,
 				FBF9409929560B6100A8EF10 /* LinearGradient+Extension.swift in Sources */,
