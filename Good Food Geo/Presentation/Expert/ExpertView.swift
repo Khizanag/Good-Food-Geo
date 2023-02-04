@@ -24,7 +24,6 @@ struct ExpertView: View {
                             Text(Localization.aboutExpertServiceFirstSectionDescription())
                             Text(Localization.aboutExpertServiceSecondSectionDescription())
                         }
-                        .foregroundColor(.gray)
                         .toAnyView()
                     }
                 ),

@@ -119,6 +119,11 @@ struct HeaderView: View {
 // MARK: - Previews
 struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        HeaderView(viewModel: HeaderViewModel(), fullName: "Full Name")
+        ZStack {
+            DesignSystem.Color.primary()
+                .ignoresSafeArea()
+
+            HeaderView(viewModel: HeaderViewModel(), fullName: "Full Name")
+        }
     }
 }
