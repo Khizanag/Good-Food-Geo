@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AboutUsView: View {
     // MARK: - Properties
-    @ObservedObject var viewModel: AboutUsViewModel
+    @StateObject var viewModel: AboutUsViewModel
     
     private let phoneNumber = "+995598935050"
     private let facebookPageUrl = "https://www.facebook.com/TDIG.ge"

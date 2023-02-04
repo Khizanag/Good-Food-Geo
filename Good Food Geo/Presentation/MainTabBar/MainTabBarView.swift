@@ -31,7 +31,8 @@ enum MainTabBarItem {
 
 // MARK: - MainTabBarView
 struct MainTabBarView: View {
-    @ObservedObject var viewModel: MainTabBarViewModel
+    @StateObject var viewModel: MainTabBarViewModel
+
     @State private var selectedTabBarItem: MainTabBarItem = .home
 
     private struct MainTabBarItemModel {
@@ -55,7 +56,7 @@ struct MainTabBarView: View {
 
     // MARK: - Init
     init(viewModel: MainTabBarViewModel) {
-        self.viewModel = viewModel
+        self._viewModel = .init(wrappedValue: viewModel)
 
         let transparentAppearance = UITabBarAppearance()
         transparentAppearance.configureWithTransparentBackground()

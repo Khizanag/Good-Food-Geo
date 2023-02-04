@@ -10,7 +10,7 @@ import SwiftUI
 struct ExpertView: View {
     @Environment(\.dismiss) private var dismiss
 
-    @ObservedObject var viewModel: ExpertViewModel
+    @StateObject var viewModel: ExpertViewModel
 
     // MARK: - Body
     var body: some View {

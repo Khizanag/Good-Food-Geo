@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DonationView: View {
     // MARK: - Properties
-    @ObservedObject var viewModel: DonationViewModel
+    @StateObject var viewModel: DonationViewModel
 
     private let banks: [(bank: CompanyModel, accountNumber: String)] = [
         (Company.bog, "GE54TB7337945064300021"),

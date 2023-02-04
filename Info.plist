@@ -11,21 +11,25 @@
 				<string>com.googleusercontent.apps.469167745457-hht7qrsde74salecjs41q3r8v9pbeih8</string>
 			</array>
 		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLSchemes</key>
-			<array/>
-		</dict>
-		<dict/>
 	</array>
+	<key>FacebookAdvertiserIDCollectionEnabled</key>
+	<true/>
 	<key>FacebookAppID</key>
 	<string>1130334330955777</string>
+	<key>FacebookAutoLogAppEventsEnabled</key>
+	<false/>
 	<key>FacebookClientToken</key>
 	<string>329654dc5bc1085ffddf6c7f63e68935</string>
 	<key>FacebookDisplayName</key>
 	<string>GoodFoodG</string>
 	<key>GIDClientID</key>
 	<string>469167745457-hht7qrsde74salecjs41q3r8v9pbeih8.apps.googleusercontent.com</string>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+		<key>UISceneConfigurations</key>
+		<dict/>
+	</dict>
 </dict>
 </plist>
