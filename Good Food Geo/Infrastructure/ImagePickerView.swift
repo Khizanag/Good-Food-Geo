@@ -17,9 +17,7 @@ struct ImagePickerView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIImagePickerController {
         let imagePicker = UIImagePickerController()
         imagePicker.sourceType = .camera
-        imagePicker.allowsEditing = true
-        imagePicker.mediaTypes = ["public.image"]
-        imagePicker.showsCameraControls = true
+        imagePicker.allowsEditing = false
         imagePicker.delegate = context.coordinator
         return imagePicker
     }
@@ -33,18 +31,19 @@ struct ImagePickerView: UIViewControllerRepresentable {
     func shouldDismiss() {
         dismiss()
     }
+}
 
-    // MARK: - Coordinator
+// MARK: - Coordinator
+extension ImagePickerView {
     final class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-        var picker: ImagePickerView
+        let picker: ImagePickerView
 
         init(picker: ImagePickerView) {
             self.picker = picker
         }
 
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-            guard let selectedImage = (info[.originalImage] as? UIImage) ?? (info[.editedImage] as? UIImage) ?? (info[.livePhoto] as? UIImage) else { return }
-            self.picker.selectedImage = selectedImage
+            self.picker.selectedImage = info[.originalImage] as? UIImage
             self.picker.shouldDismiss()
         }
     }
