@@ -40,8 +40,7 @@ final class ProductComplaintSubmissionViewModel: BaseViewModel {
             return
         }
         guard productComplaint.product.images.count == numRequiredImages else {
-            showError(.descriptive("გთხოვთ, ატვირთეთ ყველა მოთხოვნილი ფოტო"))
-            #warning("Localize")
+            showError(.imageIsMissing)
             return
         }
 

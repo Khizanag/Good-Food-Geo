@@ -8,6 +8,7 @@
 enum AppError: Error {
     case general
     case descriptive(String)
+    case imageIsMissing
     case parsing
     case sessionNotFound
     case wrongStatusCode
@@ -25,6 +26,8 @@ extension AppError {
             return Localization.failedRequestErrorDescription()
         case .emptyField:
             return Localization.shouldFillAllFieldsDescription()
+        case .imageIsMissing:
+            return Localization.imageIsMissingErrorDescription()
         case .passwordsMismatch:
             return Localization.passwordsMismatchErrorDescription()
         case .termsAreNotAgreed:
