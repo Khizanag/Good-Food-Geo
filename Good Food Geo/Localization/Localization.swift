@@ -121,6 +121,7 @@ enum Localization: String {
     case shouldFillAllFieldsDescription
     case passwordsMismatchErrorDescription
     case termsAreNotAgreedErrorDescription
+    case imageIsMissingErrorDescription
 }
 
 extension Localization {

@@ -121,3 +121,4 @@
 "shouldFillAllFieldsDescription" = "ყველა ველი არაა შევსებული";
 "passwordsMismatchErrorDescription" = "პაროლები არ ემთხვევა ერთმანეთს";
 "termsAreNotAgreedErrorDescription" = "პროცესის გასაგრძელებლად, აუცილებელია დაეთანხმოთ \"წესებსა და პირობებს\"";
+"imageIsMissingErrorDescription" = "გთხოვთ, ატვირთეთ ყველა სურათი.";

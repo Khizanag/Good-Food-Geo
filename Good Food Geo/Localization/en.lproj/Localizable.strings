@@ -121,3 +121,4 @@
 "shouldFillAllFieldsDescription" = "All field is not field";
 "passwordsMismatchErrorDescription" = "passwords does not match";
 "termsAreNotAgreedErrorDescription" = "To continue the process, you must agree to the \"Terms and Conditions\"";
+"imageIsMissingErrorDescription" = "Please upload all of the images.";
