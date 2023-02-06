@@ -11,7 +11,7 @@ import Combine
 final class ProductComplaintSubmissionViewModel: BaseViewModel {
     private let productsRepository: ProductsRepository = DefaultProductsRepository()
 
-    let numRequiredImages = 5
+    private let numRequiredImages = 5
 
     @Published var isLoading = false
 
@@ -22,6 +22,7 @@ final class ProductComplaintSubmissionViewModel: BaseViewModel {
 
     let eventPublisher = PassthroughSubject<Event, Never>()
 
+    // MARK: - Public Methods
     @MainActor func submitProductComplaint(_ productComplaint: ProductComplaint) {
         let allInputIsFilled = [
             productComplaint.location,
