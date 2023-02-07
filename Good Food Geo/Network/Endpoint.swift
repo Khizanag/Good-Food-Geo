@@ -13,6 +13,7 @@ enum EndPoint {
     case userInformation
     case products
     case resetLink
+    case appleAuthentication
     case googleAuthentication
     case facebookAuthentication
     case verifyRegistration
@@ -31,6 +32,8 @@ extension EndPoint {
             return "profile"
         case .resetLink:
             return "reset-link"
+        case .appleAuthentication:
+            return "apple"
         case .googleAuthentication:
             return "google"
         case .facebookAuthentication:

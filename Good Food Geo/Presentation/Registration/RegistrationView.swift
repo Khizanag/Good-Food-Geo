@@ -14,6 +14,7 @@ struct RegistrationView: View {
 
     @Binding var fullName: String
     @Binding var email: String
+    @Binding var appleUserId: String?
     @State private var password = ""
     @State private var confirmPassword = ""
     @State private var phoneNumber = ""
@@ -254,7 +255,8 @@ struct RegistrationView_Previews: PreviewProvider {
         RegistrationView(
             viewModel: RegistrationViewModel(),
             fullName: .constant("fullname"),
-            email: .constant("email")
+            email: .constant("email"),
+            appleUserId: .constant(nil)
         )
     }
 }

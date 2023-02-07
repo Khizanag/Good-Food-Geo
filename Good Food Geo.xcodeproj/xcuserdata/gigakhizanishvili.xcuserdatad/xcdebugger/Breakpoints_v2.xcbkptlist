@@ -125,26 +125,42 @@
             filePath = "Good Food Geo/Presentation/Login/LoginViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
-            landmarkName = "loginUsingGoogle(by:)"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "handleSocialNetworkAuthentication(for:using:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "7BBFA6AD-7319-4D6B-928F-AD531E1FD971"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Good Food Geo/Shared/Components/PrimaryPageView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "headerView"
-            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "A320681B-91B6-40E1-A267-E23A667837A7 - a08e4f0702d67675"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) suspend resume partial function for Good_Food_Geo.LoginViewModel.handleSocialNetworkAuthentication(for: Good_Food_Geo.AuthenticatingSocialNetwork, using: Swift.String) async -&gt; ()"
+                  moduleName = "Good Food Geo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gigakhizanishvili/GitHub/Good%20Food%20Geo/Good%20Food%20Geo/Presentation/Login/LoginViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "131"
+                  endingLineNumber = "131"
+                  offsetFromSymbolStart = "192">
+               </Location>
+               <Location
+                  uuid = "A320681B-91B6-40E1-A267-E23A667837A7 - a08e4f0702d67675"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) suspend resume partial function for Good_Food_Geo.LoginViewModel.handleSocialNetworkAuthentication(for: Good_Food_Geo.AuthenticatingSocialNetwork, using: Swift.String) async -&gt; ()"
+                  moduleName = "Good Food Geo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gigakhizanishvili/GitHub/Good%20Food%20Geo/Good%20Food%20Geo/Presentation/Login/LoginViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "131"
+                  endingLineNumber = "131"
+                  offsetFromSymbolStart = "260">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

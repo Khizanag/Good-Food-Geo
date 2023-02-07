@@ -83,7 +83,8 @@ struct PasswordResetView: View {
             RegistrationView(
                 viewModel: RegistrationViewModel(),
                 fullName: $fullNameForRegistration,
-                email: $emailForRegistration
+                email: $emailForRegistration,
+                appleUserId: .constant(nil)
             )
         }
         .alert(alertData.title, isPresented: $alertData.isPresented, actions: {

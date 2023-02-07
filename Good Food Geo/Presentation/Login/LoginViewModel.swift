@@ -21,11 +21,13 @@ final class LoginViewModel: BaseViewModel {
     @Published var shouldNavigateToHome = false
     @Published var shouldNavigateToRegistration = false
     @Published var isLoading = false
+    @Published var isAppleButtonLoading = false
     @Published var isFacebookButtonLoading = false
     @Published var isGoogleButtonLoading = false
 
     var registrationName = ""
     var registrationEmail = ""
+    var appleUserId: String?
 
     // MARK: - Public
     func changeLanguage(to newLanguage: Language) {
@@ -51,6 +53,26 @@ final class LoginViewModel: BaseViewModel {
             }
 
             isLoading = false
+        }
+    }
+
+    @MainActor func loginUsingApple(userId: String, fullName: String?, email: String?) {
+        isAppleButtonLoading = true
+        Task {
+            let result = await authenticationRepository.authenticateUsingApple(with: userId)
+
+            switch result {
+            case .success(let entity):
+                authenticationToken = entity.login.access
+                shouldNavigateToHome = true
+            case .failure:
+                appleUserId = userId
+                registrationName = fullName ?? ""
+                registrationEmail = email ?? ""
+                shouldNavigateToRegistration = true
+            }
+
+            isAppleButtonLoading = false
         }
     }
 
