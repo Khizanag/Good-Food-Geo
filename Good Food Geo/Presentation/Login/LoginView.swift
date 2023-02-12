@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import AuthenticationServices
 
 struct LoginView: View {
     // MARK: - Properties
     @AppStorage(AppStorageKey.language()) private var language: Language = .default
     @AppStorage(AppStorageKey.authenticationToken()) private var authenticationToken: String?
+    @AppStorage(AppStorageKey.appleAuthenticationName()) private var appleAuthenticationName: String?
+    @AppStorage(AppStorageKey.appleAuthenticationEmail()) private var appleAuthenticationEmail: String?
 
     @StateObject var viewModel: LoginViewModel
 
@@ -78,7 +81,8 @@ struct LoginView: View {
             RegistrationView(
                 viewModel: RegistrationViewModel(),
                 fullName: $viewModel.registrationName,
-                email: $viewModel.registrationEmail
+                email: $viewModel.registrationEmail,
+                appleUserId: $viewModel.appleUserId
             )
         }
         .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
@@ -194,6 +198,34 @@ struct LoginView: View {
                 },
                 isLoading: $viewModel.isGoogleButtonLoading
             )
+
+            SignInWithAppleButton(onRequest: { request in
+                request.requestedScopes = [.fullName, .email]
+            }, onCompletion: { result in
+                switch result {
+                case .success(let authorization):
+                    if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+                        if let firstName = appleIDCredential.fullName?.givenName,
+                           let lastName = appleIDCredential.fullName?.familyName
+                        {
+                            appleAuthenticationName = firstName + " " + lastName
+                        }
+
+                        if let email = appleIDCredential.email {
+                            appleAuthenticationEmail = email
+                        }
+
+                        viewModel.loginUsingApple(
+                            userId: appleIDCredential.user,
+                            fullName: appleAuthenticationName,
+                            email: appleAuthenticationEmail)
+                    }
+                case .failure(let error):
+                    debugPrint(error.localizedDescription)
+                    showError(.general)
+                }
+            })
+            .frame(height: 50)
         }
     }
 
@@ -206,7 +238,8 @@ struct LoginView: View {
                 RegistrationView(
                     viewModel: RegistrationViewModel(),
                     fullName: $viewModel.registrationName,
-                    email: $viewModel.registrationEmail
+                    email: $viewModel.registrationEmail,
+                    appleUserId: $viewModel.appleUserId
                 )
             }, label: {
                 Text(Localization.register())

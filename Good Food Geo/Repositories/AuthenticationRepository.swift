@@ -8,12 +8,24 @@
 import Foundation
 
 protocol AuthenticationRepository {
+    func authenticateUsingApple(with userId: String) async -> Result<AppleAuthenticationResponse, AppError>
     func authenticateUsingFacebook(with token: String) async -> Result<SocialNetworkAuthenticationResponse, AppError>
     func authenticateUsingGoogle(with token: String) async -> Result<SocialNetworkAuthenticationResponse, AppError>
 }
 
 struct DefaultAuthenticationRepository: AuthenticationRepository {
     private let networkLayer: NetworkLayer = DefaultNetworkLayer()
+
+    func authenticateUsingApple(with userId: String) async -> Result<AppleAuthenticationResponse, AppError> {
+        var request = URLRequest(url: EndPoint.appleAuthentication.fullUrl)
+        request.setMethod(.put)
+        request.setContentType(.applicationJson)
+        request.setBody([
+            "apple_user_id": userId
+        ])
+
+        return await networkLayer.execute(AppleAuthenticationResponse.self, using: request)
+    }
 
     func authenticateUsingFacebook(with token: String) async -> Result<SocialNetworkAuthenticationResponse, AppError> {
         await authenticate(using: .facebook, with: token)
@@ -22,8 +34,11 @@ struct DefaultAuthenticationRepository: AuthenticationRepository {
     func authenticateUsingGoogle(with token: String) async -> Result<SocialNetworkAuthenticationResponse, AppError> {
         await authenticate(using: .google, with: token)
     }
+}
 
-    private func authenticate(using socialNetwork: AuthenticatingSocialNetwork, with token: String) async -> Result<SocialNetworkAuthenticationResponse, AppError> {
+// MARK: - Private
+private extension DefaultAuthenticationRepository {
+    func authenticate(using socialNetwork: AuthenticatingSocialNetwork, with token: String) async -> Result<SocialNetworkAuthenticationResponse, AppError> {
         var request = URLRequest(url: socialNetwork.endpointUrl)
         request.setMethod(.post)
         request.setContentType(.applicationJson)

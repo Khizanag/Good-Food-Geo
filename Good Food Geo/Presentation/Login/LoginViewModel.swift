@@ -15,17 +15,21 @@ final class LoginViewModel: BaseViewModel {
 
     private let loginUseCase: LoginUseCase = DefaultLoginUseCase()
     private let authenticationRepository: AuthenticationRepository = DefaultAuthenticationRepository()
+    private let mainRepository: MainRepository = DefaultMainRepository()
     private let facebookLoginManager = LoginManager()
     private let languageStorage: LanguageStorage = DefaultLanguageStorage.shared
+    private let userInformationStorage: UserInformationStorage = DefaultUserInformationStorage.shared
 
     @Published var shouldNavigateToHome = false
     @Published var shouldNavigateToRegistration = false
     @Published var isLoading = false
+    @Published var isAppleButtonLoading = false
     @Published var isFacebookButtonLoading = false
     @Published var isGoogleButtonLoading = false
 
     var registrationName = ""
     var registrationEmail = ""
+    var appleUserId: String?
 
     // MARK: - Public
     func changeLanguage(to newLanguage: Language) {
@@ -51,6 +55,39 @@ final class LoginViewModel: BaseViewModel {
             }
 
             isLoading = false
+        }
+    }
+
+    @MainActor func loginUsingApple(userId: String, fullName: String?, email: String?) {
+        isAppleButtonLoading = true
+        Task {
+            let result = await authenticationRepository.authenticateUsingApple(with: userId)
+
+            switch result {
+            case .success(let entity):
+                authenticationToken = entity.login.access
+                let userInformationResult = await mainRepository.getUserInformation()
+
+                switch userInformationResult {
+                case .success(let userInformationEntity):
+                    userInformationStorage.write(userInformationEntity)
+                case .failure(let error):
+                    showError(error)
+                }
+
+                shouldNavigateToHome = true
+            case .failure(let error):
+                if let fullName, let email {
+                    appleUserId = userId
+                    registrationName = fullName
+                    registrationEmail = email
+                    shouldNavigateToRegistration = true
+                } else {
+                    showError(error)
+                }
+            }
+
+            isAppleButtonLoading = false
         }
     }
 

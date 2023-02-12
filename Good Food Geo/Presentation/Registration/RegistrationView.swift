@@ -5,15 +5,20 @@
 //  Created by Giga Khizanishvili on 23.12.22.
 //
 
+import AuthenticationServices
 import SwiftUI
 
 struct RegistrationView: View {
+    @AppStorage(AppStorageKey.appleAuthenticationName()) private var appleAuthenticationName: String?
+    @AppStorage(AppStorageKey.appleAuthenticationEmail()) private var appleAuthenticationEmail: String?
+
     @Environment(\.dismiss) private var dismiss
 
     @StateObject var viewModel: RegistrationViewModel
 
     @Binding var fullName: String
     @Binding var email: String
+    @Binding var appleUserId: String?
     @State private var password = ""
     @State private var confirmPassword = ""
     @State private var phoneNumber = ""
@@ -203,6 +208,34 @@ struct RegistrationView: View {
                 },
                 isLoading: $viewModel.isGoogleButtonLoading
             )
+
+            SignInWithAppleButton(onRequest: { request in
+                request.requestedScopes = [.fullName, .email]
+            }, onCompletion: { result in
+                switch result {
+                case .success(let authorization):
+                    if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+                        if let firstName = appleIDCredential.fullName?.givenName,
+                           let lastName = appleIDCredential.fullName?.familyName
+                        {
+                            appleAuthenticationName = firstName + " " + lastName
+                        }
+
+                        if let email = appleIDCredential.email {
+                            appleAuthenticationEmail = email
+                        }
+
+                        viewModel.authenticateUsingApple(
+                            userId: appleIDCredential.user,
+                            email: appleAuthenticationEmail,
+                            fullName: appleAuthenticationName)
+                    }
+                case .failure(let error):
+                    debugPrint(error.localizedDescription)
+                    showError(.general)
+                }
+            })
+            .frame(height: 50)
         }
     }
 
@@ -210,6 +243,7 @@ struct RegistrationView: View {
     private func register() {
         viewModel.register(with: RegistrationParams(
             email: email,
+            appleUserId: appleUserId,
             password: password,
             repeatedPassword: confirmPassword,
             fullName: fullName,
@@ -254,7 +288,8 @@ struct RegistrationView_Previews: PreviewProvider {
         RegistrationView(
             viewModel: RegistrationViewModel(),
             fullName: .constant("fullname"),
-            email: .constant("email")
+            email: .constant("email"),
+            appleUserId: .constant(nil)
         )
     }
 }

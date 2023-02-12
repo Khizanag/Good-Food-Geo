@@ -12,6 +12,8 @@ protocol MainRepository {
 
     func register(with params: RegistrationParams) async -> Result<RegistrationResponse, AppError>
 
+    func registerWithApple(with params: RegistrationParams) async -> Result<RegistrationResponse, AppError>
+
     func verifyRegistration(email: String, code: String) async -> Result<VerificationEntity, AppError>
 
     func resetPassword(email: String) async -> Result<PasswordResetEntity, AppError>
@@ -46,6 +48,23 @@ struct DefaultMainRepository: MainRepository {
             "password": params.password,
             "name": params.fullName,
             "phone_number": params.phoneNumber
+        ])
+
+        return await networkLayer.execute(RegistrationResponse.self, using: request)
+    }
+
+    func registerWithApple(with params: RegistrationParams) async -> Result<RegistrationResponse, AppError> {
+        guard let appleUserId = params.appleUserId else { return .failure(.general) }
+
+        var request = URLRequest(url: EndPoint.appleAuthentication.fullUrl)
+        request.setMethod(.post)
+        request.setContentType(.applicationJson)
+        request.setBody([
+            "apple_email": params.email,
+            "apple_user_id": appleUserId,
+            "apple_full_password": params.password,
+            "apple_full_name": params.fullName,
+            "apple_phone_number": params.phoneNumber
         ])
 
         return await networkLayer.execute(RegistrationResponse.self, using: request)

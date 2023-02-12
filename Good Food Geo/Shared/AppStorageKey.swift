@@ -11,6 +11,8 @@ enum AppStorageKey: String {
     case authenticationToken
     case userInformation
     case language
+    case appleAuthenticationName
+    case appleAuthenticationEmail
 }
 
 extension AppStorageKey {
