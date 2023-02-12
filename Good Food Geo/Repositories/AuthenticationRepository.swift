@@ -18,7 +18,7 @@ struct DefaultAuthenticationRepository: AuthenticationRepository {
 
     func authenticateUsingApple(with userId: String) async -> Result<AppleAuthenticationResponse, AppError> {
         var request = URLRequest(url: EndPoint.appleAuthentication.fullUrl)
-        request.setMethod(.get)
+        request.setMethod(.put)
         request.setContentType(.applicationJson)
         request.setBody([
             "apple_user_id": userId

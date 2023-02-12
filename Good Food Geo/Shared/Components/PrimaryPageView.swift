@@ -56,7 +56,7 @@ struct PrimaryPageView: View {
 
     // MARK: - Components
     private var headerView: some View {
-        HeaderView(viewModel: headerViewModel, fullName: userInformationStorage.read()?.fullName ?? "")
+        HeaderView(viewModel: headerViewModel, fullName: userInformationStorage.read()?.fullName ?? "Guest")
             .onReceive(headerViewModel.eventPublisher) { event in
                 switch event {
                 case .shouldLogout:

@@ -23,6 +23,7 @@ extension URLRequest {
     enum Method: String {
         case get
         case post
+        case put
 
         var title: String {
             rawValue.uppercased()

@@ -25,6 +25,7 @@ final class RegistrationViewModel: BaseViewModel {
     @Published var isVerificationLoading = false
     @Published var isFacebookButtonLoading = false
     @Published var isGoogleButtonLoading = false
+    @Published var isAppleButtonLoading = false
 
     private var registeredEmail = ""
 
@@ -47,10 +48,37 @@ final class RegistrationViewModel: BaseViewModel {
             return
         }
 
+        if params.appleUserId == nil {
+            registerDefault(with: params)
+        } else {
+            registerWithApple(with: params)
+        }
+    }
+
+    @MainActor func registerDefault(with params: RegistrationParams) {
         Task {
             isRegistrationLoading = true
 
             let result = await mainRepository.register(with: params)
+
+            switch result {
+            case .success(let entity):
+                registeredEmail = entity.email
+                isVerificationCodeSent = true
+                showError(.descriptive(entity.message))
+            case .failure(let error):
+                showError(error)
+            }
+
+            isRegistrationLoading = false
+        }
+    }
+
+    @MainActor func registerWithApple(with params: RegistrationParams) {
+        Task {
+            isRegistrationLoading = true
+
+            let result = await mainRepository.registerWithApple(with: params)
 
             switch result {
             case .success(let entity):
@@ -83,8 +111,29 @@ final class RegistrationViewModel: BaseViewModel {
         }
     }
 
+    @MainActor func authenticateUsingApple(userId: String, email: String?, fullName: String?) {
+        isAppleButtonLoading = true
+
+        Task {
+            let result = await authenticationRepository.authenticateUsingApple(with: userId)
+
+            Task { @MainActor in
+                switch result {
+                case .success(let entity):
+                    authenticationTokenStorage.write(entity.login.access)
+                    shouldLogin = true
+                case .failure:
+                    eventPublisher.send(.updateFields(name: fullName ?? "", email: email ?? ""))
+                }
+
+                isAppleButtonLoading = false
+            }
+        }
+    }
+
     func registerUsingFacebook() {
         isFacebookButtonLoading = true
+
         facebookLoginManager.logIn(permissions: [.publicProfile, .email]) { [weak self] result in
             guard let self else { return }
 
@@ -138,26 +187,19 @@ final class RegistrationViewModel: BaseViewModel {
         case .success(let entity):
             if let token = entity.token {
                 authenticationTokenStorage.write(token)
-                DispatchQueue.main.async {
-                    self.setSocialNetworkIsLoadingButton(to: false, for: socialNetwork)
-                    self.shouldLogin = true
-                }
+                shouldLogin = true
             } else {
                 // Is not registered, needs registration
                 eventPublisher.send(.updateFields(
                     name: entity.name ?? "",
                     email: entity.email ?? ""
                 ))
-                DispatchQueue.main.async {
-                    self.setSocialNetworkIsLoadingButton(to: false, for: socialNetwork)
-                }
             }
         case .failure(let error):
-            DispatchQueue.main.async {
-                self.isFacebookButtonLoading = false
-            }
             showError(error)
         }
+
+        setSocialNetworkIsLoadingButton(to: false, for: socialNetwork)
     }
 
     private func setSocialNetworkIsLoadingButton(to isLoading: Bool, for socialNetwork: AuthenticatingSocialNetwork) {
@@ -178,6 +220,7 @@ extension RegistrationViewModel {
 // MARK: - Params
 struct RegistrationParams {
     let email: String
+    let appleUserId: String?
     let password: String
     let repeatedPassword: String
     let fullName: String

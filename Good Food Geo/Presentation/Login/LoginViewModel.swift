@@ -15,8 +15,10 @@ final class LoginViewModel: BaseViewModel {
 
     private let loginUseCase: LoginUseCase = DefaultLoginUseCase()
     private let authenticationRepository: AuthenticationRepository = DefaultAuthenticationRepository()
+    private let mainRepository: MainRepository = DefaultMainRepository()
     private let facebookLoginManager = LoginManager()
     private let languageStorage: LanguageStorage = DefaultLanguageStorage.shared
+    private let userInformationStorage: UserInformationStorage = DefaultUserInformationStorage.shared
 
     @Published var shouldNavigateToHome = false
     @Published var shouldNavigateToRegistration = false
@@ -64,12 +66,25 @@ final class LoginViewModel: BaseViewModel {
             switch result {
             case .success(let entity):
                 authenticationToken = entity.login.access
+                let userInformationResult = await mainRepository.getUserInformation()
+
+                switch userInformationResult {
+                case .success(let userInformationEntity):
+                    userInformationStorage.write(userInformationEntity)
+                case .failure(let error):
+                    showError(error)
+                }
+
                 shouldNavigateToHome = true
-            case .failure:
-                appleUserId = userId
-                registrationName = fullName ?? ""
-                registrationEmail = email ?? ""
-                shouldNavigateToRegistration = true
+            case .failure(let error):
+                if let fullName, let email {
+                    appleUserId = userId
+                    registrationName = fullName
+                    registrationEmail = email
+                    shouldNavigateToRegistration = true
+                } else {
+                    showError(error)
+                }
             }
 
             isAppleButtonLoading = false
