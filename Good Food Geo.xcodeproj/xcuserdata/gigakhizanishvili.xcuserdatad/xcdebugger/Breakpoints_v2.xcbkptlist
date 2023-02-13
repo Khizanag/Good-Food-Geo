@@ -46,13 +46,13 @@
             filePath = "Good Food Geo/Repositories/ProductsRepository.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "submitProductComplaint(_:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "3DE8107C-E5A5-4BD4-8681-2FF6D163BE55 - 612fedd8a4f8e1e4"
+                  uuid = "3DE8107C-E5A5-4BD4-8681-2FF6D163BE55 - 612fedd8a4f8e1c5"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -62,9 +62,24 @@
                   urlString = "file:///Users/gigakhizanishvili/GitHub/Good%20Food%20Geo/Good%20Food%20Geo/Repositories/ProductsRepository.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "35"
-                  endingLineNumber = "35"
-                  offsetFromSymbolStart = "964">
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "980">
+               </Location>
+               <Location
+                  uuid = "3DE8107C-E5A5-4BD4-8681-2FF6D163BE55 - 97e57ff7ae7b175b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Int, __C.UIImage) -&gt; Swift.Optional&lt;Good_Food_Geo.RequestMedia&gt; in Good_Food_Geo.DefaultProductsRepository.submitProductComplaint(Good_Food_Geo.ProductComplaint) async -&gt; Swift.Result&lt;Good_Food_Geo.MessageEntity, Good_Food_Geo.AppError&gt;"
+                  moduleName = "Good Food Geo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gigakhizanishvili/GitHub/Good%20Food%20Geo/Good%20Food%20Geo/Repositories/ProductsRepository.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "76">
                </Location>
                <Location
                   uuid = "3DE8107C-E5A5-4BD4-8681-2FF6D163BE55 - 97e57ff7ae7b14b8"
@@ -79,21 +94,6 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "36"
                   endingLineNumber = "36"
-                  offsetFromSymbolStart = "76">
-               </Location>
-               <Location
-                  uuid = "3DE8107C-E5A5-4BD4-8681-2FF6D163BE55 - 97e57ff7ae7b1499"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Int, __C.UIImage) -&gt; Swift.Optional&lt;Good_Food_Geo.RequestMedia&gt; in Good_Food_Geo.DefaultProductsRepository.submitProductComplaint(Good_Food_Geo.ProductComplaint) async -&gt; Swift.Result&lt;Good_Food_Geo.MessageEntity, Good_Food_Geo.AppError&gt;"
-                  moduleName = "Good Food Geo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/gigakhizanishvili/GitHub/Good%20Food%20Geo/Good%20Food%20Geo/Repositories/ProductsRepository.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "35"
-                  endingLineNumber = "35"
                   offsetFromSymbolStart = "632">
                </Location>
             </Locations>
@@ -109,8 +109,8 @@
             filePath = "Good Food Geo/Repositories/ProductsRepository.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "submitProductComplaint(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -125,10 +125,42 @@
             filePath = "Good Food Geo/Presentation/Login/LoginViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
             landmarkName = "handleSocialNetworkAuthentication(for:using:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A320681B-91B6-40E1-A267-E23A667837A7 - a08e4f0702d675b3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) suspend resume partial function for Good_Food_Geo.LoginViewModel.handleSocialNetworkAuthentication(for: Good_Food_Geo.AuthenticatingSocialNetwork, using: Swift.String) async -&gt; ()"
+                  moduleName = "Good Food Geo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gigakhizanishvili/GitHub/Good%20Food%20Geo/Good%20Food%20Geo/Presentation/Login/LoginViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "137"
+                  endingLineNumber = "137"
+                  offsetFromSymbolStart = "192">
+               </Location>
+               <Location
+                  uuid = "A320681B-91B6-40E1-A267-E23A667837A7 - a08e4f0702d675b3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) suspend resume partial function for Good_Food_Geo.LoginViewModel.handleSocialNetworkAuthentication(for: Good_Food_Geo.AuthenticatingSocialNetwork, using: Swift.String) async -&gt; ()"
+                  moduleName = "Good Food Geo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gigakhizanishvili/GitHub/Good%20Food%20Geo/Good%20Food%20Geo/Presentation/Login/LoginViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "137"
+                  endingLineNumber = "137"
+                  offsetFromSymbolStart = "260">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -157,8 +189,8 @@
             filePath = "Good Food Geo/Presentation/Registration/RegistrationViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
             landmarkName = "authenticateUsingApple(userId:email:fullName:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -205,9 +237,57 @@
             filePath = "Good Food Geo/Presentation/Registration/RegistrationViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
             landmarkName = "authenticateUsingApple(userId:email:fullName:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1B7B6975-EC24-4626-9159-87A9A2E1C087"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Good Food Geo/Use Cases/VerifyRegistrationUseCase.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "execute(email:code:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7CBE2510-ABED-41F3-96D6-8E6D524C324F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Good Food Geo/Repositories/MainRepository.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "deleteAccount()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "75775410-11CD-4C99-958B-34031574FD89"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Good Food Geo/Repositories/MainRepository.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "getUserInformation()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -5,14 +5,16 @@
 //  Created by Giga Khizanishvili on 05.01.23.
 //
 
+import SwiftUI
+
 protocol LogoutUseCase {
     func execute()
 }
 
 struct DefaultLogoutUseCase: LogoutUseCase {
-    private let authenticationTokenStorage: AuthenticationTokenStorage = DefaultAuthenticationTokenStorage.shared
+    @AppStorage(AppStorageKey.authenticationToken()) private var authenticationToken: String?
     
     func execute() {
-        authenticationTokenStorage.delete()
+        authenticationToken = nil
     }
 }

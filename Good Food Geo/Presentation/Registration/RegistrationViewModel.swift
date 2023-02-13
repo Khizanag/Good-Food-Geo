@@ -14,10 +14,13 @@ import GoogleSignIn
 final class RegistrationViewModel: BaseViewModel {
     // MARK: - Properties
     private let mainRepository: MainRepository = DefaultMainRepository()
-    private let verifyRegistrationUseCase: VerifyRegistrationUseCase = DefaultVerifyRegistrationUseCase()
     private let authenticationRepository: AuthenticationRepository = DefaultAuthenticationRepository()
-    private let authenticationTokenStorage: AuthenticationTokenStorage = DefaultAuthenticationTokenStorage.shared
+    private let verifyRegistrationUseCase: VerifyRegistrationUseCase = DefaultVerifyRegistrationUseCase()
     private let facebookLoginManager = LoginManager()
+
+    @AppStorage(AppStorageKey.authenticationToken()) private var authenticationToken: String?
+    @AppStorage(AppStorageKey.appleAuthenticationName()) private var appleAuthenticationName: String?
+    @AppStorage(AppStorageKey.appleAuthenticationEmail()) private var appleAuthenticationEmail: String?
 
     @Published var isRegistrationCompleted = false
     @Published var isVerificationCodeSent = false
@@ -84,6 +87,8 @@ final class RegistrationViewModel: BaseViewModel {
             case .success(let entity):
                 registeredEmail = entity.email
                 isVerificationCodeSent = true
+                appleAuthenticationName = nil
+                appleAuthenticationEmail = nil
                 showError(.descriptive(entity.message))
             case .failure(let error):
                 showError(error)
@@ -120,7 +125,7 @@ final class RegistrationViewModel: BaseViewModel {
             Task { @MainActor in
                 switch result {
                 case .success(let entity):
-                    authenticationTokenStorage.write(entity.login.access)
+                    authenticationToken = entity.login.access
                     shouldLogin = true
                 case .failure:
                     eventPublisher.send(.updateFields(name: fullName ?? "", email: email ?? ""))
@@ -186,7 +191,7 @@ final class RegistrationViewModel: BaseViewModel {
         switch result {
         case .success(let entity):
             if let token = entity.token {
-                authenticationTokenStorage.write(token)
+                authenticationToken = token
                 shouldLogin = true
             } else {
                 // Is not registered, needs registration

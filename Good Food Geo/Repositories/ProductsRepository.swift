@@ -5,19 +5,20 @@
 //  Created by Giga Khizanishvili on 05.01.23.
 //
 
-import Foundation
 import UIKit
+import SwiftUI
 
 protocol ProductsRepository {
     func submitProductComplaint(_ productComplaint: ProductComplaint) async -> Result<ProductComplaintSubmissionEntity, AppError>
 }
 
 struct DefaultProductsRepository: ProductsRepository {
+    @AppStorage(AppStorageKey.authenticationToken()) private var authenticationToken: String?
+
     private let networkLayer: NetworkLayer = DefaultNetworkLayer()
-    private let authenticationTokenStorage: AuthenticationTokenStorage = DefaultAuthenticationTokenStorage.shared
 
     func submitProductComplaint(_ productComplaint: ProductComplaint) async -> Result<ProductComplaintSubmissionEntity, AppError> {
-        guard let token = authenticationTokenStorage.read() else {
+        guard let token = authenticationToken else {
             return .failure(.sessionNotFound)
         }
 

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 protocol MainRepository {
     func login(email: String, password: String) async -> Result<LoginResponse, AppError>
@@ -24,8 +25,9 @@ protocol MainRepository {
 }
 
 struct DefaultMainRepository: MainRepository {
+    @AppStorage(AppStorageKey.authenticationToken()) private var authenticationToken: String?
+
     private let networkLayer: NetworkLayer = DefaultNetworkLayer()
-    private let authenticationTokenStorage: AuthenticationTokenStorage = DefaultAuthenticationTokenStorage.shared
 
     func login(email: String, password: String) async -> Result<LoginResponse, AppError> {
         var request = URLRequest(url: EndPoint.login.fullUrl)
@@ -94,7 +96,7 @@ struct DefaultMainRepository: MainRepository {
     }
 
     func getUserInformation() async -> Result<UserInformationEntity, AppError> {
-        guard let token = authenticationTokenStorage.read() else {
+        guard let token = authenticationToken else {
             return .failure(.sessionNotFound)
         }
 
@@ -116,7 +118,7 @@ struct DefaultMainRepository: MainRepository {
     }
 
     func deleteAccount() async -> Result<UserDeletionEntity, AppError> {
-        guard let token = authenticationTokenStorage.read() else {
+        guard let token = authenticationToken else {
             return .failure(.sessionNotFound)
         }
 

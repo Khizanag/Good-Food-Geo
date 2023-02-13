@@ -13,7 +13,7 @@
 		FB0FAF972965648A008175A2 /* PostsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAF962965648A008175A2 /* PostsRepository.swift */; };
 		FB0FAF9B2965657E008175A2 /* PostsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAF9A2965657E008175A2 /* PostsDTO.swift */; };
 		FB0FAF9D29656A99008175A2 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAF9C29656A99008175A2 /* Post.swift */; };
-		FB0FAF9F29656B5C008175A2 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAF9E29656B5C008175A2 /* HomeViewModel.swift */; };
+		FB0FAF9F29656B5C008175A2 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAF9E29656B5C008175A2 /* FeedViewModel.swift */; };
 		FB0FAFA129659802008175A2 /* UserInformationEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAFA029659802008175A2 /* UserInformationEntity.swift */; };
 		FB0FAFA42965982A008175A2 /* UserInformationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAFA32965982A008175A2 /* UserInformationDTO.swift */; };
 		FB0FAFA629659E64008175A2 /* AppStorageKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FAFA529659E64008175A2 /* AppStorageKey.swift */; };
@@ -87,7 +87,7 @@
 		FBF9403529559BEC00A8EF10 /* Good_Food_GeoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF9403429559BEC00A8EF10 /* Good_Food_GeoTests.swift */; };
 		FBF9403F29559BEC00A8EF10 /* Good_Food_GeoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF9403E29559BEC00A8EF10 /* Good_Food_GeoUITests.swift */; };
 		FBF9404129559BEC00A8EF10 /* Good_Food_GeoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF9404029559BEC00A8EF10 /* Good_Food_GeoUITestsLaunchTests.swift */; };
-		FBF9405729559DAF00A8EF10 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF9405629559DAF00A8EF10 /* HomeView.swift */; };
+		FBF9405729559DAF00A8EF10 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF9405629559DAF00A8EF10 /* FeedView.swift */; };
 		FBF9405929559DBC00A8EF10 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF9405829559DBC00A8EF10 /* PostView.swift */; };
 		FBF9405D29559F2B00A8EF10 /* DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF9405C29559F2B00A8EF10 /* DesignSystem.swift */; };
 		FBF9405F29559F4100A8EF10 /* DesignSystem+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF9405E29559F4100A8EF10 /* DesignSystem+Image.swift */; };
@@ -137,7 +137,7 @@
 		FB0FAF962965648A008175A2 /* PostsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsRepository.swift; sourceTree = "<group>"; };
 		FB0FAF9A2965657E008175A2 /* PostsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsDTO.swift; sourceTree = "<group>"; };
 		FB0FAF9C29656A99008175A2 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		FB0FAF9E29656B5C008175A2 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		FB0FAF9E29656B5C008175A2 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		FB0FAFA029659802008175A2 /* UserInformationEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationEntity.swift; sourceTree = "<group>"; };
 		FB0FAFA32965982A008175A2 /* UserInformationDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationDTO.swift; sourceTree = "<group>"; };
 		FB0FAFA529659E64008175A2 /* AppStorageKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageKey.swift; sourceTree = "<group>"; };
@@ -211,7 +211,7 @@
 		FBF9403A29559BEC00A8EF10 /* Good Food GeoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Good Food GeoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF9403E29559BEC00A8EF10 /* Good_Food_GeoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Good_Food_GeoUITests.swift; sourceTree = "<group>"; };
 		FBF9404029559BEC00A8EF10 /* Good_Food_GeoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Good_Food_GeoUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		FBF9405629559DAF00A8EF10 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		FBF9405629559DAF00A8EF10 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		FBF9405829559DBC00A8EF10 /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		FBF9405C29559F2B00A8EF10 /* DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystem.swift; sourceTree = "<group>"; };
 		FBF9405E29559F4100A8EF10 /* DesignSystem+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignSystem+Image.swift"; sourceTree = "<group>"; };
@@ -512,8 +512,8 @@
 		FBF9404F29559CCE00A8EF10 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				FBF9405629559DAF00A8EF10 /* HomeView.swift */,
-				FB0FAF9E29656B5C008175A2 /* HomeViewModel.swift */,
+				FBF9405629559DAF00A8EF10 /* FeedView.swift */,
+				FB0FAF9E29656B5C008175A2 /* FeedViewModel.swift */,
 				FB0FAF9C29656A99008175A2 /* Post.swift */,
 				FBF9405829559DBC00A8EF10 /* PostView.swift */,
 			);
@@ -822,7 +822,7 @@
 				FBF940922955EF0600A8EF10 /* LoginView.swift in Sources */,
 				FB0FAFC32966CFFC008175A2 /* PhotoPickerView.swift in Sources */,
 				FB94BA77295F3B6B00944E37 /* LaunchScreenViewModel.swift in Sources */,
-				FBF9405729559DAF00A8EF10 /* HomeView.swift in Sources */,
+				FBF9405729559DAF00A8EF10 /* FeedView.swift in Sources */,
 				FBF9409B29560C3C00A8EF10 /* Gradient+Extension.swift in Sources */,
 				FBF940612955A73500A8EF10 /* Localization.swift in Sources */,
 				FB581D082989150100AB4992 /* MainTabBarViewModel.swift in Sources */,
@@ -836,7 +836,7 @@
 				FBF940732955ACE300A8EF10 /* AboutUsView.swift in Sources */,
 				FB939323295D9FCB00D491CE /* PrimaryPageView.swift in Sources */,
 				FB0FAF9D29656A99008175A2 /* Post.swift in Sources */,
-				FB0FAF9F29656B5C008175A2 /* HomeViewModel.swift in Sources */,
+				FB0FAF9F29656B5C008175A2 /* FeedViewModel.swift in Sources */,
 				FB939342295F087B00D491CE /* RoundedCorner.swift in Sources */,
 				FB93931D295D968000D491CE /* SubSectionView.swift in Sources */,
 				FB0FAFC729670D36008175A2 /* HeaderViewModel.swift in Sources */,
@@ -1080,7 +1080,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = "khizanag.Good-Food-Geo";
+				PRODUCT_BUNDLE_IDENTIFIER = "khizanag.Good-Food-Geo12";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1120,7 +1120,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = "khizanag.Good-Food-Geo";
+				PRODUCT_BUNDLE_IDENTIFIER = "khizanag.Good-Food-Geo12";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;

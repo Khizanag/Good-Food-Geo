@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct HomeView: View {
-    @StateObject var viewModel: HomeViewModel
+struct FeedView: View {
+    @StateObject var viewModel: FeedViewModel
 
     // MARK: - Body
     var body: some View {
@@ -21,6 +21,9 @@ struct HomeView: View {
             } else {
                 bodyWhenDidLoad
             }
+        }
+        .onAppear {
+            viewModel.fetchPostsIfNeeded()
         }
     }
 
@@ -42,8 +45,8 @@ struct HomeView: View {
 }
 
 // MARK: - Previews
-struct Home_Previews: PreviewProvider {
+struct Feed_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(viewModel: HomeViewModel())
+        FeedView(viewModel: FeedViewModel())
     }
 }
