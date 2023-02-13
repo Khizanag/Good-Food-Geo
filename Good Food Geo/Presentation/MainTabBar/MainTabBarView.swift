@@ -31,7 +31,7 @@ enum MainTabBarItem {
 
 // MARK: - MainTabBarView
 struct MainTabBarView: View {
-    @StateObject var viewModel: MainTabBarViewModel
+    @ObservedObject var viewModel: MainTabBarViewModel
 
     @State private var selectedTabBarItem: MainTabBarItem = .home
 
@@ -48,7 +48,7 @@ struct MainTabBarView: View {
         .init(type: .expert, title: Localization.expert(), icon: DesignSystem.Image.person())
     ]
 
-    @State private var homeViewModel = HomeViewModel()
+    @State private var homeViewModel = FeedViewModel()
     @State private var productComplaintSubmissionViewModel = ProductComplaintSubmissionViewModel()
     @State private var aboutUsViewModel = AboutUsViewModel()
     @State private var donationViewModel = DonationViewModel()
@@ -67,7 +67,7 @@ struct MainTabBarView: View {
     var body: some View {
         ZStack {
             TabView(selection: $selectedTabBarItem) {
-                HomeView(viewModel: homeViewModel)
+                FeedView(viewModel: homeViewModel)
                     .tag(MainTabBarItem.home)
 
                 AboutUsView(viewModel: aboutUsViewModel)
@@ -105,6 +105,9 @@ struct MainTabBarView: View {
                 }
                 .frame(height: MainTabBarConstant.height)
             }
+        }
+        .onAppear {
+            viewModel.updateUserInformationIfNeeded()
         }
         .navigationBarBackButtonHidden(true)
         .edgesIgnoringSafeArea(.bottom)

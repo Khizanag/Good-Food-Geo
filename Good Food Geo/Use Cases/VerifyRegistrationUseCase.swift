@@ -6,22 +6,23 @@
 //
 
 import Foundation
+import SwiftUI
 
 protocol VerifyRegistrationUseCase {
     func execute(email: String, code: String) async -> Result<VerificationEntity, AppError>
 }
 
 struct DefaultVerifyRegistrationUseCase: VerifyRegistrationUseCase {
+    @AppStorage(AppStorageKey.authenticationToken()) private var authenticationToken: String?
+
     private let repository: MainRepository = DefaultMainRepository()
-    private let authenticationTokenStorage: AuthenticationTokenStorage = DefaultAuthenticationTokenStorage.shared
     
     func execute(email: String, code: String) async -> Result<VerificationEntity, AppError> {
         let result = await repository.verifyRegistration(email: email, code: code)
         
         switch result {
         case .success(let entity):
-            let token = entity.token.access
-            authenticationTokenStorage.write(token)
+            authenticationToken = entity.token.access
             return .success(entity)
         case .failure(let error):
             return .failure(error)

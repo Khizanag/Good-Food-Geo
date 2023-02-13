@@ -19,7 +19,7 @@ final class DefaultNetworkLayer: NetworkLayer {
             let (data, response) = try await URLSession.shared.data(for: request)
 
             #if DEBUG
-            debugPrint("********Data: \(data)", String(data: data, encoding: .utf8) ?? "*unknown encoding*")
+            debugPrint("\(data)", String(data: data, encoding: .utf8) ?? "Unknown encoding of Data")
             #endif
 
             guard let httpResponse = response as? HTTPURLResponse else { return .failure(.general)}

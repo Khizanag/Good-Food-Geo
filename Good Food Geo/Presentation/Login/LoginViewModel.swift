@@ -66,15 +66,6 @@ final class LoginViewModel: BaseViewModel {
             switch result {
             case .success(let entity):
                 authenticationToken = entity.login.access
-                let userInformationResult = await mainRepository.getUserInformation()
-
-                switch userInformationResult {
-                case .success(let userInformationEntity):
-                    userInformationStorage.write(userInformationEntity)
-                case .failure(let error):
-                    showError(error)
-                }
-
                 shouldNavigateToHome = true
             case .failure(let error):
                 if let fullName, let email {
