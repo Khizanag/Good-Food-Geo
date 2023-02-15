@@ -37,7 +37,7 @@
 
 // MARK: - Login
 "login" = "შესვლა";
-"loginTitle" = "შედით და დაასკანირეთ პროდუქტი";
+"loginTitle" = "შედით და დაასკანერეთ პროდუქტი";
 "loginSubtitle" = "სისტემაში შესვლით თქვენ ეთანხმებით მოხმარების პირობებს";
 "loginWithSocialNetworksTitle" = "ან, შედით..";
 "areYouNotRegistered" = "ახალი ხარ Good Food Geo-ში?";
