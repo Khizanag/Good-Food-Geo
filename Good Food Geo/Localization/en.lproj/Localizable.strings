@@ -73,6 +73,7 @@
 
 // MARK: - Home
 "home" = "Home";
+"feedTitle" = "News";
 
 // MARK: - About Us
 "aboutUs" = "About Us";

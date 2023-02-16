@@ -73,6 +73,7 @@ enum Localization: String {
 
     // MARK: - Home
     case home
+    case feedTitle
 
     // MARK: - About Us
     case aboutUs

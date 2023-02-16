@@ -73,6 +73,7 @@
 
 // MARK: - Home
 "home" = "მთავარი";
+"feedTitle" = "სიახლეები";
 
 // MARK: - About Us
 "aboutUs" = "ჩვენ შესახებ";
