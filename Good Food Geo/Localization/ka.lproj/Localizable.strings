@@ -92,8 +92,8 @@
 "scanFirstImageDescription" = "გადაუღე ნათლად პროდუქტის ვადას";
 "scanSecondImageDescription" = "გადაუღე ნათლად პროდუქტის წინა მხარეს";
 "scanThirdImageDescription" = "გადაუღე ნათლად პროდუქტის უკანა მხარეს";
-"scanFourthImageDescription" = "პროდუქტის მარცხენა ან ზედა მხარე";
-"scanFifthImageDescription" = "პროდუქტის ნათლად მარჯვენა ან ქვედა მხარე";
+"scanFourthImageDescription" = "გადაუღე ნათლად პროდუქტის მარცხენა ან ზედა მხარეს";
+"scanFifthImageDescription" = "გადაუღე ნათლად პროდუქტის მარჯვენა ან ქვედა მხარეს";
 
 // MARK: - Donation
 "donation" = "დონაცია";

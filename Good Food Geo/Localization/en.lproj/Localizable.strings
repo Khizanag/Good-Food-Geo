@@ -92,8 +92,8 @@
 "scanFirstImageDescription" = "Take a clear picture of the product's expiration date";
 "scanSecondImageDescription" = "Take a clear picture of the front side of the product";
 "scanThirdImageDescription" = "Take a clear picture of the back side of the product";
-"scanFourthImageDescription" = "Left or top side of the product";
-"scanFifthImageDescription" = "Right or lower side of the product ";
+"scanFourthImageDescription" = "Take a clear picture of the left or top side of the product";
+"scanFifthImageDescription" = "Take a clear picture of the right or lower side of the product ";
 
 // MARK: - Donation
 "donation" = "Donation";
