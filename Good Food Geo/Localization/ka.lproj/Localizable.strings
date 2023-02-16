@@ -84,8 +84,8 @@
 "facebookUrlIsInvalid" = "Facebook-ის მისამართი აღარაა ხელმისაწვდომი";
 
 // MARK: - Scanning
-"scanning" = "დასკანერება";
-"preScanFormTitle" = "სკანირების დაწყებამდე თქვენ უნდა შეავსოთ ეს ველები.";
+"productComplaintSubmissionTitle" = "ეტიკეტის სკანირება";
+"preScanFormTitle" = "პროდუქტს გადაუღეთ ყველა მხრიდან და შეავსეთ ყველა ველი";
 "acceptTerms" = "თქვენ ეთანხმებით მოხმარების პირობებს.";
 "scanProduct" = "პროდუქტის სკანირება";
 "productTitle" = "პროდუქტის სახელი";

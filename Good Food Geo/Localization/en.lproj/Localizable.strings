@@ -84,8 +84,8 @@
 "facebookUrlIsInvalid" = "Facebook page link is no longer valid";
 
 // MARK: - Scanning
-"scanning" = "Scanning";
-"preScanFormTitle" = "Before the scan, you need to fill those fields.";
+"productComplaintSubmissionTitle" = "Scanning of the Etiquette";
+"preScanFormTitle" = "Take photos of product from all of the sides and fill all of the required fields";
 "acceptTerms" = "You accept our terms of Use and Privacy Statement";
 "scanProduct" = "Scan Your Product";
 "productTitle" = "Name of the Product";
