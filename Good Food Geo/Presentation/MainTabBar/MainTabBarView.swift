@@ -109,7 +109,7 @@ struct MainTabBarView: View {
         .onAppear {
             viewModel.updateUserInformationIfNeeded()
         }
-        .navigationBarBackButtonHidden(true)
+        .navigationBarBackButtonHidden()
         .edgesIgnoringSafeArea(.bottom)
     }
 

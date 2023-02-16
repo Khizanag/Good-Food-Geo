@@ -44,10 +44,16 @@ struct ProductComplaintSubmissionView: View {
     var body: some View {
         ScrollView {
             VStack {
-                Text(Localization.preScanFormTitle().uppercased())
-                    .font(.subheadline)
-                    .multilineTextAlignment(.center)
-                    .padding()
+                VStack(alignment: .center, spacing: 8) {
+                    Text(Localization.productComplaintSubmissionTitle().uppercased())
+                        .font(.title)
+
+
+                    Text(Localization.preScanFormTitle().uppercased())
+                        .font(.subheadline)
+                }
+                .multilineTextAlignment(.center)
+                .padding()
 
                 FormItemView(model: FormItemModel(icon: DesignSystem.Image.photo(), placeholder: Localization.productTitle()), text: $productTitle)
                     .focused($focusedField, equals: .productTitle)

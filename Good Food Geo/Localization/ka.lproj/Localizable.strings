@@ -37,7 +37,7 @@
 
 // MARK: - Login
 "login" = "შესვლა";
-"loginTitle" = "შედით და დაასკანირეთ პროდუქტი";
+"loginTitle" = "შედით და დაასკანერეთ პროდუქტი";
 "loginSubtitle" = "სისტემაში შესვლით თქვენ ეთანხმებით მოხმარების პირობებს";
 "loginWithSocialNetworksTitle" = "ან, შედით..";
 "areYouNotRegistered" = "ახალი ხარ Good Food Geo-ში?";
@@ -73,6 +73,7 @@
 
 // MARK: - Home
 "home" = "მთავარი";
+"feedTitle" = "სიახლეები";
 
 // MARK: - About Us
 "aboutUs" = "ჩვენ შესახებ";
@@ -83,16 +84,16 @@
 "facebookUrlIsInvalid" = "Facebook-ის მისამართი აღარაა ხელმისაწვდომი";
 
 // MARK: - Scanning
-"scanning" = "დასკანერება";
-"preScanFormTitle" = "სკანირების დაწყებამდე თქვენ უნდა შეავსოთ ეს ველები.";
+"productComplaintSubmissionTitle" = "ეტიკეტის სკანირება";
+"preScanFormTitle" = "პროდუქტს გადაუღეთ ყველა მხრიდან და შეავსეთ ყველა ველი";
 "acceptTerms" = "თქვენ ეთანხმებით მოხმარების პირობებს.";
 "scanProduct" = "პროდუქტის სკანირება";
 "productTitle" = "პროდუქტის სახელი";
 "scanFirstImageDescription" = "გადაუღე ნათლად პროდუქტის ვადას";
 "scanSecondImageDescription" = "გადაუღე ნათლად პროდუქტის წინა მხარეს";
 "scanThirdImageDescription" = "გადაუღე ნათლად პროდუქტის უკანა მხარეს";
-"scanFourthImageDescription" = "პროდუქტის მარცხენა ან ზედა მხარე";
-"scanFifthImageDescription" = "პროდუქტის ნათლად მარჯვენა ან ქვედა მხარე";
+"scanFourthImageDescription" = "გადაუღე ნათლად პროდუქტის მარცხენა ან ზედა მხარეს";
+"scanFifthImageDescription" = "გადაუღე ნათლად პროდუქტის მარჯვენა ან ქვედა მხარეს";
 
 // MARK: - Donation
 "donation" = "დონაცია";

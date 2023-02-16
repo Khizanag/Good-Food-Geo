@@ -73,6 +73,7 @@ enum Localization: String {
 
     // MARK: - Home
     case home
+    case feedTitle
 
     // MARK: - About Us
     case aboutUs
@@ -83,7 +84,7 @@ enum Localization: String {
     case facebookUrlIsInvalid
 
     // MARK: - Scanning
-    case scanning
+    case productComplaintSubmissionTitle
     case preScanFormTitle
     case acceptTerms
     case scanProduct

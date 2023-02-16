@@ -29,6 +29,9 @@ struct FeedView: View {
 
     var bodyWhenDidLoad: some View {
         List {
+            Text(Localization.feedTitle())
+                .font(.title)
+
             ForEach(viewModel.posts) { post in
                 PostView(post: post)
             }

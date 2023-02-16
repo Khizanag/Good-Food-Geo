@@ -73,6 +73,7 @@
 
 // MARK: - Home
 "home" = "Home";
+"feedTitle" = "News";
 
 // MARK: - About Us
 "aboutUs" = "About Us";
@@ -83,16 +84,16 @@
 "facebookUrlIsInvalid" = "Facebook page link is no longer valid";
 
 // MARK: - Scanning
-"scanning" = "Scanning";
-"preScanFormTitle" = "Before the scan, you need to fill those fields.";
+"productComplaintSubmissionTitle" = "Scanning of the Etiquette";
+"preScanFormTitle" = "Take photos of product from all of the sides and fill all of the required fields";
 "acceptTerms" = "You accept our terms of Use and Privacy Statement";
 "scanProduct" = "Scan Your Product";
 "productTitle" = "Name of the Product";
 "scanFirstImageDescription" = "Take a clear picture of the product's expiration date";
 "scanSecondImageDescription" = "Take a clear picture of the front side of the product";
 "scanThirdImageDescription" = "Take a clear picture of the back side of the product";
-"scanFourthImageDescription" = "Left or top side of the product";
-"scanFifthImageDescription" = "Right or lower side of the product ";
+"scanFourthImageDescription" = "Take a clear picture of the left or top side of the product";
+"scanFifthImageDescription" = "Take a clear picture of the right or lower side of the product ";
 
 // MARK: - Donation
 "donation" = "Donation";

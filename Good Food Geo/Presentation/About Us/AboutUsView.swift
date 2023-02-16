@@ -35,7 +35,7 @@ struct AboutUsView: View {
                 }),
                 SubSectionView.Model(title: Localization.contactUs(), content: {
                     VStack(alignment: .leading) {
-                        Text("\(Localization.email()): GFGAPK@GMAIL.COM")
+                        Text("\(Localization.email()): GOODFOODGEO.INFO@GMAIL.COM")
 
                         HStack {
                             Text("\(Localization.phoneNumber()):")
