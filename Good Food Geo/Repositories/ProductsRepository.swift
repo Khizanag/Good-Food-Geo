@@ -18,9 +18,7 @@ struct DefaultProductsRepository: ProductsRepository {
     private let networkLayer: NetworkLayer = DefaultNetworkLayer()
 
     func submitProductComplaint(_ productComplaint: ProductComplaint) async -> Result<ProductComplaintSubmissionEntity, AppError> {
-        guard let token = authenticationToken else {
-            return .failure(.sessionNotFound)
-        }
+        guard let token = authenticationToken else { return .failure(.sessionNotFound) }
 
         var request = URLRequest(url: EndPoint.products.fullUrl)
         request.setMethod(.post)
@@ -83,10 +81,10 @@ struct RequestMedia {
     let mimeType: String
 
     init?(image: UIImage, forKey key: String) {
-        guard let data = image.jpegData(compressionQuality: 1) else { return nil }
+        guard let data = image.jpegData(compressionQuality: 0.6) else { return nil }
 
         self.key = key
-        self.filename = "imagefile.jpg"
+        self.filename = UUID().uuidString + ".jpeg"
         self.data = data
         self.mimeType = "image/jpeg"
     }
