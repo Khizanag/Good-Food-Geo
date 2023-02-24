@@ -82,6 +82,7 @@ enum Localization: String {
     case aboutUsSectionDescription
     case contactUs
     case facebookUrlIsInvalid
+    case visitUsOnFacebook
 
     // MARK: - Scanning
     case productComplaintSubmissionTitle

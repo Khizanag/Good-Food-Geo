@@ -78,7 +78,7 @@ struct ImageableModel {
     var isImagePickerPresented = false
     var isPhotoPickerPresented = false
     var isConfirmationDialogPresented = false
-    let placeholderText: String
+    var placeholderText: String
 
     var isSelected: Bool {
         image.isNotNil

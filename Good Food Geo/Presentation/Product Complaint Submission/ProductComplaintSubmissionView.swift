@@ -58,14 +58,7 @@ struct ProductComplaintSubmissionView: View {
                 FormItemView(model: FormItemModel(icon: DesignSystem.Image.photo(), placeholder: Localization.productTitle()), text: $productTitle)
                     .focused($focusedField, equals: .productTitle)
 
-                // With ForEach image is not loaded from ImagePickerView on some devices
-                Group {
-                    ImageableView(model: $imageableModel0)
-                    ImageableView(model: $imageableModel1)
-                    ImageableView(model: $imageableModel2)
-                    ImageableView(model: $imageableModel3)
-                    ImageableView(model: $imageableModel4)
-                }
+                imageComponents
 
                 VStack {
                     FormItemView(model: FormItemModel(icon: DesignSystem.Image.person(), placeholder: Localization.fullName()), text: $fullName)
@@ -104,14 +97,27 @@ struct ProductComplaintSubmissionView: View {
         .onReceive(viewModel.errorPublisher, perform: showError)
         .onReceive(viewModel.eventPublisher) { event in
             switch event {
-            case .cleanUp:
-                cleanUp()
+            case .cleanUp: cleanUp()
+            case .updateLocalizations: updateLocalizations()
             }
         }
         .disabled(viewModel.isLoading)
         .alert(alertData.title, isPresented: $alertData.isPresented, actions: {
             Button(Localization.gotIt(), role: .cancel) { }
         })
+        .onAppear {
+            viewModel.viewDidAppear()
+        }
+    }
+
+    private var imageComponents: some View {
+        Group {
+            ImageableView(model: $imageableModel0)
+            ImageableView(model: $imageableModel1)
+            ImageableView(model: $imageableModel2)
+            ImageableView(model: $imageableModel3)
+            ImageableView(model: $imageableModel4)
+        }
     }
 
     private var submitButton: some View {
@@ -157,6 +163,14 @@ struct ProductComplaintSubmissionView: View {
         location = ""
 
         userAgreesTerms = false
+    }
+
+    private func updateLocalizations() {
+        imageableModel0.placeholderText = Localization.scanFirstImageDescription()
+        imageableModel1.placeholderText = Localization.scanSecondImageDescription()
+        imageableModel2.placeholderText = Localization.scanThirdImageDescription()
+        imageableModel3.placeholderText = Localization.scanFourthImageDescription()
+        imageableModel4.placeholderText = Localization.scanFifthImageDescription()
     }
 
     // MARK: - Message Displayer

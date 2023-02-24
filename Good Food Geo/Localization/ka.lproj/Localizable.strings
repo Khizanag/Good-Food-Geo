@@ -82,6 +82,7 @@
 "aboutUsSectionDescription" = "საქართველოს ტრენინგებისა და განვითარების ინსტიტუტი (TDIG) აპლიკაციაში მუდმივად გაგიზიარებთ სასარგებლო მასალებს.";
 "contactUs" = "კონტაქტი";
 "facebookUrlIsInvalid" = "Facebook-ის მისამართი აღარაა ხელმისაწვდომი";
+"visitUsOnFacebook" = "გვეწვიეთ Facebook-ზე";
 
 // MARK: - Scanning
 "productComplaintSubmissionTitle" = "ეტიკეტის სკანირება";
