@@ -27,15 +27,17 @@ struct AboutUsView: View {
                             Text(Localization.aboutUsSectionDescription())
                                 .font(.body)
 
-                            CompanyButton(company: Company.facebook, action: {
-                                goToFacebookPage()
-                            })
+                            CompanyButton(
+                                company: Company.facebook,
+                                action: { goToFacebookPage() },
+                                title: Localization.visitUsOnFacebook()
+                            )
                         }
                     )
                 }),
                 SubSectionView.Model(title: Localization.contactUs(), content: {
                     VStack(alignment: .leading) {
-                        Text("\(Localization.email()): GOODFOODGEO.INFO@GMAIL.COM")
+                        Text("\(Localization.email()): GFGAPK@GMAIL.COM")
 
                         HStack {
                             Text("\(Localization.phoneNumber()):")

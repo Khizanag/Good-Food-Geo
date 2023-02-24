@@ -30,7 +30,7 @@ struct ExpertView: View {
                 .init(
                     title: Localization.textToExpert(),
                     content: {
-                        Text("\(Localization.email()): GOODFOODGEO.INFO@GMAIL.COM")
+                        Text("\(Localization.email()): GFGAPK@GMAIL.COM")
                             .toAnyView()
                     }
                 )

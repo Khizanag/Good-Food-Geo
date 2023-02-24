@@ -18,11 +18,16 @@ final class ProductComplaintSubmissionViewModel: BaseViewModel {
     // MARK: - Events
     enum Event {
         case cleanUp
+        case updateLocalizations
     }
 
     let eventPublisher = PassthroughSubject<Event, Never>()
 
     // MARK: - Public Methods
+    func viewDidAppear() {
+        eventPublisher.send(.updateLocalizations)
+    }
+
     @MainActor func submitProductComplaint(_ productComplaint: ProductComplaint) {
         let allInputIsFilled = [
             productComplaint.location,
